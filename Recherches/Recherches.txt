@@ -1,0 +1,111 @@
+
+Trouver un format de fichier pour la notation musicale (MIDI, MusicXML, ...?)
+
+Ecrire un programme répondant aux spécifications suivantes :
+- Lire une musique depuis un format de fichier choisi
+- Ecrire dans un fichier une musique dans un format défini (avec des entiers, seulement la mélodie)
+- Générer un modèle de Markov pour créer un modèle correspondant à la musique lue
+
+
+Se poser la question sur l'IA ; générer en encadrant, ...
+
+Markov est une solution ; y'en a-t-il d'autres ?
+
+But :
+A partir d'un fichier MIDI ou MusicXML, improviser des notes et écouter la mélodie générée
+
+========================================================
+
+Librairie C++ pour les fichiers MIDI :
+http://midifile.sapp.org/
+
+Informations sur le format de fichier MusicXML our la notation musicale :
+https://fr.wikipedia.org/wiki/MusicXML
+Il existe aussi TuxGuitar
+
+Modèle caché de Markov : modèle statistique dont le système modélisé est supposé être un processus markovien (comme une chaine de Markov). "Un processus de Markov est un processus stochastique possédant la propriété de Markov : l'information utile pour la prédiction du futur est entièrement contenue dans l'état présent du processus et n'est pas dépendante des états antérieurs (le système n'a pas de « mémoire »)." Wikipedia
+https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Markov_cach%C3%A9
+
+Chaine de Markov : c'est un processus de Markov
+Apprentissage d'éléments via succession d'élements à partir d'un ensemble d'élements donné
+https://fr.wikipedia.org/wiki/Cha%C3%AEne_de_Markov
+
+Processus de décision markovien : le MDP est un modèle stochastique où un agent prend des décisions et où les résultats de ses actions sont aléatoires. Pour un état s et une action a, le prochain état est indépendant des actions et états précédents. On dit alors que le processus satisfait la propriété de Markov. Notion de récompense lorsqu'une action est prise et que le processus passe de l'état s à l'état s'.
+https://fr.wikipedia.org/wiki/Processus_de_d%C3%A9cision_markovien
+
+Domaines d'application d'un modèle de Markov :
+http://www.em-consulte.com/rmr/article/144577
+http://www-public.tem-tsp.eu/~pieczyn/A31.pdf
+Voir le diapo de Giluno qui est dans le dossier TER/Recherches
+http://math.univ-lyon1.fr/~caldero/Jean-Luc.Yongwe.pdf
+
+Ouverture à l'apprentissage par renforcement (ne concerne pas mon cas) : supposons qu'on ne connaisse pas les probabilités de transition et les fonctions récompenses. On peut apprendre à résoudre le problème de maximisation de la récompense avec l'apprentissage par renforcement.
+http://researchers.lille.inria.fr/~munos/master-mva/lecture01.pdf
+
+=========================================================
+
+Pour convertir des fichiers MIDI vers XML pour qu'ils soient lus par mon programme : 
+https://blog.laymusic.org/2009/09/25/midi-to-musicxml/
+=> Pas sûr que ca marche en fait => Ca marche pas, c'est pas XML valide et c'est pas du MusicXML
+
+Des trucs sur MusicXML :
+http://www.partitionnumerique.com/technos/musicxml/
+http://www.musicxml.com/music-in-musicxml/example-set/
+http://www.musicxml.com/tutorial/the-midi-compatible-part/pitch/
+
+Il existe deux types de structures MusicXML :
+	- Les parties musicales (une partie par instrument) sont primaires, et les mesures sont contenues dans chaque partie (duplication des 'number' des 'measure')
+	  Noeud racine : score-partwise
+	- Les mesures sont primaires, et les parties musicales sont contenues dans chaque mesure (duplication des 'id' des 'part')
+	  Noeud racine : score-timewise	
+http://usermanuals.musicxml.com/MusicXML/MusicXML.htm#TutMusicXML3-1.htm%3FTocPath%3DMusicXML%25203.0%2520Tutorial%7C_____2
+
+La première note d'un chord (accord) est suivie par les autres notes composant l'accord, précédées par la balise <chord/>
+http://usermanuals.musicxml.com/MusicXML/MusicXML.htm#TutMusicXML4-1.htm%3FTocPath%3DMusicXML%25203.0%2520Tutorial%7C_____5
+
+Librarie C++ pour lire du MusicXML et faire du MusicXML :
+http://libmusicxml.sourceforge.net/
+
+=========================================================
+
+Parsers XML :
+https://www.developpez.net/forums/d710532/java/general-java/xml/cas-choisir-entre-sax-dom-jaxb-xpath/
+Utiliser StAX, car on veut pas altérer le XML
+https://www.codeproject.com/Articles/176236/Parsing-an-XML-file-in-a-thorn%20mailthorn%20mailC-C-program
+
+Choisir un parser XML :
+http://stackoverflow.com/questions/9387610/what-xml-parser-should-i-use-in-c
+
+Documentation de RapidXML :
+http://rapidxml.sourceforge.net/manual.html#namespacerapidxml_1reference
+
+Exemple de parsing XML en C/C++ avec RapidXML : 
+https://gist.github.com/JSchaenzle/2726944
+
+Exemple de parsing XML en JS :
+https://www.w3schools.com/xml/xml_parser.asp
+
+=========================================================
+
+Faire une étude statistique sur des mélodies de morceaux via le modèle de Markov
+Une note est défini par un entier (équivalant de la notation aanglais, A = 0, ...) et une octave
+Générer des contraintes à partir d'un modèle ? => Générer d'autres stats potentiellements utiles à la construction de contraintes
+
+=========================================================
+
+Librairie JS pour faire du son de piano :
+http://keithwhor.github.io/audiosynth/
+
+Il existe surement la même chose en C++ (Qt ?)
+
+Sinon, télécharger les sons sur ces sites :
+https://www.freesound.org/people/pinkyfinger/packs/4409/
+http://www.telacommunications.com/nutshell/music/notes.htm
+
+=========================================================
+
+Permettre au générateur de générer "à la manière de".
+Faire un dossier par style musical, tout balancer au programme qui fait des modèles de Markov et comparer les mélodies à une mélodie générée
+Pour cela, utiliser les stats du modèle : si le "chemin" du graphe de la chaine de Markov créé à partir des mélodies originales est possible, c'est ok
+
+

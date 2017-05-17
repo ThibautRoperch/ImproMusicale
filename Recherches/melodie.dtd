@@ -1,0 +1,6 @@
+<!ELEMENT notes (note*)>
+
+<!ELEMENT note (valeur,octave)>
+<!ELEMENT valeur (#PCDATA)>
+<!ELEMENT octave (#PCDATA)>
+

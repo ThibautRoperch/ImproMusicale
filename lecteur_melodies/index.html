@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+        <meta charset="utf-8">
+        <title>Lecteur de mélodie (XML épuré)</title>
+	</head>
+
+	<body>
+		Mélodie au format MusicXML épuré :<button style="float:right" onclick="chargerTemplate()">Charger un template</button>
+		<br>
+		<textarea id="entree" onKeyUp="lireMelodie()"></textarea>
+		<br>
+		
+		Notes de la mélodie :
+		<br>
+		<div id="sortie"></div>
+		<br>
+		
+		Paramètres :
+		<br>
+		<label for="profil_de_son">Profil de son : </label><select id="profil_de_son"><option value="piano">Piano</option><option value="organ">Orgue</option><option value="acoustic">Accoustique</option><option value="edm">EDM</option></select>
+		<br>
+		<label for="tempo">Tempo : </label><input id="tempo" type="text" size="1" value="60" /> notes par minute
+		<br>
+		
+		<br>
+		<button id="jouer" onclick="jouerMelodie()">Jouer la mélodie</button>
+		<button id="arreter" onclick="arreterMelodie()" disabled>Arrêter</button>
+	</body>
+
+</html>
+
+<style>
+
+textarea {
+	font-family: Courier;
+	font-weight: bold;
+	font-size: 14px;
+	color: gray;
+}
+
+textarea, div {
+	width: 100%;
+	height: 200px;
+	margin: 10px 0;
+	border: 1px solid silver;
+	overflow: auto;
+}
+
+note {
+	display: inline-block;
+	margin: 4px;
+	padding: 2px 6px;
+	color: gray;
+	border: 1px solid silver;
+	border-radius: 3px;
+}
+
+note.lue {
+	color: rgba(0, 100, 0, 0.6);
+	border: 1px solid rgba(0, 100, 0, 0.6);
+}
+
+note octave::before {
+	content: "(";
+}
+note octave::after {
+	content: ")";
+}
+
+</style>
+
+
+<script src="keithwhor-audiosynth-2e26f29/audiosynth.js"></script>
+
+<script>
+
+var TEMPO = 60; // 60 notes par minute (60 secondes)
+var DUREE = 1000; // 1 note dure 60 s / TEMPO notes = 1 seconde = 1000 millisecondes
+var PIANO = Synth.createInstrument("piano");
+var LIRE = false;
+
+function chargerTemplate() {
+	document.getElementById("entree").innerHTML = "";
+	document.getElementById("entree").innerHTML += "<notes>\n";
+	document.getElementById("entree").innerHTML += "	<note>\n";
+	document.getElementById("entree").innerHTML += "		<valeur>0</valeur>\n";
+	document.getElementById("entree").innerHTML += "		<octave>3</octave>\n";
+	document.getElementById("entree").innerHTML += "	</note>\n";
+	document.getElementById("entree").innerHTML += "	<note>\n";
+	document.getElementById("entree").innerHTML += "		<valeur>1</valeur>\n";
+	document.getElementById("entree").innerHTML += "		<octave>3</octave>\n";
+	document.getElementById("entree").innerHTML += "	</note>\n";
+	document.getElementById("entree").innerHTML += "	<note>\n";
+	document.getElementById("entree").innerHTML += "		<valeur>1</valeur>\n";
+	document.getElementById("entree").innerHTML += "		<octave>3</octave>\n";
+	document.getElementById("entree").innerHTML += "	</note>\n";
+	document.getElementById("entree").innerHTML += "	<note>\n";
+	document.getElementById("entree").innerHTML += "		<valeur>1</valeur>\n";
+	document.getElementById("entree").innerHTML += "		<octave>3</octave>\n";
+	document.getElementById("entree").innerHTML += "	</note>\n";
+	document.getElementById("entree").innerHTML += "	<note>\n";
+	document.getElementById("entree").innerHTML += "		<valeur>0</valeur>\n";
+	document.getElementById("entree").innerHTML += "		<octave>3</octave>\n";
+	document.getElementById("entree").innerHTML += "	</note>\n";
+	document.getElementById("entree").innerHTML += "	<note>\n";
+	document.getElementById("entree").innerHTML += "		<valeur>5</valeur>\n";
+	document.getElementById("entree").innerHTML += "		<octave>4</octave>\n";
+	document.getElementById("entree").innerHTML += "	</note>\n";
+	document.getElementById("entree").innerHTML += "</notes>\n";
+	lireMelodie();
+}
+
+function lireMelodie() {
+	var melodie = document.getElementById("entree").value;
+	var notes = document.getElementById("sortie");
+	var parser = new DOMParser();
+	var xmlDoc = parser.parseFromString(melodie ,"text/xml");
+	
+	notes.innerHTML = "";
+	i = 0;
+	while (xmlDoc.getElementsByTagName("note")[i]) {
+		var note = document.createElement("note");
+		var octave = document.createElement("octave");
+		octave.innerHTML = xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("octave")[0].childNodes[0].nodeValue;
+		note.innerHTML = xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("valeur")[0].childNodes[0].nodeValue;
+		note.appendChild(octave);
+		notes.appendChild(note);
+		++i;
+	}
+}
+
+function jouerMelodie() {
+	lireMelodie();
+	
+	TEMPO = parseInt(document.getElementById("tempo").value);
+	DUREE = 60 / TEMPO * 1000;
+	PIANO = Synth.createInstrument(document.getElementById("profil_de_son").value);
+	
+	document.getElementById("entree").disabled = "disabled";
+	document.getElementById("jouer").disabled = "disabled";
+	document.getElementById("arreter").disabled = "";
+	
+	LIRE = true;
+	
+	jouerNote(0);
+}
+
+function arreterMelodie() {
+	LIRE = false;
+}
+
+function jouerNote(i) {
+	if (LIRE && document.getElementById("sortie").getElementsByTagName("note")[i]) {
+		document.getElementById("sortie").getElementsByTagName("note")[i].className = "lue";
+		
+		note = parseInt(document.getElementById("sortie").getElementsByTagName("note")[i].innerHTML);
+		
+		switch (note) {
+			case 0:
+				note = "C";
+				break;
+			case 1:
+				note = "C#";
+				break;
+			case 2:
+				note = "D";
+				break;
+			case 3:
+				note = "D#";
+				break;
+			case 4:
+				note = "E";
+				break;
+			case 5:
+				note = "F";
+				break;
+			case 6:
+				note = "F#";
+				break;
+			case 7:
+				note = "G";
+				break;
+			case 8:
+				note = "G#";
+				break;
+			case 9:
+				note = "A";
+				break;
+			case 10:
+				note = "A#";
+				break;
+			case 11:
+				note = "B";
+				break;
+		}
+		
+		octave = parseInt(document.getElementById("sortie").getElementsByTagName("note")[i].getElementsByTagName("octave")[0].innerHTML);
+
+		PIANO.play(note, octave, 1); // plays 'note' for 'DUREE' seconds using the 'PIANO' sound profile
+		
+		setTimeout(function() {
+			jouerNote(i + 1);
+		}, DUREE);
+	} else {
+		document.getElementById("entree").disabled = "";
+		document.getElementById("jouer").disabled = "";
+		document.getElementById("arreter").disabled = "disabled";
+		LIRE = false;
+	}
+}
+
+</script>
+

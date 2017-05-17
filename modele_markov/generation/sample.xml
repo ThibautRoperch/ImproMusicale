@@ -1,0 +1,44 @@
+<contraintes>
+
+	<elements-min-max>
+		<objectif>1</objectif><!-- 1 = 100% -->
+		<element-min>
+			<note>
+				<valeur></valeur>
+				<octave></octave>
+			</note>
+		</element-min>
+		<element-max>
+			<note>
+				<valeur></valeur>
+				<octave></octave>
+			</note>
+		</element-max>
+	</elements-min-max>
+	
+	<rectangles>
+		<objectif>1</objectif>
+		<rectangle>
+			<hauteur></hauteur>
+			<largeur></largeur>
+		</rectangle>
+		<nombre-rectangles></nombre-rectangles>
+	</rectangles>
+	
+	<couples-notes>
+		<objectif>1</objectif>
+		<couple>
+			<note>
+				<valeur></valeur>
+				<octave></octave>
+			</note>
+			<note>
+				<valeur></valeur>
+				<octave></octave>
+			</note>
+			<distance></distance>
+			<probabilite></probabilite>
+		</couple>
+	</couples-notes>
+	
+</contraintes>

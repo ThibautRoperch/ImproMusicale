@@ -1,0 +1,23 @@
+<!ELEMENT contraintes (elements-min-max?,rectangles?,couples-notes?)>
+
+<!ELEMENT elements-min-max (objectif,element-min,element-max)>
+<!ELEMENT element-min (note)>
+<!ELEMENT element-max (note)>
+
+<!ELEMENT rectangles (objectif,rectangle,nombre-rectangles)>
+<!ELEMENT rectangle (hauteur,largeur)>
+<!ELEMENT hauteur (#PCDATA)>
+<!ELEMENT largeur (#PCDATA)>
+<!ELEMENT nombre-rectangles (#PCDATA)>
+
+<!ELEMENT couples-notes (objectif,couple*)>
+<!ELEMENT couple (note,note,distance,probabilite)>
+<!ELEMENT distance (#PCDATA)>
+<!ELEMENT probabilite (#PCDATA)>
+
+<!ELEMENT objectif (#PCDATA)>
+
+<!ELEMENT note (valeur,octave)>
+<!ELEMENT valeur (#PCDATA)>
+<!ELEMENT octave (#PCDATA)>
+

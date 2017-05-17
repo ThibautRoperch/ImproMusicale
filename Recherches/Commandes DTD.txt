@@ -1,0 +1,13 @@
+Générer une DTD avec trang :
+
+trang -I xml -O dtd input.xml output.dtd
+
+
+Vérifier un document par rapport à une DTD interne :
+
+xmllint -valid <document.xml>
+
+Vérifier un document par rapport à une DTD externe :
+
+xmllint -dtdvalid <dtd.dtd> <document.xml>
+
