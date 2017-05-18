@@ -1,20 +1,29 @@
 CFLAGS=-Wall -std=c++11
 OFLAGS=-O2
 
+SRC_DIR = ./src
 BUILD_DIR = ./build
 BIN_DIR = ./bin
-SRC_DIR = ./src
+LIB_DIR = ./lib
 
-all: initialiser $(BIN_DIR)/epurer_musicxml.exe $(BIN_DIR)/convertir_midi.exe $(BIN_DIR)/main.exe $(BIN_DIR)/validation_melodie_generee.exe
+Midifile = ./lib/craigsapp-midifile-5a7dc97
+
+all: initialiser compiler_sources
 
 initialiser:
 	mkdir -p $(BUILD_DIR)
 	mkdir -p $(BIN_DIR)
 
+compiler_librairies:
+	cd $(Midifile)
+	make
+
+compiler_sources: $(BIN_DIR)/epurer_musicxml.exe $(BIN_DIR)/convertir_midi.exe $(BIN_DIR)/main.exe $(BIN_DIR)/validation_melodie_generee.exe
+
 $(BIN_DIR)/epurer_musicxml.exe: $(SRC_DIR)/epurer_musicxml.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
-$(BIN_DIR)/convertir_midi.exe: $(SRC_DIR)/convertir_midi.cpp
+$(BIN_DIR)/convertir_midi.exe: $(SRC_DIR)/convertir_midi.cpp $(Midifile)/obj/*
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
 $(BIN_DIR)/main.exe: $(SRC_DIR)/main.cpp $(SRC_DIR)/note.cpp
