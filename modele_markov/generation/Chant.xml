@@ -17,10 +17,10 @@
   <rectangles>
     <objectif>1</objectif>
     <rectangle>
-      <hauteur>3</hauteur>
-      <largeur>3</largeur>
+      <hauteur>6</hauteur>
+      <largeur>2</largeur>
     </rectangle>
-    <nombre-rectangles>25</nombre-rectangles>
+    <nombre-rectangles>26</nombre-rectangles>
   </rectangles>
   <couples-notes>
     <objectif>1</objectif>

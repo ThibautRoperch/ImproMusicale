@@ -308,11 +308,6 @@ function dessinerPartition() {
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
 		var note_actuelle = valeur + octave * 11;
 
-		var note = document.createElement("note");
-		note.style.marginTop = (note_max - note_actuelle) * (echelle + espace_vertical) + "px";
-		note.style.marginLeft = espace_horizontal * i + "px";
-		partition.appendChild(note);
-
 		if (i < nombre_rectangles) {
 			var rectangle = document.createElement("rectangle");
 			rectangle.style.width = (rectangle_largeur - 0.9) * (echelle + espace_horizontal - 1) + "px";
@@ -332,9 +327,13 @@ function dessinerPartition() {
 			partition.appendChild(rectangle);
 		}
 
+		var note = document.createElement("note");
+		note.style.marginTop = (note_max - note_actuelle) * (echelle + espace_vertical) + "px";
+		note.style.marginLeft = espace_horizontal * i + "px";
+		partition.appendChild(note);
+
 		++i;
 	}
 }
 
 </script>
-
