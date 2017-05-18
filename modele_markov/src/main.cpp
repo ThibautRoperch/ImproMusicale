@@ -17,7 +17,6 @@ using namespace rapidxml;
 /*
 	Faire un programme qui converti mon format vers MusicXML ? => librairie pour faire un MusicXML from scratch
 	Convertir du MIDI
-	Extraire d'autres contraintes d'un XML épuré
 */
 
 bool operator==(Note const &n1, Note const &n2) {
@@ -35,8 +34,8 @@ int main(int argc, char* argv[]) {
 
 	/* Vérification du nombre d'arguments */
 
-	if (argc < 2) {
-		cerr << "Donner en argument le ou les fichier(s) XML contenant une mélodie\n" << endl;
+	if (argc < 3) {
+		cerr << "Donner en argument le ou les fichier(s) XML contenant une mélodie et le fichier de sortie\n" << endl;
 		return EXIT_FAILURE;
 	}
 
@@ -46,7 +45,7 @@ int main(int argc, char* argv[]) {
 
 	/* Lecture des fichiers contenant la mélodie */
 
-	for (int i = 1; i < argc; ++i) {
+	for (int i = 1; i < argc - 1; ++i) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
 
 		xml_document<> doc;
@@ -113,8 +112,8 @@ int main(int argc, char* argv[]) {
 	Note *note_min = melodie[0];
 	Note *note_max = melodie[0];
 	for (auto note : melodie) {
-		if (note < note_min) note_min = note;
-		if (note > note_max) note_max = note;
+		if (note->hauteurNote() < note_min->hauteurNote()) note_min = note;
+		if (note->hauteurNote() > note_max->hauteurNote()) note_max = note;
 	}
 
 	res += "  <elements-min-max>\n";
@@ -139,28 +138,43 @@ int main(int argc, char* argv[]) {
 	int largeur_rectangle = 1;
 	
 	bool valide = true;
-	for (unsigned int i = 0; i < melodie.size() - largeur_rectangle && valide; ++i) {
+	while (valide) {
 		// Augmentation de la largeur du rectangle
 		++largeur_rectangle;
-		// Initialisation de l'intervalle des notes et actualisation de la hauteur du rectangle
-		int indice_min = i;
-		int indice_max = i + largeur_rectangle - 1;
-		Note *premiere_note = melodie[indice_min];
-		Note *derniere_note = melodie[indice_max];
-		if (hauteur_rectangle < abs(premiere_note->hauteurNote() - derniere_note->hauteurNote())) {
-			hauteur_rectangle = abs(premiere_note->hauteurNote() - derniere_note->hauteurNote());
-		}
-		// Vérification auprès des notes qu'elles sont entre la première et la dernière note
-		while(valide && indice_min < indice_max) { // indice_min < indice_max au lieu de <= pour ommetre la dernière note
+		cout << "LARGEUR = " << largeur_rectangle << " notes" << endl;
+
+		for (unsigned int i = 0; i < melodie.size() - largeur_rectangle + 1; ++i) {
+			// Initialisation de l'intervalle des notes et actualisation de la hauteur du rectangle
+			int indice_min = i;
+			int indice_max = i + largeur_rectangle - 1;
+			Note *premiere_note = melodie[indice_min];
+			Note *derniere_note = melodie[indice_max];
+			if (hauteur_rectangle < abs(premiere_note->hauteurNote() - derniere_note->hauteurNote())) {
+				hauteur_rectangle = abs(premiere_note->hauteurNote() - derniere_note->hauteurNote());
+			}
+			cout << "[" << indice_min << ", " << indice_max << "]";
 			++indice_min; // ++indice_min au début de la boucle pour ommettre la première note
-			if (premiere_note < derniere_note) {
-				if (melodie[indice_min] < premiere_note || melodie[indice_min] > derniere_note) {
-					valide = false;
+			cout << " => [" << indice_min << ", " << indice_max << "] => " << indice_max - indice_min << " notes à vérifier" << endl;
+			// Vérification auprès des notes qu'elles sont entre la première et la dernière note
+			while(valide && indice_min < indice_max) { // indice_min < indice_max au lieu de <= pour ommetre la dernière note
+				cout << "\tTest de la " << indice_min << " eme note (" << *melodie[indice_min] << ") dans l'intervalle " << *premiere_note << " - " << *derniere_note << endl;
+				if (premiere_note < derniere_note) {
+					if (melodie[indice_min]->hauteurNote() < premiere_note->hauteurNote() || melodie[indice_min]->hauteurNote() > derniere_note->hauteurNote()) {
+						valide = false;
+						cout << "\t-> Pas dans l'intervalle" << endl;
+					}
+				} else if (premiere_note->hauteurNote() > derniere_note->hauteurNote()) {
+					if (melodie[indice_min]->hauteurNote() > premiere_note->hauteurNote() || melodie[indice_min]->hauteurNote() < derniere_note->hauteurNote()) {
+						valide = false;
+						cout << "\t-> Pas dans l'intervalle" << endl;
+					}
+				} else if (premiere_note->hauteurNote() == derniere_note->hauteurNote()) {
+					if (melodie[indice_min]->hauteurNote() != premiere_note->hauteurNote()) {
+						valide = false;
+						cout << "\t-> Pas dans l'intervalle" << endl;
+					}
 				}
-			} else if (premiere_note > derniere_note) {
-				if (melodie[indice_min] > premiere_note || melodie[indice_min] < derniere_note) {
-					valide = false;
-				}
+				++indice_min;
 			}
 		}
 	}
@@ -169,13 +183,15 @@ int main(int argc, char* argv[]) {
 		--largeur_rectangle;
 	}
 
-	// cout << "\nLa mélodie comporte " << melodie.size() << " rectangles.\n"
-	// cin <<
+	cout << "\nLa mélodie comporte " << melodie.size() << " notes.\n" << endl;
 
 	res += "  <rectangles>\n";
 	res += "    <objectif>1</objectif>\n";
-	res += "    <hauteur>" + to_string(hauteur_rectangle) + "</hauteur>\n";
-	res += "    <largeur>" + to_string(largeur_rectangle) + "</largeur>\n";
+	res += "    <rectangle>\n";
+	res += "      <hauteur>" + to_string(hauteur_rectangle) + "</hauteur>\n";
+	res += "      <largeur>" + to_string(largeur_rectangle) + "</largeur>\n";
+	res += "    </rectangle>\n";
+	res += "    <nombre-rectangles>" + to_string(melodie.size() - largeur_rectangle + 1) + "</nombre-rectangles>\n";
 	res += "  </rectangles>\n";
 
 	/* C3 :  */
@@ -185,18 +201,20 @@ int main(int argc, char* argv[]) {
 
 	for (unsigned int i = 0; i < statistiques.size(); ++i) {
 		for (unsigned int j = 0; j < statistiques[i].size(); ++j) {
-			res += "      <couple>\n";
-			res += "        <note>\n";
-			res += "          <valeur>" + to_string(notes[i]->valeurNote()) + "</valeur>\n";
-			res += "          <octave>" + to_string(notes[i]->octaveNote()) + "</octave>\n";
-			res += "        </note>\n";
-			res += "        <note>\n";
-			res += "          <valeur>" + to_string(notes[j]->valeurNote()) + "</valeur>\n";
-			res += "          <octave>" + to_string(notes[j]->octaveNote()) + "</octave>\n";
-			res += "        </note>\n";
-			res += "        <distance>1</distance>\n";
-			res += "        <probabilite>" + to_string(statistiques[i][j]) + "</probabilite>\n";
-			res += "      </couple>\n";
+			if (statistiques[i][j] != 0) {
+				res += "      <couple>\n";
+				res += "        <note>\n";
+				res += "          <valeur>" + to_string(notes[i]->valeurNote()) + "</valeur>\n";
+				res += "          <octave>" + to_string(notes[i]->octaveNote()) + "</octave>\n";
+				res += "        </note>\n";
+				res += "        <note>\n";
+				res += "          <valeur>" + to_string(notes[j]->valeurNote()) + "</valeur>\n";
+				res += "          <octave>" + to_string(notes[j]->octaveNote()) + "</octave>\n";
+				res += "        </note>\n";
+				res += "        <distance>1</distance>\n";
+				res += "        <probabilite>" + to_string(statistiques[i][j]) + "</probabilite>\n";
+				res += "      </couple>\n";
+			}
 		}
 	}
 
@@ -206,23 +224,18 @@ int main(int argc, char* argv[]) {
 
 	/* Enregistrement des propriétés de la mélodie dans fichier de sortie ou affichage à défaut de fichier donné en argument */
 	 
-	if (argc == 3) {
-		string nom_fichier_sortie = argv[2];
-		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
-		
-		if(fichier_sortie) {
-			fichier_sortie << res;
-			fichier_sortie.close();
-		}
-		else {
-			cout << "Impossible de créer le fichier " << nom_fichier_sortie << endl;
-		}
-
-		cout << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés de la mélodie du fichier " << argv[1] << endl;
-	} else {
-		cout << "\nAucun fichier de sortie n'est donné en argument du programme" << endl;
-		cout << "\n" << res << endl;
+	string nom_fichier_sortie = argv[argc - 1];
+	ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
+	
+	if(fichier_sortie) {
+		fichier_sortie << res;
+		fichier_sortie.close();
 	}
+	else {
+		cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
+	}
+
+	cout << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés de la mélodie du fichier " << argv[1] << endl;
 
 	cout << endl;
 

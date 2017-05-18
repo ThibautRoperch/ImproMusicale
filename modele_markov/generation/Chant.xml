@@ -3,20 +3,25 @@
     <objectif>1</objectif>
     <element-min>
       <note>
-        <valeur>7</valeur>
+        <valeur>2</valeur>
         <octave>4</octave>
       </note>
     </element-min>
     <element-max>
       <note>
-        <valeur>9</valeur>
-        <octave>4</octave>
+        <valeur>0</valeur>
+        <octave>5</octave>
       </note>
     </element-max>
   </elements-min-max>
   <rectangles>
     <objectif>1</objectif>
-    <hauteur>3</hauteur>    <largeur>3</largeur>  </rectangles>
+    <rectangle>
+      <hauteur>3</hauteur>
+      <largeur>3</largeur>
+    </rectangle>
+    <nombre-rectangles>25</nombre-rectangles>
+  </rectangles>
   <couples-notes>
     <objectif>1</objectif>
       <couple>
@@ -29,7 +34,7 @@
           <octave>4</octave>
         </note>
         <distance>1</distance>
-        <probabilite>0.200000</probabilite>
+        <probabilite>0.142857</probabilite>
       </couple>
       <couple>
         <note>
@@ -41,31 +46,7 @@
           <octave>4</octave>
         </note>
         <distance>1</distance>
-        <probabilite>0.533333</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>7</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>7</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
+        <probabilite>0.571429</probabilite>
       </couple>
       <couple>
         <note>
@@ -77,31 +58,7 @@
           <octave>4</octave>
         </note>
         <distance>1</distance>
-        <probabilite>0.266667</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>7</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>7</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
+        <probabilite>0.285714</probabilite>
       </couple>
       <couple>
         <note>
@@ -114,18 +71,6 @@
         </note>
         <distance>1</distance>
         <probabilite>0.333333</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>5</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>5</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
       </couple>
       <couple>
         <note>
@@ -165,42 +110,6 @@
       </couple>
       <couple>
         <note>
-          <valeur>5</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>5</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>7</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
           <valeur>2</valeur>
           <octave>4</octave>
         </note>
@@ -213,78 +122,6 @@
       </couple>
       <couple>
         <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>9</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>7</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
           <valeur>4</valeur>
           <octave>4</octave>
         </note>
@@ -294,66 +131,6 @@
         </note>
         <distance>1</distance>
         <probabilite>1.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>9</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
       </couple>
       <couple>
         <note>
@@ -366,42 +143,6 @@
         </note>
         <distance>1</distance>
         <probabilite>0.428571</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>9</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>5</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>9</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>9</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
       </couple>
       <couple>
         <note>
@@ -429,18 +170,6 @@
       </couple>
       <couple>
         <note>
-          <valeur>9</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
           <valeur>0</valeur>
           <octave>5</octave>
         </note>
@@ -450,42 +179,6 @@
         </note>
         <distance>1</distance>
         <probabilite>0.333333</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <note>
-          <valeur>5</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
       </couple>
       <couple>
         <note>
@@ -505,71 +198,11 @@
           <octave>5</octave>
         </note>
         <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <note>
           <valeur>11</valeur>
           <octave>4</octave>
         </note>
         <distance>1</distance>
         <probabilite>0.333333</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>7</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>5</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>2</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>4</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
       </couple>
       <couple>
         <note>
@@ -582,30 +215,6 @@
         </note>
         <distance>1</distance>
         <probabilite>1.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>0</valeur>
-          <octave>5</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
-      </couple>
-      <couple>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <note>
-          <valeur>11</valeur>
-          <octave>4</octave>
-        </note>
-        <distance>1</distance>
-        <probabilite>0.000000</probabilite>
       </couple>
   </couples-notes>
 </contraintes>
