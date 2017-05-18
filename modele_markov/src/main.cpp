@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "../include/rapidxml-1.13/rapidxml.hpp"
+#include "../lib/rapidxml-1.13/rapidxml.hpp"
 #include "../include/chaine_markov.h"
 #include "../include/note.h"
 
@@ -141,7 +141,6 @@ int main(int argc, char* argv[]) {
 	while (valide) {
 		// Augmentation de la largeur du rectangle
 		++largeur_rectangle;
-		cout << "LARGEUR = " << largeur_rectangle << " notes" << endl;
 
 		for (unsigned int i = 0; i < melodie.size() - largeur_rectangle + 1; ++i) {
 			// Initialisation de l'intervalle des notes et actualisation de la hauteur du rectangle
@@ -152,26 +151,20 @@ int main(int argc, char* argv[]) {
 			if (hauteur_rectangle < abs(premiere_note->hauteurNote() - derniere_note->hauteurNote())) {
 				hauteur_rectangle = abs(premiere_note->hauteurNote() - derniere_note->hauteurNote());
 			}
-			cout << "[" << indice_min << ", " << indice_max << "]";
 			++indice_min; // ++indice_min au début de la boucle pour ommettre la première note
-			cout << " => [" << indice_min << ", " << indice_max << "] => " << indice_max - indice_min << " notes à vérifier" << endl;
 			// Vérification auprès des notes qu'elles sont entre la première et la dernière note
 			while(valide && indice_min < indice_max) { // indice_min < indice_max au lieu de <= pour ommetre la dernière note
-				cout << "\tTest de la " << indice_min << " eme note (" << *melodie[indice_min] << ") dans l'intervalle " << *premiere_note << " - " << *derniere_note << endl;
 				if (premiere_note < derniere_note) {
 					if (melodie[indice_min]->hauteurNote() < premiere_note->hauteurNote() || melodie[indice_min]->hauteurNote() > derniere_note->hauteurNote()) {
 						valide = false;
-						cout << "\t-> Pas dans l'intervalle" << endl;
 					}
 				} else if (premiere_note->hauteurNote() > derniere_note->hauteurNote()) {
 					if (melodie[indice_min]->hauteurNote() > premiere_note->hauteurNote() || melodie[indice_min]->hauteurNote() < derniere_note->hauteurNote()) {
 						valide = false;
-						cout << "\t-> Pas dans l'intervalle" << endl;
 					}
 				} else if (premiere_note->hauteurNote() == derniere_note->hauteurNote()) {
 					if (melodie[indice_min]->hauteurNote() != premiere_note->hauteurNote()) {
 						valide = false;
-						cout << "\t-> Pas dans l'intervalle" << endl;
 					}
 				}
 				++indice_min;
@@ -182,8 +175,6 @@ int main(int argc, char* argv[]) {
 	if (!valide) {
 		--largeur_rectangle;
 	}
-
-	cout << "\nLa mélodie comporte " << melodie.size() << " notes.\n" << endl;
 
 	res += "  <rectangles>\n";
 	res += "    <objectif>1</objectif>\n";

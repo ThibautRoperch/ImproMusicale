@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstdlib>
 
-#include "../include/rapidxml-1.13/rapidxml.hpp"
+#include "../lib/rapidxml-1.13/rapidxml.hpp"
 #include "../include/chaine_markov.h"
 #include "../include/note.h"
 

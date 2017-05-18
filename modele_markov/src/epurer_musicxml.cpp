@@ -14,7 +14,7 @@
 #include <map>
 #include <cstdlib>
 
-#include "../include/rapidxml-1.13/rapidxml.hpp"
+#include "../lib/rapidxml-1.13/rapidxml.hpp"
 
 using namespace rapidxml;
 using namespace std;

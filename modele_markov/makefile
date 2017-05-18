@@ -2,27 +2,39 @@ CFLAGS=-Wall -std=c++11
 OFLAGS=-O2
 
 BUILD_DIR = ./build
+BIN_DIR = ./bin
 SRC_DIR = ./src
 
-all: $(BUILD_DIR)/epurer_musicxml.exe $(BUILD_DIR)/main.exe $(BUILD_DIR)/validation_melodie_generee.exe
+all: initialiser $(BIN_DIR)/epurer_musicxml.exe $(BIN_DIR)/convertir_midi.exe $(BIN_DIR)/main.exe $(BIN_DIR)/validation_melodie_generee.exe
 
-$(BUILD_DIR)/epurer_musicxml.exe: $(SRC_DIR)/epurer_musicxml.cpp
+initialiser:
+	mkdir -p $(BUILD_DIR)
+	mkdir -p $(BIN_DIR)
+
+$(BIN_DIR)/epurer_musicxml.exe: $(SRC_DIR)/epurer_musicxml.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
-$(BUILD_DIR)/main.exe: $(SRC_DIR)/main.cpp $(SRC_DIR)/note.cpp
+$(BIN_DIR)/convertir_midi.exe: $(SRC_DIR)/convertir_midi.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
-$(BUILD_DIR)/validation_melodie_generee.exe: $(SRC_DIR)/validation_melodie_generee.cpp $(SRC_DIR)/note.cpp
+$(BIN_DIR)/main.exe: $(SRC_DIR)/main.cpp $(SRC_DIR)/note.cpp
+	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
+
+$(BIN_DIR)/validation_melodie_generee.exe: $(SRC_DIR)/validation_melodie_generee.cpp $(SRC_DIR)/note.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
 epurer:
-	./$(BUILD_DIR)/epurer_musicxml.exe ${in} ${out}
+	./$(BIN_DIR)/epurer_musicxml.exe ${in} ${out}
+
+convertir:
+	./$(BIN_DIR)/convertir_midi.exe ${in} ${out}
 
 modeliser:
-	./$(BUILD_DIR)/main.exe ${in} ${out}
+	./$(BIN_DIR)/main.exe ${in} ${out}
 
 verifier:
-	./$(BUILD_DIR)/validation_melodie_generee.exe ${in} ${genere}
+	./$(BIN_DIR)/validation_melodie_generee.exe ${in} ${genere}
 
 clean:
 	rm -f $(BUILD_DIR)/*
+	rm -f $(BIN_DIR)/*

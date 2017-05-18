@@ -1,0 +1,8 @@
+# Dossier build contenant les objets
+build
+
+# Dossier bin contenant les executables
+bin/*
+
+# Dossier lib contenant les librairies
+lib/*
