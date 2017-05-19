@@ -1,3 +1,7 @@
+/**
+ * https://github.com/craigsapp/midifile#midi-file-reading-examples
+ */
+
 #include <iostream>
 #include <iomanip>
 
@@ -8,33 +12,90 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-   Options options;
-   options.process(argc, argv);
-   MidiFile midifile;
-   if (options.getArgCount() > 0) {
-	  midifile.read(options.getArg(1));
-   } else {	
-	  midifile.read(cin);
-   }
+	cout << endl;
 
-   int tracks = midifile.getTrackCount();
-   cout << "TPQ: " << midifile.getTicksPerQuarterNote() << endl;
-   if (tracks > 1) {
-	  cout << "TRACKS: " << tracks << endl;
-   }
-   for (int track=0; track < tracks; track++) {
-	  if (tracks > 1) {
-		 cout << "\nTrack " << track << endl;
-	  }
-	  for (int event=0; event < midifile[track].size(); event++) {
-		 cout << dec << midifile[track][event].tick;
-		 cout << '\t' << hex;
-		 for (int i=0; i<midifile[track][event].size(); i++) {
-			cout << (int)midifile[track][event][i] << ' ';
-		 }
-		 cout << endl;
-	  }
-   }
+	/* Vérification du nombre d'arguments */
 
-   return EXIT_SUCCESS;
+	if (argc < 2) {
+		cerr << "Donner en argument le fichier contenant la partition au format MIDI et le fichier de sortie\n" << endl;
+		return EXIT_FAILURE;
+	}
+	
+	/* Lecture du fichier contenant la partition au format MusicXML */
+
+	cout << "Lecture de la partition contenue dans le fichier " << argv[1] << " au format MusicXML" << endl;
+
+	MidiFile midifile(argv[1]);
+	
+	string res = "<notes>\n";
+
+	// Analyse des parties musicales présentes la partition
+
+	int nb_parties_musicales = midifile.getTrackCount();
+	int partie_musicale_selectionnee = 0;
+
+	if (nb_parties_musicales > 1) {
+		cout << "\nPlusieurs parties musicales sont présentes dans la partition :" << endl;
+		int i;
+		for (i = 0; i < nb_parties_musicales; i++) {
+			cout << "  [" << i << "] Partie " << i << endl;
+		}
+		string indice_partie;
+		cout << "\nDonner l'indice de la partie dont il faut extraire la mélodie :" << endl;
+		cin >> partie_musicale_selectionnee;
+	}
+	
+	// Extraction de la mélodie de la partie selectionnée, en fonction de la structure de la partition
+
+	cout << "\nExtraction des notes composant la mélodie de la partie " << partie_musicale_selectionnee << endl;
+
+	// Lecture de la valeur des notes de la partie musicale sélectionnée
+	for (int note = 0; note < midifile[partie_musicale_selectionnee].size(); note++) {
+		// Si la note a une intensité supérieure à 0, calculer sa valeur et son octave
+		if ((int)midifile[partie_musicale_selectionnee][note][2] > 0) {
+			// cout << (int)midifile[partie_musicale_selectionnee][note][1] << " " << (int)midifile[partie_musicale_selectionnee][note][2] << endl;
+
+			res += "  <note>\n";
+
+			int valeur_note = (int)midifile[partie_musicale_selectionnee][note][1];
+			int octave_note = valeur_note / 11;
+			valeur_note = valeur_note % 11;
+
+			res += "    <valeur>" + to_string(valeur_note) + "</valeur>\n";
+			res += "    <octave>" + to_string(octave_note) + "</octave>\n";
+
+			res += "  </note>\n";
+		}
+	}
+
+	cout << "\nExtraction de la mélodie terminée" << endl;
+
+	// Fin de la lecture du fichier contenant la partition
+
+	res += "</notes>";
+
+	cout << "\nLecture terminée" << endl;
+
+	/* Enregistrement de la mélodie extraite dans fichier de sortie ou affichage à défaut de fichier donné en argument */
+	 
+	if (argc == 3) {
+		string nom_fichier_sortie = argv[2];
+		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
+		
+		if(fichier_sortie) {
+			fichier_sortie << res;
+			fichier_sortie.close();
+		} else {
+			cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
+		}
+
+		cout << "\nLe fichier " << nom_fichier_sortie << " contient la mélodie de la partie " << partie_musicale_selectionnee << " de la partition du fichier " << argv[1] << endl;
+	} else {
+		cout << "\nAucun fichier de sortie n'est donné en argument du programme" << endl;
+		cout << "\n" << res << endl;
+	}
+
+	cout << endl;
+	
+	return EXIT_SUCCESS;
 }

@@ -135,10 +135,10 @@ int main(int argc, char* argv[]) {
 	/* C2 : Calcul de la plus grande hauteur entre deux notes sur un plage de notes donnée */
 
 	int hauteur_rectangle = 0;
-	int largeur_rectangle = 1;
+	unsigned int largeur_rectangle = 1;
 	
 	bool valide = true;
-	while (valide) {
+	while (valide && largeur_rectangle < melodie.size()) {
 		// Augmentation de la largeur du rectangle
 		++largeur_rectangle;
 
@@ -185,10 +185,9 @@ int main(int argc, char* argv[]) {
 	res += "    <nombre-rectangles>" + to_string(melodie.size() - largeur_rectangle + 1) + "</nombre-rectangles>\n";
 	res += "  </rectangles>\n";
 
-	/* C3 :  */
+	/* C3 : Lecture des statistiques pour chaque couple notes successives */
 	
 	res += "  <couples-notes>\n";
-	res += "    <objectif>1</objectif>\n";
 
 	for (unsigned int i = 0; i < statistiques.size(); ++i) {
 		for (unsigned int j = 0; j < statistiques[i].size(); ++j) {
@@ -211,6 +210,42 @@ int main(int argc, char* argv[]) {
 
 	res += "  </couples-notes>\n";
 
+	/* C4 : Détection des répétitions de groupes de notes (patterns) */
+
+	map<vector<Note *>, vector<int>> patterns; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
+
+	// Pour chaque note i de la mélodie
+	for (unsigned int i = 0; i < melodie.size(); ++i) {
+		// Si la note est i est retrouvée plus loin dans la mélodie, déterminer si c'est un pattern :
+		// Avancer en même temps i et j
+		// Avancer i dans la boucle j permet en plus d'éviter de détecter un pattern qui est en fait un sous-pattern
+		// Résultat : seuls les sur-patterns sont détectés (un pattern dans un pattern ne sera pas trouvé)
+		
+		vector<Note *> suite;
+		suite.push_back(melodie[i]);
+
+		// Pour chaque note j de la mélodie, à partir de la note suivant la note i
+		for (unsigned int j = i + 1; j < melodie.size(); ++j) {
+			// Tant que la note i est égale à la note j
+			while (*melodie[i] == *melodie[j] && i < melodie.size() && j < melodie.size()) {
+				suite.push_back(melodie[j]);
+				++i;
+				++j;
+			}
+			// Si la suite de notes a une probabilité d'exister < 0.05, alors on peut la considérer comme un pattern
+			if (suite.size() > 3) { // tochange
+				// Ajouter ce pattern s'il n'existe pas déjà dans la liste, ainsi que le position du premier pattern (i)
+				if (patterns.find(suite) == patterns.end()) {
+					vector<int> positions;
+					positions.push_back(i - suite.size());
+					patterns[suite] = positions;
+				}
+				// Ajouter la position du début de ce pattern (j)
+				patterns[suite].push_back(j - suite.size());
+			}
+		}
+	}
+
 	res += "</contraintes>";
 
 	/* Enregistrement des propriétés de la mélodie dans fichier de sortie ou affichage à défaut de fichier donné en argument */
@@ -221,8 +256,7 @@ int main(int argc, char* argv[]) {
 	if(fichier_sortie) {
 		fichier_sortie << res;
 		fichier_sortie.close();
-	}
-	else {
+	} else {
 		cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 	}
 

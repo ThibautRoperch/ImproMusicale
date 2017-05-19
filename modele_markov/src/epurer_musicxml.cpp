@@ -62,7 +62,6 @@ int main(int argc, char* argv[]) {
 
 	cout << "Lecture de la partition contenue dans le fichier " << argv[1] << " au format MusicXML" << endl;
 
-	string res = "";
 	xml_document<> doc;
 	xml_node<> * noeud_racine;
 	string structure_partition;
@@ -74,7 +73,7 @@ int main(int argc, char* argv[]) {
 	buffer.push_back('\0');
 	doc.parse<0>(&buffer[0]);
 
-	// Détection du type de la structure du fichier MusicXML (2 DTD/phylosophies différentes)
+	// Détection du type de la structure du fichier MusicXML (il existe deux DTD/philosophies différentes)
 
 	// Les parties musicales (une partie par instrument) sont primaires, et les mesures sont contenues dans chaque partie (duplication des 'number' des 'measure')
 	if (doc.first_node("score-partwise")) {
@@ -87,7 +86,7 @@ int main(int argc, char* argv[]) {
 		structure_partition = "timewise";
 	}
 
-    res += "<notes>\n";
+	string res = "<notes>\n";
 
 	// Analyse des parties musicales présentes la partition
 
@@ -218,15 +217,15 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-    cout << "\nExtraction de la mélodie terminée" << endl;
+	cout << "\nExtraction de la mélodie terminée" << endl;
 
 	// Fin de la lecture du fichier contenant la partition
 
-    res += "</notes>";
+	res += "</notes>";
 
-    cout << "\nLecture terminée" << endl;
+	cout << "\nLecture terminée" << endl;
 
-	/* Enregistrement de la mélodie épurée dans fichier de sortie ou affichage à défaut de fichier donné en argument */
+	/* Enregistrement de la mélodie extraite dans fichier de sortie ou affichage à défaut de fichier donné en argument */
 	 
 	if (argc == 3) {
 		string nom_fichier_sortie = argv[2];
@@ -235,8 +234,7 @@ int main(int argc, char* argv[]) {
 		if(fichier_sortie) {
 			fichier_sortie << res;
 			fichier_sortie.close();
-		}
-		else {
+		} else {
 			cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 		}
 

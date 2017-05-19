@@ -100,6 +100,10 @@ note {
 	background: transparent;
 }
 
+#partition note.lue {
+	background: rgba(0, 100, 0, 0.6);
+}
+
 </style>
 
 
@@ -214,6 +218,7 @@ function arreterMelodie() {
 function jouerNote(i) {
 	if (LIRE && document.getElementById("sortie").getElementsByTagName("note")[i]) {
 		document.getElementById("sortie").getElementsByTagName("note")[i].className = "lue";
+		document.getElementById("partition").getElementsByTagName("note")[i].className = "lue";
 		
 		note = parseInt(document.getElementById("sortie").getElementsByTagName("note")[i].innerHTML);
 		
@@ -283,24 +288,35 @@ function dessinerPartition() {
 	var echelle = 5;
 	var espace_horizontal = 20;
 	var espace_vertical = 5;
+	var dessiner_rectangles = true;
 
 	var xmlDoc = parser.parseFromString(proprietes ,"text/xml");
 
 	// Propriétés de la note la plus haute et la note la plus basse
-	var valeur = parseInt(xmlDoc.getElementsByTagName("note")[0].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
-	var octave = parseInt(xmlDoc.getElementsByTagName("note")[0].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
-	var note_min = valeur + octave * 11;
-	var valeur = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
-	var octave = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
-	var note_max = valeur + octave * 11;
+	if (xmlDoc.getElementsByTagName("elements-min-max")[0]) {
+		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[0].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
+		var octave = parseInt(xmlDoc.getElementsByTagName("note")[0].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
+		var note_min = valeur + octave * 11;
+		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
+		var octave = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
+		var note_max = valeur + octave * 11;
+		partition.style.height = (note_max - note_min) * (echelle + espace_vertical) + espace_vertical + "px";
+	} else {
+		dessiner_rectangles = false;
+		var note_max = 50;
+	}
 
 	// Propriété des rectangles
-	var rectangle_hauteur = parseInt(xmlDoc.getElementsByTagName("hauteur")[0].childNodes[0].nodeValue);
-	var rectangle_largeur = parseInt(xmlDoc.getElementsByTagName("largeur")[0].childNodes[0].nodeValue);
-	var nombre_rectangles = parseInt(xmlDoc.getElementsByTagName("nombre-rectangles")[0].childNodes[0].nodeValue);
+	if (xmlDoc.getElementsByTagName("rectangles")[0]) {
+		var rectangle_hauteur = parseInt(xmlDoc.getElementsByTagName("hauteur")[0].childNodes[0].nodeValue);
+		var rectangle_largeur = parseInt(xmlDoc.getElementsByTagName("largeur")[0].childNodes[0].nodeValue);
+		var nombre_rectangles = parseInt(xmlDoc.getElementsByTagName("nombre-rectangles")[0].childNodes[0].nodeValue);
+	} else {
+		dessiner_rectangles = false;
+	}
+
 	var xmlDoc = parser.parseFromString(melodie ,"text/xml");
 
-	partition.style.height = (note_max - note_min) * (echelle + espace_vertical) + espace_vertical + "px";
 	partition.innerHTML = "";
 	i = 0;
 	while (xmlDoc.getElementsByTagName("note")[i]) {
@@ -308,7 +324,7 @@ function dessinerPartition() {
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
 		var note_actuelle = valeur + octave * 11;
 
-		if (i < nombre_rectangles) {
+		if (i < nombre_rectangles && dessiner_rectangles) {
 			var rectangle = document.createElement("rectangle");
 			rectangle.style.width = (rectangle_largeur - 0.9) * (echelle + espace_horizontal - 1) + "px";
 			rectangle.style.height = (rectangle_hauteur - 0.4) * (echelle + espace_vertical) + espace_vertical + "px";

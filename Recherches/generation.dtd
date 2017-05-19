@@ -10,7 +10,7 @@
 <!ELEMENT largeur (#PCDATA)>
 <!ELEMENT nombre-rectangles (#PCDATA)>
 
-<!ELEMENT couples-notes (objectif,couple*)>
+<!ELEMENT couples-notes (couple*)>
 <!ELEMENT couple (note,note,distance,probabilite)>
 <!ELEMENT distance (#PCDATA)>
 <!ELEMENT probabilite (#PCDATA)>

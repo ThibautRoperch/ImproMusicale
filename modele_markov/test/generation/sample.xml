@@ -23,7 +23,6 @@
     <nombre-rectangles>5</nombre-rectangles>
   </rectangles>
   <couples-notes>
-    <objectif>1</objectif>
       <couple>
         <note>
           <valeur>0</valeur>
