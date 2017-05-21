@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
 	/* Vérification que la mélodie générée et possiblement réalisable dans le modèle de Markov des mélodies sources */
 
 	cout << "Ressemblance de la mélodie avec les sources\t" << chaine_markov.recompenseChaine(melodie_generee) / (melodie_generee.size() - 1) * 100 << " %" << endl;
-	cout << "Probabilité que cette mélodie soit produite\t" << setprecision(10) << chaine_markov.probabiliteChaineRealisable(melodie_generee) * 100 << " %" << endl;
+	cout << "Probabilité que cette mélodie soit produite\t" << setprecision(30) << chaine_markov.probabiliteChaineRealisable(melodie_generee) * 100 << " %" << endl;
 
 	return EXIT_SUCCESS;
 }

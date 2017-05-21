@@ -205,18 +205,11 @@
       </couple>
   </couples-notes>
   <patterns>
-    <pattern>
+    <pattern id="0">
       <taille>11</taille>
       <positions>
         <indice>0</indice>
         <indice>16</indice>
-      </positions>
-    </pattern>
-    <pattern>
-      <taille>5</taille>
-      <positions>
-        <indice>26</indice>
-        <indice>27</indice>
       </positions>
     </pattern>
   </patterns>

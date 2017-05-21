@@ -217,7 +217,6 @@ int main(int argc, char* argv[]) {
 	// Pour chaque note i de la mélodie
 	unsigned int indice_note_i = 0;
 	while (indice_note_i < melodie.size()) {
-		cout << "Recherche d'un pattern commencant à " << indice_note_i << " par " << *melodie[indice_note_i] << endl;
 		// Si la note i est retrouvée plus loin dans la mélodie, déterminer si c'est un pattern :
 		// Avancer en même temps i et j
 		// Avancer i dans la boucle j permet en plus d'éviter de détecter un pattern qui est en fait un sous-pattern
@@ -236,9 +235,11 @@ int main(int argc, char* argv[]) {
 		while (indice_note_j < melodie.size()) {
 			vector<Note *> suite;
 			
-			// Tant que la note de la suite i est égale à la note de la suite j, ajouter la note à la suite et incrémenter la note j
-			while (indice_note_j< melodie.size() && *melodie[indice_note_i + suite.size()] == *melodie[indice_note_j]) {
-				cout << "  "  << indice_note_j << " : " << *melodie[indice_note_i + suite.size()] << " = " << *melodie[indice_note_j] << endl;
+			// Tant que la note i+taille_suite de la suite commancant par i est égale à la note de la suite commancant par j-taille_suite
+			// et que la note i+taille_suite n'est pas une note de la suite commancant par j-taille_suite,
+			// ajouter la note à la suite et incrémenter la note j
+			while (indice_note_j < melodie.size() && *melodie[indice_note_i + suite.size()] == *melodie[indice_note_j]
+			&& indice_note_i + suite.size() < indice_note_j - suite.size()) {
 				suite.push_back(melodie[indice_note_j]);
 				++indice_note_j;
 			}
@@ -250,7 +251,7 @@ int main(int argc, char* argv[]) {
 			} else {
 				// Si la suite de notes a une probabilité d'exister < 0.05, alors on peut la considérer comme un pattern
 				if (suite.size() > 3) { // tochange
-					// Ajouter ce pattern s'il n'existe pas déjà dans la liste, ainsi que le position du premier pattern (partant de la note i)
+					// Ajouter ce pattern s'il n'existe pas déjà dans la liste, ainsi que la position du premier pattern (partant de la note i)
 					if (patterns.find(suite) == patterns.end()) {
 						vector<int> positions;
 						positions.push_back(indice_note_i);
@@ -258,8 +259,7 @@ int main(int argc, char* argv[]) {
 					}
 					// Ajouter la position du début de ce pattern (partant de la position à laquelle était la note j avant de parcourir la suite)
 					patterns[suite].push_back(indice_note_j - suite.size());
-					cout << " => Pattern ajouté" << endl;
-					// Enregistrement de la taille du pattern trouvé si c'est le premier pattern partant de la note i trouvé ou s'il est plus petit que celui (ceux) déjà trouvé(s)
+					// Enregistrer la taille du pattern trouvé si c'est le premier pattern partant de la note i trouvé ou s'il est plus petit que celui (ceux) déjà trouvé(s)
 					if (plus_petit_pattern_trouve == 0 || suite.size() < plus_petit_pattern_trouve) {
 						plus_petit_pattern_trouve = suite.size();
 					}
