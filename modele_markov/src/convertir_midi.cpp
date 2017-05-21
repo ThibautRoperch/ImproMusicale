@@ -49,19 +49,15 @@ int main(int argc, char* argv[]) {
 	// Extraction de la mélodie de la partie selectionnée, en fonction de la structure de la partition
 
 	cout << "\nExtraction des notes composant la mélodie de la partie " << partie_musicale_selectionnee << endl;
+	unsigned indice_note = 0;
 
 	// Lecture de la valeur des notes de la partie musicale sélectionnée
 	for (int note = 0; note < midifile[partie_musicale_selectionnee].size(); note++) {
-		cout << midifile[partie_musicale_selectionnee][note].tick;
-		for (int i=0; i<midifile[partie_musicale_selectionnee][note].size(); i++) {
-			cout << (int)midifile[partie_musicale_selectionnee][note][i] << ' ';
-		}
-		cout << endl;
 		// Les notes qui sont des messages MIDI ont leur marque qui commence par 0
 		if (to_string(midifile[partie_musicale_selectionnee][note].tick)[0] != '0') {
 			// Si la note a une intensité supérieure à 0, calculer sa valeur et son octave
 			if ((int)midifile[partie_musicale_selectionnee][note][2] > 0) {
-				res += "  <note>\n";
+				res += "  <note id=\"" + to_string(indice_note++) + "\">\n";
 
 				int valeur_note = (int)midifile[partie_musicale_selectionnee][note][1];
 				valeur_note -= 21 - 9; // la première note commence à 21, +9 pour faire correspondre avec la version MusicXML des partitions

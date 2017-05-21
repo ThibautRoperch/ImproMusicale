@@ -215,34 +215,65 @@ int main(int argc, char* argv[]) {
 	map<vector<Note *>, vector<int>> patterns; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
 
 	// Pour chaque note i de la mélodie
-	for (unsigned int i = 0; i < melodie.size(); ++i) {
-		// Si la note est i est retrouvée plus loin dans la mélodie, déterminer si c'est un pattern :
+	unsigned int indice_note_i = 0;
+	while (indice_note_i < melodie.size()) {
+		cout << "Recherche d'un pattern commencant à " << indice_note_i << " par " << *melodie[indice_note_i] << endl;
+		// Si la note i est retrouvée plus loin dans la mélodie, déterminer si c'est un pattern :
 		// Avancer en même temps i et j
 		// Avancer i dans la boucle j permet en plus d'éviter de détecter un pattern qui est en fait un sous-pattern
 		// Résultat : seuls les sur-patterns sont détectés (un pattern dans un pattern ne sera pas trouvé)
 		
-		vector<Note *> suite;
-		suite.push_back(melodie[i]);
+		unsigned int plus_petit_pattern_trouve = 0; // 0 : aucun pattern trouvé
+
+		// Plusieurs patterns différents peuvent être trouvée en partant de la note i
+		// La boucle for suivante va tous les repérer
+		// Lorsque tous les patterns partant de i seront trouvés, il faudra incrémenter i de la taille du plus petit pattern
+		// pour éviter de repartir sur la deuxième note d'un pattern déjà trouvé (et donc de trouver un nouveau pattern qui est en fait u nsous-pattern)
+		// et pour ne pas passer à côté d'un pattern si celui commence après la fin du plus petit pattern partant de i trouvé
 
 		// Pour chaque note j de la mélodie, à partir de la note suivant la note i
-		for (unsigned int j = i + 1; j < melodie.size(); ++j) {
-			// Tant que la note i est égale à la note j
-			while (i < melodie.size() && j < melodie.size() && *melodie[i] == *melodie[j]) {
-				suite.push_back(melodie[j]);
-				++i;
-				++j;
+		unsigned int indice_note_j = indice_note_i + 1;
+		while (indice_note_j < melodie.size()) {
+			vector<Note *> suite;
+			
+			// Tant que la note de la suite i est égale à la note de la suite j, ajouter la note à la suite et incrémenter la note j
+			while (indice_note_j< melodie.size() && *melodie[indice_note_i + suite.size()] == *melodie[indice_note_j]) {
+				cout << "  "  << indice_note_j << " : " << *melodie[indice_note_i + suite.size()] << " = " << *melodie[indice_note_j] << endl;
+				suite.push_back(melodie[indice_note_j]);
+				++indice_note_j;
 			}
-			// Si la suite de notes a une probabilité d'exister < 0.05, alors on peut la considérer comme un pattern
-			if (suite.size() > 3) { // tochange
-				// Ajouter ce pattern s'il n'existe pas déjà dans la liste, ainsi que le position du premier pattern (i)
-				if (patterns.find(suite) == patterns.end()) {
-					vector<int> positions;
-					positions.push_back(i - suite.size());
-					patterns[suite] = positions;
+
+			// Si aucun de début de suite formant un potentiel pattern n'a été trouvé, incrémenter la note j et recommencer la recherche
+			// Sinon, étudier la suite obtenue afin de savoir si elle peut être considérée comme un pattern, auquel cas il faut l'enregistrer avec les autres patterns
+			if (suite.size() == 0) {
+				++indice_note_j;
+			} else {
+				// Si la suite de notes a une probabilité d'exister < 0.05, alors on peut la considérer comme un pattern
+				if (suite.size() > 3) { // tochange
+					// Ajouter ce pattern s'il n'existe pas déjà dans la liste, ainsi que le position du premier pattern (partant de la note i)
+					if (patterns.find(suite) == patterns.end()) {
+						vector<int> positions;
+						positions.push_back(indice_note_i);
+						patterns[suite] = positions;
+					}
+					// Ajouter la position du début de ce pattern (partant de la position à laquelle était la note j avant de parcourir la suite)
+					patterns[suite].push_back(indice_note_j - suite.size());
+					cout << " => Pattern ajouté" << endl;
+					// Enregistrement de la taille du pattern trouvé si c'est le premier pattern partant de la note i trouvé ou s'il est plus petit que celui (ceux) déjà trouvé(s)
+					if (plus_petit_pattern_trouve == 0 || suite.size() < plus_petit_pattern_trouve) {
+						plus_petit_pattern_trouve = suite.size();
+					}
 				}
-				// Ajouter la position du début de ce pattern (j)
-				patterns[suite].push_back(j - suite.size());
 			}
+		} // Fin de la recherche d'une suite de notes partant d'une note égale à la note i
+
+		// Si aucun pattern partant de la note i n'a été trouvé, incrémenter la note i de 1
+		// Sinon, incrémenter la note i de la taille de la taille du plus petti pattern pour éviter de retrouver un pattern en partant de i+1,
+		// qui serait un sous-pattern d'un pattern déjà trouvé en partant de la note i
+		if (plus_petit_pattern_trouve == 0) {
+			++indice_note_i;
+		} else {
+			indice_note_i += plus_petit_pattern_trouve - 1; // -1 car la note i est déjà comptée
 		}
 	}
 

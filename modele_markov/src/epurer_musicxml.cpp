@@ -125,6 +125,7 @@ int main(int argc, char* argv[]) {
 	// Extraction de la mélodie de la partie selectionnée, en fonction de la structure de la partition
 
 	cout << "\nExtraction des notes composant la mélodie de la partie " << parties_musicales.find(partie_musicale_selectionnee)->second << " (id=" << partie_musicale_selectionnee << " dans le fichier)" << endl;
+	unsigned indice_note = 0;
 
 	// Extraction des notes de la partie musicale sélectionnée, mesure après mesure
 	if (structure_partition.compare("partwise") == 0) {
@@ -142,7 +143,7 @@ int main(int argc, char* argv[]) {
 							xml_node<> * noeud_pitch = noeud_note->first_node("pitch");
 
 							if (noeud_pitch != NULL) {
-								res += "  <note>\n";
+								res += "  <note id=\"" + to_string(indice_note++) + "\">\n";
 
 								char valeur_note_en = noeud_pitch->first_node("step")->value()[0];
 								int valeur_note = noteAnglaiseVersEntier(valeur_note_en);
