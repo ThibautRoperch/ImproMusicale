@@ -227,7 +227,7 @@ int main(int argc, char* argv[]) {
 		// Pour chaque note j de la mélodie, à partir de la note suivant la note i
 		for (unsigned int j = i + 1; j < melodie.size(); ++j) {
 			// Tant que la note i est égale à la note j
-			while (*melodie[i] == *melodie[j] && i < melodie.size() && j < melodie.size()) {
+			while (i < melodie.size() && j < melodie.size() && *melodie[i] == *melodie[j]) {
 				suite.push_back(melodie[j]);
 				++i;
 				++j;
@@ -245,6 +245,21 @@ int main(int argc, char* argv[]) {
 			}
 		}
 	}
+
+	res += "  <patterns>\n";
+	int i = 0;
+	for (auto pattern : patterns) {
+		cout << "PATTERN " << i << " : "; for (auto note : pattern.first) cout << *note << " "; cout << endl;
+		res += "    <pattern id=\"" + to_string(i++) + "\">\n";
+		res += "      <taille>" + to_string(pattern.first.size()) + "</taille>\n";
+		res += "      <positions>\n";
+		for (auto position : pattern.second) {
+			res += "        <indice>" + to_string(position) + "</indice>\n";
+		}
+		res += "      </positions>\n";
+		res += "    </pattern>\n";
+	}
+	res += "  </patterns>\n";
 
 	res += "</contraintes>";
 

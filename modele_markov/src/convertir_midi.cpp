@@ -1,5 +1,6 @@
 /**
  * https://github.com/craigsapp/midifile#midi-file-reading-examples
+ * https://usermanuals.finalemusic.com/Finale2012Mac/Content/Finale/MIDI_Note_to_Pitch_Table.htm
  */
 
 #include <iostream>
@@ -21,9 +22,9 @@ int main(int argc, char* argv[]) {
 		return EXIT_FAILURE;
 	}
 	
-	/* Lecture du fichier contenant la partition au format MusicXML */
+	/* Lecture du fichier contenant la partition au format MIDI */
 
-	cout << "Lecture de la partition contenue dans le fichier " << argv[1] << " au format MusicXML" << endl;
+	cout << "Lecture de la partition contenue dans le fichier " << argv[1] << " au format MIDI" << endl;
 
 	MidiFile midifile(argv[1]);
 	
@@ -51,20 +52,27 @@ int main(int argc, char* argv[]) {
 
 	// Lecture de la valeur des notes de la partie musicale sélectionnée
 	for (int note = 0; note < midifile[partie_musicale_selectionnee].size(); note++) {
-		// Si la note a une intensité supérieure à 0, calculer sa valeur et son octave
-		if ((int)midifile[partie_musicale_selectionnee][note][2] > 0) {
-			// cout << (int)midifile[partie_musicale_selectionnee][note][1] << " " << (int)midifile[partie_musicale_selectionnee][note][2] << endl;
+		cout << midifile[partie_musicale_selectionnee][note].tick;
+		for (int i=0; i<midifile[partie_musicale_selectionnee][note].size(); i++) {
+			cout << (int)midifile[partie_musicale_selectionnee][note][i] << ' ';
+		}
+		cout << endl;
+		// Les notes qui sont des messages MIDI ont leur marque qui commence par 0
+		if (to_string(midifile[partie_musicale_selectionnee][note].tick)[0] != '0') {
+			// Si la note a une intensité supérieure à 0, calculer sa valeur et son octave
+			if ((int)midifile[partie_musicale_selectionnee][note][2] > 0) {
+				res += "  <note>\n";
 
-			res += "  <note>\n";
+				int valeur_note = (int)midifile[partie_musicale_selectionnee][note][1];
+				valeur_note -= 21 - 9; // la première note commence à 21, +9 pour faire correspondre avec la version MusicXML des partitions
+				int octave_note = valeur_note / 12;
+				valeur_note = valeur_note % 12;
 
-			int valeur_note = (int)midifile[partie_musicale_selectionnee][note][1];
-			int octave_note = valeur_note / 11;
-			valeur_note = valeur_note % 11;
+				res += "    <valeur>" + to_string(valeur_note) + "</valeur>\n";
+				res += "    <octave>" + to_string(octave_note) + "</octave>\n";
 
-			res += "    <valeur>" + to_string(valeur_note) + "</valeur>\n";
-			res += "    <octave>" + to_string(octave_note) + "</octave>\n";
-
-			res += "  </note>\n";
+				res += "  </note>\n";
+			}
 		}
 	}
 

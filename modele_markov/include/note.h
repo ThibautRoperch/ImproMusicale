@@ -24,7 +24,7 @@ public:
 
 	int valeurNote() const { return m_valeur; };
 	int octaveNote() const { return m_octave; };
-	int hauteurNote() const { return m_valeur + m_octave * 11; };
+	int hauteurNote() const { return m_valeur + m_octave * 12; };
 	
 	void afficherNote(std::ostream &flux) const;
 
