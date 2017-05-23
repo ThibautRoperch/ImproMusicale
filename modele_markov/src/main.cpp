@@ -190,12 +190,12 @@ int main(int argc, char* argv[]) {
 	}
 
 	res += "  <rectangles>\n";
-	res += "    <objectif>1</objectif>\n";
-	res += "    <rectangle>\n";
+	res += "      <rectangle>\n";
+	res += "      <objectif>1</objectif>\n";
 	res += "      <hauteur>" + to_string(hauteur_rectangle) + "</hauteur>\n";
 	res += "      <largeur>" + to_string(largeur_rectangle) + "</largeur>\n";
+	res += "      <nombre>" + to_string(melodie.size() - largeur_rectangle + 1) + "</nombre>\n";
 	res += "    </rectangle>\n";
-	res += "    <nombre-rectangles>" + to_string(melodie.size() - largeur_rectangle + 1) + "</nombre-rectangles>\n";
 	res += "  </rectangles>\n";
 
 	/* C3 : Lecture des statistiques pour chaque couple notes successives */
@@ -264,7 +264,7 @@ int main(int argc, char* argv[]) {
 			} else {
 				// Si la suite de notes a une probabilité d'exister < 0.05, alors on peut la considérer comme un pattern
 				// if (chaine_markov.probabiliteChaineRealisable(suite) > 0.000001) {
-				if (suite.size() > 1) {
+				if (suite.size() >= 3) {
 					// Ajouter ce pattern s'il n'existe pas déjà dans la liste, ainsi que la position du premier pattern (partant de la note i)
 					if (patterns.find(suite) == patterns.end()) {
 						vector<int> positions;
@@ -278,7 +278,6 @@ int main(int argc, char* argv[]) {
 						plus_petit_pattern_trouve = suite.size();
 					}
 				}
-				// }
 			}
 		} // Fin de la recherche d'une suite de notes partant d'une note égale à la note i
 
@@ -295,17 +294,22 @@ int main(int argc, char* argv[]) {
 	res += "  <patterns>\n";
 	int i = 0;
 	for (auto pattern : patterns) {
-		cout << "Pattern " << i << " : "; for (auto note : pattern.first) cout << note << " ";
-		cout << "\nProbabilité : " << setprecision(15) << chaine_markov.probabiliteChaineRealisable(pattern.first) << "\n" << endl;
-
-		res += "    <pattern id=\"" + to_string(i++) + "\">\n";
-		res += "      <taille>" + to_string(pattern.first.size()) + "</taille>\n";
-		res += "      <positions>\n";
-		for (auto position : pattern.second) {
-			res += "        <indice>" + to_string(position) + "</indice>\n";
+		double proportion_pattern = (double) pattern.first.size() * pattern.second.size() / melodie.size(); // taille du pattern * nombre de fois qu'il apparaît / taille de la mélodie
+		if (proportion_pattern >= 0.25) {
+			res += "    <pattern id=\"" + to_string(i++) + "\">\n";
+			res += "      <taille>" + to_string(pattern.first.size()) + "</taille>\n";
+			res += "      <positions>\n";
+			for (auto position : pattern.second) {
+				res += "        <indice>" + to_string(position) + "</indice>\n";
+			}
+			res += "      </positions>\n";
+			res += "    </pattern>\n";
+			// Débuggage
+			cout << "Pattern " << i << " : "; for (auto note : pattern.first) cout << note << " "; cout << endl;
+			cout << "Probabilité : " << setprecision(15) << chaine_markov.probabiliteChaineRealisable(pattern.first) << endl;
+			cout << "Proportion : " << setprecision(15) << proportion_pattern << endl;
+			cout << endl;
 		}
-		res += "      </positions>\n";
-		res += "    </pattern>\n";
 	}
 	res += "  </patterns>\n";
 

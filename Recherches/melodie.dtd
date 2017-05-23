@@ -1,6 +1,5 @@
+<!ENTITY % note SYSTEM "note.dtd">
+%note;
+<!ATTLIST note id CDATA #REQUIRED>
+
 <!ELEMENT notes (note*)>
-
-<!ELEMENT note (valeur,octave)>
-<!ELEMENT valeur (#PCDATA)>
-<!ELEMENT octave (#PCDATA)>
-

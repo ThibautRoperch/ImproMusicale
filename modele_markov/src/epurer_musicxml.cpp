@@ -239,7 +239,7 @@ int main(int argc, char* argv[]) {
 			cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 		}
 
-		cout << "\nLe fichier " << nom_fichier_sortie << " contient la mélodie de la partie " << partie_musicale_selectionnee << " de la partition du fichier " << argv[1] << endl;
+		cout << "\nLa mélodie de la partie " << partie_musicale_selectionnee << " de la partition du fichier " << argv[1] << " est enregistrée dans le fichier " << nom_fichier_sortie << endl;
 	} else {
 		cout << "\nAucun fichier de sortie n'est donné en argument du programme" << endl;
 		cout << "\n" << res << endl;

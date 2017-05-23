@@ -1,4 +1,1 @@
-Changer la DTD de la mélodie et des contraintes : rajouter les id des notes et des contraitnes de type pattern
-Changer les samples en conséquence et les vérifier avec la DTD (+ vérifier aussi des mélodies générées)
-
-main.cpp : changer la valuation d'un pattern (ce n'est pas si la suite > 3, mais si la proba est < xx)
+Analyser les patterns de contraintes générées, is it properly works ?

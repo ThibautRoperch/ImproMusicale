@@ -1,25 +1,25 @@
 <notes>
-	<note>
+	<note id="0">
 		<valeur>0</valeur>
 		<octave>3</octave>
 	</note>
-	<note>
+	<note id="1">
 		<valeur>1</valeur>
 		<octave>3</octave>
 	</note>
-	<note>
+	<note id="2">
 		<valeur>1</valeur>
 		<octave>3</octave>
 	</note>
-	<note>
+	<note id="3">
 		<valeur>1</valeur>
 		<octave>3</octave>
 	</note>
-	<note>
+	<note id="4">
 		<valeur>0</valeur>
 		<octave>3</octave>
 	</note>
-	<note>
+	<note id="5">
 		<valeur>5</valeur>
 		<octave>4</octave>
 	</note>

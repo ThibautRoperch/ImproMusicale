@@ -1,23 +1,28 @@
-<!ELEMENT contraintes (elements-min-max?,rectangles?,couples-notes?)>
+<!ENTITY % note SYSTEM "note.dtd">
+%note;
+
+<!ELEMENT contraintes (elements-min-max,rectangles,couples-notes,patterns)>
 
 <!ELEMENT elements-min-max (objectif,element-min,element-max)>
 <!ELEMENT element-min (note)>
 <!ELEMENT element-max (note)>
 
-<!ELEMENT rectangles (objectif,rectangle,nombre-rectangles)>
-<!ELEMENT rectangle (hauteur,largeur)>
+<!ELEMENT rectangles (rectangle)>
+<!ELEMENT rectangle (objectif,hauteur,largeur,nombre)>
 <!ELEMENT hauteur (#PCDATA)>
 <!ELEMENT largeur (#PCDATA)>
-<!ELEMENT nombre-rectangles (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
 
 <!ELEMENT couples-notes (couple*)>
 <!ELEMENT couple (note,note,distance,probabilite)>
 <!ELEMENT distance (#PCDATA)>
 <!ELEMENT probabilite (#PCDATA)>
 
+<!ELEMENT patterns (pattern*)>
+<!ELEMENT pattern (taille,positions)>
+<!ATTLIST pattern id CDATA #REQUIRED>
+<!ELEMENT taille (#PCDATA)>
+<!ELEMENT positions (indice*)>
+<!ELEMENT indice (#PCDATA)>
+
 <!ELEMENT objectif (#PCDATA)>
-
-<!ELEMENT note (valeur,octave)>
-<!ELEMENT valeur (#PCDATA)>
-<!ELEMENT octave (#PCDATA)>
-

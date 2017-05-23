@@ -1,17 +1,17 @@
 <notes>
-  <note>
+  <note id="0">
     <valeur>2</valeur>
     <octave>4</octave>
   </note>
-  <note>
+  <note id="1">
     <valeur>3</valeur>
     <octave>4</octave>
   </note>
-  <note>
+  <note id="2">
     <valeur>4</valeur>
     <octave>4</octave>
   </note>
-  <note>
+  <note id="3">
     <valeur>5</valeur>
     <octave>4</octave>
   </note>

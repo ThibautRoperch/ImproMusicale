@@ -15,12 +15,12 @@
     </element-max>
   </elements-min-max>
   <rectangles>
-    <objectif>1</objectif>
-    <rectangle>
-      <hauteur>16</hauteur>
+      <rectangle>
+      <objectif>1</objectif>
+      <hauteur>17</hauteur>
       <largeur>2</largeur>
+      <nombre>5</nombre>
     </rectangle>
-    <nombre-rectangles>5</nombre-rectangles>
   </rectangles>
   <couples-notes>
       <couple>
@@ -72,4 +72,6 @@
         <probabilite>0.666667</probabilite>
       </couple>
   </couples-notes>
+  <patterns>
+  </patterns>
 </contraintes>

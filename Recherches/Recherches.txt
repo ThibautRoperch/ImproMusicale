@@ -85,6 +85,9 @@ https://gist.github.com/JSchaenzle/2726944
 Exemple de parsing XML en JS :
 https://www.w3schools.com/xml/xml_parser.asp
 
+Déclaration "ENTITY" de DTD :
+http://xmlwriter.net/xml_guide/entity_declaration.shtml
+
 =========================================================
 
 Faire une étude statistique sur des mélodies de morceaux via le modèle de Markov

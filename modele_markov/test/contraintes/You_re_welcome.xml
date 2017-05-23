@@ -15,12 +15,12 @@
     </element-max>
   </elements-min-max>
   <rectangles>
-    <objectif>1</objectif>
-    <rectangle>
+      <rectangle>
+      <objectif>1</objectif>
       <hauteur>9</hauteur>
       <largeur>2</largeur>
+      <nombre>42</nombre>
     </rectangle>
-    <nombre-rectangles>42</nombre-rectangles>
   </rectangles>
   <couples-notes>
       <couple>
@@ -218,70 +218,10 @@
   </couples-notes>
   <patterns>
     <pattern id="0">
-      <taille>2</taille>
-      <positions>
-        <indice>7</indice>
-        <indice>28</indice>
-      </positions>
-    </pattern>
-    <pattern id="1">
-      <taille>2</taille>
-      <positions>
-        <indice>0</indice>
-        <indice>11</indice>
-        <indice>33</indice>
-        <indice>40</indice>
-        <indice>20</indice>
-        <indice>33</indice>
-        <indice>40</indice>
-        <indice>33</indice>
-        <indice>40</indice>
-        <indice>40</indice>
-      </positions>
-    </pattern>
-    <pattern id="2">
       <taille>7</taille>
       <positions>
         <indice>0</indice>
         <indice>20</indice>
-      </positions>
-    </pattern>
-    <pattern id="3">
-      <taille>5</taille>
-      <positions>
-        <indice>2</indice>
-        <indice>22</indice>
-      </positions>
-    </pattern>
-    <pattern id="4">
-      <taille>2</taille>
-      <positions>
-        <indice>9</indice>
-        <indice>26</indice>
-        <indice>35</indice>
-        <indice>37</indice>
-        <indice>31</indice>
-        <indice>34</indice>
-        <indice>36</indice>
-        <indice>38</indice>
-        <indice>34</indice>
-        <indice>36</indice>
-        <indice>37</indice>
-      </positions>
-    </pattern>
-    <pattern id="5">
-      <taille>4</taille>
-      <positions>
-        <indice>9</indice>
-        <indice>31</indice>
-        <indice>38</indice>
-      </positions>
-    </pattern>
-    <pattern id="6">
-      <taille>2</taille>
-      <positions>
-        <indice>23</indice>
-        <indice>29</indice>
       </positions>
     </pattern>
   </patterns>
