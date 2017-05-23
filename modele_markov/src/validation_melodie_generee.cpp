@@ -12,7 +12,6 @@ using namespace std;
 using namespace rapidxml;
 
 
-// TODO
 /*
 	Un modèle de Markov représente un groupe de mélodies du même genre/type/auteur. Il est construit avec un échantillon de mélodies
 	jugées semblables.
@@ -21,7 +20,7 @@ using namespace rapidxml;
 */
 
 bool operator==(Note const &n1, Note const &n2) {
-	return n1.valeurNote() == n2.valeurNote() && n1.octaveNote() == n2.octaveNote();
+	return n1.hauteurNote() == n2.hauteurNote();
 }
 
 ostream& operator<<(ostream &flux, const Note &note) {

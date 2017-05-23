@@ -132,7 +132,7 @@ T * ChaineMarkov<T>::genererElement() {
  * cette fonction compare les valeurs des pointeurs avec un pas pointeur donné en paramètre
  */
 template<class T>
-int ChaineMarkov<T>::positionElement(const T &element) {
+int ChaineMarkov<T>::positionElement(const T &element) const {
 	int position = -1;
 
 	for (unsigned int i = 0; i < m_elements_uniques.size(); ++i) {
@@ -164,6 +164,7 @@ int ChaineMarkov<T>::recompenseChaine(const vector<T> &chaine) {
 
 /**
  * Vérifie si la chaine donnée en paramètre est réalisabe dans le modèle de Markov
+ * Chaque élément a une probabilité équivalante de commencer une chaine, à savoir 1 / nombre_elements_uniques
  */
 template<class T>
 double ChaineMarkov<T>::probabiliteChaineRealisable(const vector<T> &chaine) {

@@ -206,10 +206,41 @@
   </couples-notes>
   <patterns>
     <pattern id="0">
+      <taille>2</taille>
+      <positions>
+        <indice>0</indice>
+        <indice>9</indice>
+        <indice>32</indice>
+        <indice>25</indice>
+        <indice>32</indice>
+      </positions>
+    </pattern>
+    <pattern id="1">
       <taille>11</taille>
       <positions>
         <indice>0</indice>
         <indice>16</indice>
+      </positions>
+    </pattern>
+    <pattern id="2">
+      <taille>9</taille>
+      <positions>
+        <indice>2</indice>
+        <indice>18</indice>
+      </positions>
+    </pattern>
+    <pattern id="3">
+      <taille>3</taille>
+      <positions>
+        <indice>24</indice>
+        <indice>31</indice>
+      </positions>
+    </pattern>
+    <pattern id="4">
+      <taille>2</taille>
+      <positions>
+        <indice>27</indice>
+        <indice>29</indice>
       </positions>
     </pattern>
   </patterns>

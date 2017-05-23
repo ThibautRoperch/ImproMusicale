@@ -20,7 +20,19 @@ using namespace rapidxml;
 */
 
 bool operator==(Note const &n1, Note const &n2) {
-	return n1.valeurNote() == n2.valeurNote() && n1.octaveNote() == n2.octaveNote();
+	return n1.hauteurNote() == n2.hauteurNote();
+}
+
+bool operator!=(Note const &n1, Note const &n2) {
+	return n1.hauteurNote() != n2.hauteurNote();
+}
+
+bool operator<(Note const &n1, Note const &n2) {
+	return n1.hauteurNote() < n2.hauteurNote();
+}
+
+bool operator>(Note const &n1, Note const &n2) {
+	return n1.hauteurNote() > n2.hauteurNote();
 }
 
 ostream& operator<<(ostream &flux, const Note &note) {
@@ -112,8 +124,8 @@ int main(int argc, char* argv[]) {
 	Note *note_min = melodie[0];
 	Note *note_max = melodie[0];
 	for (auto note : melodie) {
-		if (note->hauteurNote() < note_min->hauteurNote()) note_min = note;
-		if (note->hauteurNote() > note_max->hauteurNote()) note_max = note;
+		if (*note < *note_min) note_min = note;
+		if (*note > *note_max) note_max = note;
 	}
 
 	res += "  <elements-min-max>\n";
@@ -148,22 +160,23 @@ int main(int argc, char* argv[]) {
 			int indice_max = i + largeur_rectangle - 1;
 			Note *premiere_note = melodie[indice_min];
 			Note *derniere_note = melodie[indice_max];
+			// Augmentation de la hauteur du rectangle si la différence de hauteur des deux notes est supérieure à la hauteur du rectangle
 			if (hauteur_rectangle < abs(premiere_note->hauteurNote() - derniere_note->hauteurNote())) {
 				hauteur_rectangle = abs(premiere_note->hauteurNote() - derniere_note->hauteurNote());
 			}
 			++indice_min; // ++indice_min au début de la boucle pour ommettre la première note
 			// Vérification auprès des notes qu'elles sont entre la première et la dernière note
 			while(valide && indice_min < indice_max) { // indice_min < indice_max au lieu de <= pour ommetre la dernière note
-				if (premiere_note < derniere_note) {
-					if (melodie[indice_min]->hauteurNote() < premiere_note->hauteurNote() || melodie[indice_min]->hauteurNote() > derniere_note->hauteurNote()) {
+				if (*premiere_note < *derniere_note) {
+					if (*melodie[indice_min] < *premiere_note || *melodie[indice_min] > *derniere_note) {
 						valide = false;
 					}
-				} else if (premiere_note->hauteurNote() > derniere_note->hauteurNote()) {
-					if (melodie[indice_min]->hauteurNote() > premiere_note->hauteurNote() || melodie[indice_min]->hauteurNote() < derniere_note->hauteurNote()) {
+				} else if (*premiere_note > *derniere_note) {
+					if (*melodie[indice_min] > *premiere_note || *melodie[indice_min] < *derniere_note) {
 						valide = false;
 					}
-				} else if (premiere_note->hauteurNote() == derniere_note->hauteurNote()) {
-					if (melodie[indice_min]->hauteurNote() != premiere_note->hauteurNote()) {
+				} else if (*premiere_note == *derniere_note) {
+					if (*melodie[indice_min] != *premiere_note) {
 						valide = false;
 					}
 				}
@@ -212,7 +225,7 @@ int main(int argc, char* argv[]) {
 
 	/* C4 : Détection des répétitions de groupes de notes (patterns) */
 
-	map<vector<Note *>, vector<int>> patterns; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
+	map<vector<Note>, vector<int>> patterns; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
 
 	// Pour chaque note i de la mélodie
 	unsigned int indice_note_i = 0;
@@ -233,14 +246,14 @@ int main(int argc, char* argv[]) {
 		// Pour chaque note j de la mélodie, à partir de la note suivant la note i
 		unsigned int indice_note_j = indice_note_i + 1;
 		while (indice_note_j < melodie.size()) {
-			vector<Note *> suite;
+			vector<Note> suite;
 			
 			// Tant que la note i+taille_suite de la suite commancant par i est égale à la note de la suite commancant par j-taille_suite
 			// et que la note i+taille_suite n'est pas une note de la suite commancant par j-taille_suite,
 			// ajouter la note à la suite et incrémenter la note j
 			while (indice_note_j < melodie.size() && *melodie[indice_note_i + suite.size()] == *melodie[indice_note_j]
 			&& indice_note_i + suite.size() < indice_note_j - suite.size()) {
-				suite.push_back(melodie[indice_note_j]);
+				suite.push_back(*melodie[indice_note_j]);
 				++indice_note_j;
 			}
 
@@ -250,7 +263,8 @@ int main(int argc, char* argv[]) {
 				++indice_note_j;
 			} else {
 				// Si la suite de notes a une probabilité d'exister < 0.05, alors on peut la considérer comme un pattern
-				if (suite.size() > 3) { // tochange
+				// if (chaine_markov.probabiliteChaineRealisable(suite) > 0.000001) {
+				if (suite.size() > 1) {
 					// Ajouter ce pattern s'il n'existe pas déjà dans la liste, ainsi que la position du premier pattern (partant de la note i)
 					if (patterns.find(suite) == patterns.end()) {
 						vector<int> positions;
@@ -264,6 +278,7 @@ int main(int argc, char* argv[]) {
 						plus_petit_pattern_trouve = suite.size();
 					}
 				}
+				// }
 			}
 		} // Fin de la recherche d'une suite de notes partant d'une note égale à la note i
 
@@ -273,14 +288,16 @@ int main(int argc, char* argv[]) {
 		if (plus_petit_pattern_trouve == 0) {
 			++indice_note_i;
 		} else {
-			indice_note_i += plus_petit_pattern_trouve - 1; // -1 car la note i est déjà comptée
+			indice_note_i += plus_petit_pattern_trouve;
 		}
 	}
 
 	res += "  <patterns>\n";
 	int i = 0;
 	for (auto pattern : patterns) {
-		cout << "PATTERN " << i << " : "; for (auto note : pattern.first) cout << *note << " "; cout << endl;
+		cout << "Pattern " << i << " : "; for (auto note : pattern.first) cout << note << " ";
+		cout << "\nProbabilité : " << setprecision(15) << chaine_markov.probabiliteChaineRealisable(pattern.first) << "\n" << endl;
+
 		res += "    <pattern id=\"" + to_string(i++) + "\">\n";
 		res += "      <taille>" + to_string(pattern.first.size()) + "</taille>\n";
 		res += "      <positions>\n";

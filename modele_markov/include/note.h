@@ -33,6 +33,7 @@ public:
 	Note * piocherParmiSuivants() const;
 	std::map<Note *, int> occurencesDesSuivants() const;
 	int nombreDeSuivants() const;
+	
 };
 
 #endif

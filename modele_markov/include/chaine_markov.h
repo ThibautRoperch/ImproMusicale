@@ -36,7 +36,7 @@ public:
 
 	T * genererElement();
 
-	int positionElement(const T &element);
+	int positionElement(const T &element) const;
 	int recompenseChaine(const std::vector<T> &chaine);
 	double probabiliteChaineRealisable(const std::vector<T> &chaine);
 
