@@ -1,0 +1,73 @@
+yourwelcome
+
+Pattern 1 : 7(3) 4(4) 
+Probabilité : 0.166666666666667
+Proportion : 0.093023255813953
+
+Pattern 2 : 9(3) 0(4) 
+Probabilité : 0.092592592592593
+Proportion : 0.139534883720930
+
+Pattern 3 : 9(3) 0(4) 9(3) 4(4) 4(4) 2(4) 0(4) 
+Probabilité : 0.000699868424736
+Proportion : 0.325581395348837
+
+Pattern 4 : 0(4) 0(4) 
+Probabilité : 0.074074074074074
+Proportion : 0.232558139534884
+
+Pattern 5 : 0(4) 0(4) 9(3) 0(4) 
+Probabilité : 0.011431184270690
+Proportion : 0.186046511627907
+
+Pattern 6 : 4(4) 4(4) 
+Probabilité : 0.071428571428571
+Proportion : 0.093023255813953
+
+
+
+yourwelcome2
+
+Pattern 1 : 9(3) 0(4) 
+Probabilité : 0.104166666666667
+Proportion : 0.171428571428571
+
+Pattern 2 : 9(3) 0(4) 9(3) 4(4) 2(4) 0(4) 7(3) 4(4) 0(4) 9(3) 0(4) 
+Probabilité : 0.000060281635802
+Proportion : 0.628571428571429
+
+Pattern 3 : 0(4) 9(3) 0(4) 
+Probabilité : 0.034722222222222
+Proportion : 0.171428571428571
+
+Pattern 4 : 0(4) 0(4) 
+Probabilité : 0.055555555555556
+Proportion : 0.114285714285714
+
+
+
+chant
+
+Pattern 1 : 5(4) 7(4) 
+Probabilité : 0.047619047619048
+Proportion : 0.148148148148148
+
+Pattern 2 : 7(4) 5(4) 
+Probabilité : 0.081632653061224
+Proportion : 0.296296296296296
+
+Pattern 3 : 7(4) 5(4) 9(4) 
+Probabilité : 0.027210884353741
+Proportion : 0.222222222222222
+
+Pattern 4 : 7(4) 9(4) 7(4) 
+Probabilité : 0.017492711370262
+Proportion : 0.222222222222222
+
+Pattern 5 : 9(4) 7(4) 
+Probabilité : 0.061224489795918
+Proportion : 0.148148148148148
+
+Pattern 6 : 9(4) 0(5) 
+Probabilité : 0.061224489795918
+Proportion : 0.222222222222222

@@ -1,1 +1,1 @@
-Analyser les patterns de contraintes générées, is it properly works ?
+Analyser les patterns de contraintes générées, does it properly work ?
