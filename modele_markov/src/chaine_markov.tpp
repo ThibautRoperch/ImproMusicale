@@ -9,9 +9,7 @@ ChaineMarkov<T>::ChaineMarkov() {
 
 template<class T>
 ChaineMarkov<T>::~ChaineMarkov() {
-	for (auto note : m_elements_uniques) {
-		delete note;
-	}
+	
 }
 
 template<class T>

@@ -9,3 +9,5 @@ Envoyer un mail au prof
 Réflechir à une interface graphique
 
 MusicXML from scratch
+
+Générer des trucs a aprtir d'une partoche semblable (carmen, Chris Maé, ...)

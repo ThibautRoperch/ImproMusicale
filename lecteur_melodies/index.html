@@ -351,7 +351,6 @@ function dessinerPartition() {
 		}
 
 		var note = document.createElement("note");
-		note.id = i;
 		note.style.marginTop = (note_max - note_actuelle) * (echelle + espace_vertical) + "px";
 		note.style.marginLeft = espace_horizontal * i + "px";
 		partition.appendChild(note);
@@ -364,11 +363,15 @@ function dessinerPartition() {
 	i = 0;
 	var couleurs = ["red", "orange", "green", "cyan", "brown"];
 	while (xmlDoc.getElementsByTagName("pattern")[i]) {
-		taille = xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("taille")[0].childNodes[0].nodeValue;
+		taille = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("taille")[0].childNodes[0].nodeValue);
 		j = 0;
 		while (xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j]) {
 			position = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j].childNodes[0].nodeValue);
-			partition.getElementById(position).style.background = couleurs[i];
+			note_a_colorier = position;
+			while (note_a_colorier <= (position + taille)) {
+				partition.getElementsByTagName("note")[note_a_colorier].style.background = couleurs[i];
+				++note_a_colorier;
+			}
 			++j;
 		}
 		++i;
