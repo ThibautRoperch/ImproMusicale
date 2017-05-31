@@ -1,1 +1,11 @@
-Analyser les patterns de contraintes générées, does it properly work ?
+Analyser les patterns de contraintes générées pour différentes mélodies, en tirer des conclusion quant aux suites intéressantes
+(corrélation avec la proportion d'un pattern par rapport à la mélodie)
+Seulement des suites de 3 notes ou +
+
+Commencer le rapport
+
+Envoyer un mail au prof
+
+Réflechir à une interface graphique
+
+MusicXML from scratch

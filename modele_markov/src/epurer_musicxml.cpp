@@ -77,22 +77,21 @@ int main(int argc, char* argv[]) {
 
 	// Les parties musicales (une partie par instrument) sont primaires, et les mesures sont contenues dans chaque partie (duplication des 'number' des 'measure')
 	if (doc.first_node("score-partwise")) {
-		noeud_racine = doc.first_node("score-partwise");
-		structure_partition = "partwise";
+		structure_partition = "score-partwise";
 	}
 	// Les mesures sont primaires, et les parties musicales sont contenues dans chaque mesure (duplication des 'id' des 'part')
 	else if (doc.first_node("score-timewise")) {
-		noeud_racine = doc.first_node("score-timewise");
-		structure_partition = "timewise";
+		structure_partition = "score-timewise";
 	}
-
-	string res = "<notes>\n";
+	
+	noeud_racine = doc.first_node(structure_partition.c_str());
 
 	// Analyse des parties musicales présentes la partition
 
 	map<string, string> parties_musicales;
 
 	xml_node<> * noeud_liste_parties = noeud_racine->first_node("part-list");
+	string res = "<notes>\n";
 
 	// Itération sur les parties (noeuds "score-part" du noeud "part-list")
 	for (xml_node<> * noeud_partie = noeud_liste_parties->first_node("score-part"); noeud_partie; noeud_partie = noeud_partie->next_sibling()) {
@@ -128,7 +127,7 @@ int main(int argc, char* argv[]) {
 	unsigned indice_note = 0;
 
 	// Extraction des notes de la partie musicale sélectionnée, mesure après mesure
-	if (structure_partition.compare("partwise") == 0) {
+	if (structure_partition.compare("score-partwise") == 0) {
 		// Itération sur les parties (noeuds "part" du noeud "score-partwise")
 		for (xml_node<> * noeud_partie = noeud_racine->first_node("part"); noeud_partie; noeud_partie = noeud_partie->next_sibling()) {
 			// Si cette partie est la partie qui a été sélectionnée
@@ -173,7 +172,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	// Extraction des notes mesure après mesure, seulement de la partie musicale selectionnée
-	else if (structure_partition.compare("timewise") == 0) {
+	else if (structure_partition.compare("score-timewise") == 0) {
 		// Itération sur les mesures (noeuds "measure" du noeud "score-timewise")
 		for(xml_node<> * noeud_mesure = noeud_racine->first_node("measure"); noeud_mesure; noeud_mesure = noeud_mesure->next_sibling()) {
 			// Itération sur les parties (noeuds "part" des noeuds "measure")

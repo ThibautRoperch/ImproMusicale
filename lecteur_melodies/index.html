@@ -20,7 +20,7 @@
 		
 		Paramètres :
 		<br>
-		<label for="profil_de_son">Profil de son : </label><select id="profil_de_son"><option value="piano">Piano</option><option value="organ">Orgue</option><option value="acoustic">Accoustique</option><option value="edm">EDM</option></select>
+		<label for="profil_de_son">Profil de son : </label><select id="profil_de_son" onchange="changerProfil()"><option value="piano">Piano</option><option value="organ">Orgue</option><option value="acoustic">Accoustique</option><option value="edm">EDM</option><option value="prout">Prout</option></select>
 		<br>
 		<label for="tempo">Tempo : </label><input id="tempo" type="text" size="1" value="60" /> notes par minute
 		<br>
@@ -113,7 +113,7 @@ note {
 
 var TEMPO = 60; // 60 notes par minute (60 secondes)
 var DUREE = 1000; // 1 note dure 60 s / TEMPO notes = 1 seconde = 1000 millisecondes
-var PIANO = Synth.createInstrument("piano");
+var PROFIL = Synth.createInstrument(document.getElementById("profil_de_son").value);
 var LIRE = false;
 
 function chargerTemplate() {
@@ -163,15 +163,19 @@ function chargerTemplate() {
 	document.getElementById("proprietes").innerHTML += "	</element-max>\n";
 	document.getElementById("proprietes").innerHTML += "  </elements-min-max>\n";
 	document.getElementById("proprietes").innerHTML += "  <rectangles>\n";
-	document.getElementById("proprietes").innerHTML += "	<objectif>1</objectif>\n";
 	document.getElementById("proprietes").innerHTML += "	<rectangle>\n";
+	document.getElementById("proprietes").innerHTML += "	  <objectif>1</objectif>\n";
 	document.getElementById("proprietes").innerHTML += "	  <hauteur>16</hauteur>\n";
 	document.getElementById("proprietes").innerHTML += "	  <largeur>2</largeur>\n";
+	document.getElementById("proprietes").innerHTML += "	  <nombre>5</nombre>\n";
 	document.getElementById("proprietes").innerHTML += "	</rectangle>\n";
-	document.getElementById("proprietes").innerHTML += "	<nombre-rectangles>5</nombre-rectangles>\n";
 	document.getElementById("proprietes").innerHTML += "  </rectangles>\n";
 	document.getElementById("proprietes").innerHTML += "</contraintes>\n";
 	dessinerPartition();
+}
+
+function changerProfil() {
+	PROFIL = Synth.createInstrument(document.getElementById("profil_de_son").value);
 }
 
 function lireMelodie() {
@@ -200,7 +204,7 @@ function jouerMelodie() {
 	
 	TEMPO = parseInt(document.getElementById("tempo").value);
 	DUREE = 60 / TEMPO * 1000;
-	PIANO = Synth.createInstrument(document.getElementById("profil_de_son").value);
+	PROFIL = Synth.createInstrument(document.getElementById("profil_de_son").value);
 	
 	document.getElementById("entree").disabled = "disabled";
 	document.getElementById("jouer").disabled = "disabled";
@@ -263,7 +267,7 @@ function jouerNote(i) {
 		
 		octave = parseInt(document.getElementById("sortie").getElementsByTagName("note")[i].getElementsByTagName("octave")[0].innerHTML);
 
-		PIANO.play(note, octave, 1); // plays 'note' for 'DUREE' seconds using the 'PIANO' sound profile
+		PROFIL.play(note, octave, 1); // plays 'note' for '1' second(s) using the 'PROFIL' sound profile
 		
 		setTimeout(function() {
 			jouerNote(i + 1);
@@ -306,17 +310,20 @@ function dessinerPartition() {
 		var note_max = 50;
 	}
 
-	// Propriété des rectangles
+	// Propriétés des rectangles
 	if (xmlDoc.getElementsByTagName("rectangles")[0]) {
 		var rectangle_hauteur = parseInt(xmlDoc.getElementsByTagName("hauteur")[0].childNodes[0].nodeValue);
 		var rectangle_largeur = parseInt(xmlDoc.getElementsByTagName("largeur")[0].childNodes[0].nodeValue);
-		var nombre_rectangles = parseInt(xmlDoc.getElementsByTagName("nombre-rectangles")[0].childNodes[0].nodeValue);
+		var nombre_rectangles = parseInt(xmlDoc.getElementsByTagName("nombre")[0].childNodes[0].nodeValue);
 	} else {
 		dessiner_rectangles = false;
 	}
 
-	var xmlDoc = parser.parseFromString(melodie ,"text/xml");
+	// Fin des propriétés
+	// Début de l'affichage
 
+	// Affichage des notes et des rectangles
+	var xmlDoc = parser.parseFromString(melodie ,"text/xml");
 	partition.innerHTML = "";
 	i = 0;
 	while (xmlDoc.getElementsByTagName("note")[i]) {
@@ -324,7 +331,7 @@ function dessinerPartition() {
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
 		var note_actuelle = valeur + octave * 11;
 
-		if (i < nombre_rectangles && dessiner_rectangles) {
+		if (i < nombre_rectangles && xmlDoc.getElementsByTagName("note")[i+1] && dessiner_rectangles) { // i < nb de rectangles et au nb de notes
 			var rectangle = document.createElement("rectangle");
 			rectangle.style.width = (rectangle_largeur - 0.9) * (echelle + espace_horizontal - 1) + "px";
 			rectangle.style.height = (rectangle_hauteur - 0.4) * (echelle + espace_vertical) + espace_vertical + "px";
@@ -344,10 +351,26 @@ function dessinerPartition() {
 		}
 
 		var note = document.createElement("note");
+		note.id = i;
 		note.style.marginTop = (note_max - note_actuelle) * (echelle + espace_vertical) + "px";
 		note.style.marginLeft = espace_horizontal * i + "px";
 		partition.appendChild(note);
 
+		++i;
+	}
+
+	// Mise en valeur des patterns dans l'affichage
+	var xmlDoc = parser.parseFromString(proprietes ,"text/xml");
+	i = 0;
+	var couleurs = ["red", "orange", "green", "cyan", "brown"];
+	while (xmlDoc.getElementsByTagName("pattern")[i]) {
+		taille = xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("taille")[0].childNodes[0].nodeValue;
+		j = 0;
+		while (xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j]) {
+			position = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j].childNodes[0].nodeValue);
+			partition.getElementById(position).style.background = couleurs[i];
+			++j;
+		}
 		++i;
 	}
 }

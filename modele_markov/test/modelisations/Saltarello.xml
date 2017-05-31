@@ -15,7 +15,7 @@
     </element-max>
   </elements-min-max>
   <rectangles>
-      <rectangle>
+    <rectangle>
       <objectif>1</objectif>
       <hauteur>7</hauteur>
       <largeur>2</largeur>
@@ -314,31 +314,129 @@
   </couples-notes>
   <patterns>
     <pattern id="0">
+      <taille>4</taille>
+      <positions>
+        <indice>3</indice>
+        <indice>10</indice>
+        <indice>66</indice>
+        <indice>70</indice>
+      </positions>
+    </pattern>
+    <pattern id="1">
       <taille>42</taille>
       <positions>
         <indice>10</indice>
         <indice>70</indice>
       </positions>
     </pattern>
-    <pattern id="1">
-      <taille>38</taille>
-      <positions>
-        <indice>14</indice>
-        <indice>74</indice>
-      </positions>
-    </pattern>
     <pattern id="2">
-      <taille>35</taille>
+      <taille>2</taille>
       <positions>
-        <indice>17</indice>
-        <indice>77</indice>
+        <indice>74</indice>
+        <indice>104</indice>
       </positions>
     </pattern>
     <pattern id="3">
-      <taille>32</taille>
+      <taille>3</taille>
       <positions>
-        <indice>20</indice>
+        <indice>67</indice>
+        <indice>71</indice>
+        <indice>104</indice>
+      </positions>
+    </pattern>
+    <pattern id="4">
+      <taille>2</taille>
+      <positions>
+        <indice>56</indice>
+        <indice>100</indice>
+      </positions>
+    </pattern>
+    <pattern id="5">
+      <taille>2</taille>
+      <positions>
+        <indice>65</indice>
+        <indice>75</indice>
+      </positions>
+    </pattern>
+    <pattern id="6">
+      <taille>2</taille>
+      <positions>
+        <indice>102</indice>
+        <indice>105</indice>
+        <indice>110</indice>
+      </positions>
+    </pattern>
+    <pattern id="7">
+      <taille>3</taille>
+      <positions>
+        <indice>93</indice>
+        <indice>102</indice>
+      </positions>
+    </pattern>
+    <pattern id="8">
+      <taille>3</taille>
+      <positions>
+        <indice>0</indice>
+        <indice>54</indice>
+      </positions>
+    </pattern>
+    <pattern id="9">
+      <taille>3</taille>
+      <positions>
+        <indice>77</indice>
+        <indice>92</indice>
+        <indice>101</indice>
+      </positions>
+    </pattern>
+    <pattern id="10">
+      <taille>5</taille>
+      <positions>
+        <indice>82</indice>
+        <indice>87</indice>
+      </positions>
+    </pattern>
+    <pattern id="11">
+      <taille>3</taille>
+      <positions>
+        <indice>7</indice>
+        <indice>49</indice>
+        <indice>109</indice>
+      </positions>
+    </pattern>
+    <pattern id="12">
+      <taille>2</taille>
+      <positions>
+        <indice>91</indice>
+        <indice>107</indice>
+      </positions>
+    </pattern>
+    <pattern id="13">
+      <taille>5</taille>
+      <positions>
+        <indice>60</indice>
+        <indice>91</indice>
+      </positions>
+    </pattern>
+    <pattern id="14">
+      <taille>2</taille>
+      <positions>
+        <indice>58</indice>
         <indice>80</indice>
+      </positions>
+    </pattern>
+    <pattern id="15">
+      <taille>2</taille>
+      <positions>
+        <indice>96</indice>
+        <indice>99</indice>
+      </positions>
+    </pattern>
+    <pattern id="16">
+      <taille>4</taille>
+      <positions>
+        <indice>52</indice>
+        <indice>59</indice>
+        <indice>90</indice>
       </positions>
     </pattern>
   </patterns>

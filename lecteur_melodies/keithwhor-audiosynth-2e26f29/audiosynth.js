@@ -347,4 +347,27 @@ Synth.loadSoundProfile({
 				)
 		);
 	}
+},
+{
+	name: 'prout',
+	attack:	function() { return 0.005; },
+	dampen: function(sampleRate, frequency, volume) {
+		return Math.pow(0.25*Math.log((frequency*volume)/sampleRate),1);
+	},
+	wave: function(i, sampleRate, frequency) {
+		var base = this.modulate[1];
+		var mod = this.modulate.slice(1);
+		return mod[4](
+			i,
+			sampleRate,
+			frequency,
+			Math.pow(base(i, sampleRate, frequency, 0), 0) + 0.9
+			) +
+			mod[8](
+				i,
+				sampleRate,
+				frequency,
+				0.2
+			);
+	}
 });

@@ -190,7 +190,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	res += "  <rectangles>\n";
-	res += "      <rectangle>\n";
+	res += "    <rectangle>\n";
 	res += "      <objectif>1</objectif>\n";
 	res += "      <hauteur>" + to_string(hauteur_rectangle) + "</hauteur>\n";
 	res += "      <largeur>" + to_string(largeur_rectangle) + "</largeur>\n";

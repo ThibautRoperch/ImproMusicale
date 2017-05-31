@@ -28,8 +28,6 @@ int main(int argc, char* argv[]) {
 
 	MidiFile midifile(argv[1]);
 	
-	string res = "<notes>\n";
-
 	// Analyse des parties musicales présentes la partition
 
 	int nb_parties_musicales = midifile.getTrackCount();
@@ -50,6 +48,7 @@ int main(int argc, char* argv[]) {
 
 	cout << "\nExtraction des notes composant la mélodie de la partie " << partie_musicale_selectionnee << endl;
 	unsigned indice_note = 0;
+	string res = "<notes>\n";
 
 	// Lecture de la valeur des notes de la partie musicale sélectionnée
 	for (int note = 0; note < midifile[partie_musicale_selectionnee].size(); note++) {
