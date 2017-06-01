@@ -10,4 +10,4 @@ et dans la présentation orale enlever les notes, garder les rectangles, generer
 AVEC LES PROFS
 MusicXML from scratch ?
 Discuter de la contrainte des rectangles : Refaire la contrainte des recatngles => reprendre les patterns, calculer les hitbox entre les patterns de sorte à ce qu'elles ne se chevauchent pas
-
+Compte rendu latex ?
