@@ -224,5 +224,12 @@
         <indice>20</indice>
       </positions>
     </pattern>
+    <pattern id="1">
+      <taille>5</taille>
+      <positions>
+        <indice>8</indice>
+        <indice>30</indice>
+      </positions>
+    </pattern>
   </patterns>
 </contraintes>

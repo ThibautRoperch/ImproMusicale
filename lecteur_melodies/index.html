@@ -31,12 +31,12 @@
 
 		<br><br>
 
-		Propriétés de la mélodie :
+		Contraintes de la mélodie :
 		<br>
 		<textarea id="proprietes" onKeyUp="dessinerPartition();lireMelodie()"></textarea>
 		<br>
 
-		Partition avec rectangles :
+		Partition avec contraintes :
 		<br>
 		<div id="partition"></div>
 		<br>
@@ -61,11 +61,19 @@ textarea, div {
 	overflow: auto;
 }
 
-note {
+note, info {
 	display: inline-block;
 }
 
-#sortie note {
+#sortie note.hover {
+	border: 1px solid black;
+}
+
+#partition note.hover {
+	border: 1px solid black;
+}
+
+#sortie note, info {
 	margin: 4px;
 	padding: 2px 6px;
 	color: gray;
@@ -100,8 +108,9 @@ note {
 	background: transparent;
 }
 
-#partition note.lue {
-	background: rgba(0, 100, 0, 0.6);
+info {
+	position: absolute;
+	color: black;
 }
 
 </style>
@@ -178,6 +187,33 @@ function changerProfil() {
 	PROFIL = Synth.createInstrument(document.getElementById("profil_de_son").value);
 }
 
+function survolerNote(note, etat) {
+	var notes = document.getElementById("sortie");
+	var partition = document.getElementById("partition");
+	var id = note.id;
+
+	if (etat == 1) {
+		notes.getElementsByTagName("note")[id].className = "hover";
+		partition.getElementsByTagName("note")[id].className = "hover";
+		
+		var style_note = notes.getElementsByTagName("note")[id].currentStyle || window.getComputedStyle(notes.getElementsByTagName("note")[id]);
+		info_note = document.createElement("info");
+		info_note.innerHTML = id;
+		notes.appendChild(info_note);
+
+		var style_note = partition.getElementsByTagName("note")[id].currentStyle || window.getComputedStyle(partition.getElementsByTagName("note")[id]);
+		info_note = document.createElement("info");
+		info_note.innerHTML = id;
+		partition.appendChild(info_note);
+	} else if (etat == 0) {
+		notes.getElementsByTagName("note")[id].className = "";
+		partition.getElementsByTagName("note")[id].className = "";
+
+		notes.removeChild(notes.lastChild);
+		partition.removeChild(partition.lastChild);
+	}
+}
+
 function lireMelodie() {
 	var melodie = document.getElementById("entree").value;
 	var notes = document.getElementById("sortie");
@@ -193,6 +229,9 @@ function lireMelodie() {
 		octave.innerHTML = xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("octave")[0].childNodes[0].nodeValue;
 		note.innerHTML = xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("valeur")[0].childNodes[0].nodeValue;
 		note.appendChild(octave);
+		note.id = i;
+		note.addEventListener("mouseover", function() { survolerNote(this, 1); });
+		note.addEventListener("mouseout", function() { survolerNote(this, 0); });
 		notes.appendChild(note);
 		++i;
 	}
@@ -222,7 +261,7 @@ function arreterMelodie() {
 function jouerNote(i) {
 	if (LIRE && document.getElementById("sortie").getElementsByTagName("note")[i]) {
 		document.getElementById("sortie").getElementsByTagName("note")[i].className = "lue";
-		document.getElementById("partition").getElementsByTagName("note")[i].className = "lue";
+		document.getElementById("partition").getElementsByTagName("note")[i].style.background = "rgba(0, 100, 0, 0.6)";
 		
 		note = parseInt(document.getElementById("sortie").getElementsByTagName("note")[i].innerHTML);
 		
@@ -281,8 +320,6 @@ function jouerNote(i) {
 }
 
 function dessinerPartition() {
-	lireMelodie();
-
 	var proprietes = document.getElementById("proprietes").value;
 	var melodie = document.getElementById("entree").value;
 	var partition = document.getElementById("partition");
@@ -353,6 +390,9 @@ function dessinerPartition() {
 		var note = document.createElement("note");
 		note.style.marginTop = (note_max - note_actuelle) * (echelle + espace_vertical) + "px";
 		note.style.marginLeft = espace_horizontal * i + "px";
+		note.id = i;
+		note.addEventListener("mouseover", function() { survolerNote(this, 1); });
+		note.addEventListener("mouseout", function() { survolerNote(this, 0); });
 		partition.appendChild(note);
 
 		++i;
@@ -369,7 +409,7 @@ function dessinerPartition() {
 			position = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j].childNodes[0].nodeValue);
 			note_a_colorier = position;
 			while (note_a_colorier < (position + taille)) {
-				partition.getElementsByTagName("note")[note_a_colorier++].style.border = "1px solid " + couleurs[i];
+				partition.getElementsByTagName("note")[note_a_colorier++].style.background = couleurs[i];
 			}
 			++j;
 		}

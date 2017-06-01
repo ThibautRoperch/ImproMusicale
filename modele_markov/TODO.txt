@@ -1,15 +1,13 @@
-Analyser les patterns de contraintes générées pour différentes mélodies, en tirer des conclusion quant aux suites intéressantes
-(corrélation avec la proportion d'un pattern par rapport à la mélodie)
-Seulement des suites de 2 notes ou +
-
 Commencer le rapport
-
-Envoyer un mail au prof
 
 Réflechir à une interface graphique => lire musique en C++ ?
 
-MusicXML from scratch ?
-
 Générer des trucs a partir d'une partoche semblable (carmen, Chris Maé, ...)
 
-Refaire la contrainte des recatngles => reprendre les patterns, calculer les hitbox entre les patterns de sorte à ce qu'elles ne se chevauchent pas
+pour le rapprot et diapo : faire un dessin d'un exemple de hitbox autour d'une mélodie,
+et dans la présentation orale enlever les notes, garder les rectangles, generer aléatoirement à l'itnerieur
+
+AVEC LES PROFS
+MusicXML from scratch ?
+Discuter de la contrainte des rectangles : Refaire la contrainte des recatngles => reprendre les patterns, calculer les hitbox entre les patterns de sorte à ce qu'elles ne se chevauchent pas
+
