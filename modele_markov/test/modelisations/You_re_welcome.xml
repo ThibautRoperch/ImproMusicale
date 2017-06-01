@@ -15,7 +15,7 @@
     </element-max>
   </elements-min-max>
   <rectangles>
-      <rectangle>
+    <rectangle>
       <objectif>1</objectif>
       <hauteur>9</hauteur>
       <largeur>2</largeur>
@@ -218,49 +218,10 @@
   </couples-notes>
   <patterns>
     <pattern id="0">
-      <taille>2</taille>
-      <positions>
-        <indice>7</indice>
-        <indice>28</indice>
-      </positions>
-    </pattern>
-    <pattern id="1">
-      <taille>2</taille>
-      <positions>
-        <indice>20</indice>
-        <indice>33</indice>
-        <indice>40</indice>
-      </positions>
-    </pattern>
-    <pattern id="2">
       <taille>7</taille>
       <positions>
         <indice>0</indice>
         <indice>20</indice>
-      </positions>
-    </pattern>
-    <pattern id="3">
-      <taille>2</taille>
-      <positions>
-        <indice>26</indice>
-        <indice>31</indice>
-        <indice>34</indice>
-        <indice>36</indice>
-        <indice>38</indice>
-      </positions>
-    </pattern>
-    <pattern id="4">
-      <taille>4</taille>
-      <positions>
-        <indice>9</indice>
-        <indice>31</indice>
-      </positions>
-    </pattern>
-    <pattern id="5">
-      <taille>2</taille>
-      <positions>
-        <indice>23</indice>
-        <indice>29</indice>
       </positions>
     </pattern>
   </patterns>

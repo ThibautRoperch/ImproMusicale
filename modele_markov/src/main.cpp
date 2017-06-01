@@ -225,97 +225,107 @@ int main(int argc, char* argv[]) {
 
 	/* C4 : Détection des répétitions de groupes de notes (patterns) */
 
-	map<vector<Note>, vector<int>> patterns; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
+	map<vector<Note *>, vector<int>> patterns; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
 
 	// Pour chaque note i de la mélodie
 	unsigned int indice_note_i = 0;
 	while (indice_note_i < melodie.size()) {
-		// Si la note i appartient à un pattern précédemment détecté, incrémenter i pour éviter de le repasser ou d'analyser un sous-pattern
-		bool note_i_deja_traitee = false;
-		for (auto pattern : patterns) {
-			for (unsigned int pos : pattern.second) {
-				if (indice_note_i >= pos && indice_note_i <= pos + pattern.first.size()) {
-					note_i_deja_traitee = true;
+		// Si la note i est retrouvée plus loin dans la mélodie, déterminer si c'est un pattern :
+		// Avancer en même temps i et j
+		// Avancer i dans la boucle j permet en plus d'éviter de détecter un pattern qui est en fait un sous-pattern
+		// Résultat : seuls les sur-patterns sont détectés (un pattern dans un pattern ne sera pas identifié)
+		
+		map<vector<Note *>, vector<int>> patterns_partants_de_i; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
+
+		// Plusieurs patterns différents peuvent être trouvée en partant de la note i
+		// La boucle for suivante va tous les repérer, et compter le nombre de d'occurences de chaque pattern en ajoutant l'indice de départ de chacun d'eux
+		// Le pattern le plus grand sera retenu, impossible de trouver deux patterns différents de même taille
+		// Lorsque tous les patterns partant de i seront trouvés, il faudra incrémenter i de la taille du pattern retenu
+		// pour éviter de repartir sur la deuxième note d'un pattern déjà trouvé (et donc de trouver un nouveau pattern qui est en fait un sous-pattern)
+
+		// Pour chaque note j de la mélodie, à partir de la note suivant la note i
+		unsigned int indice_note_j = indice_note_i + 1;
+		while (indice_note_j < melodie.size()) {
+			vector<Note *> suite;
+			
+			// Tant que la note i+taille_suite de la suite commancant par i est égale à la note de la suite commancant par j-taille_suite
+			// et que la note i+taille_suite n'est pas une note de la suite commancant par j-taille_suite,
+			// ajouter la note à la suite et incrémenter la note j
+			while (indice_note_j < melodie.size() && *melodie[indice_note_i + suite.size()] == *melodie[indice_note_j]
+				&& indice_note_i + suite.size() < indice_note_j - suite.size()) {
+				suite.push_back(melodie[indice_note_j]);
+				++indice_note_j;
+			}
+
+			// Si aucun de début de suite formant un potentiel pattern n'a été trouvé, incrémenter la note j et recommencer la recherche
+			// Sinon, étudier la suite obtenue afin de savoir si elle peut être considérée comme un pattern, auquel cas il faut l'enregistrer avec les autres patterns
+			if (suite.size() == 0) {
+				++indice_note_j;
+			} else {
+				if (suite.size() >= 2) {
+					// Ajouter ce pattern s'il n'existe pas déjà dans la liste des patterns partants de i, ainsi que la position du premier pattern (partant de la note i)
+					if (patterns_partants_de_i.find(suite) == patterns_partants_de_i.end()) {
+						vector<int> positions;
+						positions.push_back(indice_note_i);
+						patterns_partants_de_i[suite] = positions;
+					}
+					// Ajouter la position du début de ce pattern (partant de la position à laquelle était la note j avant de parcourir la suite)
+					patterns_partants_de_i[suite].push_back(indice_note_j - suite.size());
+				}
+			}
+		} // Fin de la recherche d'une suite de notes partant d'une note égale à la note i
+
+		// Si aucun pattern partant de la note i n'a été trouvé, incrémenter la note i de 1
+		// Sinon, incrémenter la note i de la taille pattern le plus présent pour éviter de retrouver un pattern en partant de i+1,
+		// qui serait un sous-pattern d'un pattern déjà trouvé en partant de la note i
+		// Ajouter au passage à la liste des patterns celui qui est le plus souvent trouvé en partant de la note i
+		if (patterns_partants_de_i.size() != 0) {
+			// Ajouter définitivement le pattern le plus grand partant de i, un seul choix possible, pas d'égalité de patterns possible
+			vector<Note *> plus_grand_pattern;
+			for (auto pattern : patterns_partants_de_i) {
+				if (pattern.first.size() > plus_grand_pattern.size()) {
+					plus_grand_pattern = pattern.first;
+				}
+			}
+			patterns[plus_grand_pattern] = patterns_partants_de_i[plus_grand_pattern];
+		}
+
+		++indice_note_i;
+	}
+
+	// Trier les patterns : certaines suites peuvent être des sous-patterns, ou certains patterns peuvent se chevaucher
+	// Dans tous les cas, ne garder que les patterns les plus grands
+	map<vector<Note *>, vector<int>> patterns_tmp = patterns;
+	patterns.clear();
+	for (auto pattern : patterns_tmp) {
+		bool garder = true;
+
+		for (auto pat : patterns_tmp) {
+			// S'il y a un conflit entre les deux patterns, ne pas garder pattern s'il est strictement plus petit que le pat
+			// Conflit : les patterns se chevauchent
+			for (auto position : pattern.second) {
+				for (auto pos : pat.second) {
+					if ((pos >= position && pos <= position + pattern.first.size()) // pat commence dans pattern
+					|| (pos + pat.first.size() >= position && pos + pat.first.size() >= position + pattern.first.size())) // pat fini dans pattern
+					{
+						cout << "Conflit entre ce pattern ";
+						for (auto note : pattern.first) cout << *note << " ";
+						cout << " et un random  ";
+						for (auto note : pat.first) cout << *note << " ";
+						cout << endl;
+						if (pattern.first.size() < pat.first.size()) { // à ce stade de l'algo, pattern.first.size() = pat.first.size() lorsque pattern = pat
+							garder = false;
+							cout << "  on garde pas ce pattern, il est plus petit qu'un random" << endl;
+						}
+					}
+					// Sinon, alors pattern et pat sont loins, ou pat est un sous-pattern de pattern
 				}
 			}
 		}
 
-		if (!note_i_deja_traitee) {
-			// Si la note i est retrouvée plus loin dans la mélodie, déterminer si c'est un pattern :
-			// Avancer en même temps i et j
-			// Avancer i dans la boucle j permet en plus d'éviter de détecter un pattern qui est en fait un sous-pattern
-			// Résultat : seuls les sur-patterns sont détectés (un pattern dans un pattern ne sera pas identifié)
-			
-			map<vector<Note>, vector<int>> patterns_partants_de_i; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
-
-			// Plusieurs patterns différents peuvent être trouvée en partant de la note i
-			// La boucle for suivante va tous les repérer, et compter le nombre de d'occurences de chaque pattern en ajoutant l'indice de départ de chacun d'eux
-			// Le pattern le plus grand sera retenu, impossible de trouver deux patterns différents de même taille
-			// Lorsque tous les patterns partant de i seront trouvés, il faudra incrémenter i de la taille du pattern retenu
-			// pour éviter de repartir sur la deuxième note d'un pattern déjà trouvé (et donc de trouver un nouveau pattern qui est en fait un sous-pattern)
-
-			// Pour chaque note j de la mélodie, à partir de la note suivant la note i
-			unsigned int indice_note_j = indice_note_i + 1;
-			while (indice_note_j < melodie.size()) {
-				vector<Note> suite;
-				
-				// Tant que la note i+taille_suite de la suite commancant par i est égale à la note de la suite commancant par j-taille_suite
-				// et que la note i+taille_suite n'est pas une note de la suite commancant par j-taille_suite,
-				// ajouter la note à la suite et incrémenter la note j
-				while (indice_note_j < melodie.size() && *melodie[indice_note_i + suite.size()] == *melodie[indice_note_j]
-					&& indice_note_i + suite.size() < indice_note_j - suite.size()) {
-					// Si la note j appartient à un pattern précédemment détecté, incrémenter j pour éviter de le repasser ou d'analyser un sous-pattern
-					bool note_j_deja_traitee = false;
-					for (auto pattern : patterns) {
-						for (unsigned int pos : pattern.second) {
-							if (indice_note_j >= pos && indice_note_j <= pos + pattern.first.size()) {
-								note_j_deja_traitee = true;
-							}
-						}
-					}
-					if (note_j_deja_traitee) {
-						suite.clear();
-						break;
-					}
-					suite.push_back(*melodie[indice_note_j]);
-					++indice_note_j;
-				}
-
-				// Si aucun de début de suite formant un potentiel pattern n'a été trouvé, incrémenter la note j et recommencer la recherche
-				// Sinon, étudier la suite obtenue afin de savoir si elle peut être considérée comme un pattern, auquel cas il faut l'enregistrer avec les autres patterns
-				if (suite.size() == 0) {
-					++indice_note_j;
-				} else {
-					if (suite.size() >= 2) {
-						// Ajouter ce pattern s'il n'existe pas déjà dans la liste des patterns partants de i, ainsi que la position du premier pattern (partant de la note i)
-						if (patterns_partants_de_i.find(suite) == patterns_partants_de_i.end()) {
-							vector<int> positions;
-							positions.push_back(indice_note_i);
-							patterns_partants_de_i[suite] = positions;
-						}
-						// Ajouter la position du début de ce pattern (partant de la position à laquelle était la note j avant de parcourir la suite)
-						patterns_partants_de_i[suite].push_back(indice_note_j - suite.size());
-					}
-				}
-			} // Fin de la recherche d'une suite de notes partant d'une note égale à la note i
-
-			// Si aucun pattern partant de la note i n'a été trouvé, incrémenter la note i de 1
-			// Sinon, incrémenter la note i de la taille pattern le plus présent pour éviter de retrouver un pattern en partant de i+1,
-			// qui serait un sous-pattern d'un pattern déjà trouvé en partant de la note i
-			// Ajouter au passage à la liste des patterns celui qui est le plus souvent trouvé en partant de la note i
-			if (patterns_partants_de_i.size() != 0) {
-				// Ajouter définitivement le pattern le plus grand partant de i, un seul choix possible, pas d'égalité de patterns possible
-				vector<Note> plus_grand_pattern;
-				for (auto pattern : patterns_partants_de_i) {
-					if (pattern.first.size() > plus_grand_pattern.size()) {
-						plus_grand_pattern = pattern.first;
-					}
-				}
-				patterns[plus_grand_pattern] = patterns_partants_de_i[plus_grand_pattern];
-			}
-		} // Fin du cas où la note i n'a pas déjà été traitée
-
-		++indice_note_i;
+		if (garder) {
+			patterns[pattern.first] = pattern.second;
+		}
 	}
 
 	res += "  <patterns>\n";
@@ -332,9 +342,8 @@ int main(int argc, char* argv[]) {
 			res += "      </positions>\n";
 			res += "    </pattern>\n";
 			// Débuggage
-			cout << "Pattern " << i << " : "; for (auto note : pattern.first) cout << note << " "; cout << endl;
-			cout << "Positions : "; for (auto pos : pattern.second) cout << pos << " "; cout << endl;
-			cout << "Probabilité : " << setprecision(15) << chaine_markov.probabiliteChaineRealisable(pattern.first) << endl;
+			cout << "Pattern " << i << " : "; for (auto note : pattern.first) cout << *note << " "; cout << endl;
+			cout << "Positions : "; for (auto position : pattern.second) cout << position << " "; cout << endl;
 			cout << "Proportion : " << setprecision(15) << proportion_pattern << endl;
 			cout << endl;
 		// }

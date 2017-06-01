@@ -314,90 +314,10 @@
   </couples-notes>
   <patterns>
     <pattern id="0">
-      <taille>4</taille>
+      <taille>44</taille>
       <positions>
-        <indice>10</indice>
-        <indice>66</indice>
-      </positions>
-    </pattern>
-    <pattern id="1">
-      <taille>4</taille>
-      <positions>
-        <indice>4</indice>
-        <indice>44</indice>
-        <indice>104</indice>
-      </positions>
-    </pattern>
-    <pattern id="2">
-      <taille>2</taille>
-      <positions>
-        <indice>95</indice>
-        <indice>97</indice>
-      </positions>
-    </pattern>
-    <pattern id="3">
-      <taille>2</taille>
-      <positions>
-        <indice>65</indice>
-        <indice>75</indice>
-      </positions>
-    </pattern>
-    <pattern id="4">
-      <taille>2</taille>
-      <positions>
-        <indice>72</indice>
-        <indice>78</indice>
-      </positions>
-    </pattern>
-    <pattern id="5">
-      <taille>3</taille>
-      <positions>
-        <indice>0</indice>
-        <indice>54</indice>
-      </positions>
-    </pattern>
-    <pattern id="6">
-      <taille>3</taille>
-      <positions>
-        <indice>17</indice>
-        <indice>32</indice>
-        <indice>41</indice>
-        <indice>61</indice>
-      </positions>
-    </pattern>
-    <pattern id="7">
-      <taille>5</taille>
-      <positions>
-        <indice>22</indice>
-        <indice>27</indice>
-      </positions>
-    </pattern>
-    <pattern id="8">
-      <taille>3</taille>
-      <positions>
-        <indice>49</indice>
-        <indice>109</indice>
-      </positions>
-    </pattern>
-    <pattern id="9">
-      <taille>3</taille>
-      <positions>
-        <indice>53</indice>
-        <indice>91</indice>
-      </positions>
-    </pattern>
-    <pattern id="10">
-      <taille>2</taille>
-      <positions>
-        <indice>58</indice>
-        <indice>80</indice>
-      </positions>
-    </pattern>
-    <pattern id="11">
-      <taille>2</taille>
-      <positions>
-        <indice>36</indice>
-        <indice>39</indice>
+        <indice>8</indice>
+        <indice>68</indice>
       </positions>
     </pattern>
   </patterns>

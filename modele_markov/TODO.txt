@@ -1,13 +1,15 @@
 Analyser les patterns de contraintes générées pour différentes mélodies, en tirer des conclusion quant aux suites intéressantes
 (corrélation avec la proportion d'un pattern par rapport à la mélodie)
-Seulement des suites de 3 notes ou +
+Seulement des suites de 2 notes ou +
 
 Commencer le rapport
 
 Envoyer un mail au prof
 
-Réflechir à une interface graphique
+Réflechir à une interface graphique => lire musique en C++ ?
 
-MusicXML from scratch
+MusicXML from scratch ?
 
-Générer des trucs a aprtir d'une partoche semblable (carmen, Chris Maé, ...)
+Générer des trucs a partir d'une partoche semblable (carmen, Chris Maé, ...)
+
+Refaire la contrainte des recatngles => reprendre les patterns, calculer les hitbox entre les patterns de sorte à ce qu'elles ne se chevauchent pas

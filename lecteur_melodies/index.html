@@ -368,9 +368,8 @@ function dessinerPartition() {
 		while (xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j]) {
 			position = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j].childNodes[0].nodeValue);
 			note_a_colorier = position;
-			while (note_a_colorier <= (position + taille)) {
-				partition.getElementsByTagName("note")[note_a_colorier].style.background = couleurs[i];
-				++note_a_colorier;
+			while (note_a_colorier < (position + taille)) {
+				partition.getElementsByTagName("note")[note_a_colorier++].style.border = "1px solid " + couleurs[i];
 			}
 			++j;
 		}
