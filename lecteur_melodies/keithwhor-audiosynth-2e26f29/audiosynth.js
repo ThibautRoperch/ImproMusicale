@@ -357,7 +357,7 @@ Synth.loadSoundProfile({
 	wave: function(i, sampleRate, frequency) {
 		var base = this.modulate[1];
 		var mod = this.modulate.slice(1);
-		return mod[4](
+		return mod[0](
 			i,
 			sampleRate,
 			frequency,

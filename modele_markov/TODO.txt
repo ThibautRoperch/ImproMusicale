@@ -1,13 +1,42 @@
-Commencer le rapport
 
-Réflechir à une interface graphique => lire musique en C++ ?
+Reprendre un rdv pour ven. 9 ou lundi d'après
 
-Générer des trucs a partir d'une partoche semblable (carmen, Chris Maé, ...)
+[ RAPPORT ]
 
-pour le rapprot et diapo : faire un dessin d'un exemple de hitbox autour d'une mélodie,
-et dans la présentation orale enlever les notes, garder les rectangles, generer aléatoirement à l'itnerieur
+Commencer le rapport LaTex
+Début du rapport en commun
+Fin du rapport en commun : perspectives, ce qu'on voudrait améliorer etc...
+Parler que ca m'a permi dutiliser mes connaissances
+faire une image de construction des rectangles
+Détailler chaque contrainte (une partie par contrainte)
+Mettre dans le rapport tout ce qu'on a utilisé tehcniquement (librairies, langages, ...)
 
-AVEC LES PROFS
-MusicXML from scratch ?
-Discuter de la contrainte des rectangles : Refaire la contrainte des recatngles => reprendre les patterns, calculer les hitbox entre les patterns de sorte à ce qu'elles ne se chevauchent pas
-Compte rendu latex ?
+[ SOUTENANCE ]
+
+faire une animation de construction des rectangles, enlever les notes, garder les rectangles, generer aléatoirement à l'itnerieur
+
+Début de la soutenance en commun
+Fin de la soutenance : démo à deux
+Peut durer 25 min au total pour nous deux
+Prévoir un enregistrement si la démo fait n'imp
+
+[ TECHNIQUEMENT ]
+
+Faire un script vite aif
+
+Lisser les rectangles : ce sont des moyennes mélodiques -> modèle mathématique
+obtenir un rectangle avec un % de notes dans ce rectangle
+
+Vérifier les mélodies sur leur % de notes (ca fait la tonalité), rectangles, patterns répétés (les types patterns font le style)
+=> ressemblance totale moyenne avec ces caractéristiques appliqués à l'original
+
+Retravailler l'interface (afficher les partoches dispo, une partoche dispo est une partoche qui a des contraintes et des générations)
+
+[ TESTS ]
+
+Générer des trucs a partir d'une partoche semblable (carmen, Chris Maé, ...), juger à l'oreille si ca se ressemble
+Juger avec le programme si ca se ressemble (original : une chanson de chris maé, en généré : une génération sur une autre chanson de chris maé)
+
+Générer des contraintes à partir de plusieurs mélodies qu'on sait qu'elles sont de même style, générer dessus, vérifier avec l'original
+
+Comparer la génération sur une même mélodie de moi et celles de dylan
