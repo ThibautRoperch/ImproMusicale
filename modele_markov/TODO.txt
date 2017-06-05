@@ -33,6 +33,7 @@ Vérifier les mélodies sur leur % de notes (ca fait la tonalité), la C1, recta
 => ressemblance totale moyenne avec ces caractéristiques appliqués à l'original
 
 Retravailler l'interface (afficher les partoches dispo, une partoche dispo est une partoche qui a des contraintes et des générations)
+Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
 
 [ TESTS ]
 
