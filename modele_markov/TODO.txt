@@ -27,7 +27,7 @@ Faire un script vite aif
 Lisser les rectangles : ce sont des moyennes mélodiques -> modèle mathématique
 obtenir un rectangle avec un % de notes dans ce rectangle
 
-Vérifier les mélodies sur leur % de notes (ca fait la tonalité), rectangles, patterns répétés (les types patterns font le style)
+Vérifier les mélodies sur leur % de notes (ca fait la tonalité), la C1, rectangles, patterns répétés (les types patterns font le style)
 => ressemblance totale moyenne avec ces caractéristiques appliqués à l'original
 
 Retravailler l'interface (afficher les partoches dispo, une partoche dispo est une partoche qui a des contraintes et des générations)

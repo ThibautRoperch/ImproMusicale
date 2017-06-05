@@ -39,12 +39,13 @@ int main(int argc, char* argv[]) {
 		return EXIT_FAILURE;
 	}
 
-	/* Initialisation des chaines de Markov */
+	/* Initialisation de la chaine de Markov */
 
 	ChaineMarkov<Note> chaine_markov;
-	vector<Note> melodie_generee;
 
 	/* Lecture des fichiers contenant les mélodies sources et la mélodie générée */
+
+	vector<Note> melodie_generee;
 
 	for (int i = 1; i < argc; ++i) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
@@ -74,7 +75,13 @@ int main(int argc, char* argv[]) {
 			} else {
 				chaine_markov.ajouterElement(Note(valeur_note, octave_note));
 			}
-		}
+		} // Fin de la lecture des notes de la mélodie de ce fichier
+
+		// Affichage de la chaîne de Markov
+		cout << "Chaîne de Markov :" << endl;
+		chaine_markov.afficherChaine();
+
+		// Ecrasement de la mélodie précédente en vue d'une nouvelle mélodie
 		chaine_markov.reinitialiserChaine();
 	}
 

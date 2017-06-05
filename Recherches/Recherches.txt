@@ -111,4 +111,18 @@ Permettre au générateur de générer "à la manière de".
 Faire un dossier par style musical, tout balancer au programme qui fait des modèles de Markov et comparer les mélodies à une mélodie générée
 Pour cela, utiliser les stats du modèle : si le "chemin" du graphe de la chaine de Markov créé à partir des mélodies originales est possible, c'est ok
 
+=========================================================
+
+Contrainte des rectangles : trouver un modèle mathématique fidèle à la (aux) mélodie(s)
+
+Les notes ne sont pas toutes à 100% dans le rectangle calculé (donner par ailleurs ce pourcentage)
+Calculer un rectangle s'adaptant à la forme moyenne de la mélodie (mélodie linéaire -> rectangle plat)
+
+Le rectangle doit se former avec les notes :
+- Il prend de la largeur si les notes consécutives sont proches en hauteur
+- Il prend de la hauteur si les notes consécutives ne sont pas proches en hauteur
+Déterminer cette notion de proximité :
+- Non fixe (en fonction de la note max - note min ? en fonction de la hauteur du rectangle ?)
+- La proximité doit être en général plus forte en début de mélodie qu'en fin
+  (le rectangle module facilement en début de mélodie, et est difficile à modifier au fur et à mesure qu'on avance dans la lecture de la mélodie - en fonction du nombre de notes)
 

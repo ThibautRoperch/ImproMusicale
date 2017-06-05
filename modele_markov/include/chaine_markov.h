@@ -31,19 +31,30 @@ private:
 	std::vector<T *> m_elements;
 	std::vector<T *> m_elements_uniques;
 	std::vector<std::vector<double>> m_statistiques;
+	int m_nombre_elements_ajoutes;
 
 public:
+
+	// Constructeur et destructeur
 
 	ChaineMarkov();
 	~ChaineMarkov();
 
-	std::vector<T *> chaine() { return m_elements; };
-	std::vector<T *> elementsUniques() { return m_elements_uniques; };
-	std::vector<std::vector<double>> matrice() { return m_statistiques; };
+	// Accesseurs
+
+	std::vector<T *> chaine() const { return m_elements; };
+	std::vector<T *> elementsUniques() const { return m_elements_uniques; };
+	std::vector<std::vector<double>> matrice() const { return m_statistiques; };
+	T * dernierElement() const { return m_elements.back(); };
+	int nombreElementsAjoutes() const { return m_nombre_elements_ajoutes; };
 	
+	// Affichages
+
 	void afficherChaine() const;
 	void afficherMatrice() const;
 
+	// Autres méthodes
+	
 	void reinitialiserChaine();
 
 	void ajouterElement(const T &element);
@@ -51,7 +62,7 @@ public:
 
 	T * genererElement();
 
-	int positionElement(const T &element) const;
+	int positionElementUnique(const T &element) const;
 	int recompenseChaine(const std::vector<T> &chaine);
 	double probabiliteChaineRealisable(const std::vector<T> &chaine);
 

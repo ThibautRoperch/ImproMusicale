@@ -7,7 +7,7 @@ using namespace std;
  */
 template<class T>
 ChaineMarkov<T>::ChaineMarkov() {
-
+	m_nombre_elements_ajoutes = 0;
 }
 
 /**
@@ -100,6 +100,9 @@ void ChaineMarkov<T>::ajouterElement(const T &element) {
 	if (find(m_elements_uniques.begin(), m_elements_uniques.end(), ptr_element) == m_elements_uniques.end()) {
 		m_elements_uniques.push_back(ptr_element);
 	}
+
+	// Incrémentation du compteur de nombre d'éléments ajoutés, car la liste des éléments peut être réinitialisée
+	++m_nombre_elements_ajoutes;
 }
 
 /**
@@ -163,7 +166,7 @@ T * ChaineMarkov<T>::genererElement() {
  * Cette fonction compare donc les éléments uniques avec l'élément donné en paramètre pour trouver sa position dans la liste
  */
 template<class T>
-int ChaineMarkov<T>::positionElement(const T &element) const {
+int ChaineMarkov<T>::positionElementUnique(const T &element) const {
 	int position = -1;
 
 	for (unsigned int i = 0; i < m_elements_uniques.size(); ++i) {
@@ -185,8 +188,8 @@ int ChaineMarkov<T>::recompenseChaine(const vector<T> &chaine) {
 	double recompense_totale = 0;
 
 	for (unsigned int i = 0; i < chaine.size() - 1; ++i) {
-		int pos_element_actuel = positionElement(chaine[i]);
-		int pos_element_suivant = positionElement(chaine[i+1]);
+		int pos_element_actuel = positionElementUnique(chaine[i]);
+		int pos_element_suivant = positionElementUnique(chaine[i+1]);
 		if (pos_element_actuel != -1 && pos_element_suivant != -1) {
 			if (m_statistiques[pos_element_actuel][pos_element_suivant] > 0) ++recompense_totale;
 		}
@@ -205,8 +208,8 @@ double ChaineMarkov<T>::probabiliteChaineRealisable(const vector<T> &chaine) {
 	double probabilite = 1.0 / m_elements_uniques.size();
 
 	for (unsigned int i = 0; i < chaine.size() - 1; ++i) {
-		int pos_element_actuel = positionElement(chaine[i]);
-		int pos_element_suivant = positionElement(chaine[i+1]);
+		int pos_element_actuel = positionElementUnique(chaine[i]);
+		int pos_element_suivant = positionElementUnique(chaine[i+1]);
 		if (pos_element_actuel != -1 && pos_element_suivant != -1) {
 			probabilite *= m_statistiques[pos_element_actuel][pos_element_suivant];
 		} else {

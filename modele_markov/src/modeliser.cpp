@@ -55,7 +55,15 @@ int main(int argc, char* argv[]) {
 
 	ChaineMarkov<Note> chaine_markov;
 
-	/* Lecture des fichiers contenant la mélodie */
+	/* Lecture des fichiers contenant une mélodie */
+
+	Note *note_min = NULL;
+	Note *note_max = NULL;
+
+	double hauteur_rectangle = -1;
+	int largeur_rectangle = -1;
+	double hauteur_moyenne = -1;
+	double difference_moyenne = -1;
 
 	for (int i = 1; i < argc - 1; ++i) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
@@ -71,29 +79,84 @@ int main(int argc, char* argv[]) {
 
 		noeud_racine = doc.first_node("notes");
 
+		Note *note_precedente = NULL;
+
 		// Itération sur les parties (noeuds "note" du noeud "notes")
 		for (xml_node<> * noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
 			// cout << "+ Note" << endl;
 
 			int valeur_note = stoi(noeud_note->first_node("valeur")->value());
 			int octave_note = stoi(noeud_note->first_node("octave")->value());
+			Note n(valeur_note, octave_note);
 
 			// cout << "    " << valeur_note << "\n" << "    " << octave_note << endl;
 
-			chaine_markov.ajouterElement(Note(valeur_note, octave_note));
-		}
+			chaine_markov.ajouterElement(n);
+
+			/* C1 : Calcul de la note min et de la note max */
+
+			if (note_min == NULL || n < *note_min) note_min = &n;
+			if (note_max == NULL || n > *note_max) note_max = &n;
+
+			/* C2 : Calcul de la plus grande hauteur entre deux notes sur un plage de notes donnée */
+
+			// Si c'est la première note lue, toutes mélodies confondues, fixer la hauteur moyenne à la hauteur de la première note
+			// (Le rectangle, et donc la hauteur moyenne des notes, qui est un facteur d'adaptation du rectangle, se fait sur toutes les mélodies)
+			if (hauteur_moyenne == -1) {
+				hauteur_moyenne = n.hauteurNote();
+			}
+			
+			// Le rectangle adapte sa taille en fonction des notes consécutives : il faut donc une note précédente et une note actuelle
+			// Les mélodies ne se suivent pas, la note précédente est donc NULL à chaque nouvelle mélodie lue
+			if (note_precedente != NULL) {
+				// Changement de la hauteur du rectangle en fonction de la hauteur moyenne des notes de la mélodie à ce stade de la lecture
+				// La hauteur moyenne en comptant cette note est soustraite à la hauteur moyenne sans compter cette note,
+				// la différence (après avoir enlevé le signe du résultat) est ajoutée à la hauteur du rectangle
+				double nouvelle_hauteur_moyenne = (hauteur_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + n.hauteurNote()) / chaine_markov.nombreElementsAjoutes();
+				hauteur_rectangle += abs(nouvelle_hauteur_moyenne - hauteur_moyenne) / 2;
+				hauteur_moyenne = nouvelle_hauteur_moyenne;
+
+				// Il faut modifier la largeur du rectangle lorsque la différence de hauteur entre les deux notes ne dépasse pas une certaine valeur
+				// Cette valeur max autorisée doit être calculée en fonction de la différence moyenne entre deux notes à ce moment là de la mélodie
+				int diff_hauteur = abs(n.hauteurNote() - note_precedente->hauteurNote());
+				if (difference_moyenne == -1) {
+					difference_moyenne = diff_hauteur;
+				} else {
+					if (diff_hauteur >= difference_moyenne) {
+						difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + diff_hauteur / 2) / chaine_markov.nombreElementsAjoutes();
+						// difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + diff_hauteur * 0) / chaine_markov.nombreElementsAjoutes();
+						// difference_moyenne = difference_moyenne;
+					} else {
+						difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + diff_hauteur) / chaine_markov.nombreElementsAjoutes();
+					}
+				}
+				if (diff_hauteur <= difference_moyenne) {
+					++largeur_rectangle;
+				}
+			} else {
+				hauteur_rectangle = 1;
+				largeur_rectangle = 1;
+			}
+
+			note_precedente = chaine_markov.dernierElement();
+
+			/* C3 : PATTERNS A iNTEGRER DANS CETTE BOUCLE */
+
+		} // Fin de la lecture des notes de la mélodie de ce fichier
+
+		// Affichage de la chaîne de Markov
+		cout << "Chaîne de Markov :" << endl;
+		chaine_markov.afficherChaine();
+		
+		// Ecrasement de la mélodie précédente en vue d'une nouvelle mélodie
+		chaine_markov.reinitialiserChaine();
 	}
 
-	/* Affichage de la chaîne de Markov */
-
-	cout << "\nChaîne de Markov :" << endl;
-	chaine_markov.afficherChaine();
-
-	/* Calcul de la matrice des statistiques */
+	/* Calcul de la matrice des statistiques du modèle de Markov des mélodies sources */
 
 	chaine_markov.calculerStatistiques();
 
-	/* Affichage de la matrice des statistiques */
+	/* Affichage de la matrice des statistiques du modèle de Markov des mélodies sources */
 
 	cout << "\nMatrice des statistiques :" << endl;
 	chaine_markov.afficherMatrice();
@@ -121,13 +184,6 @@ int main(int argc, char* argv[]) {
 
 	/* C1 : Calcul de la note min et de la note max */
 
-	Note *note_min = melodie[0];
-	Note *note_max = melodie[0];
-	for (auto note : melodie) {
-		if (*note < *note_min) note_min = note;
-		if (*note > *note_max) note_max = note;
-	}
-
 	res += "  <elements-min-max>\n";
 	res += "    <objectif>1</objectif>\n";
 	res += "    <element-min>\n";
@@ -146,9 +202,10 @@ int main(int argc, char* argv[]) {
 
 	/* C2 : Calcul de la plus grande hauteur entre deux notes sur un plage de notes donnée */
 
+	/*
 	int hauteur_rectangle = 0;
 	unsigned int largeur_rectangle = 1;
-	
+
 	bool valide = true;
 	while (valide && largeur_rectangle < melodie.size()) {
 		// Augmentation de la largeur du rectangle
@@ -188,13 +245,14 @@ int main(int argc, char* argv[]) {
 	if (!valide) {
 		--largeur_rectangle;
 	}
+	*/
 
 	res += "  <rectangles>\n";
 	res += "    <rectangle>\n";
 	res += "      <objectif>1</objectif>\n";
 	res += "      <hauteur>" + to_string(hauteur_rectangle) + "</hauteur>\n";
 	res += "      <largeur>" + to_string(largeur_rectangle) + "</largeur>\n";
-	res += "      <nombre>" + to_string(melodie.size() - largeur_rectangle + 1) + "</nombre>\n";
+	res += "      <nombre>" + to_string(chaine_markov.nombreElementsAjoutes() - largeur_rectangle + 1) + "</nombre>\n";
 	res += "    </rectangle>\n";
 	res += "  </rectangles>\n";
 

@@ -30,17 +30,24 @@ private:
 
 public:
 
+	// Constructeurs et destructeur
+
 	Note(int valeur, int octave);
 	Note(const Note &note);
 	~Note();
+
+	// Accesseurs
 
 	int valeurNote() const { return m_valeur; };
 	int octaveNote() const { return m_octave; };
 	int hauteurNote() const { return m_valeur + m_octave * 12; };
 	
+	// Affichage
+
 	void afficherNote(std::ostream &flux) const;
 
-	// Méthodes propres au modèle de Markov appellées dans le template chaine_markov.tpp
+	// Méthodes propres au modèle de Markov ChaineMarkov, appellées dans le template chaine_markov.tpp
+	
 	void ajouterAuxSuivants(Note *note);
 	Note * piocherParmiSuivants() const;
 	std::map<Note *, int> occurencesDesSuivants() const;
