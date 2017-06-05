@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 		noeud_racine = doc.first_node("notes");
 
 		Note *note_precedente = NULL;
-		int inertie = -1;
+		int monotonie = -1;
 
 		// Itération sur les parties (noeuds "note" du noeud "notes")
 		for (xml_node<> * noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
@@ -104,19 +104,19 @@ int main(int argc, char* argv[]) {
 			// ainsi que les dimensions du rectangle à 1
 			if (hauteur_moyenne == -1) {
 				hauteur_rectangle = 1;	hauteur_moyenne = n.hauteurNote();
-				largeur_rectangle = 1;	difference_moyenne = 0;
+				largeur_rectangle = 1;
 			}
 			
 			// Le rectangle adapte sa taille en fonction des notes consécutives : il faut donc une note précédente et une note actuelle
 			// Les mélodies ne se suivent pas, la note précédente est donc NULL à chaque nouvelle mélodie lue
-			// S'il n'y a pas de note précédemment lue pour cette mélodie, fixer l'inertie à 1 car la première note est en train d'être lue
+			// S'il n'y a pas de note précédemment lue pour cette mélodie, fixer la monotonie à 1 car la première note de cette mélodie est en train d'être lue
 			if (note_precedente != NULL) {
-				// Changement de la hauteur du rectangle en fonction de la hauteur moyenne des notes de la mélodie à ce stade de la lecture
+				/*// Changement de la hauteur du rectangle en fonction de la hauteur moyenne des notes de la mélodie à ce stade de la lecture
 				// La hauteur moyenne en comptant cette note est soustraite à la hauteur moyenne sans compter cette note,
 				// la différence (après avoir enlevé le signe du résultat) est ajoutée à la hauteur du rectangle
 				double nouvelle_hauteur_moyenne = (hauteur_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + n.hauteurNote()) / chaine_markov.nombreElementsAjoutes();
 				hauteur_rectangle += abs(nouvelle_hauteur_moyenne - hauteur_moyenne) / 2;
-				hauteur_moyenne = nouvelle_hauteur_moyenne;
+				hauteur_moyenne = nouvelle_hauteur_moyenne;*/
 
 				/*// Il faut modifier la largeur du rectangle lorsque la différence de hauteur entre les deux notes ne dépasse pas une certaine valeur
 				// Cette valeur max autorisée doit être calculée en fonction de la différence moyenne entre deux notes à ce moment là de la mélodie
@@ -136,18 +136,45 @@ int main(int argc, char* argv[]) {
 					++largeur_rectangle;
 				}*/
 
+				// Changement de la largeur du rectangle en fonction de la monotonie de la mélodie sur la largeur du rectangle
+				// La suite de notes est dite monotone si leur différence de hauteur est inférieure ou égale à la différence de hauteur moyenne entre deux notes
+				// à ce stade de la lecture de la mélodie
+				// Si la mélodie est monotone dans le rectangle, celui-ci gagne 1 en largeur
+
+				// Changement de la hauteur du rectangle en fonction de la différence de hauteur moyenne des notes de la mélodie à ce stade de la lecture
+				// La différence moyenne en comptant cette note est soustraite à la différence moyenne sans compter cette note,
+				// le résultat est ajouté à la hauteur du rectangle
+
 				int difference_hauteur = abs(n.hauteurNote() - note_precedente->hauteurNote());
-				if (difference_hauteur >= difference_moyenne) {
-					++inertie;
-				} else {
-					inertie = 0;
+
+				// Dans le cas où la note actuellement lue est la deuxième, toutes mélodies confondues, la différence moyenne vaut la différence actuelle
+				if (difference_moyenne == -1) {
+					difference_moyenne = difference_hauteur;
 				}
-				difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + difference_hauteur) / chaine_markov.nombreElementsAjoutes();
-				if (inertie == largeur_rectangle) {
+
+				// Actualisation de la monotonie avec la différence de hauteur entre cette note et la pécédente
+				// Si la différence de hauteur est inférieure à la moyenne, la monotonie gagne un point
+				// Sinon, la monotonie est remise à zéro
+				if (difference_hauteur <= difference_moyenne) {
+					++monotonie;
+				} else {
+					monotonie = 0;
+				}
+
+				// Lorsque la monotonie vaut la largeur du rectangle, celui-ci gagne 1 en largeur
+				// La monotonie n'est pas remise à 0, elle peut continuer d'augmenter à la prochaine note
+				if (monotonie == largeur_rectangle) {
 					++largeur_rectangle;
 				}
+
+				// Calcule de la différence entre la nouvelle difference moyenne et la difference moyenne
+				// Ajout du résultat à la hauteur du rectangle
+				// Enregistrement de la différence moyenne
+				double nouvelle_difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1 - 1) + difference_hauteur) / chaine_markov.nombreElementsAjoutes(); // - 1 pour omettre la dernière note et - 1 car le nombre de différences = nombre de notes - 1
+				hauteur_rectangle += nouvelle_difference_moyenne - difference_moyenne;
+				difference_moyenne = nouvelle_difference_moyenne;
 			} else {
-				inertie = 1;
+				monotonie = 1;
 			}
 
 			note_precedente = chaine_markov.dernierElement();
