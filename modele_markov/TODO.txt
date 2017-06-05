@@ -31,9 +31,13 @@ Programme d'improvisation Markovienne en liasnt un XML épuré
 
 Vérifier les mélodies sur leur % de notes (ca fait la tonalité), la C1, rectangles, patterns répétés (les types patterns font le style)
 => ressemblance totale moyenne avec ces caractéristiques appliqués à l'original
+Comparer les XML de modélisations (donc modéliser la mélodie générée en appellant modeliser.exe, possible dans le makefile ca, et a ajouter dans le script)
+Mettre aussi le résultat de la comparaison dans un fichier txt au pif, en plus de l'afficher
 
 Retravailler l'interface (afficher les partoches dispo, une partoche dispo est une partoche qui a des contraintes et des générations)
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
+Pourvoir sélectionner au début le type de génération voulu
+Fichiers de sortie associés à l'heure système, sinon c'est le bordel
 
 [ TESTS ]
 
