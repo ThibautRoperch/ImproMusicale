@@ -108,6 +108,11 @@ note, info {
 	background: transparent;
 }
 
+#partition rectangle.lu {
+	border-color: black;
+	z-index: 1000;
+}
+
 info {
 	position: absolute;
 	color: black;
@@ -261,7 +266,9 @@ function arreterMelodie() {
 function jouerNote(i) {
 	if (LIRE && document.getElementById("sortie").getElementsByTagName("note")[i]) {
 		document.getElementById("sortie").getElementsByTagName("note")[i].className = "lue";
-		document.getElementById("partition").getElementsByTagName("note")[i].style.background = "rgba(0, 100, 0, 0.6)";
+		document.getElementById("partition").getElementsByTagName("note")[i].style.background = "rgba(0, 100, 0, 0.6)"; // si on passe par des classname, les notes se colorient pas lorsqu'elles sont jouées car leur bg color est changée en brut lors de la lecture et de l'affichage
+		document.getElementById("partition").getElementsByTagName("rectangle")[i].className = "lu";
+		if (i > 0) document.getElementById("partition").getElementsByTagName("rectangle")[i - 1].className = "";
 		
 		note = parseInt(document.getElementById("sortie").getElementsByTagName("note")[i].innerHTML);
 		

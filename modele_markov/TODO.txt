@@ -22,10 +22,12 @@ Prévoir un enregistrement si la démo fait n'imp
 
 [ TECHNIQUEMENT ]
 
-Faire un script vite aif
+Discuter des patterns : quelles informations sont utiles pour la génération ?
+ - pos des patterns
+ - notes des patterns
+ - fréquence des patterns
 
-Lisser les rectangles : ce sont des moyennes mélodiques -> modèle mathématique
-obtenir un rectangle avec un % de notes dans ce rectangle
+Programme d'improvisation Markovienne en liasnt un XML épuré
 
 Vérifier les mélodies sur leur % de notes (ca fait la tonalité), la C1, rectangles, patterns répétés (les types patterns font le style)
 => ressemblance totale moyenne avec ces caractéristiques appliqués à l'original

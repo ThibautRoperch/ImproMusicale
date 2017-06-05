@@ -178,7 +178,7 @@ int ChaineMarkov<T>::positionElementUnique(const T &element) const {
  * Un automate peut représenter la chaine de Markov et aider à comprendre cette notion de récompense pour une chaine
  */
 template<class T>
-int ChaineMarkov<T>::recompenseChaine(const vector<T> &chaine) {
+int ChaineMarkov<T>::recompenseChaine(const vector<T> &chaine) const {
 	double recompense_totale = 0;
 
 	for (unsigned int i = 0; i < chaine.size() - 1; ++i) {
@@ -198,7 +198,7 @@ int ChaineMarkov<T>::recompenseChaine(const vector<T> &chaine) {
  * Tous les éléments uniques ont une probabilité équivalante de commencer une chaine, à savoir 1 / nombre_elements_uniques
  */
 template<class T>
-double ChaineMarkov<T>::probabiliteChaineRealisable(const vector<T> &chaine) {
+double ChaineMarkov<T>::probabiliteChaineRealisable(const vector<T> &chaine) const {
 	double probabilite = 1.0 / m_elements_uniques.size();
 
 	for (unsigned int i = 0; i < chaine.size() - 1; ++i) {
