@@ -73,17 +73,11 @@ void ChaineMarkov<T>::reinitialiserChaine() {
 template<class T>
 void ChaineMarkov<T>::ajouterElement(const T &element) {
 	// Recherche de la première occurence de l'élément dans le vecteur de pointeurs des éléments de la chaine
-	unsigned int i = 0;
-	while (i < m_elements_uniques.size()) {
-		if (*m_elements_uniques[i] == element) break;
-		++i;
-	}
-
 	// Si l'élément a été trouvé, récupérer son pointeur présent dans le tableau
 	// Sinon, récupérer son adresse mémoire
 	T *ptr_element = NULL;
-	if (i < m_elements_uniques.size()) {
-		ptr_element = m_elements_uniques[i];
+	if (positionElementUnique(element) > -1) {
+		ptr_element = m_elements_uniques[positionElementUnique(element)];
 	} else {
 		ptr_element = new T(element);
 	}

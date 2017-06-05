@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
 		xml_node<> * noeud_racine;
 
 		// Initialisation du vecteur contenant les noeuds du fichier
-		ifstream theFile(argv[1]);
+		ifstream theFile(argv[i]);
 		vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 		buffer.push_back('\0');
 		doc.parse<0>(&buffer[0]);
@@ -183,7 +183,7 @@ int main(int argc, char* argv[]) {
 	// 	new_note = chaine_markov.genererElement();
 	// }
 
-	/* Récupération de la mélodie pour calculer d'autres propriétés de cette dernière, ainsi que sa matrice statistiques */
+	/* Récupération de la matrice des statistiques de la chaine de Markov */
 
 	string res = "<contraintes>\n";
 	vector<Note *> melodie = chaine_markov.chaine();
@@ -398,7 +398,7 @@ int main(int argc, char* argv[]) {
 
 	res += "</contraintes>";
 
-	/* Enregistrement des propriétés de la mélodie dans fichier de sortie ou affichage à défaut de fichier donné en argument */
+	/* Enregistrement des propriétés de la mélodie dans fichier de sortie */
 	 
 	string nom_fichier_sortie = argv[argc - 1];
 	ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
@@ -410,7 +410,14 @@ int main(int argc, char* argv[]) {
 		cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 	}
 
-	cout << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés de la mélodie du fichier " << argv[1] << endl;
+	if (argc == 3) {
+		cout << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés de la mélodie du fichier " << argv[1] << endl;
+	} else {
+		cout << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés des mélodies des fichiers suivants :" << endl;
+		for (int i = 1; i < argc - 1; ++i) {
+			cout << "- " << argv[i] << endl;
+		}
+	}
 
 	cout << endl;
 
