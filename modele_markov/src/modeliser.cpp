@@ -60,8 +60,9 @@ int main(int argc, char* argv[]) {
 	Note *note_min = NULL;
 	Note *note_max = NULL;
 
-	double hauteur_rectangle = -1;	double hauteur_moyenne = -1;
-	int largeur_rectangle = -1;		double difference_moyenne = -1;
+	double hauteur_rectangle = 1;
+	int largeur_rectangle = 1;
+	double difference_moyenne = -1;
 
 	for (int i = 1; i < argc - 1; ++i) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
@@ -98,81 +99,49 @@ int main(int argc, char* argv[]) {
 			if (note_max == NULL || n > *note_max) note_max = &n;
 
 			/* C2 : Calcul de la hauteur moyenne entre deux notes sur un plage de notes donnée (rectangle) */
-
-			// Si c'est la première note lue, toutes mélodies confondues, fixer la hauteur moyenne à la hauteur de la première note
-			// (le rectangle, et donc la hauteur moyenne des notes, qui est un facteur d'adaptation du rectangle, se fait sur toutes les mélodies)
-			// ainsi que les dimensions du rectangle à 1
-			if (hauteur_moyenne == -1) {
-				hauteur_rectangle = 1;	hauteur_moyenne = n.hauteurNote();
-				largeur_rectangle = 1;
-			}
 			
 			// Le rectangle adapte sa taille en fonction des notes consécutives : il faut donc une note précédente et une note actuelle
 			// Les mélodies ne se suivent pas, la note précédente est donc NULL à chaque nouvelle mélodie lue
 			// S'il n'y a pas de note précédemment lue pour cette mélodie, fixer la monotonie à 1 car la première note de cette mélodie est en train d'être lue
 			if (note_precedente != NULL) {
-				/*// Changement de la hauteur du rectangle en fonction de la hauteur moyenne des notes de la mélodie à ce stade de la lecture
-				// La hauteur moyenne en comptant cette note est soustraite à la hauteur moyenne sans compter cette note,
-				// la différence (après avoir enlevé le signe du résultat) est ajoutée à la hauteur du rectangle
-				double nouvelle_hauteur_moyenne = (hauteur_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + n.hauteurNote()) / chaine_markov.nombreElementsAjoutes();
-				hauteur_rectangle += abs(nouvelle_hauteur_moyenne - hauteur_moyenne) / 2;
-				hauteur_moyenne = nouvelle_hauteur_moyenne;*/
-
-				/*// Il faut modifier la largeur du rectangle lorsque la différence de hauteur entre les deux notes ne dépasse pas une certaine valeur
-				// Cette valeur max autorisée doit être calculée en fonction de la différence moyenne entre deux notes à ce moment là de la mélodie
-				int diff_hauteur = abs(n.hauteurNote() - note_precedente->hauteurNote());
-				if (difference_moyenne == -1) {
-					difference_moyenne = diff_hauteur;
-				} else {
-					if (diff_hauteur >= difference_moyenne) {
-						difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + diff_hauteur / 2) / chaine_markov.nombreElementsAjoutes();
-						// difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + diff_hauteur * 0) / chaine_markov.nombreElementsAjoutes();
-						// difference_moyenne = difference_moyenne;
-					} else {
-						difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1) + diff_hauteur) / chaine_markov.nombreElementsAjoutes();
-					}
-				}
-				if (diff_hauteur <= difference_moyenne) {
-					++largeur_rectangle;
-				}*/
-
 				// Changement de la largeur du rectangle en fonction de la monotonie de la mélodie sur la largeur du rectangle
-				// La suite de notes est dite monotone si leur différence de hauteur est inférieure ou égale à la différence de hauteur moyenne entre deux notes
+				// La suite de notes est dite monotone si leur différence de hauteur est inférieure ou égale à la moyenne des différences de hauteur entre deux notes
 				// à ce stade de la lecture de la mélodie
-				// Si la mélodie est monotone dans le rectangle, celui-ci gagne 1 en largeur
+				// Si la mélodie est monotone dans le rectangle et l'est toujours une note après le rectangle, celui-ci gagne 1 en largeur
 
-				// Changement de la hauteur du rectangle en fonction de la différence de hauteur moyenne des notes de la mélodie à ce stade de la lecture
+				// Changement de la hauteur du rectangle en fonction de la moyenne des différences de hauteur des notes consécutives de la mélodie à ce stade de la lecture
 				// La différence moyenne en comptant cette note est soustraite à la différence moyenne sans compter cette note,
 				// le résultat est ajouté à la hauteur du rectangle
 
 				int difference_hauteur = abs(n.hauteurNote() - note_precedente->hauteurNote());
 
-				// Dans le cas où la note actuellement lue est la deuxième, toutes mélodies confondues, la différence moyenne vaut la différence actuelle
-				if (difference_moyenne == -1) {
-					difference_moyenne = difference_hauteur;
-				}
-
 				// Actualisation de la monotonie avec la différence de hauteur entre cette note et la pécédente
-				// Si la différence de hauteur est inférieure à la moyenne, la monotonie gagne un point
-				// Sinon, la monotonie est remise à zéro
-				if (difference_hauteur <= difference_moyenne) {
+				// Si la différence de hauteur est inférieure à la moyenne (ou s'il n'y a pas encore de moyenne), la monotonie gagne un point
+				// Sinon, la monotonie est remise à 1
+				if (difference_hauteur <= difference_moyenne || difference_moyenne == -1) {
 					++monotonie;
 				} else {
-					monotonie = 0;
+					monotonie = 1;
 				}
-
-				// Lorsque la monotonie vaut la largeur du rectangle, celui-ci gagne 1 en largeur
+				// Lorsque la monotonie vaut la largeur du rectangle + 1, celui-ci gagne 1 en largeur
 				// La monotonie n'est pas remise à 0, elle peut continuer d'augmenter à la prochaine note
-				if (monotonie == largeur_rectangle) {
+				if (monotonie == largeur_rectangle + 1) {
 					++largeur_rectangle;
 				}
 
-				// Calcule de la différence entre la nouvelle difference moyenne et la difference moyenne
-				// Ajout du résultat à la hauteur du rectangle
-				// Enregistrement de la différence moyenne
-				double nouvelle_difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1 - 1) + difference_hauteur) / chaine_markov.nombreElementsAjoutes(); // - 1 pour omettre la dernière note et - 1 car le nombre de différences = nombre de notes - 1
-				hauteur_rectangle += nouvelle_difference_moyenne - difference_moyenne;
-				difference_moyenne = nouvelle_difference_moyenne;
+				// Dans le cas où la note actuellement lue est la deuxième, toutes mélodies confondues, la différence moyenne vaut la différence actuelle
+				// Sinon, dans le cas normal, la nouvelle moyenne de différences de hauteur est calculée, et la hauteur du rectangle est mise à jour
+				if (difference_moyenne == -1) {
+					difference_moyenne = difference_hauteur;
+					hauteur_rectangle = difference_moyenne;
+				} else {
+					// Calcule de la différence entre la différence moyenne en ajoutant la différence de hauteur avec cette note et la différence moyenne sans compter cette note
+					// Ajout du résultat à la hauteur du rectangle
+					// Enregistrement de la différence moyenne
+					double nouvelle_difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1 - 1) + difference_hauteur) / (chaine_markov.nombreElementsAjoutes() - 1); // - 1 pour omettre la dernière note et - 1 car le nombre de différences = nombre de notes - 1
+					hauteur_rectangle += nouvelle_difference_moyenne - difference_moyenne;
+					difference_moyenne = nouvelle_difference_moyenne;
+				}
 			} else {
 				monotonie = 1;
 			}
@@ -241,7 +210,9 @@ int main(int argc, char* argv[]) {
 
 	/* C2 : Calcul de la hauteur moyenne entre deux notes sur un plage de notes donnée (rectangle) */
 
-	hauteur_rectangle = nearbyint(hauteur_rectangle);
+	hauteur_rectangle = nearbyint(hauteur_rectangle); // arrondi à l'entier le plus proche
+
+	// for (auto )
 	
 	res += "  <rectangles>\n";
 	res += "    <rectangle>\n";
