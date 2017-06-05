@@ -126,3 +126,5 @@ Déterminer cette notion de proximité :
 - La proximité doit être en général plus forte en début de mélodie qu'en fin
   (le rectangle module facilement en début de mélodie, et est difficile à modifier au fur et à mesure qu'on avance dans la lecture de la mélodie - en fonction du nombre de notes)
 
+Ou plutot :
+- Il prend de la largeur si les x notes qui se suivent sont proches en hauteur, avec x la largeur du rectangle et la notion de proximité la hauteur du rectangle

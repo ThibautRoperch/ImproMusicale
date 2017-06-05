@@ -3,23 +3,23 @@
     <objectif>1</objectif>
     <element-min>
       <note>
-        <valeur>2</valeur>
+        <valeur>7</valeur>
         <octave>4</octave>
       </note>
     </element-min>
     <element-max>
       <note>
-        <valeur>0</valeur>
-        <octave>5</octave>
+        <valeur>7</valeur>
+        <octave>4</octave>
       </note>
     </element-max>
   </elements-min-max>
   <rectangles>
     <rectangle>
       <objectif>1</objectif>
-      <hauteur>7</hauteur>
-      <largeur>2</largeur>
-      <nombre>26</nombre>
+      <hauteur>4</hauteur>
+      <largeur>7</largeur>
+      <nombre>21</nombre>
     </rectangle>
   </rectangles>
   <couples-notes>
@@ -217,12 +217,5 @@
       </couple>
   </couples-notes>
   <patterns>
-    <pattern id="0">
-      <taille>3</taille>
-      <positions>
-        <indice>8</indice>
-        <indice>21</indice>
-      </positions>
-    </pattern>
   </patterns>
 </contraintes>
