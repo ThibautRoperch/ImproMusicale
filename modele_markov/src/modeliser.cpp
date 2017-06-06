@@ -150,7 +150,6 @@ int main(int argc, char* argv[]) {
 		} // Fin de la lecture des notes de la mélodie de ce fichier
 
 		// Affichage de la chaîne de Markov
-		cout << "Chaîne de Markov :" << endl;
 		chaine_markov.afficherChaine();
 		
 		// Sauvegarde de la mélodie
@@ -203,7 +202,7 @@ int main(int argc, char* argv[]) {
 	// Pour chaque mélodie
 	for (auto melodie : melodies) {
 		nombre_rectangles += melodie.size() - largeur_rectangle + 1;
-		// Pour chaque note de la mélodie
+		// Pour chaque rectangle de la mélodie
 		for (unsigned int note = 0; note < melodie.size() - largeur_rectangle + 1; ++note) {
 			int position = melodie[note]->hauteurNote() + hauteur_rectangle; // position haute maximale (repère du rectangle : angle haut gauche)
 			int max_notes_couvertes = 0;
@@ -228,7 +227,7 @@ int main(int argc, char* argv[]) {
 	
 	res += "  <rectangles>\n";
 	res += "    <rectangle>\n";
-	res += "      <objectif>" + to_string(nombre_notes_couvertes / (largeur_rectangle * nombre_rectangles)) + "</objectif>\n";
+	res += "      <objectif>" + to_string((double) nombre_notes_couvertes / (largeur_rectangle * nombre_rectangles)) + "</objectif>\n";
 	res += "      <hauteur>" + to_string((int) hauteur_rectangle) + "</hauteur>\n";
 	res += "      <largeur>" + to_string(largeur_rectangle) + "</largeur>\n";
 	res += "      <nombre>" + to_string(chaine_markov.nombreElementsAjoutes() - largeur_rectangle + 1) + "</nombre>\n";
@@ -396,11 +395,14 @@ int main(int argc, char* argv[]) {
 	for (auto pattern : patterns) {
 		res += "    <pattern id=\"" + to_string(i++) + "\">\n";
 		res += "      <taille>" + to_string(pattern.first.size()) + "</taille>\n";
-		res += "      <positions>\n";
-		for (auto position : pattern.second) {
-			res += "        <indice>" + to_string(position) + "</indice>\n";
+		res += "      <nombre>" + to_string(pattern.second.size()) + "</nombre>\n";
+		Note min = pattern.first[0];
+		Note max = pattern.first[0];
+		for (auto note : pattern.first) {
+			if (note < min) min = note;
+			if (note > max) max = note;
 		}
-		res += "      </positions>\n";
+		res += "      <amplitude>" + to_string(max.hauteurNote() - min.hauteurNote()) + "</amplitude>\n";
 		res += "    </pattern>\n";
 		// cout << "Pattern " << i << " : "; for (auto note : pattern.first) cout << note << " "; cout << endl;
 		// cout << "Positions : "; for (auto position : pattern.second) cout << position << " "; cout << endl;
@@ -419,7 +421,7 @@ int main(int argc, char* argv[]) {
 		fichier_sortie << res;
 		fichier_sortie.close();
 	} else {
-		cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
+		cerr << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 	}
 
 	if (argc == 3) {

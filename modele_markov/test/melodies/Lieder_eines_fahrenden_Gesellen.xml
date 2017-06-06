@@ -1,0 +1,426 @@
+<notes>
+  <note id="0">
+    <valeur>7</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="1">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="2">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="3">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="4">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="5">
+    <valeur>0</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="6">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="7">
+    <valeur>4</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="8">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="9">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="10">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="11">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="12">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="13">
+    <valeur>4</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="14">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="15">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="16">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="17">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="18">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="19">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="20">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="21">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="22">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="23">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="24">
+    <valeur>2</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="25">
+    <valeur>2</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="26">
+    <valeur>2</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="27">
+    <valeur>2</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="28">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="29">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="30">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="31">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="32">
+    <valeur>4</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="33">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="34">
+    <valeur>6</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="35">
+    <valeur>2</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="36">
+    <valeur>2</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="37">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="38">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="39">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="40">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="41">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="42">
+    <valeur>7</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="43">
+    <valeur>6</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="44">
+    <valeur>6</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="45">
+    <valeur>4</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="46">
+    <valeur>4</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="47">
+    <valeur>3</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="48">
+    <valeur>7</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="49">
+    <valeur>2</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="50">
+    <valeur>7</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="51">
+    <valeur>4</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="52">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="53">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="54">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="55">
+    <valeur>3</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="56">
+    <valeur>1</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="57">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="58">
+    <valeur>1</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="59">
+    <valeur>3</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="60">
+    <valeur>4</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="61">
+    <valeur>6</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="62">
+    <valeur>11</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="63">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="64">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="65">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="66">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="67">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="68">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="69">
+    <valeur>9</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="70">
+    <valeur>9</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="71">
+    <valeur>7</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="72">
+    <valeur>7</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="73">
+    <valeur>7</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="74">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="75">
+    <valeur>11</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="76">
+    <valeur>4</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="77">
+    <valeur>7</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="78">
+    <valeur>9</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="79">
+    <valeur>11</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="80">
+    <valeur>11</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="81">
+    <valeur>7</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="82">
+    <valeur>7</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="83">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="84">
+    <valeur>4</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="85">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="86">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="87">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="88">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="89">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="90">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="91">
+    <valeur>0</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="92">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="93">
+    <valeur>4</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="94">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="95">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="96">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="97">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="98">
+    <valeur>11</valeur>
+    <octave>3</octave>
+  </note>
+  <note id="99">
+    <valeur>6</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="100">
+    <valeur>2</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="101">
+    <valeur>4</valeur>
+    <octave>4</octave>
+  </note>
+  <note id="102">
+    <valeur>4</valeur>
+    <octave>1</octave>
+  </note>
+  <note id="103">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="104">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+  <note id="105">
+    <valeur>11</valeur>
+    <octave>2</octave>
+  </note>
+</notes>

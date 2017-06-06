@@ -104,13 +104,13 @@ int main(int argc, char* argv[]) {
 	string partie_musicale_selectionnee = parties_musicales.begin()->first;
 	
 	if (parties_musicales.size() > 1) {
-		cout << "\nPlusieurs parties musicales sont présentes dans la partition :" << endl;
+		cerr << "\nPlusieurs parties musicales sont présentes dans la partition :" << endl;
 		int i = 0;
 		for (auto partie : parties_musicales) {
-			cout << "  [" << i++ << "] " << partie.second << endl;
+			cerr << "  [" << i++ << "] " << partie.second << endl;
 		}
 		string indice_partie;
-		cout << "\nDonner l'indice de la partie dont il faut extraire la mélodie :" << endl;
+		cerr << "\nDonner l'indice de la partie dont il faut extraire la mélodie :" << endl;
 		cin >> indice_partie;
 		i = 0;
 		for (auto partie : parties_musicales) {
@@ -227,7 +227,7 @@ int main(int argc, char* argv[]) {
 
 	/* Enregistrement de la mélodie extraite dans fichier de sortie ou affichage à défaut de fichier donné en argument */
 	 
-	if (argc == 3) {
+	if (argc >= 3) {
 		string nom_fichier_sortie = argv[2];
 		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
 		
@@ -235,7 +235,7 @@ int main(int argc, char* argv[]) {
 			fichier_sortie << res;
 			fichier_sortie.close();
 		} else {
-			cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
+			cerr << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 		}
 
 		cout << "\nLa mélodie de la partie " << partie_musicale_selectionnee << " de la partition du fichier " << argv[1] << " est enregistrée dans le fichier " << nom_fichier_sortie << endl;

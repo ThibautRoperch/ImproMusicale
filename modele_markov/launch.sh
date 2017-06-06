@@ -2,64 +2,125 @@
 
 
 
-if [ $# -eq 1 ]
+if [ $# -ge 1 ]
 then
-	fichier=$1
+	fichiers_entree=""
+	option_sortie=""
 	
-	echo -e "\n# Partition $fichier"
+	# Traitement des arguments
 	
-	# Détection du format de la partition
+	while [ $# -gt 0 ]
+	do
+		if [[ $1 == "--"* ]]
+		then
+			if [ "$1" == "--notraces" ]
+			then
+				option_sortie=" > /dev/null"
+			else
+				echo -e "# Option $1 inconnue"
+				echo -e "# Options :"
+				echo -e "\t--notraces\tMasquer la sortie lors de l'utilisation des programmes"
+				
+				exit 2
+			fi
+		else
+			fichiers_entree="$fichiers_entree$1 "
+		fi
+		shift
+	done
 	
-	if [[ $1 == *".mid" ]]
-	then
-		fichier=$(echo $fichier | sed -e 's/.mid$//')
-		format="midi"
-	elif [[ $1 == *".xml" ]]
-	then
-		fichier=$(echo $fichier | sed -e 's/.xml$//')
-		format="musicxml"
-	else
-		echo -e "\n# Format musical non pris en charge"
-		echo -e "# Formats acceptés :"
-		echo -e "\tMIDI\t\t.mid"
-		echo -e "\tMusicXML\t.xml"
-		echo -e ""
-		exit 0
-	fi
+	# Extraction de la mélodie des partitions données en entrée
 	
-	fichier=$(echo $fichier | awk -F / '{print $NF}')
-	fichier="$fichier.xml"
+	echo -e $fichiers_entree"|"
 	
-	# Extraction de la mélodie
+	melodies=""
+	fichier_sortie=""
 	
-	echo -e "\n# Extraction de la mélodie dans test/melodies/$fichier"
+	IFS=' ' read -r -a array <<< "$fichiers_entree"
 	
-	if [ "$format" == "midi" ]
-	then
-		./bin/epurer_midi.exe test/partitions/$fichier test/melodies/$fichier
-	elif [ "$format" == "musicxml" ]
-	then
-		./bin/epurer_musicxml.exe test/partitions/$fichier test/melodies/$fichier
-	fi
+	for fichier in "${array[@]}"
+	do
+		# Détection du format de la partition
+		
+		partition=$fichier
+		
+		if [[ $partition == *".mid" ]]
+		then
+			tmp=$(echo $partition | sed -e 's/.mid$//')
+			format="midi"
+		elif [[ $partition == *".xml" ]]
+		then
+			tmp=$(echo $partition | sed -e 's/.xml$//')
+			format="musicxml"
+		else
+			echo -e "# Format musical $fichier non pris en charge"
+			echo -e "# Formats acceptés :"
+			echo -e "\tMIDI\t\t.mid"
+			echo -e "\tMusicXML\t.xml"
+		
+			exit 3
+		fi
+		
+		tmp=$(echo $tmp | awk -F / '{print $NF}')
+		fichier_sortie=$fichier_sortie$tmp
+		melodie="test/melodies/$tmp.xml"
+		melodies="$melodies$melodie "
+		
+		# Extraction de la mélodie de la partition
+		
+		echo -e "\n# Extraction de la mélodie de la partition $partition dans $melodie"
+		
+		if [ "$format" == "midi" ]
+		then
+			./bin/epurer_midi.exe $partition $melodie > /dev/null
+		elif [ "$format" == "musicxml" ]
+		then
+			./bin/epurer_musicxml.exe $partition $melodie > /dev/null
+		fi
+	done
 	
-	# Modélisation des contraintes
+	date=$(date -I)
+	modelisation="test/modelisations/$fichier_sortie-$date.xml"
+	improvisation="test/improvisations/$fichier_sortie-$date.xml"
+	modelisation_impro="test/modelisations/$fichier_sortie-$date-impro.xml"
 	
-	echo -e "\n# Modélisation des contraintes dans test/contraintes/$fichier"
+	# Modélisation des contraintes des mélodies extraites
 	
-	./bin/modeliser.exe test/melodies/$fichier test/modelisations/$fichier
+	echo -e "\n# Modélisation des contraintes de la (des) mélodie(s) extraite(s) dans $modelisation"
 	
-	# Improvisation sur la mélodie
+	./bin/modeliser.exe $melodies $modelisation $option_sortie
 	
-	echo -e "\n# Improvisation sur la mélodie dans test/improvisations/$fichier"
+	# Improvisation sur les mélodies extraites
 	
-	./bin/rmg -o test/improvisations/$fichier -c test/modelisations/$fichier -n 20 -g 50
+	echo -e "\n# Improvisation sur la (les) mélodie(s) dans $improvisation"
 	
-	# Vérification de la mélodie générée
+	./lib/generateur_aleatoire_sous_contraintes/rmg -o $improvisation -c $modelisation -n 20 -g 50 $option_sortie
 	
-	echo -e "\n# Vérification de l'improvisation par rapport à l'original"
+	# Modélisation des contraintes de l'improvisation obtenue
 	
-	./bin/verifier_melodie_generee.exe test/melodies/$fichier test/improvisations/$fichier
+	echo -e "\n# Modélisation des contraintes de l'improvisation obtenue dans $modelisation_impro"
+	
+	./bin/modeliser.exe $improvisation $modelisation_impro $option_sortie
+	
+	# Vérification de l'improvisation obtenue
+	
+	echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
+	
+	#./bin/comparer.exe $modelisation $modelisation_impro $option_sortie
+	
+else
+	echo -e "# Utilisation : ./launch.sh partition [OPTION]"
+
+	echo -e "# Formats acceptés :"
+	echo -e "\tMIDI\t\t.mid"
+	echo -e "\tMusicXML\t.xml"
+	
+	echo -e "# Options :"
+	echo -e "\t--notraces\tMasquer la sortie lors de l'utilisation des programmes"
 	
 	exit 1
 fi
+
+exit 0
+
 

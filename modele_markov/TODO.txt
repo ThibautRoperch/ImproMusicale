@@ -36,8 +36,8 @@ Mettre aussi le résultat de la comparaison dans un fichier txt au pif, en plus 
 
 Retravailler l'interface (afficher les partoches dispo, une partoche dispo est une partoche qui a des contraintes et des générations)
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
-Pourvoir sélectionner au début le type de génération voulu
-Fichiers de sortie associés à l'heure système, sinon c'est le bordel
+Quand ca donne la ligne de commande, checker whle true la création d'un nouveau fichier,
+remplir le champ de texte avec ce fichier en attandant que le bouton confirmé siot cliqué
 
 [ TESTS ]
 

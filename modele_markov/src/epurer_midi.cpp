@@ -34,13 +34,13 @@ int main(int argc, char* argv[]) {
 	int partie_musicale_selectionnee = 0;
 
 	if (nb_parties_musicales > 1) {
-		cout << "\nPlusieurs parties musicales sont présentes dans la partition :" << endl;
+		cerr << "\nPlusieurs parties musicales sont présentes dans la partition :" << endl;
 		int i;
 		for (i = 0; i < nb_parties_musicales; i++) {
-			cout << "  [" << i << "] Partie " << i << endl;
+			cerr << "  [" << i << "] Partie " << i << endl;
 		}
 		string indice_partie;
-		cout << "\nDonner l'indice de la partie dont il faut extraire la mélodie :" << endl;
+		cerr << "\nDonner l'indice de la partie dont il faut extraire la mélodie :" << endl;
 		cin >> partie_musicale_selectionnee;
 	}
 	
@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
 
 	/* Enregistrement de la mélodie extraite dans fichier de sortie ou affichage à défaut de fichier donné en argument */
 	 
-	if (argc == 3) {
+	if (argc >= 3) {
 		string nom_fichier_sortie = argv[2];
 		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
 		

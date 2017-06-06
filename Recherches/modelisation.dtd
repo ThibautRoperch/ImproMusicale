@@ -19,10 +19,10 @@
 <!ELEMENT probabilite (#PCDATA)>
 
 <!ELEMENT patterns (pattern*)>
-<!ELEMENT pattern (taille,positions)>
+<!ELEMENT pattern (taille,nombre,amplitude)>
 <!ATTLIST pattern id CDATA #REQUIRED>
 <!ELEMENT taille (#PCDATA)>
-<!ELEMENT positions (indice*)>
-<!ELEMENT indice (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT amplitude (#PCDATA)>
 
 <!ELEMENT objectif (#PCDATA)>

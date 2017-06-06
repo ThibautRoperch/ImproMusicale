@@ -100,15 +100,17 @@ note, info {
 	background: black;
 	border-radius: 15px;
 	transform: rotate(-25deg);
+	z-index: 0;
 }
 
 #partition rectangle {
 	position: absolute;
 	border: 1px solid gray;
 	background: transparent;
+	z-index: -1000;
 }
 
-#partition rectangle.lu {
+#partition rectangle.lu, #partition rectangle.hover {
 	border-color: black;
 	z-index: 1000;
 }
@@ -200,19 +202,21 @@ function survolerNote(note, etat) {
 	if (etat == 1) {
 		notes.getElementsByTagName("note")[id].className = "hover";
 		partition.getElementsByTagName("note")[id].className = "hover";
+		if (partition.getElementsByTagName("rectangle")[id])
+			partition.getElementsByTagName("rectangle")[id].className = "hover";
 		
-		var style_note = notes.getElementsByTagName("note")[id].currentStyle || window.getComputedStyle(notes.getElementsByTagName("note")[id]);
 		info_note = document.createElement("info");
 		info_note.innerHTML = id;
 		notes.appendChild(info_note);
 
-		var style_note = partition.getElementsByTagName("note")[id].currentStyle || window.getComputedStyle(partition.getElementsByTagName("note")[id]);
 		info_note = document.createElement("info");
 		info_note.innerHTML = id;
 		partition.appendChild(info_note);
 	} else if (etat == 0) {
 		notes.getElementsByTagName("note")[id].className = "";
 		partition.getElementsByTagName("note")[id].className = "";
+		if (partition.getElementsByTagName("rectangle")[id])
+			partition.getElementsByTagName("rectangle")[id].className = "";
 
 		notes.removeChild(notes.lastChild);
 		partition.removeChild(partition.lastChild);
@@ -261,16 +265,16 @@ function jouerMelodie() {
 
 function arreterMelodie() {
 	LIRE = false;
-	lireMelodie();
-	dessinerPartition();
 }
 
 function jouerNote(i) {
 	if (LIRE && document.getElementById("sortie").getElementsByTagName("note")[i]) {
 		document.getElementById("sortie").getElementsByTagName("note")[i].className = "lue";
 		document.getElementById("partition").getElementsByTagName("note")[i].style.background = "rgba(0, 100, 0, 0.6)"; // si on passe par des classname, les notes se colorient pas lorsqu'elles sont jouées car leur bg color est changée en brut lors de la lecture et de l'affichage
-		document.getElementById("partition").getElementsByTagName("rectangle")[i].className = "lu";
-		if (i > 0) document.getElementById("partition").getElementsByTagName("rectangle")[i - 1].className = "";
+		if (document.getElementById("partition").getElementsByTagName("rectangle")[i]) {
+			document.getElementById("partition").getElementsByTagName("rectangle")[i].className = "lu";
+			if (i > 0) document.getElementById("partition").getElementsByTagName("rectangle")[i - 1].className = "";
+		}
 		
 		note = parseInt(document.getElementById("sortie").getElementsByTagName("note")[i].innerHTML);
 		
@@ -324,7 +328,8 @@ function jouerNote(i) {
 		document.getElementById("entree").disabled = "";
 		document.getElementById("jouer").disabled = "";
 		document.getElementById("arreter").disabled = "disabled";
-		LIRE = false;
+		lireMelodie();
+		dessinerPartition();
 	}
 }
 
@@ -379,7 +384,7 @@ function dessinerPartition() {
 
 		if (i < nombre_rectangles && xmlDoc.getElementsByTagName("note")[i+1] && dessiner_rectangles) { // i < nb de rectangles et au nb de notes
 			var rectangle = document.createElement("rectangle");
-			rectangle.style.width = (rectangle_largeur - 0.9) * (echelle + espace_horizontal - 1) + "px";
+			rectangle.style.width = (rectangle_largeur - 1.9) * (echelle + espace_horizontal) + "px";
 			rectangle.style.height = (rectangle_hauteur - 0.4) * (echelle + espace_vertical) + espace_vertical + "px";
 
 			var valeur = parseInt(xmlDoc.getElementsByTagName("note")[i+1].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);

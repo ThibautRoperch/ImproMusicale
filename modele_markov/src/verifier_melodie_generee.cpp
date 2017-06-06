@@ -78,7 +78,6 @@ int main(int argc, char* argv[]) {
 		} // Fin de la lecture des notes de la mélodie de ce fichier
 
 		// Affichage de la chaîne de Markov
-		cout << "Chaîne de Markov :" << endl;
 		chaine_markov.afficherChaine();
 
 		// Ecrasement de la mélodie précédente en vue d'une nouvelle mélodie
