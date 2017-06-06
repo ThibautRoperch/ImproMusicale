@@ -22,10 +22,7 @@ Prévoir un enregistrement si la démo fait n'imp
 
 [ TECHNIQUEMENT ]
 
-Discuter des patterns : quelles informations sont utiles pour la génération ?
- - pos des patterns
- - notes des patterns
- - fréquence des patterns
+Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
 
 Programme d'improvisation Markovienne en liasnt un XML épuré
 
