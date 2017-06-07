@@ -39,13 +39,12 @@ int main(int argc, char* argv[]) {
 		return EXIT_FAILURE;
 	}
 
-	/* Initialisation de la chaine de Markov */
+	/* Initialisation de la chaine de Markov et du vecteur de la mélodie générée */
 
 	ChaineMarkov<Note> chaine_markov;
+	vector<Note> melodie_generee;
 
 	/* Lecture des fichiers contenant les mélodies sources et la mélodie générée */
-
-	vector<Note> melodie_generee;
 
 	for (int i = 1; i < argc; ++i) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
@@ -106,5 +105,7 @@ int main(int argc, char* argv[]) {
 	cout << "Ressemblance de la mélodie avec les sources\t" << chaine_markov.recompenseChaine(melodie_generee) / (melodie_generee.size() - 1) * 100 << " %" << endl;
 	cout << "Probabilité que cette mélodie soit produite\t" << setprecision(30) << chaine_markov.probabiliteChaineRealisable(melodie_generee) * 100 << " %" << endl;
 
+	cout << endl;
+	
 	return EXIT_SUCCESS;
 }

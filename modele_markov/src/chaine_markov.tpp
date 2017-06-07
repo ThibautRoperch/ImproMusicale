@@ -135,15 +135,13 @@ void ChaineMarkov<T>::calculerStatistiques() {
  * Le dernier élément de la chaine génère un élément en fonction de la fréquence des éléments qui le suivent dans la chaine de Markov originale
  */
 template<class T>
-T * ChaineMarkov<T>::genererElement() {
+T * ChaineMarkov<T>::genererElement() const {
 	// Si la chaîne contient au moins un élément
 	if (m_elements.size() > 0) {
 		// Générer un nouvel élément choisi parmi les éléments suivant le dernier élément de la chaîne
 		T *nouvel_element = m_elements[m_elements.size() - 1]->piocherParmiSuivants();
-		// Si l'élément tiré au sort n'est pas NULL (il est NULL dans le cas où le dernier élément de la chaîne n'a pas de suivant)
+		// L'élément tiré au sort peut être NULL (il est NULL dans le cas où le dernier élément de la chaîne n'a pas de suivant)
 		if (nouvel_element != NULL) {
-			// Ajouter l'élément à la fin de la chaîne
-			m_elements.push_back(nouvel_element);
 			return nouvel_element;
 		} else {
 			cerr << "Le dernier élément de la chaîne de Markov est unique : il n'a pas d'élément suivant" << endl;

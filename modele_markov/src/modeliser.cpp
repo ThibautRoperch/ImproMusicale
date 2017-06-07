@@ -8,15 +8,10 @@
 #include "../include/chaine_markov.h"
 #include "../include/note.h"
 
+
 using namespace std;
 using namespace rapidxml;
 
-
-// TODO
-/*
-	Faire un programme qui converti mon format vers MusicXML ? => librairie pour faire un MusicXML from scratch
-	Convertir du MIDI
-*/
 
 bool operator==(Note const &n1, Note const &n2) {
 	return n1.hauteurNote() == n2.hauteurNote();
@@ -412,7 +407,7 @@ int main(int argc, char* argv[]) {
 
 	res += "</contraintes>";
 
-	/* Enregistrement des propriétés de la mélodie dans fichier de sortie */
+	/* Enregistrement des propriétés de la mélodie dans le fichier de sortie */
 	 
 	string nom_fichier_sortie = argv[argc - 1];
 	ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);

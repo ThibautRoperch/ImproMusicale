@@ -4,8 +4,14 @@
 
 if [ $# -ge 1 ]
 then
+	# Déclaration des variables globales
+	
 	fichiers_entree=""
-	option_sortie=""
+	redirection_sortie="/dev/fd/1" # sortie standard
+	type_improvisations=""
+	
+	fichier_sortie=""
+	date=$(date -I)
 	
 	# Traitement des arguments
 	
@@ -15,11 +21,23 @@ then
 		then
 			if [ "$1" == "--notraces" ]
 			then
-				option_sortie=" > /dev/null"
+				redirection_sortie="/dev/null"
+			elif [ "$1" == "--impro-random" ]
+			then
+				type_improvisations=$type_improvisations"random "
+			elif [ "$1" == "--impro-contraintes" ]
+			then
+				type_improvisations=$type_improvisations"contraintes "
+			elif [ "$1" == "--impro-markov" ]
+			then
+				type_improvisations=$type_improvisations"markov "
 			else
 				echo -e "# Option $1 inconnue"
 				echo -e "# Options :"
-				echo -e "\t--notraces\tMasquer la sortie lors de l'utilisation des programmes"
+				echo -e "\t--impro-random\t\tGénérer, à partir de la partition, une mélodie totalement aléatoire"
+				echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire avec contraintes"
+				echo -e "\t--impro-markov\t\tGénérer, à partir de la partition, une mélodie basée uniquement sur le modèle de Markov"
+				echo -e "\t--notraces\t\tMasquer la sortie lors de l'utilisation des programmes"
 				
 				exit 2
 			fi
@@ -31,10 +49,7 @@ then
 	
 	# Extraction de la mélodie des partitions données en entrée
 	
-	echo -e $fichiers_entree"|"
-	
 	melodies=""
-	fichier_sortie=""
 	
 	IFS=' ' read -r -a array <<< "$fichiers_entree"
 	
@@ -63,6 +78,7 @@ then
 		
 		tmp=$(echo $tmp | awk -F / '{print $NF}')
 		fichier_sortie=$fichier_sortie$tmp
+		
 		melodie="test/melodies/$tmp.xml"
 		melodies="$melodies$melodie "
 		
@@ -72,41 +88,59 @@ then
 		
 		if [ "$format" == "midi" ]
 		then
-			./bin/epurer_midi.exe $partition $melodie > /dev/null
+			./bin/epurer_midi.exe $partition $melodie > $redirection_sortie
 		elif [ "$format" == "musicxml" ]
 		then
-			./bin/epurer_musicxml.exe $partition $melodie > /dev/null
+			./bin/epurer_musicxml.exe $partition $melodie > $redirection_sortie
 		fi
 	done
 	
-	date=$(date -I)
+	# Modélisation des mélodies extraites
+
 	modelisation="test/modelisations/$fichier_sortie-$date.xml"
-	improvisation="test/improvisations/$fichier_sortie-$date.xml"
-	modelisation_impro="test/modelisations/$fichier_sortie-$date-impro.xml"
 	
-	# Modélisation des contraintes des mélodies extraites
+	echo -e "\n# Modélisation de la (des) mélodie(s) extraite(s) dans $modelisation"
 	
-	echo -e "\n# Modélisation des contraintes de la (des) mélodie(s) extraite(s) dans $modelisation"
+	./bin/modeliser.exe $melodies $modelisation > $redirection_sortie 
 	
-	./bin/modeliser.exe $melodies $modelisation $option_sortie
+	# Improvisations sur les contraintes des mélodies ou sur les mélodies extraites
 	
-	# Improvisation sur les mélodies extraites
+	IFS=' ' read -r -a array <<< "$type_improvisations"
 	
-	echo -e "\n# Improvisation sur la (les) mélodie(s) dans $improvisation"
-	
-	./lib/generateur_aleatoire_sous_contraintes/rmg -o $improvisation -c $modelisation -n 20 -g 50 $option_sortie
-	
-	# Modélisation des contraintes de l'improvisation obtenue
-	
-	echo -e "\n# Modélisation des contraintes de l'improvisation obtenue dans $modelisation_impro"
-	
-	./bin/modeliser.exe $improvisation $modelisation_impro $option_sortie
-	
-	# Vérification de l'improvisation obtenue
-	
-	echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
-	
-	#./bin/comparer.exe $modelisation $modelisation_impro $option_sortie
+	for type_impro in "${array[@]}"
+	do
+		# Improvisation sur les contraintes des mélodies ou sur les mélodies extraites
+		
+		improvisation="test/improvisations/$fichier_sortie-$date-impro-$type_impro.xml"
+		
+		if [ "$type_impro" == "random" ]
+		then
+			echo -e "\n# Improvisation ($type_impro) sur les contraintes de la (des) mélodie(s) dans $improvisation"
+			./lib/generateur_aleatoire_sous_contraintes/random -o $improvisation -c $modelisation -n 20 -g 50 > $redirection_sortie
+		elif [ "$type_impro" == "contraintes" ]
+		then
+			echo -e "\n# Improvisation ($type_impro) sur les contraintes de la (des) mélodie(s) dans $improvisation"
+			./lib/generateur_aleatoire_sous_contraintes/rmg -o $improvisation -c $modelisation -n 20 -g 50 > $redirection_sortie
+		elif [ "$type_impro" == "markov" ]
+		then
+			echo -e "\n# Improvisation ($type_impro) sur la (les) mélodie(s) dans $improvisation"
+			./bin/generer.exe $melodies $improvisation > $redirection_sortie
+		fi
+		
+		# Modélisation de l'improvisation obtenue
+		
+		modelisation_impro="test/modelisations/$fichier_sortie-$date-impro-$type_impro.xml"
+		
+		echo -e "\n# Modélisation de l'improvisation obtenue dans $modelisation_impro"
+		
+		./bin/modeliser.exe $improvisation $modelisation_impro > $redirection_sortie
+		
+		# Comparaison de l'improvisation obtenue avec les mélodies originales
+		
+		echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
+		
+		#./bin/comparer.exe $modelisation $modelisation_impro > $redirection_sortie
+	done
 	
 else
 	echo -e "# Utilisation : ./launch.sh partition [OPTION]"
@@ -116,7 +150,10 @@ else
 	echo -e "\tMusicXML\t.xml"
 	
 	echo -e "# Options :"
-	echo -e "\t--notraces\tMasquer la sortie lors de l'utilisation des programmes"
+	echo -e "\t--impro-random\t\tGénérer, à partir de la partition, une mélodie totalement aléatoire"
+	echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire avec contraintes"
+	echo -e "\t--impro-markov\t\tGénérer, à partir de la partition, une mélodie basée uniquement sur le modèle de Markov"
+	echo -e "\t--notraces\t\tMasquer la sortie lors de l'utilisation des programmes"
 	
 	exit 1
 fi

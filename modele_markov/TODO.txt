@@ -24,17 +24,21 @@ Prévoir un enregistrement si la démo fait n'imp
 
 Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
 
-Programme d'improvisation Markovienne en liasnt un XML épuré
+Programme d'improvisation Markovienne en lisant un XML épuré
 
 Vérifier les mélodies sur leur % de notes (ca fait la tonalité), la C1, rectangles, patterns répétés (les types patterns font le style)
 => ressemblance totale moyenne avec ces caractéristiques appliqués à l'original
 Comparer les XML de modélisations (donc modéliser la mélodie générée en appellant modeliser.exe, possible dans le makefile ca, et a ajouter dans le script)
 Mettre aussi le résultat de la comparaison dans un fichier txt au pif, en plus de l'afficher
 
-Retravailler l'interface (afficher les partoches dispo, une partoche dispo est une partoche qui a des contraintes et des générations)
+Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
-Quand ca donne la ligne de commande, checker whle true la création d'un nouveau fichier,
-remplir le champ de texte avec ce fichier en attandant que le bouton confirmé siot cliqué
+Premier panneau avec la possiblité de glisser déposer des fichiers partoches, avec un menu discret pour ouvrir une mélodie déjà existante, dans ce cas ca ouvre la page d'ajd sans onglets
+Dans le premier panneau, ajouter des options : impro markov, impro random, etc...
+Quand ca donne la ligne de commande à exécuter, checker while true le contenu du dossier improvisation, et à la création d'un nouveau fichier,
+remplir le champ de texte (un champ par type d'impro) avec ce fichier nouvellement crée (ordre des champs important : il doit concorder avec l'ordre de création des impros (cf le script launch.sh))
+Quand tout est full, ouvre une page avec des onglets (même page qu'ajd) : mélodies originales, impro xxx (nom du file en petit en dessous), impro xxx (chemin du file en dessous en petit)
+possibilité de voir ce que la comparaison a donné (popup qui affiche le contenu du fichier généré par comparaison.exe ?)
 
 [ TESTS ]
 

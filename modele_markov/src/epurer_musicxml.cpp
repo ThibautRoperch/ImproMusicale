@@ -225,7 +225,7 @@ int main(int argc, char* argv[]) {
 
 	cout << "\nLecture terminée" << endl;
 
-	/* Enregistrement de la mélodie extraite dans fichier de sortie ou affichage à défaut de fichier donné en argument */
+	/* Enregistrement de la mélodie extraite dans le fichier de sortie ou affichage à défaut de fichier donné en argument */
 	 
 	if (argc >= 3) {
 		string nom_fichier_sortie = argv[2];
