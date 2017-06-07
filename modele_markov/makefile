@@ -20,7 +20,7 @@ compiler_librairies:
 	cd $(LibMidifile)
 	make
 
-compiler_sources: $(BIN_DIR)/epurer_musicxml.exe $(BIN_DIR)/epurer_midi.exe $(BIN_DIR)/modeliser.exe $(BIN_DIR)/verifier_melodie_generee.exe $(BIN_DIR)/convertir_musicxml.exe
+compiler_sources: $(BIN_DIR)/epurer_musicxml.exe $(BIN_DIR)/epurer_midi.exe $(BIN_DIR)/modeliser.exe $(BIN_DIR)/improviser.exe $(BIN_DIR)/convertir_musicxml.exe
 
 $(BIN_DIR)/epurer_musicxml.exe: $(SRC_DIR)/epurer_musicxml.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
@@ -31,7 +31,13 @@ $(BIN_DIR)/epurer_midi.exe: $(SRC_DIR)/epurer_midi.cpp $(LibMidifile)/obj/*
 $(BIN_DIR)/modeliser.exe: $(SRC_DIR)/modeliser.cpp $(SRC_DIR)/note.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
-$(BIN_DIR)/verifier_melodie_generee.exe: $(SRC_DIR)/verifier_melodie_generee.cpp $(SRC_DIR)/note.cpp
+$(BIN_DIR)/improviser.exe: $(SRC_DIR)/improviser.cpp $(SRC_DIR)/note.cpp
+	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
+
+# $(BIN_DIR)/verifier_melodie_generee.exe: $(SRC_DIR)/verifier_melodie_generee.cpp $(SRC_DIR)/note.cpp
+	# g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
+
+$(BIN_DIR)/comparer.exe: $(SRC_DIR)/comparer.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
 $(BIN_DIR)/convertir_musicxml.exe: $(SRC_DIR)/convertir_musicxml.cpp
@@ -46,8 +52,14 @@ epurerMIDI:
 modeliser:
 	./$(BIN_DIR)/modeliser.exe ${in} ${out}
 
-verifier:
-	./$(BIN_DIR)/verifier_melodie_generee.exe ${in} ${genere}
+improviser:
+	./$(BIN_DIR)/improviser.exe ${in} ${out}
+
+#verifier:
+	# ./$(BIN_DIR)/verifier_melodie_generee.exe ${in} ${genere}
+
+comparer:
+	./$(BIN_DIR)/comparer.exe ${source} ${cible}
 
 convertir:
 	./$(BIN_DIR)/convertir_musicxml.exe ${in} ${out}

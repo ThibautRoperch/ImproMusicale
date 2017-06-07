@@ -14,6 +14,15 @@ using namespace std;
 using namespace rapidxml;
 
 
+bool operator==(Note const &n1, Note const &n2) {
+	return n1.hauteurNote() == n2.hauteurNote();
+}
+
+ostream& operator<<(ostream &flux, const Note &note) {
+	note.afficherNote(flux);
+	return flux;
+}
+
 int main(int argc, char* argv[]) {
 
 	cout << endl;
@@ -81,18 +90,19 @@ int main(int argc, char* argv[]) {
 
 	Note *nouvelle_note = chaine_markov.genererElement();
 
-	while (nouvelle_note != NULL && improvisation.size() < nombre_notes) {
+	while (nouvelle_note != NULL && nombre_notes > 0) {
 		res += "  <note>\n";
 		res += "    <valeur>" + to_string(nouvelle_note->valeurNote()) + "</valeur>\n";
 		res += "    <octave>" + to_string(nouvelle_note->octaveNote()) + "</octave>\n";
 		res += "  </note>\n";
 		nouvelle_note = chaine_markov.genererElement();
+		--nombre_notes;
 	}
 
 	res += "</notes>";
 
 	/* Enregistrement de la mélodie générée dans le fichier de sortie */
-	 
+	
 	string nom_fichier_sortie = argv[argc - 1];
 	ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
 	
