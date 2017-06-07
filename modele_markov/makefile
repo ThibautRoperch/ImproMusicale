@@ -53,7 +53,7 @@ modeliser:
 	./$(BIN_DIR)/modeliser.exe ${in} ${out}
 
 improviser:
-	./$(BIN_DIR)/improviser.exe ${in} ${out}
+	./$(BIN_DIR)/improviser.exe ${notes} ${in} ${out}
 
 #verifier:
 	# ./$(BIN_DIR)/verifier_melodie_generee.exe ${in} ${genere}

@@ -60,7 +60,7 @@ public:
 	void ajouterElement(const T &element);
 	void calculerStatistiques();
 
-	T * genererElement() const;
+	T * genererElement();
 
 	int positionElementUnique(const T &element) const;
 	int recompenseChaine(const std::vector<T> &chaine) const;

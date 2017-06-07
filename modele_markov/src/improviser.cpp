@@ -29,18 +29,19 @@ int main(int argc, char* argv[]) {
 
 	/* Vérification du nombre d'arguments */
 
-	if (argc < 3) {
-		cerr << "Donner en argument le ou les fichier(s) XML contenant une mélodie et le fichier de sortie\n" << endl;
+	if (argc < 4) {
+		cerr << "Donner en argument le nombre de notes à générer, le ou les fichier(s) XML contenant une mélodie et le fichier de sortie\n" << endl;
 		return EXIT_FAILURE;
 	}
 
-	/* Initialisation de la chaine de Markov et du vecteur de mélodies */
+	/* Initialisation de la chaine de Markov et du nombre de notes à générer */
 
 	ChaineMarkov<Note> chaine_markov;
+	int nombre_notes = atoi(argv[1]);
 
 	/* Lecture des fichiers contenant une mélodie */
 
-	for (int i = 1; i < argc - 1; ++i) {
+	for (int i = 2; i < argc - 1; ++i) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
 
 		xml_document<> doc;
@@ -86,8 +87,6 @@ int main(int argc, char* argv[]) {
 
 	string res = "<notes>\n";
 
-	int nombre_notes = 20;
-
 	Note *nouvelle_note = chaine_markov.genererElement();
 
 	while (nouvelle_note != NULL && nombre_notes > 0) {
@@ -113,11 +112,11 @@ int main(int argc, char* argv[]) {
 		cerr << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 	}
 
-	if (argc == 3) {
-		cout << "\nLe fichier " << nom_fichier_sortie << " contient la mélodie générée à partir de la mélodie du fichier " << argv[1] << endl;
+	if (argc == 4) {
+		cout << "\nLe fichier " << nom_fichier_sortie << " contient une mélodie de " << argv[1] << " notes générée à partir de la mélodie du fichier " << argv[2] << endl;
 	} else {
-		cout << "\nLe fichier " << nom_fichier_sortie << " contient la mélodie générée à partir des mélodies des fichiers suivants :" << endl;
-		for (int i = 1; i < argc - 1; ++i) {
+		cout << "\nLe fichier " << nom_fichier_sortie << " contient une mélodie de " << argv[1] << " notes générée à partir des mélodies des fichiers suivants :" << endl;
+		for (int i = 2; i < argc - 1; ++i) {
 			cout << "- " << argv[i] << endl;
 		}
 	}

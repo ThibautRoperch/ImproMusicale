@@ -133,23 +133,36 @@ void ChaineMarkov<T>::calculerStatistiques() {
 /**
  * Génère un élément en se basant sur les statistiques de la chaine de Markov
  * Le dernier élément de la chaine génère un élément en fonction de la fréquence des éléments qui le suivent dans la chaine de Markov originale
+ * S'il n'y a pas d'élément dans la chaine, en prend un au hasard parmi les éléments uniques (ils ont tous la même chance d'être choisis)
  */
 template<class T>
-T * ChaineMarkov<T>::genererElement() const {
-	// Si la chaîne contient au moins un élément
+T * ChaineMarkov<T>::genererElement() {
+	T *nouvel_element = NULL;
+
+	// Si la chaîne contient au moins un élément, générer un nouvel élément choisi parmi les éléments suivants le dernier élément de la chaîne
 	if (m_elements.size() > 0) {
-		// Générer un nouvel élément choisi parmi les éléments suivant le dernier élément de la chaîne
-		T *nouvel_element = m_elements[m_elements.size() - 1]->piocherParmiSuivants();
-		// L'élément tiré au sort peut être NULL (il est NULL dans le cas où le dernier élément de la chaîne n'a pas de suivant)
-		if (nouvel_element != NULL) {
-			return nouvel_element;
-		} else {
-			cerr << "Le dernier élément de la chaîne de Markov est unique : il n'a pas d'élément suivant" << endl;
-		}
-	} else {
-		cerr << "Impossible de générer un élément à partir d'une chaine de Markov vide" << endl;
+		nouvel_element = m_elements[m_elements.size() - 1]->piocherParmiSuivants();
 	}
-	return NULL;
+	// Sinon, choisir parmi les éléments uniques qui ont déjà été ajoutés à la chaine
+	else {
+		int tirage_aleatoire = rand() % m_elements_uniques.size(); // entre 0 et la taille du vecteur d'éléments uniques - 1
+		nouvel_element = m_elements_uniques[tirage_aleatoire];
+	}
+
+	// Ajouter à la chaine l'élément tiré au sort s'il n'est pas NULL
+	if (nouvel_element != NULL) {
+		m_elements.push_back(nouvel_element);
+	}
+	// L'élément tiré au sort peut être NULL (il est NULL dans le cas où le dernier élément de la chaîne n'a pas de suivant)
+	if (nouvel_element == NULL && m_elements.size() > 0) {
+		cerr << "\nLe dernier élément de la chaîne de Markov est unique : il n'a pas d'élément suivant" << endl;
+	}
+	// L'élément tiré au sort peut être NULL (il est NULL dans le cas où il n'y a jamais eu d'élément ajouté à la chaine)
+	if (m_elements.size() == 0 && m_elements_uniques.size() == 0) {
+		cerr << "\nAucun élément n'a été ajouté à la chaine" << endl;
+	}
+
+	return nouvel_element;
 }
 
 /**

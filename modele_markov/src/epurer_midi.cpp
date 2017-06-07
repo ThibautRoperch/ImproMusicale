@@ -39,9 +39,13 @@ int main(int argc, char* argv[]) {
 		for (i = 0; i < nb_parties_musicales; i++) {
 			cerr << "  [" << i << "] Partie " << i << endl;
 		}
-		string indice_partie;
+		int indice_partie;
 		cerr << "\nDonner l'indice de la partie dont il faut extraire la mélodie :" << endl;
-		cin >> partie_musicale_selectionnee;
+		cin >> indice_partie;
+
+		if (indice_partie < nb_parties_musicales) {
+			partie_musicale_selectionnee = (int) indice_partie;
+		}
 	}
 	
 	// Extraction de la mélodie de la partie selectionnée, en fonction de la structure de la partition
@@ -54,14 +58,15 @@ int main(int argc, char* argv[]) {
 	for (int note = 0; note < midifile[partie_musicale_selectionnee].size(); note++) {
 		// Les notes qui sont des messages MIDI ont leur marque qui commence par 0
 		if (to_string(midifile[partie_musicale_selectionnee][note].tick)[0] != '0') {
-			// Si la note a une intensité supérieure à 0, calculer sa valeur et son octave
-			if ((int)midifile[partie_musicale_selectionnee][note][2] > 0) {
+			int hauteur_note = (int)midifile[partie_musicale_selectionnee][note][1];
+			hauteur_note -= 21 - 9; // la première note commence à 21, +9 pour faire correspondre avec la version MusicXML des partitions
+			
+			// Si la note a une intensité strictement supérieure à 0 et une hauteur recalculée supérieure ou égale à 0, calculer sa valeur et son octave
+			if ((int)midifile[partie_musicale_selectionnee][note][2] > 0 && hauteur_note >= 0) {
 				res += "  <note id=\"" + to_string(indice_note++) + "\">\n";
 
-				int valeur_note = (int)midifile[partie_musicale_selectionnee][note][1];
-				valeur_note -= 21 - 9; // la première note commence à 21, +9 pour faire correspondre avec la version MusicXML des partitions
-				int octave_note = valeur_note / 12;
-				valeur_note = valeur_note % 12;
+				int octave_note = hauteur_note / 12;
+				int valeur_note = hauteur_note % 12;
 
 				res += "    <valeur>" + to_string(valeur_note) + "</valeur>\n";
 				res += "    <octave>" + to_string(octave_note) + "</octave>\n";

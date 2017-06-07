@@ -24,12 +24,21 @@ Prévoir un enregistrement si la démo fait n'imp
 
 Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
 
+virer les "objectif" de la dtd modelisation ?
+
 Programme d'improvisation Markovienne en lisant un XML épuré
 
 Vérifier les mélodies sur leur % de notes (ca fait la tonalité), la C1, rectangles, patterns répétés (les types patterns font le style)
 => ressemblance totale moyenne avec ces caractéristiques appliqués à l'original
 Comparer les XML de modélisations (donc modéliser la mélodie générée en appellant modeliser.exe, possible dans le makefile ca, et a ajouter dans le script)
 Mettre aussi le résultat de la comparaison dans un fichier txt au pif, en plus de l'afficher
+
+80% de A            85 % de A           Ressemblance à 100 - (85 - 80) = 95 %
+05% de B            06 % de B                                            99 %
+Moyenne = 97% de ressemblance sur la répartition des notes
+
+Tonalité : A        Tonalité : A
+100 % de ressemblance sur la tonalité (note majeure)
 
 Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)

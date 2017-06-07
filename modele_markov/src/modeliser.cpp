@@ -59,6 +59,8 @@ int main(int argc, char* argv[]) {
 	int largeur_rectangle = 1;
 	double difference_moyenne = -1;
 
+	vector<int> repartition_notes(12, 0); // à un indice correspond la valeur d'une note, la valeur de l'indice correspond au nombre de notes qui ont cette valeur
+
 	for (int i = 1; i < argc - 1; ++i) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
 
@@ -142,6 +144,10 @@ int main(int argc, char* argv[]) {
 			}
 
 			note_precedente = chaine_markov.dernierElement();
+
+			/* C5 : Calcul de la répartition des notes de la mélodie */
+
+			++repartition_notes[valeur_note];
 		} // Fin de la lecture des notes de la mélodie de ce fichier
 
 		// Affichage de la chaîne de Markov
@@ -152,6 +158,11 @@ int main(int argc, char* argv[]) {
 
 		// Ecrasement de la mélodie précédente en vue d'une nouvelle lecture de mélodie
 		chaine_markov.reinitialiserChaine();
+	}
+
+	if (chaine_markov.nombreElementsAjoutes() == 0) {
+		cerr << "La mélodie ne comporte pas de notes\n" << endl;
+		return EXIT_FAILURE;
 	}
 
 	/* Calcul de la matrice des statistiques du modèle de Markov des mélodies sources */
@@ -229,7 +240,7 @@ int main(int argc, char* argv[]) {
 	res += "    </rectangle>\n";
 	res += "  </rectangles>\n";
 
-	/* C3 : Lecture des statistiques pour chaque couple notes successives */
+	/* C3 : Lecture des statistiques pour chaque couple de notes successives */
 	
 	res += "  <couples-notes>\n";
 
@@ -404,6 +415,24 @@ int main(int argc, char* argv[]) {
 		// cout << endl;
 	}
 	res += "  </patterns>\n";
+
+	/* C5 : Calcul de la répartition des notes de la mélodie */
+
+	int nombre_notes = 0;
+	for (int nb_note : repartition_notes) {
+		nombre_notes += nb_note;
+	}
+
+	res += "  <repartition-notes>\n";
+
+	for (unsigned int i = 0; i < repartition_notes.size(); ++i) {
+		res += "    <note-unique valeur=\"" + to_string(i) + "\">";
+		res += to_string((double) repartition_notes[i] / nombre_notes);
+		res += "    </note-unique>\n";
+	}
+
+	res += "  </repartition-notes>\n";	
+	
 
 	res += "</contraintes>";
 

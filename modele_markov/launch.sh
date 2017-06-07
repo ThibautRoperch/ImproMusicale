@@ -11,7 +11,7 @@ then
 	type_improvisations=""
 	
 	fichier_sortie=""
-	date=$(date -I)
+	date=$(date "+%d%m%Y_%H%M%S")
 	
 	# Traitement des arguments
 	
@@ -103,44 +103,52 @@ then
 	
 	./bin/modeliser.exe $melodies $modelisation > $redirection_sortie 
 	
-	# Improvisations sur les contraintes des mélodies ou sur les mélodies extraites
+	# Génération d'une mélodie improvisée à partir des contraintes des mélodies ou des mélodies extraites
 	
-	IFS=' ' read -r -a array <<< "$type_improvisations"
+	if [ "$type_improvisations" != "" ]
+	then
+		echo -e "\n# Génération d'une mélodie improvisée"
+		
+		echo -e "\nNombre de notes à générer : "
+		read nombre_notes
+		
+		IFS=' ' read -r -a array <<< "$type_improvisations"
 	
-	for type_impro in "${array[@]}"
-	do
-		# Improvisation sur les contraintes des mélodies ou sur les mélodies extraites
+		for type_impro in "${array[@]}"
+		do
+			# Improvisation à partir des contraintes des mélodies ou des mélodies extraites
 		
-		improvisation="test/improvisations/$fichier_sortie-$date-impro-$type_impro.xml"
+			improvisation="test/improvisations/$fichier_sortie-$date-impro-$type_impro.xml"
 		
-		if [ "$type_impro" == "random" ]
-		then
-			echo -e "\n# Improvisation ($type_impro) sur les contraintes de la (des) mélodie(s) dans $improvisation"
-			./lib/generateur_aleatoire_sous_contraintes/random -o $improvisation -c $modelisation -n 20 -g 50 > $redirection_sortie
-		elif [ "$type_impro" == "contraintes" ]
-		then
-			echo -e "\n# Improvisation ($type_impro) sur les contraintes de la (des) mélodie(s) dans $improvisation"
-			./lib/generateur_aleatoire_sous_contraintes/rmg -o $improvisation -c $modelisation -n 20 -g 50 > $redirection_sortie
-		elif [ "$type_impro" == "markov" ]
-		then
-			echo -e "\n# Improvisation ($type_impro) sur la (les) mélodie(s) dans $improvisation"
-			./bin/generer.exe $melodies $improvisation > $redirection_sortie
-		fi
+			if [ "$type_impro" == "random" ]
+			then
+				echo -e "\nImprovisation ($type_impro) à partir des contraintes de la (des) mélodie(s) dans $improvisation"
+				./lib/generateur_aleatoire_sous_contraintes/random -o $improvisation -c $modelisation -n 20 -g 50 > $redirection_sortie
+			elif [ "$type_impro" == "contraintes" ]
+			then
+				echo -e "\nImprovisation ($type_impro) à partir des contraintes de la (des) mélodie(s) dans $improvisation"
+				./lib/generateur_aleatoire_sous_contraintes/rmg -o $improvisation -c $modelisation -n $nombre_notes -g 50 > $redirection_sortie
+			elif [ "$type_impro" == "markov" ]
+			then
+				echo -e "\nImprovisation ($type_impro) à partir de la (des) mélodie(s) dans $improvisation"
+				./bin/improviser.exe $nombre_notes $melodies $improvisation > $redirection_sortie
+			fi
 		
-		# Modélisation de l'improvisation obtenue
+			# Modélisation de l'improvisation obtenue
 		
-		modelisation_impro="test/modelisations/$fichier_sortie-$date-impro-$type_impro.xml"
+			modelisation_impro="test/modelisations/$fichier_sortie-$date-impro-$type_impro.xml"
 		
-		echo -e "\n# Modélisation de l'improvisation obtenue dans $modelisation_impro"
+			echo -e "\n# Modélisation de l'improvisation obtenue dans $modelisation_impro"
 		
-		./bin/modeliser.exe $improvisation $modelisation_impro > $redirection_sortie
+			./bin/modeliser.exe $improvisation $modelisation_impro > $redirection_sortie
 		
-		# Comparaison de l'improvisation obtenue avec les mélodies originales
+			# Comparaison de l'improvisation obtenue avec les mélodies originales
 		
-		echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
+			echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
 		
-		#./bin/comparer.exe $modelisation $modelisation_impro > $redirection_sortie
-	done
+			#./bin/comparer.exe $modelisation $modelisation_impro > $redirection_sortie
+		done
+	fi
 	
 else
 	echo -e "# Utilisation : ./launch.sh partition [OPTION]"
