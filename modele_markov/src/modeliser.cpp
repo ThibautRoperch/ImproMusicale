@@ -236,7 +236,6 @@ int main(int argc, char* argv[]) {
 	res += "      <objectif>" + to_string((double) nombre_notes_couvertes / (largeur_rectangle * nombre_rectangles)) + "</objectif>\n";
 	res += "      <hauteur>" + to_string((int) hauteur_rectangle) + "</hauteur>\n";
 	res += "      <largeur>" + to_string(largeur_rectangle) + "</largeur>\n";
-	res += "      <nombre>" + to_string(chaine_markov.nombreElementsAjoutes() - largeur_rectangle + 1) + "</nombre>\n";
 	res += "    </rectangle>\n";
 	res += "  </rectangles>\n";
 

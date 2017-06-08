@@ -76,12 +76,14 @@ int main(int argc, char* argv[]) {
 		vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 		buffer.push_back('\0');
 
-		if (i == 1) {
+		if (i == 2) {
 			doc_source.parse<0>(&buffer[0]);
 			noeud_racine_source = doc_source.first_node("contraintes");
-		} else if (i == 2) {
+			cout << argv[i] << endl;
+		} else if (i == 1) {
 			doc_cible.parse<0>(&buffer[0]);
 			noeud_racine_cible = doc_cible.first_node("contraintes");
+			cout << argv[i] << endl;
 		}
 	}
 
@@ -180,7 +182,10 @@ int main(int argc, char* argv[]) {
 	int valeur_pattern_max_source = -1;
 	int valeur_pattern_min_source = -1;
 
-
+// ok
+// make ; make comparer source=test/modelisations/Saltarello-08062017_000736.xml cible=test/modelisations/Chant-08062017_000751.xml out=caca.txt
+// core dumped
+// make ; make comparer source=test/modelisations/Chant-08062017_000751.xml cible=test/modelisations/Saltarello-08062017_000736.xml out=caca.txt
 cout << "ok" << endl;
 
 	for (xml_node<> *noeud_pattern = noeud_patterns_source->first_node("pattern"); noeud_pattern; noeud_pattern = noeud_pattern->next_sibling()) {
@@ -238,10 +243,10 @@ cout << "ok" << endl;
 
 	res += "Valuation de l'amplitude minimum des patterns générés par rapport aux patterns originaux : ";
 	++nombre_valuations;
-	cout << ">>>>>>> " << valeur_pattern_min_source << " et " << valeur_pattern_min_cible << endl;
 	res += to_string(ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible)) + " %";
 	somme_valuations += ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible);
 	res += "\n\n";
+	// recalculer cette valuation ; ca donne 0% si on compare deux meêms mélodies
 
 	/* C5 : Comparaison de la répartition des notes de la mélodie (tonalité) */
 

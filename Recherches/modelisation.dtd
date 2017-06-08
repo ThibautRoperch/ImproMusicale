@@ -8,10 +8,9 @@
 <!ELEMENT element-max (note)>
 
 <!ELEMENT rectangles (rectangle)>
-<!ELEMENT rectangle (objectif,hauteur,largeur,nombre)>
+<!ELEMENT rectangle (objectif,hauteur,largeur)>
 <!ELEMENT hauteur (#PCDATA)>
 <!ELEMENT largeur (#PCDATA)>
-<!ELEMENT nombre (#PCDATA)>
 
 <!ELEMENT couples-notes (couple*)>
 <!ELEMENT couple (note,note,distance,probabilite)>
