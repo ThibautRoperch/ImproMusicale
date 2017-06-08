@@ -180,10 +180,9 @@ function chargerTemplate() {
 	document.getElementById("proprietes").innerHTML += "  </elements-min-max>\n";
 	document.getElementById("proprietes").innerHTML += "  <rectangles>\n";
 	document.getElementById("proprietes").innerHTML += "	<rectangle>\n";
-	document.getElementById("proprietes").innerHTML += "	  <objectif>1</objectif>\n";
-	document.getElementById("proprietes").innerHTML += "	  <hauteur>16</hauteur>\n";
-	document.getElementById("proprietes").innerHTML += "	  <largeur>2</largeur>\n";
-	document.getElementById("proprietes").innerHTML += "	  <nombre>5</nombre>\n";
+	document.getElementById("proprietes").innerHTML += "	  <objectif>0.916667</objectif>\n";
+	document.getElementById("proprietes").innerHTML += "	  <hauteur>4</hauteur>\n";
+	document.getElementById("proprietes").innerHTML += "	  <largeur>4</largeur>\n";
 	document.getElementById("proprietes").innerHTML += "	</rectangle>\n";
 	document.getElementById("proprietes").innerHTML += "  </rectangles>\n";
 	document.getElementById("proprietes").innerHTML += "</contraintes>\n";
@@ -365,7 +364,6 @@ function dessinerPartition() {
 	if (xmlDoc.getElementsByTagName("rectangles")[0]) {
 		var rectangle_hauteur = parseInt(xmlDoc.getElementsByTagName("hauteur")[0].childNodes[0].nodeValue);
 		var rectangle_largeur = parseInt(xmlDoc.getElementsByTagName("largeur")[0].childNodes[0].nodeValue);
-		var nombre_rectangles = parseInt(xmlDoc.getElementsByTagName("nombre")[0].childNodes[0].nodeValue);
 	} else {
 		dessiner_rectangles = false;
 	}
@@ -382,7 +380,7 @@ function dessinerPartition() {
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
 		var note_actuelle = valeur + octave * 11;
 
-		if (i < nombre_rectangles && xmlDoc.getElementsByTagName("note")[i+1] && dessiner_rectangles) { // i < nb de rectangles et au nb de notes
+		if (xmlDoc.getElementsByTagName("note")[i+1] && dessiner_rectangles) { // i < nb de rectangles et au nb de notes
 			var rectangle = document.createElement("rectangle");
 			rectangle.style.width = (rectangle_largeur - 1.9) * (echelle + espace_horizontal) + "px";
 			rectangle.style.height = (rectangle_hauteur - 0.4) * (echelle + espace_vertical) + espace_vertical + "px";

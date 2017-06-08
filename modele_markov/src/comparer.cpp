@@ -76,11 +76,11 @@ int main(int argc, char* argv[]) {
 		vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 		buffer.push_back('\0');
 
-		if (i == 2) {
+		if (i == 1) {
 			doc_source.parse<0>(&buffer[0]);
 			noeud_racine_source = doc_source.first_node("contraintes");
 			cout << argv[i] << endl;
-		} else if (i == 1) {
+		} else if (i == 2) {
 			doc_cible.parse<0>(&buffer[0]);
 			noeud_racine_cible = doc_cible.first_node("contraintes");
 			cout << argv[i] << endl;

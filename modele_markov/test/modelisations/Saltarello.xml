@@ -19,7 +19,6 @@
       <objectif>0.660377</objectif>
       <hauteur>3</hauteur>
       <largeur>7</largeur>
-      <nombre>106</nombre>
     </rectangle>
   </rectangles>
   <couples-notes>
@@ -320,17 +319,17 @@
     </pattern>
   </patterns>
   <repartition-notes>
-    <note-unique valeur="0">0.285714    </note-unique>
-    <note-unique valeur="1">0.000000    </note-unique>
-    <note-unique valeur="2">0.125000    </note-unique>
-    <note-unique valeur="3">0.000000    </note-unique>
-    <note-unique valeur="4">0.125000    </note-unique>
-    <note-unique valeur="5">0.035714    </note-unique>
-    <note-unique valeur="6">0.000000    </note-unique>
-    <note-unique valeur="7">0.089286    </note-unique>
-    <note-unique valeur="8">0.000000    </note-unique>
-    <note-unique valeur="9">0.151786    </note-unique>
-    <note-unique valeur="10">0.000000    </note-unique>
-    <note-unique valeur="11">0.187500    </note-unique>
+    <note-unique valeur="0">0.285714</note-unique>
+    <note-unique valeur="1">0.000000</note-unique>
+    <note-unique valeur="2">0.125000</note-unique>
+    <note-unique valeur="3">0.000000</note-unique>
+    <note-unique valeur="4">0.125000</note-unique>
+    <note-unique valeur="5">0.035714</note-unique>
+    <note-unique valeur="6">0.000000</note-unique>
+    <note-unique valeur="7">0.089286</note-unique>
+    <note-unique valeur="8">0.000000</note-unique>
+    <note-unique valeur="9">0.151786</note-unique>
+    <note-unique valeur="10">0.000000</note-unique>
+    <note-unique valeur="11">0.187500</note-unique>
   </repartition-notes>
 </contraintes>
