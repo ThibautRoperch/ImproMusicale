@@ -33,7 +33,16 @@ ostream& operator<<(ostream &flux, const Note &note) {
 }
 
 int ressemblance(int source, int cible) {
+	if (source < 0 || cible < 0) return 0;
+
+	if (source == cible) return 100;
+
 	int difference = abs(source - cible);
+
+	if (difference > source) {
+		return 100 - ((difference * 100) / cible);
+	}
+	
 	return 100 - ((difference * 100) / source);
 }
 
@@ -171,6 +180,9 @@ int main(int argc, char* argv[]) {
 	int valeur_pattern_max_source = -1;
 	int valeur_pattern_min_source = -1;
 
+
+cout << "ok" << endl;
+
 	for (xml_node<> *noeud_pattern = noeud_patterns_source->first_node("pattern"); noeud_pattern; noeud_pattern = noeud_pattern->next_sibling()) {
 		int valeur_pattern = atoi(noeud_pattern->first_node("taille")->value()) * atoi(noeud_pattern->first_node("amplitude")->value());
 		int quantite_pattern = atoi(noeud_pattern->first_node("nombre")->value());
@@ -226,12 +238,62 @@ int main(int argc, char* argv[]) {
 
 	res += "Valuation de l'amplitude minimum des patterns générés par rapport aux patterns originaux : ";
 	++nombre_valuations;
+	cout << ">>>>>>> " << valeur_pattern_min_source << " et " << valeur_pattern_min_cible << endl;
 	res += to_string(ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible)) + " %";
 	somme_valuations += ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible);
 	res += "\n\n";
 
 	/* C5 : Comparaison de la répartition des notes de la mélodie (tonalité) */
 
+	res += "4. Comparaison de la répartition des notes de la mélodie générée avec la (les) mélodie(s) originale(s)\n\n";
+
+	xml_node<> *noeud_repartition_source = noeud_racine_source->first_node("repartition-notes");
+	vector<int> repartition_notes_source(12, 0);
+	int tonalite_source = 0;
+	int proportion_tonalite_source = -1;
+
+	for (xml_node<> *noeud_note_unique = noeud_repartition_source->first_node("note-unique"); noeud_note_unique; noeud_note_unique = noeud_note_unique->next_sibling()) {
+		int valeur_note = atoi(noeud_note_unique->first_attribute("valeur")->value());
+		int proportion_note = atof(noeud_note_unique->value()) * 100;
+
+		if (proportion_tonalite_source == 0 || proportion_note > proportion_tonalite_source) {
+			tonalite_source = valeur_note;
+			proportion_tonalite_source = proportion_note;
+		}
+
+		repartition_notes_source[valeur_note] = proportion_note;
+	}
+
+	xml_node<> *noeud_repartition_cible = noeud_racine_cible->first_node("repartition-notes");
+	vector<int> repartition_notes_cible(12, 0);
+	int tonalite_cible = 0;
+	int proportion_tonalite_cible = -1;
+
+	for (xml_node<> *noeud_note_unique = noeud_repartition_cible->first_node("note-unique"); noeud_note_unique; noeud_note_unique = noeud_note_unique->next_sibling()) {
+		int valeur_note = atoi(noeud_note_unique->first_attribute("valeur")->value());
+		int proportion_note = atof(noeud_note_unique->value()) * 100;
+
+		if (proportion_tonalite_cible == 0 || proportion_note > proportion_tonalite_cible) {
+			tonalite_cible = valeur_note;
+			proportion_tonalite_cible = proportion_note;
+		}
+
+		repartition_notes_cible[valeur_note] = proportion_note;
+	}
+	
+	res += "Valuation de la proportion de chaque note contenue dans la mélodie générée par rapport aux proportions originales : ";
+	res += "\n\nNote\t% original\t% généré\tValuation";
+	for (unsigned int i = 0; i < repartition_notes_cible.size(); ++i) {
+		++nombre_valuations;
+		res += "\n" + to_string(i) + "\t" + to_string(repartition_notes_source[i]) + "\t\t" + to_string(repartition_notes_cible[i]) + "\t\t" + to_string(ressemblance(repartition_notes_source[i], repartition_notes_cible[i]));
+		somme_valuations += ressemblance(repartition_notes_source[i], repartition_notes_cible[i]);
+	}
+	res += "\n\n";
+
+	res += "Valuation de la tonalité de la mélodie générée par rapport à la tonalité originale : ";
+	++nombre_valuations;
+	res += to_string((tonalite_source == tonalite_cible) * 100) + " %";
+	res += "\n\n";
 
 	cout << res;
 

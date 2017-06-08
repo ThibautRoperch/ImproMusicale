@@ -33,12 +33,9 @@ Vérifier les mélodies sur leur % de notes (ca fait la tonalité), la C1, recta
 Comparer les XML de modélisations (donc modéliser la mélodie générée en appellant modeliser.exe, possible dans le makefile ca, et a ajouter dans le script)
 Mettre aussi le résultat de la comparaison dans un fichier txt au pif, en plus de l'afficher
 
-80% de A            85 % de A           Ressemblance à 100 - (85 - 80) = 95 %
-05% de B            06 % de B                                            99 %
-Moyenne = 97% de ressemblance sur la répartition des notes
-
-Tonalité : A        Tonalité : A
-100 % de ressemblance sur la tonalité (note majeure)
+18 valuations
+indice de ressemblance : 43 %
+pour saltarelo et chant
 
 Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
