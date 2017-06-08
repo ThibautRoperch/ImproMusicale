@@ -5,6 +5,7 @@ SRC_DIR = ./src
 BUILD_DIR = ./build
 BIN_DIR = ./bin
 LIB_DIR = ./lib
+TEST_DIR = ./test
 
 LibMidifile = $(LIB_DIR)/craigsapp-midifile-5a7dc97
 
@@ -20,7 +21,7 @@ compiler_librairies:
 	cd $(LibMidifile)
 	make
 
-compiler_sources: $(BIN_DIR)/epurer_musicxml.exe $(BIN_DIR)/epurer_midi.exe $(BIN_DIR)/modeliser.exe $(BIN_DIR)/improviser.exe $(BIN_DIR)/convertir_musicxml.exe
+compiler_sources: $(BIN_DIR)/epurer_musicxml.exe $(BIN_DIR)/epurer_midi.exe $(BIN_DIR)/modeliser.exe $(BIN_DIR)/improviser.exe $(BIN_DIR)/comparer.exe $(BIN_DIR)/convertir_musicxml.exe
 
 $(BIN_DIR)/epurer_musicxml.exe: $(SRC_DIR)/epurer_musicxml.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
@@ -34,10 +35,7 @@ $(BIN_DIR)/modeliser.exe: $(SRC_DIR)/modeliser.cpp $(SRC_DIR)/note.cpp
 $(BIN_DIR)/improviser.exe: $(SRC_DIR)/improviser.cpp $(SRC_DIR)/note.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
-# $(BIN_DIR)/verifier_melodie_generee.exe: $(SRC_DIR)/verifier_melodie_generee.cpp $(SRC_DIR)/note.cpp
-	# g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
-
-$(BIN_DIR)/comparer.exe: $(SRC_DIR)/comparer.cpp
+$(BIN_DIR)/comparer.exe: $(SRC_DIR)/comparer.cpp $(SRC_DIR)/note.cpp
 	g++ -o $@ $^ $(CFLAGS) $(OFLAGS)
 
 $(BIN_DIR)/convertir_musicxml.exe: $(SRC_DIR)/convertir_musicxml.cpp
@@ -55,11 +53,8 @@ modeliser:
 improviser:
 	./$(BIN_DIR)/improviser.exe ${notes} ${in} ${out}
 
-#verifier:
-	# ./$(BIN_DIR)/verifier_melodie_generee.exe ${in} ${genere}
-
 comparer:
-	./$(BIN_DIR)/comparer.exe ${source} ${cible}
+	./$(BIN_DIR)/comparer.exe ${source} ${cible} ${out}
 
 convertir:
 	./$(BIN_DIR)/convertir_musicxml.exe ${in} ${out}
@@ -70,6 +65,10 @@ launch:
 clean_librairies:
 	cd $(LibMidifile)
 	make clean
+
+clean_tests:
+	rm -f $(TEST_DIR)/modelisations/*
+	rm -f $(TEST_DIR)/improvisations/*
 
 clean:
 	rm -f $(BUILD_DIR)/*

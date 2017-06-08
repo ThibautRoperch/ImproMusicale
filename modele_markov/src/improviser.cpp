@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
 
 		xml_document<> doc;
-		xml_node<> * noeud_racine;
+		xml_node<> *noeud_racine;
 
 		// Initialisation du vecteur contenant les noeuds du fichier
 		ifstream theFile(argv[i]);
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 		noeud_racine = doc.first_node("notes");
 
 		// Itération sur les parties (noeuds "note" du noeud "notes")
-		for (xml_node<> * noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
+		for (xml_node<> *noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
 			// cout << "+ Note" << endl;
 
 			int valeur_note = stoi(noeud_note->first_node("valeur")->value());

@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 	cout << "Lecture de la partition contenue dans le fichier " << argv[1] << " au format MusicXML" << endl;
 
 	xml_document<> doc;
-	xml_node<> * noeud_racine;
+	xml_node<> *noeud_racine;
 	string structure_partition;
 
 	// Initialisation du vecteur contenant les noeuds du fichier
@@ -90,11 +90,11 @@ int main(int argc, char* argv[]) {
 
 	map<string, string> parties_musicales;
 
-	xml_node<> * noeud_liste_parties = noeud_racine->first_node("part-list");
+	xml_node<> *noeud_liste_parties = noeud_racine->first_node("part-list");
 	string res = "<notes>\n";
 
 	// Itération sur les parties (noeuds "score-part" du noeud "part-list")
-	for (xml_node<> * noeud_partie = noeud_liste_parties->first_node("score-part"); noeud_partie; noeud_partie = noeud_partie->next_sibling()) {
+	for (xml_node<> *noeud_partie = noeud_liste_parties->first_node("score-part"); noeud_partie; noeud_partie = noeud_partie->next_sibling()) {
 		string nom_noeud = noeud_partie->name();
 		if (nom_noeud.compare("score-part") == 0) {
 			parties_musicales[noeud_partie->first_attribute("id")->value()] = noeud_partie->first_node("part-name")->value();
@@ -129,17 +129,17 @@ int main(int argc, char* argv[]) {
 	// Extraction des notes de la partie musicale sélectionnée, mesure après mesure
 	if (structure_partition.compare("score-partwise") == 0) {
 		// Itération sur les parties (noeuds "part" du noeud "score-partwise")
-		for (xml_node<> * noeud_partie = noeud_racine->first_node("part"); noeud_partie; noeud_partie = noeud_partie->next_sibling()) {
+		for (xml_node<> *noeud_partie = noeud_racine->first_node("part"); noeud_partie; noeud_partie = noeud_partie->next_sibling()) {
 			// Si cette partie est la partie qui a été sélectionnée
 			if (noeud_partie->first_attribute("id")->value() == partie_musicale_selectionnee) {
 				// Itération sur les mesures (noeuds "measure" des noeuds "part")
-				for(xml_node<> * noeud_mesure = noeud_partie->first_node("measure"); noeud_mesure; noeud_mesure = noeud_mesure->next_sibling()) {
+				for(xml_node<> *noeud_mesure = noeud_partie->first_node("measure"); noeud_mesure; noeud_mesure = noeud_mesure->next_sibling()) {
 					// Itération sur les notes (noeuds "note" des noeuds "measure")
-					for(xml_node<> * noeud_note = noeud_mesure->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
-						xml_node<> * noeud_accord = noeud_note->first_node("chord");
+					for(xml_node<> *noeud_note = noeud_mesure->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
+						xml_node<> *noeud_accord = noeud_note->first_node("chord");
 
 						if (noeud_accord == NULL) {
-							xml_node<> * noeud_pitch = noeud_note->first_node("pitch");
+							xml_node<> *noeud_pitch = noeud_note->first_node("pitch");
 
 							if (noeud_pitch != NULL) {
 								res += "  <note id=\"" + to_string(indice_note++) + "\">\n";
@@ -174,17 +174,17 @@ int main(int argc, char* argv[]) {
 	// Extraction des notes mesure après mesure, seulement de la partie musicale selectionnée
 	else if (structure_partition.compare("score-timewise") == 0) {
 		// Itération sur les mesures (noeuds "measure" du noeud "score-timewise")
-		for(xml_node<> * noeud_mesure = noeud_racine->first_node("measure"); noeud_mesure; noeud_mesure = noeud_mesure->next_sibling()) {
+		for(xml_node<> *noeud_mesure = noeud_racine->first_node("measure"); noeud_mesure; noeud_mesure = noeud_mesure->next_sibling()) {
 			// Itération sur les parties (noeuds "part" des noeuds "measure")
-			for (xml_node<> * noeud_partie = noeud_mesure->first_node("part"); noeud_partie; noeud_partie = noeud_partie->next_sibling()) {
+			for (xml_node<> *noeud_partie = noeud_mesure->first_node("part"); noeud_partie; noeud_partie = noeud_partie->next_sibling()) {
 				// Si cette partie est la partie qui a été sélectionnée
 				if (noeud_partie->first_attribute("id")->value() == partie_musicale_selectionnee) {
 					// Itération sur les notes (noeuds "note" des noeuds "part")
-					for(xml_node<> * noeud_note = noeud_partie->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
-						xml_node<> * noeud_accord = noeud_note->first_node("chord");
+					for(xml_node<> *noeud_note = noeud_partie->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
+						xml_node<> *noeud_accord = noeud_note->first_node("chord");
 
 						if (noeud_accord == NULL) {
-							xml_node<> * noeud_pitch = noeud_note->first_node("pitch");
+							xml_node<> *noeud_pitch = noeud_note->first_node("pitch");
 
 							if (noeud_pitch != NULL) {
 								res += "  <note>\n";

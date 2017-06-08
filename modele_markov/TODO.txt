@@ -24,7 +24,7 @@ Prévoir un enregistrement si la démo fait n'imp
 
 Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
 
-virer les "objectif" de la dtd modelisation ?
+virer les "objectif" de la dtd modelisation ? et "nombre" de rectangles ?
 
 Programme d'improvisation Markovienne en lisant un XML épuré
 

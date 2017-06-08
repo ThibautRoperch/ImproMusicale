@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
 	cout << "Lecture de la mélodie contenue dans le fichier " << argv[1] << " au format XML" << endl;
 
 	xml_document<> doc;
-	xml_node<> * noeud_racine;
+	xml_node<> *noeud_racine;
 
 	// Initialisation du vecteur contenant les noeuds du fichier
 
@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
 	string res = "<partwise>\n";
 
 	// Itération sur les notes (noeuds "note" du noeud "notes")
-	for (xml_node<> * noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
+	for (xml_node<> *noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
 		res += "  <pitch>";
 
 		char* valeur_note = noteEntiereVersAnglais(stoi(noeud_note->first_node("valeur")->value()));

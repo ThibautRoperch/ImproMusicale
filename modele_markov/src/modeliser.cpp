@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
 
 		xml_document<> doc;
-		xml_node<> * noeud_racine;
+		xml_node<> *noeud_racine;
 
 		// Initialisation du vecteur contenant les noeuds du fichier
 		ifstream theFile(argv[i]);
@@ -79,7 +79,7 @@ int main(int argc, char* argv[]) {
 		int monotonie = -1;
 
 		// Itération sur les parties (noeuds "note" du noeud "notes")
-		for (xml_node<> * noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
+		for (xml_node<> *noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
 			// cout << "+ Note" << endl;
 
 			int valeur_note = stoi(noeud_note->first_node("valeur")->value());
@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
 			if (note_min == NULL || n < *note_min) note_min = chaine_markov.dernierElement();
 			if (note_max == NULL || n > *note_max) note_max = chaine_markov.dernierElement();
 
-			/* C2 : Calcul de la hauteur moyenne entre deux notes sur un plage de notes donnée (rectangle) */
+			/* C2 : Calcul de la hauteur moyenne entre deux notes sur une plage de notes donnée (rectangle) */
 			
 			// Le rectangle adapte sa taille en fonction des notes consécutives : il faut donc une note précédente et une note actuelle
 			// Les mélodies ne se suivent pas, la note précédente est donc NULL à chaque nouvelle mélodie lue
@@ -199,7 +199,7 @@ int main(int argc, char* argv[]) {
 	res += "    </element-max>\n";
 	res += "  </elements-min-max>\n";
 
-	/* C2 : Calcul de la hauteur moyenne entre deux notes sur un plage de notes donnée (rectangle) */
+	/* C2 : Calcul de la hauteur moyenne entre deux notes sur une plage de notes donnée (rectangle) */
 
 	hauteur_rectangle = nearbyint(hauteur_rectangle); // arrondi à l'entier le plus proche
 	int nombre_notes_couvertes = 0;
@@ -265,7 +265,7 @@ int main(int argc, char* argv[]) {
 
 	res += "  </couples-notes>\n";
 
-	/* C4 : Détection des répétitions de groupes de notes (patterns) */
+	/* C4 : Détection des répétitions de groupes de notes (patterns, style musical) */
 
 	map<vector<Note>, vector<int>> patterns; // en clef la suite de notes, en valeur les positions de ces paternes (en nombre de notes)
 
@@ -416,7 +416,7 @@ int main(int argc, char* argv[]) {
 	}
 	res += "  </patterns>\n";
 
-	/* C5 : Calcul de la répartition des notes de la mélodie */
+	/* C5 : Calcul de la répartition des notes de la mélodie (tonalité) */
 
 	int nombre_notes = 0;
 	for (int nb_note : repartition_notes) {
@@ -426,9 +426,8 @@ int main(int argc, char* argv[]) {
 	res += "  <repartition-notes>\n";
 
 	for (unsigned int i = 0; i < repartition_notes.size(); ++i) {
-		res += "    <note-unique valeur=\"" + to_string(i) + "\">";
-		res += to_string((double) repartition_notes[i] / nombre_notes);
-		res += "    </note-unique>\n";
+		double repartition = (double) repartition_notes[i] / nombre_notes;
+		res += "    <note-unique valeur=\"" + to_string(i) + "\">" + to_string(repartition) + "</note-unique>\n";
 	}
 
 	res += "  </repartition-notes>\n";	
