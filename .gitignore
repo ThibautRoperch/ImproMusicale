@@ -3,3 +3,8 @@ build
 
 # Dossier bin contenant les executables
 bin/*
+
+# Dossier test contenant les tests
+test/modelisations/*
+test/improvisations/*
+test/comparaisons/*

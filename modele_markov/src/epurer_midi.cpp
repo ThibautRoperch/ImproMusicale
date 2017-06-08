@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 	// Extraction de la mélodie de la partie selectionnée, en fonction de la structure de la partition
 
 	cout << "\nExtraction des notes composant la mélodie de la partie " << partie_musicale_selectionnee << endl;
-	unsigned indice_note = 0;
+	unsigned int indice_note = 0;
 	string res = "<notes>\n";
 
 	// Lecture de la valeur des notes de la partie musicale sélectionnée
@@ -94,10 +94,14 @@ int main(int argc, char* argv[]) {
 			fichier_sortie << res;
 			fichier_sortie.close();
 		} else {
-			cout << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
+			cerr << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 		}
 
-		cout << "\nLa mélodie de la partie " << partie_musicale_selectionnee << " de la partition du fichier " << argv[1] << " est enregistrée dans le fichier " << nom_fichier_sortie << endl;
+		if (nb_parties_musicales == 1) {
+			cerr << "\nLa mélodie de la partition du fichier " << argv[1] << " est enregistrée dans le fichier " << nom_fichier_sortie << " (" << indice_note << " notes)" << endl;
+		} else {
+			cerr << "\nLa mélodie de la partie " << partie_musicale_selectionnee << " de la partition du fichier " << argv[1] << " est enregistrée dans le fichier " << nom_fichier_sortie << " (" << indice_note << " notes)" << endl;
+		}
 	} else {
 		cout << "\nAucun fichier de sortie n'est donné en argument du programme" << endl;
 		cout << "\n" << res << endl;

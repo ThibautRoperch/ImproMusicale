@@ -124,7 +124,7 @@ int main(int argc, char* argv[]) {
 	// Extraction de la mélodie de la partie selectionnée, en fonction de la structure de la partition
 
 	cout << "\nExtraction des notes composant la mélodie de la partie " << parties_musicales.find(partie_musicale_selectionnee)->second << " (id=" << partie_musicale_selectionnee << " dans le fichier)" << endl;
-	unsigned indice_note = 0;
+	unsigned int indice_note = 0;
 
 	// Extraction des notes de la partie musicale sélectionnée, mesure après mesure
 	if (structure_partition.compare("score-partwise") == 0) {
@@ -238,7 +238,11 @@ int main(int argc, char* argv[]) {
 			cerr << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
 		}
 
-		cout << "\nLa mélodie de la partie " << partie_musicale_selectionnee << " de la partition du fichier " << argv[1] << " est enregistrée dans le fichier " << nom_fichier_sortie << endl;
+		if (parties_musicales.size() == 1) {
+			cerr << "\nLa mélodie de la partition du fichier " << argv[1] << " est enregistrée dans le fichier " << nom_fichier_sortie << " (" << indice_note << " notes)" << endl;
+		} else {
+			cerr << "\nLa mélodie de la partie " << partie_musicale_selectionnee << " de la partition du fichier " << argv[1] << " est enregistrée dans le fichier " << nom_fichier_sortie << " (" << indice_note << " notes)" << endl;
+		}
 	} else {
 		cout << "\nAucun fichier de sortie n'est donné en argument du programme" << endl;
 		cout << "\n" << res << endl;

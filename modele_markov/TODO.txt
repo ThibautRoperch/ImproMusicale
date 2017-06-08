@@ -10,6 +10,7 @@ Parler que ca m'a permi dutiliser mes connaissances
 faire une image de construction des rectangles
 Détailler chaque contrainte (une partie par contrainte)
 Mettre dans le rapport tout ce qu'on a utilisé tehcniquement (librairies, langages, ...)
+1 partie par programme ?
 
 [ SOUTENANCE ]
 
@@ -26,14 +27,8 @@ Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des pattern
 
 virer le "objectif" de la dtd modelisation, pour elements min et max ?
 
-Vérifier les mélodies sur leur % de notes (ca fait la tonalité), la C1, rectangles, patterns répétés (les types patterns font le style)
-=> ressemblance totale moyenne avec ces caractéristiques appliqués à l'original
-Comparer les XML de modélisations (donc modéliser la mélodie générée en appellant modeliser.exe, possible dans le makefile ca, et a ajouter dans le script)
-Mettre aussi le résultat de la comparaison dans un fichier txt au pif, en plus de l'afficher
-
-18 valuations
-indice de ressemblance : 43 %
-pour saltarelo et chant
+Vérifier le rectangle quand on compile tout carmen
+make ; ./launch.sh test/partitions/opera_carmen/* --notraces --impro-markov
 
 Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
@@ -43,6 +38,7 @@ Quand ca donne la ligne de commande à exécuter, checker while true le contenu 
 remplir le champ de texte (un champ par type d'impro) avec ce fichier nouvellement crée (ordre des champs important : il doit concorder avec l'ordre de création des impros (cf le script launch.sh))
 Quand tout est full, ouvre une page avec des onglets (même page qu'ajd) : mélodies originales, impro xxx (nom du file en petit en dessous), impro xxx (chemin du file en dessous en petit)
 possibilité de voir ce que la comparaison a donné (popup qui affiche le contenu du fichier généré par comparaison.exe ?)
+faire un derner onglet ou toutes les melodies sont mises a la suites (+ les contraintes, là aussi)
 
 Programme MIDI from scratch
 

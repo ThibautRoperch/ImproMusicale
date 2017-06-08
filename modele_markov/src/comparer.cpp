@@ -40,9 +40,11 @@ int ressemblance(int source, int cible) {
 	int difference = abs(source - cible);
 
 	if (difference > source) {
+		if (cible == 0) return 0;
 		return 100 - ((difference * 100) / cible);
 	}
 	
+	if (source == 0) return 0;
 	return 100 - ((difference * 100) / source);
 }
 
@@ -52,7 +54,7 @@ int main(int argc, char* argv[]) {
 
 	/* Vérification du nombre d'arguments */
 
-	if (argc < 4) {
+	if (argc < 3) {
 		cerr << "Donner en argument les deux fichiers modélisant une mélodie à comparer et le fichier de sortie\n" << endl;
 		return EXIT_FAILURE;
 	}
@@ -70,22 +72,17 @@ int main(int argc, char* argv[]) {
 	xml_node<> *noeud_racine_source;
 	xml_node<> *noeud_racine_cible;
 
-	for (int i = 1; i <= 2; ++i) {
-		// Initialisation du vecteur contenant les noeuds du fichier source
-		ifstream theFile(argv[i]);
-		vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
-		buffer.push_back('\0');
+	ifstream theFile1(argv[1]);
+	vector<char> buffer1((istreambuf_iterator<char>(theFile1)), istreambuf_iterator<char>());
+	buffer1.push_back('\0');
+	doc_source.parse<0>(&buffer1[0]);
+	noeud_racine_source = doc_source.first_node("contraintes");
 
-		if (i == 1) {
-			doc_source.parse<0>(&buffer[0]);
-			noeud_racine_source = doc_source.first_node("contraintes");
-			cout << argv[i] << endl;
-		} else if (i == 2) {
-			doc_cible.parse<0>(&buffer[0]);
-			noeud_racine_cible = doc_cible.first_node("contraintes");
-			cout << argv[i] << endl;
-		}
-	}
+	ifstream theFile2(argv[2]);
+	vector<char> buffer2((istreambuf_iterator<char>(theFile2)), istreambuf_iterator<char>());
+	buffer2.push_back('\0');
+	doc_cible.parse<0>(&buffer2[0]);
+	noeud_racine_cible = doc_cible.first_node("contraintes");
 
 	/* C1 : Comparaison de la note min et de la note max */
 
@@ -182,12 +179,6 @@ int main(int argc, char* argv[]) {
 	int valeur_pattern_max_source = -1;
 	int valeur_pattern_min_source = -1;
 
-// ok
-// make ; make comparer source=test/modelisations/Saltarello-08062017_000736.xml cible=test/modelisations/Chant-08062017_000751.xml out=caca.txt
-// core dumped
-// make ; make comparer source=test/modelisations/Chant-08062017_000751.xml cible=test/modelisations/Saltarello-08062017_000736.xml out=caca.txt
-cout << "ok" << endl;
-
 	for (xml_node<> *noeud_pattern = noeud_patterns_source->first_node("pattern"); noeud_pattern; noeud_pattern = noeud_pattern->next_sibling()) {
 		int valeur_pattern = atoi(noeud_pattern->first_node("taille")->value()) * atoi(noeud_pattern->first_node("amplitude")->value());
 		int quantite_pattern = atoi(noeud_pattern->first_node("nombre")->value());
@@ -221,13 +212,16 @@ cout << "ok" << endl;
 		if (valeur_pattern_max_cible == -1 || valeur_pattern > valeur_pattern_max_cible) {
 			valeur_pattern_max_cible = valeur_pattern;
 		}
-		if (valeur_pattern_max_cible == -1 || valeur_pattern < valeur_pattern_min_cible) {
-			valeur_pattern_max_cible = valeur_pattern;
+		if (valeur_pattern_min_cible == -1 || valeur_pattern < valeur_pattern_min_cible) {
+			valeur_pattern_min_cible = valeur_pattern;
 		}
 	}
 
-	int valeur_moyenne_patterns_source = (valeur_totale_patterns_source * 100) / nombre_patterns_source;
-	int valeur_moyenne_patterns_cible = (valeur_totale_patterns_cible * 100) / nombre_patterns_cible;
+	int valeur_moyenne_patterns_source = 0;
+	int valeur_moyenne_patterns_cible = 0;
+
+	if (nombre_patterns_source > 0) valeur_moyenne_patterns_source = (valeur_totale_patterns_source * 100) / nombre_patterns_source;
+	if (nombre_patterns_cible > 0) valeur_moyenne_patterns_cible = (valeur_totale_patterns_cible * 100) / nombre_patterns_cible;
 
 	res += "Valuation de l'amplitude moyenne des patterns générés par rapport aux patterns originaux : ";
 	++nombre_valuations;
@@ -246,7 +240,6 @@ cout << "ok" << endl;
 	res += to_string(ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible)) + " %";
 	somme_valuations += ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible);
 	res += "\n\n";
-	// recalculer cette valuation ; ca donne 0% si on compare deux meêms mélodies
 
 	/* C5 : Comparaison de la répartition des notes de la mélodie (tonalité) */
 
@@ -287,10 +280,10 @@ cout << "ok" << endl;
 	}
 	
 	res += "Valuation de la proportion de chaque note contenue dans la mélodie générée par rapport aux proportions originales : ";
-	res += "\n\nNote\t% original\t% généré\tValuation";
+	res += "\n\nNote\tOriginal\tGénéré\t\tValuation";
 	for (unsigned int i = 0; i < repartition_notes_cible.size(); ++i) {
 		++nombre_valuations;
-		res += "\n" + to_string(i) + "\t" + to_string(repartition_notes_source[i]) + "\t\t" + to_string(repartition_notes_cible[i]) + "\t\t" + to_string(ressemblance(repartition_notes_source[i], repartition_notes_cible[i]));
+		res += "\n" + to_string(i) + "\t" + to_string(repartition_notes_source[i]) + " %\t\t" + to_string(repartition_notes_cible[i]) + " %\t\t" + to_string(ressemblance(repartition_notes_source[i], repartition_notes_cible[i])) + " %";
 		somme_valuations += ressemblance(repartition_notes_source[i], repartition_notes_cible[i]);
 	}
 	res += "\n\n";
@@ -298,12 +291,34 @@ cout << "ok" << endl;
 	res += "Valuation de la tonalité de la mélodie générée par rapport à la tonalité originale : ";
 	++nombre_valuations;
 	res += to_string((tonalite_source == tonalite_cible) * 100) + " %";
+	somme_valuations += (tonalite_source == tonalite_cible) * 100;
 	res += "\n\n";
 
-	cout << res;
+	/* Indice de ressemblance de la mélodie générée par rapport aux mélodies originales */
 
-	cout << nombre_valuations << " valuations" << endl;
-	cout << "indice de ressemblance : " << somme_valuations / nombre_valuations << " %" << endl;
+	res += "Indice de ressemblance de la mélodie générée par rapport à (aux) mélodie(s) originale(s) : ";
+	res += to_string(somme_valuations / nombre_valuations) + " %";
+	res += "\n\n";
+	cout << somme_valuations << " / " << nombre_valuations << endl;
+
+	/* Enregistrement de la mélodie extraite dans le fichier de sortie ou affichage à défaut de fichier donné en argument */
+	 
+	if (argc >= 4) {
+		string nom_fichier_sortie = argv[3];
+		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
+		
+		if(fichier_sortie) {
+			fichier_sortie << res;
+			fichier_sortie.close();
+		} else {
+			cerr << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
+		}
+
+		cerr << "\nLa comparaison entre la modélisation du fichier " << argv[1] << " et du fichier " << argv[2] << " est enregistrée dans le fichier " << nom_fichier_sortie << endl;
+	} else {
+		cout << "\nAucun fichier de sortie n'est donné en argument du programme" << endl;
+		cout << "\n" << res << endl;
+	}
 
 	cout << endl;
 

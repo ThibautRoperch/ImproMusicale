@@ -69,6 +69,7 @@ clean_librairies:
 clean_tests:
 	rm -f $(TEST_DIR)/modelisations/*
 	rm -f $(TEST_DIR)/improvisations/*
+	rm -f $(TEST_DIR)/comparaisons/*
 
 clean:
 	rm -f $(BUILD_DIR)/*

@@ -144,11 +144,17 @@ then
 		
 			# Comparaison de l'improvisation obtenue avec les mélodies originales
 		
+			comparaison="test/comparaisons/$fichier_sortie-$fichier_sortie-impro-$type_impro-$date.txt"
+			
 			echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
 		
-			#./bin/comparer.exe $modelisation $modelisation_impro > $redirection_sortie
+			./bin/comparer.exe $modelisation $modelisation_impro $comparaison > $redirection_sortie
 		done
 	fi
+	
+	# Fin du script
+	
+	echo -e ""
 	
 else
 	echo -e "# Utilisation : ./launch.sh partition [OPTION]"

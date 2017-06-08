@@ -55,9 +55,10 @@ int main(int argc, char* argv[]) {
 	Note *note_min = NULL;
 	Note *note_max = NULL;
 
-	double hauteur_rectangle = 1;
-	int largeur_rectangle = 1;
-	double difference_moyenne = -1;
+	// Un rectangle est calculé pour chaque mélodie, une moyenne est faite à la fin pour calculer le rectangle final
+	vector<double> hauteur_rectangle(argc - 2, 1); // vecteur x 1, x étant le nombre de mélodies 
+	vector<int> largeur_rectangle(argc - 2, 1); // vecteur x 1, x étant le nombre de mélodies 
+	vector<double> difference_moyenne(argc - 2, -1); // vecteur x -1, x étant le nombre de mélodies 
 
 	vector<int> repartition_notes(12, 0); // à un indice correspond la valeur d'une note, la valeur de l'indice correspond au nombre de notes qui ont cette valeur
 
@@ -98,7 +99,7 @@ int main(int argc, char* argv[]) {
 			/* C2 : Calcul de la hauteur moyenne entre deux notes sur une plage de notes donnée (rectangle) */
 			
 			// Le rectangle adapte sa taille en fonction des notes consécutives : il faut donc une note précédente et une note actuelle
-			// Les mélodies ne se suivent pas, la note précédente est donc NULL à chaque nouvelle mélodie lue
+			// Les mélodies ne se suivent pas forcément, la note précédente est donc NULL à chaque nouvelle mélodie lue
 			// S'il n'y a pas de note précédemment lue pour cette mélodie, fixer la monotonie à 1 car la première note de cette mélodie est en train d'être lue
 			if (note_precedente != NULL) {
 				// Changement de la largeur du rectangle en fonction de la monotonie de la mélodie sur la largeur du rectangle
@@ -113,31 +114,31 @@ int main(int argc, char* argv[]) {
 				int difference_hauteur = abs(n.hauteurNote() - note_precedente->hauteurNote());
 
 				// Actualisation de la monotonie avec la différence de hauteur entre cette note et la pécédente
-				// Si la différence de hauteur est inférieure à la moyenne (ou s'il n'y a pas encore de moyenne), la monotonie gagne un point
+				// Si la différence de hauteur est inférieure à la moyenne (ou s'il n'y a pas encore de moyenne pour cette mélodie), la monotonie gagne un point
 				// Sinon, la monotonie est remise à 1
-				if (difference_hauteur <= difference_moyenne || difference_moyenne == -1) {
+				if (difference_hauteur <= difference_moyenne[i] || difference_moyenne[i] == -1) {
 					++monotonie;
 				} else {
 					monotonie = 1;
 				}
 				// Lorsque la monotonie vaut la largeur du rectangle + 1, celui-ci gagne 1 en largeur
 				// La monotonie n'est pas remise à 0, elle peut continuer d'augmenter à la prochaine note
-				if (monotonie == largeur_rectangle + 1) {
-					++largeur_rectangle;
+				if (monotonie == largeur_rectangle[i] + 1) {
+					++largeur_rectangle[i];
 				}
 
 				// Dans le cas où la note actuellement lue est la deuxième, toutes mélodies confondues, la différence moyenne vaut la différence actuelle
 				// Sinon, dans le cas normal, la nouvelle moyenne de différences de hauteur est calculée, et la hauteur du rectangle est mise à jour
-				if (difference_moyenne == -1) {
-					difference_moyenne = difference_hauteur;
-					hauteur_rectangle = difference_moyenne;
+				if (difference_moyenne[i] == -1) {
+					difference_moyenne[i] = difference_hauteur;
+					hauteur_rectangle[i] = difference_moyenne[i];
 				} else {
 					// Calcule de la différence entre la différence moyenne en ajoutant la différence de hauteur avec cette note et la différence moyenne sans compter cette note
 					// Ajout du résultat à la hauteur du rectangle
 					// Enregistrement de la différence moyenne
-					double nouvelle_difference_moyenne = (difference_moyenne * (chaine_markov.nombreElementsAjoutes() - 1 - 1) + difference_hauteur) / (chaine_markov.nombreElementsAjoutes() - 1); // - 1 pour omettre la dernière note et - 1 car le nombre de différences = nombre de notes - 1
-					hauteur_rectangle += nouvelle_difference_moyenne - difference_moyenne;
-					difference_moyenne = nouvelle_difference_moyenne;
+					double nouvelle_difference_moyenne = (difference_moyenne[i] * (chaine_markov.nombreElementsAjoutes() - 1 - 1) + difference_hauteur) / (chaine_markov.nombreElementsAjoutes() - 1); // - 1 pour omettre la dernière note et - 1 car le nombre de différences = nombre de notes - 1
+					hauteur_rectangle[i] += nouvelle_difference_moyenne - difference_moyenne[i];
+					difference_moyenne[i] = nouvelle_difference_moyenne;
 				}
 			} else {
 				monotonie = 1;
@@ -201,41 +202,58 @@ int main(int argc, char* argv[]) {
 
 	/* C2 : Calcul de la hauteur moyenne entre deux notes sur une plage de notes donnée (rectangle) */
 
-	hauteur_rectangle = nearbyint(hauteur_rectangle); // arrondi à l'entier le plus proche
+	double hauteur_totale_rectangle = 0;
+	double largeur_totale_rectangle = 0;
+
+	for (auto dimension : hauteur_rectangle) {
+		hauteur_totale_rectangle += dimension;
+	}
+	for (auto dimension : largeur_rectangle) {
+		largeur_totale_rectangle += dimension;
+	}
+
+	cout << "haut tot = " << hauteur_totale_rectangle << endl;
+	cout << "larg tot = " << largeur_totale_rectangle << endl;
+
+	int hauteur_moyenne_rectangle = nearbyint(hauteur_totale_rectangle / hauteur_rectangle.size()); // arrondi à l'entier le plus proche
+	int largeur_moyenne_rectangle = nearbyint(largeur_totale_rectangle / largeur_rectangle.size()); // arrondi à l'entier le plus proche
 	int nombre_notes_couvertes = 0;
 	int nombre_rectangles = 0;
 
 	// Pour chaque mélodie
 	for (auto melodie : melodies) {
-		nombre_rectangles += melodie.size() - largeur_rectangle + 1;
-		// Pour chaque rectangle de la mélodie
-		for (unsigned int note = 0; note < melodie.size() - largeur_rectangle + 1; ++note) {
-			int position = melodie[note]->hauteurNote() + hauteur_rectangle; // position haute maximale (repère du rectangle : angle haut gauche)
-			int max_notes_couvertes = 0;
-			// Pour chaque position du rectangle possible (du haut vers le bas) et tant que le nombre de notes couvertes est strictement inférieur au nombre de notes couvrables,
-			// compter le nombre de notes couvertes et l'enregistrer s'il ce nombre est supérieur au max trouvé jusqu'ici
-			while (position >= melodie[note]->hauteurNote() && max_notes_couvertes < largeur_rectangle) { // position basse maximale (repère du rectangle : angle haut gauche)
-				int notes_couvertes = 1; // la premiere note est toujours dans le rectangle
-				// Pour chaque note se trouvant à portée horizontalement, la compter si elle est dans le rectangle
-				for (unsigned int note_suivante = note + 1; note_suivante < note + largeur_rectangle; ++note_suivante) {
-					if (melodie[note_suivante]->hauteurNote() <= position && melodie[note_suivante]->hauteurNote() >= position - hauteur_rectangle) {
-						++notes_couvertes;
+		nombre_rectangles += melodie.size() - largeur_moyenne_rectangle + 1;
+		// Si la mélodie possède au moins suffisamment de notes pour remplir un rectangle
+		if ((int) melodie.size() >= largeur_moyenne_rectangle) {
+			// Pour chaque rectangle de la mélodie
+			for (unsigned int note = 0; note < melodie.size() - largeur_moyenne_rectangle + 1; ++note) {
+				int position = melodie[note]->hauteurNote() + hauteur_moyenne_rectangle; // position haute maximale (repère du rectangle : angle haut gauche)
+				int max_notes_couvertes = 0;
+				// Pour chaque position du rectangle possible (du haut vers le bas) et tant que le nombre de notes couvertes est strictement inférieur au nombre de notes couvrables,
+				// compter le nombre de notes couvertes et l'enregistrer s'il ce nombre est supérieur au max trouvé jusqu'ici
+				while (position >= melodie[note]->hauteurNote() && max_notes_couvertes < largeur_moyenne_rectangle) { // position basse maximale (repère du rectangle : angle haut gauche)
+					int notes_couvertes = 1; // la premiere note est toujours dans le rectangle
+					// Pour chaque note se trouvant à portée horizontalement, la compter si elle est dans le rectangle
+					for (unsigned int note_suivante = note + 1; note_suivante < note + largeur_moyenne_rectangle; ++note_suivante) {
+						if (melodie[note_suivante]->hauteurNote() <= position && melodie[note_suivante]->hauteurNote() >= position - hauteur_moyenne_rectangle) {
+							++notes_couvertes;
+						}
 					}
+					if (notes_couvertes > max_notes_couvertes) {
+						max_notes_couvertes = notes_couvertes;
+					}
+					--position;
 				}
-				if (notes_couvertes > max_notes_couvertes) {
-					max_notes_couvertes = notes_couvertes;
-				}
-				--position;
-			}
-			nombre_notes_couvertes += max_notes_couvertes;
-		}
-	}
+				nombre_notes_couvertes += max_notes_couvertes;
+			} // Fin du "Pour chaque rectangle de la mélodie"
+		} // Fin de la conditionnelle qui vérifie que la mélodie est suffisamment grande pour accueillir au moins un rectangle
+	} // Fin du "Pour chaque mélodie"
 	
 	res += "  <rectangles>\n";
 	res += "    <rectangle>\n";
-	res += "      <objectif>" + to_string((double) nombre_notes_couvertes / (largeur_rectangle * nombre_rectangles)) + "</objectif>\n";
-	res += "      <hauteur>" + to_string((int) hauteur_rectangle) + "</hauteur>\n";
-	res += "      <largeur>" + to_string(largeur_rectangle) + "</largeur>\n";
+	res += "      <objectif>" + to_string((double) nombre_notes_couvertes / (largeur_moyenne_rectangle * nombre_rectangles)) + "</objectif>\n";
+	res += "      <hauteur>" + to_string(hauteur_moyenne_rectangle) + "</hauteur>\n";
+	res += "      <largeur>" + to_string(largeur_moyenne_rectangle) + "</largeur>\n";
 	res += "    </rectangle>\n";
 	res += "  </rectangles>\n";
 
