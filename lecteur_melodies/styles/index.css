@@ -1,0 +1,71 @@
+
+/* La section est centrée dans le body */
+
+section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+/* La première div de la section est composée d'articles disposés en colonne */
+
+section > div {
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+}
+
+/* Un article de session peut contenir des div disposées en ligne */
+
+section div article {
+	display: flex;
+	flex-direction: row;
+	padding: 20px;
+	border: 1px solid silver;
+}
+
+/* La div d'un article d'une section a une marge intérieure */
+
+section div article div {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 10px;
+	line-height: 30px;
+}
+
+section div article div div {
+	display: flex;
+	flex-direction: row;
+	vertical-align: middle;
+}
+
+/* Les articles suivants le premiers ont une barre verticale de séparation */
+
+section div article > div:nth-child(n+2) {
+	padding: 10px;
+	border-left: 1px solid silver;
+}
+
+/*  */
+
+div#options-improvisation {
+	width: 33%;
+}
+
+/*  */
+
+div#drop-zone {
+	background: rgba(255, 255, 255, 0.6);
+}
+
+div#drop-zone div {
+	padding: 20px;
+}
+
+div#drop-zone div input[type="file"] {
+	width: 100%;
+	height: 500px;
+	border: 2px dashed rgba(0, 0, 0, 0.4);
+}

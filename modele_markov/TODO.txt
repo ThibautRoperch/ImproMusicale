@@ -27,8 +27,7 @@ Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des pattern
 
 virer le "objectif" de la dtd modelisation, pour elements min et max ?
 
-Vérifier le rectangle quand on compile tout carmen
-make ; ./launch.sh test/partitions/opera_carmen/* --notraces --impro-markov
+Dire qu'à 50% c'est fidèle (ajouter une phrase dans le res de la verif)
 
 Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)

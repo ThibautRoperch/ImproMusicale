@@ -67,6 +67,7 @@ clean_librairies:
 	make clean
 
 clean_tests:
+	rm -f $(TEST_DIR)/melodies/*
 	rm -f $(TEST_DIR)/modelisations/*
 	rm -f $(TEST_DIR)/improvisations/*
 	rm -f $(TEST_DIR)/comparaisons/*

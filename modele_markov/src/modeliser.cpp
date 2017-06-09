@@ -65,6 +65,8 @@ int main(int argc, char* argv[]) {
 	for (int i = 1; i < argc - 1; ++i) {
 		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
 
+		int id_fichier = i - 1;
+
 		xml_document<> doc;
 		xml_node<> *noeud_racine;
 
@@ -73,7 +75,6 @@ int main(int argc, char* argv[]) {
 		vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 		buffer.push_back('\0');
 		doc.parse<0>(&buffer[0]);
-
 		noeud_racine = doc.first_node("notes");
 
 		Note *note_precedente = NULL;
@@ -81,7 +82,7 @@ int main(int argc, char* argv[]) {
 
 		// Itération sur les parties (noeuds "note" du noeud "notes")
 		for (xml_node<> *noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
-			// cout << "+ Note" << endl;
+			cout << "+ Note" << endl;
 
 			int valeur_note = stoi(noeud_note->first_node("valeur")->value());
 			int octave_note = stoi(noeud_note->first_node("octave")->value());
@@ -97,7 +98,6 @@ int main(int argc, char* argv[]) {
 			if (note_max == NULL || n > *note_max) note_max = chaine_markov.dernierElement();
 
 			/* C2 : Calcul de la hauteur moyenne entre deux notes sur une plage de notes donnée (rectangle) */
-			
 			// Le rectangle adapte sa taille en fonction des notes consécutives : il faut donc une note précédente et une note actuelle
 			// Les mélodies ne se suivent pas forcément, la note précédente est donc NULL à chaque nouvelle mélodie lue
 			// S'il n'y a pas de note précédemment lue pour cette mélodie, fixer la monotonie à 1 car la première note de cette mélodie est en train d'être lue
@@ -116,29 +116,29 @@ int main(int argc, char* argv[]) {
 				// Actualisation de la monotonie avec la différence de hauteur entre cette note et la pécédente
 				// Si la différence de hauteur est inférieure à la moyenne (ou s'il n'y a pas encore de moyenne pour cette mélodie), la monotonie gagne un point
 				// Sinon, la monotonie est remise à 1
-				if (difference_hauteur <= difference_moyenne[i] || difference_moyenne[i] == -1) {
+				if (difference_hauteur <= difference_moyenne[id_fichier] || difference_moyenne[id_fichier] == -1) {
 					++monotonie;
 				} else {
 					monotonie = 1;
 				}
 				// Lorsque la monotonie vaut la largeur du rectangle + 1, celui-ci gagne 1 en largeur
 				// La monotonie n'est pas remise à 0, elle peut continuer d'augmenter à la prochaine note
-				if (monotonie == largeur_rectangle[i] + 1) {
-					++largeur_rectangle[i];
+				if (monotonie == largeur_rectangle[id_fichier] + 1) {
+					++largeur_rectangle[id_fichier];
 				}
 
 				// Dans le cas où la note actuellement lue est la deuxième, toutes mélodies confondues, la différence moyenne vaut la différence actuelle
 				// Sinon, dans le cas normal, la nouvelle moyenne de différences de hauteur est calculée, et la hauteur du rectangle est mise à jour
-				if (difference_moyenne[i] == -1) {
-					difference_moyenne[i] = difference_hauteur;
-					hauteur_rectangle[i] = difference_moyenne[i];
+				if (difference_moyenne[id_fichier] == -1) {
+					difference_moyenne[id_fichier] = difference_hauteur;
+					hauteur_rectangle[id_fichier] = difference_moyenne[id_fichier];
 				} else {
 					// Calcule de la différence entre la différence moyenne en ajoutant la différence de hauteur avec cette note et la différence moyenne sans compter cette note
 					// Ajout du résultat à la hauteur du rectangle
 					// Enregistrement de la différence moyenne
-					double nouvelle_difference_moyenne = (difference_moyenne[i] * (chaine_markov.nombreElementsAjoutes() - 1 - 1) + difference_hauteur) / (chaine_markov.nombreElementsAjoutes() - 1); // - 1 pour omettre la dernière note et - 1 car le nombre de différences = nombre de notes - 1
-					hauteur_rectangle[i] += nouvelle_difference_moyenne - difference_moyenne[i];
-					difference_moyenne[i] = nouvelle_difference_moyenne;
+					double nouvelle_difference_moyenne = (difference_moyenne[id_fichier] * (chaine_markov.nombreElementsAjoutes() - 1 - 1) + difference_hauteur) / (chaine_markov.nombreElementsAjoutes() - 1); // - 1 pour omettre la dernière note et - 1 car le nombre de différences = nombre de notes - 1
+					hauteur_rectangle[id_fichier] += nouvelle_difference_moyenne - difference_moyenne[id_fichier];
+					difference_moyenne[id_fichier] = nouvelle_difference_moyenne;
 				}
 			} else {
 				monotonie = 1;
@@ -150,7 +150,7 @@ int main(int argc, char* argv[]) {
 
 			++repartition_notes[valeur_note];
 		} // Fin de la lecture des notes de la mélodie de ce fichier
-
+		
 		// Affichage de la chaîne de Markov
 		chaine_markov.afficherChaine();
 		
@@ -159,11 +159,6 @@ int main(int argc, char* argv[]) {
 
 		// Ecrasement de la mélodie précédente en vue d'une nouvelle lecture de mélodie
 		chaine_markov.reinitialiserChaine();
-	}
-
-	if (chaine_markov.nombreElementsAjoutes() == 0) {
-		cerr << "La mélodie ne comporte pas de notes\n" << endl;
-		return EXIT_FAILURE;
 	}
 
 	/* Calcul de la matrice des statistiques du modèle de Markov des mélodies sources */
@@ -183,6 +178,9 @@ int main(int argc, char* argv[]) {
 	vector<vector<double>> statistiques = chaine_markov.matrice();
 
 	/* C1 : Calcul de la note min et de la note max */
+
+	if (note_min == NULL) note_min = new Note(0, 0);
+	if (note_max == NULL) note_max = new Note(0, 0);
 
 	res += "  <elements-min-max>\n";
 	res += "    <objectif>1</objectif>\n";
@@ -211,9 +209,6 @@ int main(int argc, char* argv[]) {
 	for (auto dimension : largeur_rectangle) {
 		largeur_totale_rectangle += dimension;
 	}
-
-	cout << "haut tot = " << hauteur_totale_rectangle << endl;
-	cout << "larg tot = " << largeur_totale_rectangle << endl;
 
 	int hauteur_moyenne_rectangle = nearbyint(hauteur_totale_rectangle / hauteur_rectangle.size()); // arrondi à l'entier le plus proche
 	int largeur_moyenne_rectangle = nearbyint(largeur_totale_rectangle / largeur_rectangle.size()); // arrondi à l'entier le plus proche

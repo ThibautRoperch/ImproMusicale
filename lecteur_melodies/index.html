@@ -1,10 +1,86 @@
+<!DOCTYPE html>
 
-<input onchange="test(this)" type="file" multiple>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Epurer, modéliser, improviser et comparer</title>
+		
+		<link rel="stylesheet" href="styles/main.css" type="text/css">
+		<link rel="stylesheet" href="styles/index.css" type="text/css">
+	</head>
+
+	<body onload="verifierEtatImprovisation()">
+
+		<nav></nav>
+		
+		<section>
+			<div>
+
+				<article>
+					<div id="drop-zone">
+						<div>
+							<input onchange="ajouterFichiers(this)" type="file" multiple>
+						</div>
+					</div>
+				</article>
+
+				<article>
+					<div id="types-improvisation">
+						<div>
+							<input id="impro-aleatoire" onchange="verifierEtatImprovisation()" type="checkbox" name="improvisation" value="aleatoire">
+							<label for="impro-aleatoire">Improvisation totalement aléatoire</label>
+						</div>
+						<div>
+							<input id="impro-contraintes" onchange="verifierEtatImprovisation()" type="checkbox" name="improvisation" value="contraintes">
+							<label for="impro-contraintes">Improvisation aléatoire sous contraintes</label>
+						</div>
+						<div>
+							<input id="impro-markov" onchange="verifierEtatImprovisation()" type="checkbox" name="improvisation" value="markov">
+							<label for="impro-markov">Improvisation basée sur le modèle de Markov</label>
+						</div>
+					</div>
+					<div id="options-improvisation">
+						<label for="nombre-notes">Nombre de notes à générer</label>
+						<br>
+						<input id="nombre-notes" type="text" />
+					</div>
+				</article>
+
+			</div>
+		</section>
+
+	</body>
+
+</html>
+
 
 <script>
 
-function test(input) {
-    alert("oui");
+var partitions = [];
+
+function verifierEtatImprovisation() {
+	var types_impro = document.getElementById("types-improvisation")
+	var impro_cochee = false;
+	var i = 0;
+	while (types_impro.getElementsByTagName("input")[i]) {
+		if (types_impro.getElementsByTagName("input")[i].checked) {
+			impro_cochee = true;
+			break;
+		}
+		++i;	
+	}
+	if (impro_cochee) {
+		document.getElementById("options-improvisation").style.display = "block";
+	} else {
+		document.getElementById("options-improvisation").style.display = "none";
+	}
+}
+
+function ajouterFichiers(input) {
+	for (var i = 0; i < input.files.length; i++) {
+		partitions.push(input.files[i].name);
+	}
 }
 
 </script>

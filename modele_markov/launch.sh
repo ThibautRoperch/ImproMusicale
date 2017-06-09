@@ -6,6 +6,7 @@ if [ $# -ge 1 ]
 then
 	# Déclaration des variables globales
 	
+	dossier_partitions_defaut="test/partitions"
 	fichiers_entree=""
 	redirection_sortie="/dev/fd/1" # sortie standard
 	type_improvisations=""
@@ -35,14 +36,28 @@ then
 				echo -e "# Option $1 inconnue"
 				echo -e "# Options :"
 				echo -e "\t--impro-random\t\tGénérer, à partir de la partition, une mélodie totalement aléatoire"
-				echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire avec contraintes"
+				echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire sous contraintes"
 				echo -e "\t--impro-markov\t\tGénérer, à partir de la partition, une mélodie basée uniquement sur le modèle de Markov"
 				echo -e "\t--notraces\t\tMasquer la sortie lors de l'utilisation des programmes"
 				
 				exit 2
 			fi
 		else
-			fichiers_entree="$fichiers_entree$1 "
+			if [ -e $1 ]
+			then
+				fichiers_entree="$fichiers_entree$1 "
+			else
+				fichier=$(echo $1 | awk -F / '{print $NF}')
+				recherche_fichier=$(find $dossier_partitions_defaut -name $fichier)
+				if [ "$recherche_fichier" == "" ]
+				then
+					echo -e "# Fichier $1 introuvable"
+					
+					exit 3
+				else
+					fichiers_entree="$fichiers_entree$recherche_fichier "
+				fi
+			fi
 		fi
 		shift
 	done
@@ -79,7 +94,7 @@ then
 		tmp=$(echo $tmp | awk -F / '{print $NF}')
 		fichier_sortie=$fichier_sortie$tmp
 		
-		melodie="test/melodies/$tmp.xml"
+		melodie="test/melodies/$tmp-$date.xml"
 		melodies="$melodies$melodie "
 		
 		# Extraction de la mélodie de la partition
@@ -133,21 +148,21 @@ then
 				echo -e "\nImprovisation ($type_impro) à partir de la (des) mélodie(s) dans $improvisation"
 				./bin/improviser.exe $nombre_notes $melodies $improvisation > $redirection_sortie
 			fi
-		
+			
 			# Modélisation de l'improvisation obtenue
-		
+			
 			modelisation_impro="test/modelisations/$fichier_sortie-$date-impro-$type_impro.xml"
-		
+			
 			echo -e "\n# Modélisation de l'improvisation obtenue dans $modelisation_impro"
-		
+			
 			./bin/modeliser.exe $improvisation $modelisation_impro > $redirection_sortie
-		
+			
 			# Comparaison de l'improvisation obtenue avec les mélodies originales
-		
+			
 			comparaison="test/comparaisons/$fichier_sortie-$fichier_sortie-impro-$type_impro-$date.txt"
 			
 			echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
-		
+			
 			./bin/comparer.exe $modelisation $modelisation_impro $comparaison > $redirection_sortie
 		done
 	fi
@@ -165,7 +180,7 @@ else
 	
 	echo -e "# Options :"
 	echo -e "\t--impro-random\t\tGénérer, à partir de la partition, une mélodie totalement aléatoire"
-	echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire avec contraintes"
+	echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire sous contraintes"
 	echo -e "\t--impro-markov\t\tGénérer, à partir de la partition, une mélodie basée uniquement sur le modèle de Markov"
 	echo -e "\t--notraces\t\tMasquer la sortie lors de l'utilisation des programmes"
 	

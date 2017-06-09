@@ -5,6 +5,7 @@ build
 bin/*
 
 # Dossier test contenant les tests
+test/melodies/*
 test/modelisations/*
 test/improvisations/*
 test/comparaisons/*

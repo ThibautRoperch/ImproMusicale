@@ -302,7 +302,7 @@ int main(int argc, char* argv[]) {
 	cout << somme_valuations << " / " << nombre_valuations << endl;
 
 	/* Enregistrement de la mélodie extraite dans le fichier de sortie ou affichage à défaut de fichier donné en argument */
-	 
+	
 	if (argc >= 4) {
 		string nom_fichier_sortie = argv[3];
 		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);

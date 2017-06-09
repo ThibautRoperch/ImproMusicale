@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+	background: #3E97D1;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/*
+http://colorschemedesigner.com/csd-3.5/#3v21Tw0w0w0w0
+
+#0A67A3
+#3E97D1
+#65A6D1
+#FF8E00
+*/
