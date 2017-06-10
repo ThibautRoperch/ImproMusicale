@@ -12,6 +12,9 @@ Détailler chaque contrainte (une partie par contrainte)
 Mettre dans le rapport tout ce qu'on a utilisé tehcniquement (librairies, langages, ...)
 1 partie par programme ?
 
+tous mes programmes marchent avec un in et out
+
+
 [ SOUTENANCE ]
 
 faire une animation de construction des rectangles, enlever les notes, garder les rectangles, generer aléatoirement à l'itnerieur
@@ -22,6 +25,10 @@ Peut durer 25 min au total pour nous deux
 Prévoir un enregistrement si la démo fait n'imp
 
 [ TECHNIQUEMENT ]
+
+
+sortie html dans le fichier
+affichage de res dans la console
 
 Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
 

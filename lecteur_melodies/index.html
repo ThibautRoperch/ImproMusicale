@@ -4,23 +4,35 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Epurer, modéliser, improviser et comparer</title>
+		<title>Extraire, modéliser, improviser et comparer</title>
 		
 		<link rel="stylesheet" href="styles/main.css" type="text/css">
 		<link rel="stylesheet" href="styles/index.css" type="text/css">
 	</head>
 
-	<body onload="verifierEtatImprovisation()">
+	<body onload="actualiserElementsDynamiques()">
 
-		<nav></nav>
+		<header></header>
 		
 		<section>
 			<div>
 
+				<nav>
+					<ul>
+						<li><a href="">Improviser sur des partitions</a></li>
+						<li><a href="listener.html">Ouvrir une mélodie existante</a></li>
+					</ul>
+				</nav>
+
 				<article>
-					<div id="drop-zone">
+					<div id="zone-depot">
 						<div>
-							<input onchange="ajouterFichiers(this)" type="file" multiple>
+							<div>
+								<p id="message-depot">Choisir des fichiers ou les glisser ici</p>
+							</div>
+							<div>
+								<input oninput="ajouterFichiers(this), actualiserElementsDynamiques()" type="file" multiple>
+							</div>
 						</div>
 					</div>
 				</article>
@@ -28,27 +40,36 @@
 				<article>
 					<div id="types-improvisation">
 						<div>
-							<input id="impro-aleatoire" onchange="verifierEtatImprovisation()" type="checkbox" name="improvisation" value="aleatoire">
+							<input id="impro-aleatoire" oninput="actualiserElementsDynamiques()" type="checkbox" name="improvisation" value="aleatoire">
 							<label for="impro-aleatoire">Improvisation totalement aléatoire</label>
 						</div>
 						<div>
-							<input id="impro-contraintes" onchange="verifierEtatImprovisation()" type="checkbox" name="improvisation" value="contraintes">
+							<input id="impro-contraintes" oninput="actualiserElementsDynamiques()" type="checkbox" name="improvisation" value="contraintes">
 							<label for="impro-contraintes">Improvisation aléatoire sous contraintes</label>
 						</div>
 						<div>
-							<input id="impro-markov" onchange="verifierEtatImprovisation()" type="checkbox" name="improvisation" value="markov">
+							<input id="impro-markov" oninput="actualiserElementsDynamiques()" type="checkbox" name="improvisation" value="markov">
 							<label for="impro-markov">Improvisation basée sur le modèle de Markov</label>
 						</div>
 					</div>
 					<div id="options-improvisation">
-						<label for="nombre-notes">Nombre de notes à générer</label>
+						<label for="nombre-notes">Nombre de notes à générer :</label>
 						<br>
-						<input id="nombre-notes" type="text" />
+						<input id="nombre-notes" oninput="actualiserElementsDynamiques()" type="number" /> notes
 					</div>
 				</article>
 
+				<footer>
+					<button id="annuler" onclick="annuler(this)">Annuler</button>
+					<button id="continuer" onclick="continuer(this)">Continuer</button>
+				</footer>
+
 			</div>
 		</section>
+
+		<footer>
+			<p>Copyright © 2017 - Dylan Bunel, Thibaut Roperch</p>
+		</footer>
 
 	</body>
 
@@ -58,15 +79,46 @@
 <script>
 
 var partitions = [];
+var improvisations = [];
 
-function verifierEtatImprovisation() {
-	var types_impro = document.getElementById("types-improvisation")
+function ajouterFichiers(input) {
+	for (var i = 0; i < input.files.length; i++) {
+		partitions.push(input.files[i].name);
+	}
+
+	actualiserListeFichiers();
+}
+
+function actualiserListeFichiers() {
+	var liste_fichiers = document.getElementById("message-depot");
+
+	if (partitions.length > 0) {
+		liste_fichiers.className = "rempli";
+	} else {
+		liste_fichiers.className = "";
+	}
+
+	liste_fichiers.innerHTML = "";
+	for (var i = 0; i < partitions.length; i++) {
+		liste_fichiers.innerHTML += partitions[i] + "<br>";
+	}
+}
+
+function actualiserElementsDynamiques() {
+	actualiserEtatImprovisation();
+	actualiserBoutons();
+}
+
+function actualiserEtatImprovisation() {
+	var types_impro = document.getElementById("types-improvisation");
 	var impro_cochee = false;
+	improvisations = [];
+
 	var i = 0;
 	while (types_impro.getElementsByTagName("input")[i]) {
 		if (types_impro.getElementsByTagName("input")[i].checked) {
 			impro_cochee = true;
-			break;
+			improvisations.push(types_impro.getElementsByTagName("input")[i].id);
 		}
 		++i;	
 	}
@@ -77,9 +129,48 @@ function verifierEtatImprovisation() {
 	}
 }
 
-function ajouterFichiers(input) {
-	for (var i = 0; i < input.files.length; i++) {
-		partitions.push(input.files[i].name);
+function actualiserBoutons() {
+	var options_impro = document.getElementById("options-improvisation");
+	var nombre_notes = document.getElementById("nombre-notes");
+
+	// Il y a au moins un fichier d'envoyé et (le nombre de notes n'est pas demandé ou (le nombre de note est demandé et il est non vide))
+	if (partitions.length > 0 && (options_impro.style.display == "none" || (options_impro.style.display == "block" && nombre_notes.value != ""))) {
+		document.getElementById("continuer").className = "actif";
+	} else {
+		document.getElementById("continuer").className = "";
+	}
+	
+	// Il y a au moins un fichier d'envoyé ou le nombre de note est demandé
+	if (partitions.length > 0 || options_impro.style.display == "block") {
+		document.getElementById("annuler").className = "actif";
+	} else {
+		document.getElementById("annuler").className = "";
+	}
+}
+
+function continuer(bouton) {
+	if (bouton.className == "actif") {
+		var page_suivante = "scripter.html?partitions=";
+
+		for (var i = 0; i < partitions.length; i++) {
+			if (i > 0) page_suivante += "&";
+			page_suivante += partitions[i];
+		}
+
+		page_suivante += "?improvisations=";
+
+		for (var i = 0; i < improvisations.length; i++) {
+			if (i > 0) page_suivante += "&";
+			page_suivante += improvisations[i];
+		}
+		
+		document.location.href = page_suivante;
+	}
+}
+
+function annuler(bouton) {
+	if (bouton.className == "actif") {
+		document.location.href = "index.html";
 	}
 }
 

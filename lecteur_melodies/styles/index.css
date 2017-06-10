@@ -1,5 +1,5 @@
 
-/* La section est centrée dans le body */
+/* La section est en pleine page dans le body */
 
 section {
 	display: flex;
@@ -8,64 +8,198 @@ section {
 	height: 100%;
 }
 
-/* La première div de la section est composée d'articles disposés en colonne */
+/* La div est centrée dans la section et est composée d'une navigation et d'articles disposés en colonne dans une div */
 
 section > div {
 	display: flex;
 	flex-direction: column;
-	width: 60%;
+	width: 50%;
+}
+
+/* La navigation permet de naviguer entre les pages au moyen de liens dans une liste */
+
+nav {
+	margin-bottom: 30px;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+nav ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+nav ul li {
+	display: flex;
+	margin-right: 15px;
+}
+
+nav ul li a {
+	display: inline-block;
+	padding: 0 20px;
+	line-height: 50px;
+	color: rgba(255, 255, 255, 0.8);
+	transition: background .2s ease;
+}
+
+nav ul li a[href=""], nav ul li a:hover {
+	color: rgba(0, 0, 0, 0.8);
+	background: rgba(255, 255, 255, 0.6);
 }
 
 /* Un article de session peut contenir des div disposées en ligne */
 
-section div article {
+article {
 	display: flex;
 	flex-direction: row;
-	padding: 20px;
-	border: 1px solid silver;
-}
-
-/* La div d'un article d'une section a une marge intérieure */
-
-section div article div {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	padding: 10px;
-	line-height: 30px;
-}
-
-section div article div div {
-	display: flex;
-	flex-direction: row;
-	vertical-align: middle;
-}
-
-/* Les articles suivants le premiers ont une barre verticale de séparation */
-
-section div article > div:nth-child(n+2) {
-	padding: 10px;
-	border-left: 1px solid silver;
-}
-
-/*  */
-
-div#options-improvisation {
-	width: 33%;
-}
-
-/*  */
-
-div#drop-zone {
+	margin-bottom: 30px;
+	padding: 30px;
 	background: rgba(255, 255, 255, 0.6);
 }
 
-div#drop-zone div {
+/* La div d'un article a une marge intérieure */
+
+article > div {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	line-height: 30px;
+}
+
+/* Les div des div des articles contiennent un input et potentiellement un label */
+
+article > div > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	vertical-align: middle;
+}
+
+/* Les div des articles ont une barre verticale de séparation lorsqu'ils ne sont pas en première position */
+
+article > div:nth-child(n+2) {
+	padding-left: 30px;
+	border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* La zone de dépôt des fichiers possède des div */
+
+div#zone-depot {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+div#zone-depot, div#zone-depot * {
+	transition: .15s all ease;
+	cursor: pointer;
+}
+
+div#zone-depot > div {
+	padding: 10px;
+	flex-direction: column;
+}
+
+div#zone-depot:hover {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+div#zone-depot:hover > div {
 	padding: 20px;
 }
 
-div#drop-zone div input[type="file"] {
+/* Les éléments directement enfants de la première div de la zone de dépôt sont une div contenant un paragraphe et une div contenant un input */
+
+div#zone-depot div div {
+	flex-grow: 1;
+	height: 300px;
+	line-height: 100%;
+	font-size: 25px;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+div#zone-depot:hover div div {
+	height: 280px;
+	font-size: 20px;
+}
+
+div#zone-depot div div:first-child {
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+div#zone-depot div div p.rempli {
+	font-size: 16px;
+}
+
+div#zone-depot:hover div p.rempli {
+	font-size: 14px;
+}
+
+div#zone-depot div div:last-child {
+	display: flex;
 	width: 100%;
-	height: 500px;
 	border: 2px dashed rgba(0, 0, 0, 0.4);
+}
+
+div#zone-depot div div input {
+	opacity: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+/* La div qui contient les types d'improvisation possède des inputs */
+
+div#types-improvisation input {
+	margin-right: 10px;
+}
+
+/* La div qui contient un label et un input est assez petite et peut être masquée en JS */
+
+div#options-improvisation {
+	flex-grow: 0.2;
+}
+
+div#options-improvisation input {
+	width: 80px;
+}
+
+/* Le footer de la section contient des boutons */
+
+section footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+section footer button {
+	width: 25%;
+	height: 50px;
+	color: rgba(255, 255, 255, 0.8);
+	border: none;
+	background: rgba(255, 255, 255, 0.2);
+	transition: background .2s ease;
+}
+
+section footer button.actif {
+	color: rgba(0, 0, 0, 0.6);
+	background: rgba(255, 255, 255, 0.6);
+	cursor: pointer;
+}
+
+section footer button.actif:hover {
+	color: rgba(0, 0, 0, 0.8);
+	background: rgba(255, 255, 255, 0.8);
+}
+
+/* Le footer du body contient un paragraphe */
+
+body > footer {
+	display: flex;
+	width: 100%;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+body > footer p {
+	width: 100%;
+	padding: 15px;
+	text-align: center;
 }
