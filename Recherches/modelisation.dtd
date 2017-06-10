@@ -18,11 +18,13 @@
 <!ELEMENT probabilite (#PCDATA)>
 
 <!ELEMENT patterns (pattern*)>
-<!ELEMENT pattern (taille,nombre,amplitude)>
+<!ELEMENT pattern (taille,nombre,amplitude,positions)>
 <!ATTLIST pattern id CDATA #REQUIRED>
 <!ELEMENT taille (#PCDATA)>
 <!ELEMENT nombre (#PCDATA)>
 <!ELEMENT amplitude (#PCDATA)>
+<!ELEMENT positions (indice+)>
+<!ELEMENT indice (#PCDATA)>
 
 <!ELEMENT repartition-notes (note-unique*)>
 <!ELEMENT note-unique (#PCDATA)>

@@ -43,7 +43,7 @@ nav ul li a {
 }
 
 nav ul li a[href=""], nav ul li a:hover {
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(0, 0, 0, 0.85);
 	background: rgba(255, 255, 255, 0.6);
 }
 

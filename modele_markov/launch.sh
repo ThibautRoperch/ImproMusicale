@@ -10,6 +10,7 @@ then
 	fichiers_entree=""
 	redirection_sortie="/dev/fd/1" # sortie standard
 	type_improvisations=""
+	nombre_notes="-1"
 	
 	fichier_sortie=""
 	date=$(date "+%d%m%Y_%H%M%S")
@@ -32,12 +33,17 @@ then
 			elif [ "$1" == "--impro-markov" ]
 			then
 				type_improvisations=$type_improvisations"markov "
+			elif [ "$1" == "--nombre-notes" ]
+			then
+				shift
+				nombre_notes=$1
 			else
 				echo -e "# Option $1 inconnue"
 				echo -e "# Options :"
 				echo -e "\t--impro-random\t\tGénérer, à partir de la partition, une mélodie totalement aléatoire"
 				echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire sous contraintes"
 				echo -e "\t--impro-markov\t\tGénérer, à partir de la partition, une mélodie basée uniquement sur le modèle de Markov"
+				echo -e "\t--nombre-notes NB\tIndiquer le nombre de notes à générér par improvisation, avec NB le nombre de notes à générer"
 				echo -e "\t--notraces\t\tMasquer la sortie lors de l'utilisation des programmes"
 				
 				exit 2
@@ -124,8 +130,11 @@ then
 	then
 		echo -e "\n# Génération d'une mélodie improvisée"
 		
-		echo -e "\nNombre de notes à générer : "
-		read nombre_notes
+		if [ "$nombre_notes" -lt 0 ]
+		then
+			echo -e "\nNombre de notes à générer : "
+			read nombre_notes
+		fi
 		
 		IFS=' ' read -r -a array <<< "$type_improvisations"
 	
@@ -159,7 +168,7 @@ then
 			
 			# Comparaison de l'improvisation obtenue avec les mélodies originales
 			
-			comparaison="test/comparaisons/$fichier_sortie-$fichier_sortie-impro-$type_impro-$date.txt"
+			comparaison="test/comparaisons/$fichier_sortie-$fichier_sortie-impro-$type_impro-$date.html"
 			
 			echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
 			
@@ -182,6 +191,7 @@ else
 	echo -e "\t--impro-random\t\tGénérer, à partir de la partition, une mélodie totalement aléatoire"
 	echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire sous contraintes"
 	echo -e "\t--impro-markov\t\tGénérer, à partir de la partition, une mélodie basée uniquement sur le modèle de Markov"
+	echo -e "\t--nombre-notes NB\tIndiquer le nombre de notes à générér par improvisation, avec NB le nombre de notes à générer"
 	echo -e "\t--notraces\t\tMasquer la sortie lors de l'utilisation des programmes"
 	
 	exit 1

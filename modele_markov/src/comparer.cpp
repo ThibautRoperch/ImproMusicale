@@ -45,6 +45,7 @@ int ressemblance(int source, int cible) {
 	}
 	
 	if (source == 0) return 0;
+
 	return 100 - ((difference * 100) / source);
 }
 
@@ -62,6 +63,8 @@ int main(int argc, char* argv[]) {
 	/* Initialisation de la chaine de caractères contenant le détail de la comparaison et les variables des valuations */
 
 	string res = "";
+	string res_html = "";
+	string tmp;
 	int somme_valuations = 0;
 	int nombre_valuations = 0;
 
@@ -86,7 +89,9 @@ int main(int argc, char* argv[]) {
 
 	/* C1 : Comparaison de la note min et de la note max */
 
-	res += "1. Comparaison de l'intervalle de notes de la mélodie générée avec la (les) mélodie(s) originale(s)\n\n";
+	tmp = "1. Comparaison de l'intervalle de notes de la mélodie générée avec la (les) mélodie(s) originale(s)";
+	res += tmp + "\n\n";
+	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
 
 	xml_node<> *noeud_note_min_source = noeud_racine_source->first_node("elements-min-max")->first_node("element-min")->first_node("note");
 	xml_node<> *noeud_note_max_source = noeud_racine_source->first_node("elements-min-max")->first_node("element-max")->first_node("note");
@@ -129,27 +134,34 @@ int main(int argc, char* argv[]) {
 		intervalle_commun += intervalle_total;
 	}
 
-	res += "Valuation de l'intervalle des notes de la mélodie générée par rapport aux notes originales : ";
+	tmp = "Valuation de l'intervalle des notes de la mélodie générée par rapport aux notes originales : ";
+	res += tmp;
+	res_html += tmp;
 	++nombre_valuations;
 
-	if (intervalle_commun == 0) {
-		res += "0 %";
+	if (intervalle_commun <= 0) {
+		tmp = "0 %";
 		somme_valuations += 0;
 	} else {
-		res += to_string((intervalle_commun * 100) / intervalle_total) + " %";
+		tmp = to_string((intervalle_commun * 100) / intervalle_total) + " %";
 		somme_valuations += (intervalle_commun * 100) / intervalle_total;
 	}
 
-	res += "\n\n";
+	res += tmp + "\n\n";
+	res_html += tmp + "</p>\n\n";
 
 	/* C2 : Comparaison de la hauteur moyenne entre deux notes sur une plage de notes donnée (rectangle) */
 
-	res += "2. Comparaison du rectangle de notes de la mélodie générée avec la (les) mélodie(s) originale(s)\n\n";
+	tmp = "2. Comparaison du rectangle de notes de la mélodie générée avec la (les) mélodie(s) originale(s)";
+	res += tmp + "\n\n";
+	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
 
 	xml_node<> *noeud_rectangle_source = noeud_racine_source->first_node("rectangles")->first_node("rectangle");
 	xml_node<> *noeud_rectangle_cible = noeud_racine_cible->first_node("rectangles")->first_node("rectangle");
 
-	res += "Valuation du rectangle de la mélodie générée par rapport au rectangle original : ";
+	tmp = "Valuation du rectangle de la mélodie générée par rapport au rectangle original : ";
+	res += tmp;
+	res_html += tmp;
 	++nombre_valuations;
 
 	// Si les rectangles sont différents, comparer leur aire
@@ -158,20 +170,23 @@ int main(int argc, char* argv[]) {
 	 && noeud_rectangle_source->first_node("largeur")->value() != noeud_rectangle_cible->first_node("largeur")->value()) {
 		int aire_rectangle_source = stoi(noeud_rectangle_source->first_node("hauteur")->value()) * stoi(noeud_rectangle_source->first_node("largeur")->value());
 		int aire_rectangle_cible = stoi(noeud_rectangle_cible->first_node("hauteur")->value()) * stoi(noeud_rectangle_cible->first_node("largeur")->value());
-		res += to_string(ressemblance(aire_rectangle_source, aire_rectangle_cible)) + " %";
+		tmp = to_string(ressemblance(aire_rectangle_source, aire_rectangle_cible)) + " %";
 		somme_valuations += ressemblance(aire_rectangle_source, aire_rectangle_cible);
 	 } else {
 		int objectif_rectangle_source = stoi(noeud_rectangle_source->first_node("objectif")->value());
 		int objectif_rectangle_cible = stoi(noeud_rectangle_cible->first_node("objectif")->value());
-		res += to_string(ressemblance(objectif_rectangle_source, objectif_rectangle_cible)) + " %";
+		tmp = to_string(ressemblance(objectif_rectangle_source, objectif_rectangle_cible)) + " %";
 		somme_valuations += ressemblance(objectif_rectangle_source, objectif_rectangle_cible);
 	 }
 
-	res += "\n\n";
+	res += tmp + "\n\n";
+	res_html += tmp + "</p>\n\n";
 
 	/* C4 : Comparaison des répétitions de groupes de notes (patterns, style musical) */
 
-	res += "3. Comparaison des patterns de la mélodie générée avec la (les) mélodie(s) originale(s)\n\n";
+	tmp = "3. Comparaison des patterns de la mélodie générée avec la (les) mélodie(s) originale(s)";
+	res += tmp + "\n\n";
+	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
 
 	xml_node<> *noeud_patterns_source = noeud_racine_source->first_node("patterns");
 	int valeur_totale_patterns_source = 0;
@@ -180,6 +195,8 @@ int main(int argc, char* argv[]) {
 	int valeur_pattern_min_source = -1;
 
 	for (xml_node<> *noeud_pattern = noeud_patterns_source->first_node("pattern"); noeud_pattern; noeud_pattern = noeud_pattern->next_sibling()) {
+		++nombre_patterns_source;
+
 		int valeur_pattern = atoi(noeud_pattern->first_node("taille")->value()) * atoi(noeud_pattern->first_node("amplitude")->value());
 		int quantite_pattern = atoi(noeud_pattern->first_node("nombre")->value());
 
@@ -202,6 +219,8 @@ int main(int argc, char* argv[]) {
 	int valeur_pattern_min_cible = -1;
 
 	for (xml_node<> *noeud_pattern = noeud_patterns_cible->first_node("pattern"); noeud_pattern; noeud_pattern = noeud_pattern->next_sibling()) {
+		++nombre_patterns_cible;
+
 		int valeur_pattern = atoi(noeud_pattern->first_node("taille")->value()) * atoi(noeud_pattern->first_node("amplitude")->value());
 		int quantite_pattern = atoi(noeud_pattern->first_node("nombre")->value());
 
@@ -223,27 +242,38 @@ int main(int argc, char* argv[]) {
 	if (nombre_patterns_source > 0) valeur_moyenne_patterns_source = (valeur_totale_patterns_source * 100) / nombre_patterns_source;
 	if (nombre_patterns_cible > 0) valeur_moyenne_patterns_cible = (valeur_totale_patterns_cible * 100) / nombre_patterns_cible;
 
-	res += "Valuation de l'amplitude moyenne des patterns générés par rapport aux patterns originaux : ";
+	tmp = "Valuation de l'amplitude moyenne des patterns générés par rapport aux patterns originaux : ";
+	res += tmp;
+	res_html += tmp;
 	++nombre_valuations;
-	res += to_string(ressemblance(valeur_moyenne_patterns_source, valeur_moyenne_patterns_cible)) + " %";
+	tmp = to_string(ressemblance(valeur_moyenne_patterns_source, valeur_moyenne_patterns_cible)) + " %";
 	somme_valuations += ressemblance(valeur_moyenne_patterns_source, valeur_moyenne_patterns_cible);
-	res += "\n\n";
+	res += tmp + "\n\n";
+	res_html += tmp + "\n\n<br><br>\n\n";
 
-	res += "Valuation de l'amplitude maximum des patterns générés par rapport aux patterns originaux : ";
+	tmp = "Valuation de l'amplitude maximum des patterns générés par rapport aux patterns originaux : ";
+	res += tmp;
+	res_html += tmp;
 	++nombre_valuations;
-	res += to_string(ressemblance(valeur_pattern_max_source, valeur_pattern_max_cible)) + " %";
+	tmp = to_string(ressemblance(valeur_pattern_max_source, valeur_pattern_max_cible)) + " %";
 	somme_valuations += ressemblance(valeur_pattern_max_source, valeur_pattern_max_cible);
-	res += "\n\n";
+	res += tmp + "\n\n";
+	res_html += tmp + "\n\n<br><br>\n\n";
 
-	res += "Valuation de l'amplitude minimum des patterns générés par rapport aux patterns originaux : ";
+	tmp = "Valuation de l'amplitude minimum des patterns générés par rapport aux patterns originaux : ";
+	res += tmp;
+	res_html += tmp;
 	++nombre_valuations;
-	res += to_string(ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible)) + " %";
+	tmp = to_string(ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible)) + " %";
 	somme_valuations += ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible);
-	res += "\n\n";
-
+	res += tmp + "\n\n";
+	res_html += tmp + "</p>\n\n";
+	
 	/* C5 : Comparaison de la répartition des notes de la mélodie (tonalité) */
 
-	res += "4. Comparaison de la répartition des notes de la mélodie générée avec la (les) mélodie(s) originale(s)\n\n";
+	tmp = "4. Comparaison de la répartition des notes de la mélodie générée avec la (les) mélodie(s) originale(s)";
+	res += tmp + "\n\n";
+	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
 
 	xml_node<> *noeud_repartition_source = noeud_racine_source->first_node("repartition-notes");
 	vector<int> repartition_notes_source(12, 0);
@@ -279,36 +309,49 @@ int main(int argc, char* argv[]) {
 		repartition_notes_cible[valeur_note] = proportion_note;
 	}
 	
-	res += "Valuation de la proportion de chaque note contenue dans la mélodie générée par rapport aux proportions originales : ";
+	tmp = "Valuation de la proportion de chaque note contenue dans la mélodie générée par rapport aux proportions originales : ";
+	res += tmp;
+	res_html += tmp;
+	
 	res += "\n\nNote\tOriginal\tGénéré\t\tValuation";
+	res_html += "\n\n<table>\n<tr><th>Note</th><th>Original</th><th>Généré</th><th>Valuation</th></tr>\n";
 	for (unsigned int i = 0; i < repartition_notes_cible.size(); ++i) {
 		++nombre_valuations;
 		res += "\n" + to_string(i) + "\t" + to_string(repartition_notes_source[i]) + " %\t\t" + to_string(repartition_notes_cible[i]) + " %\t\t" + to_string(ressemblance(repartition_notes_source[i], repartition_notes_cible[i])) + " %";
+		res_html += "\n<tr><td>" + to_string(i) + "</td><td>" + to_string(repartition_notes_source[i]) + " %</td><td>" + to_string(repartition_notes_cible[i]) + " %</td><td>" + to_string(ressemblance(repartition_notes_source[i], repartition_notes_cible[i])) + " %</td></tr>";
 		somme_valuations += ressemblance(repartition_notes_source[i], repartition_notes_cible[i]);
 	}
 	res += "\n\n";
+	res_html += "\n</table>\n\n";
 
-	res += "Valuation de la tonalité de la mélodie générée par rapport à la tonalité originale : ";
+	tmp = "Valuation de la tonalité de la mélodie générée par rapport à la tonalité originale : ";
+	res += tmp;
+	res_html += tmp;
 	++nombre_valuations;
-	res += to_string((tonalite_source == tonalite_cible) * 100) + " %";
+	tmp = to_string((tonalite_source == tonalite_cible) * 100) + " %";
 	somme_valuations += (tonalite_source == tonalite_cible) * 100;
-	res += "\n\n";
+	res += tmp + "\n\n";
+	res_html += tmp + "</p>\n\n";
 
 	/* Indice de ressemblance de la mélodie générée par rapport aux mélodies originales */
 
-	res += "Indice de ressemblance de la mélodie générée par rapport à (aux) mélodie(s) originale(s) : ";
-	res += to_string(somme_valuations / nombre_valuations) + " %";
-	res += "\n\n";
-	cout << somme_valuations << " / " << nombre_valuations << endl;
+	tmp = "Indice de ressemblance de la mélodie générée par rapport à (aux) mélodie(s) originale(s) : ";
+	tmp += to_string(somme_valuations / nombre_valuations) + " %";
+	res += tmp + "\n\n";
+	res_html += "<pre>" + tmp + "</pre>\n\n";
 
-	/* Enregistrement de la mélodie extraite dans le fichier de sortie ou affichage à défaut de fichier donné en argument */
+	/* Affichage de la comparaison */
+
+	cout << res;
+
+	/* Enregistrement de la comparaison dans le fichier de sortie */
 	
 	if (argc >= 4) {
 		string nom_fichier_sortie = argv[3];
 		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
 		
 		if(fichier_sortie) {
-			fichier_sortie << res;
+			fichier_sortie << res_html;
 			fichier_sortie.close();
 		} else {
 			cerr << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;
@@ -317,7 +360,6 @@ int main(int argc, char* argv[]) {
 		cerr << "\nLa comparaison entre la modélisation du fichier " << argv[1] << " et du fichier " << argv[2] << " est enregistrée dans le fichier " << nom_fichier_sortie << endl;
 	} else {
 		cout << "\nAucun fichier de sortie n'est donné en argument du programme" << endl;
-		cout << "\n" << res << endl;
 	}
 
 	cout << endl;

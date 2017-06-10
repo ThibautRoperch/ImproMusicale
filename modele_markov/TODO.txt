@@ -14,6 +14,7 @@ Mettre dans le rapport tout ce qu'on a utilisé tehcniquement (librairies, langa
 
 tous mes programmes marchent avec un in et out
 
+Detailler mes calculs (de ressemblance de patterns, et calcul de la pércision du rectangle notamment)
 
 [ SOUTENANCE ]
 
@@ -34,19 +35,15 @@ Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des pattern
 
 virer le "objectif" de la dtd modelisation, pour elements min et max ?
 
-Dire qu'à 50% c'est fidèle (ajouter une phrase dans le res de la verif)
-
 Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
-Premier panneau avec la possiblité de glisser déposer des fichiers partoches, avec un menu discret pour ouvrir une mélodie déjà existante, dans ce cas ca ouvre la page d'ajd sans onglets
-Dans le premier panneau, ajouter des options : impro markov, impro random, etc...
 Quand ca donne la ligne de commande à exécuter, checker while true le contenu du dossier improvisation, et à la création d'un nouveau fichier,
 remplir le champ de texte (un champ par type d'impro) avec ce fichier nouvellement crée (ordre des champs important : il doit concorder avec l'ordre de création des impros (cf le script launch.sh))
-Quand tout est full, ouvre une page avec des onglets (même page qu'ajd) : mélodies originales, impro xxx (nom du file en petit en dessous), impro xxx (chemin du file en dessous en petit)
+Quand tout est full, ouvre une page avec des onglets (même page qu'ajd et que "ouvrir mélodie") : mélodies originales, impro xxx (nom du file en petit en dessous), impro xxx (chemin du file en dessous en petit)
 possibilité de voir ce que la comparaison a donné (popup qui affiche le contenu du fichier généré par comparaison.exe ?)
 faire un derner onglet ou toutes les melodies sont mises a la suites (+ les contraintes, là aussi)
 
-Programme MIDI from scratch
+Programme MIDI from scratch, lien dans l'interface pour générer une commande qui créé un midi a partir d'une mélodie épurée
 
 [ TESTS ]
 
@@ -56,3 +53,17 @@ Juger avec le programme si ca se ressemble (original : une chanson de chris maé
 Générer des contraintes à partir de plusieurs mélodies qu'on sait qu'elles sont de même style, générer dessus, vérifier avec l'original
 
 Comparer la génération sur une même mélodie de moi et celles de dylan
+
+A 50% de ressemblance, c'est fidèle ? Avec plus de notes en entrées, et en sortie, le % augmente ?
+Faut pas que ca soit trop fidele, c'est presque identique quand on est à 75% ?
+Associer, après des tests et des écoutes, une valeur min de ressemblance à une bonne impro et une valeur max à une impro trop calquée sur l'original
+C'est pas facile, utilisation de l'oreille humaine, limite de l'IA ?
+L'IA génère des trucs, mais besoin d'un humain pour juger
+
+Entree      Sortie      Ressemblance
+< 10 notes  < 10 notes
+< 10 notes  > 10 notes
+> 10 notes  < 10 notes
+> 10 notes  > 10 notes
+
+Faire un tableau comme ca, avec d'autres chiffres ?

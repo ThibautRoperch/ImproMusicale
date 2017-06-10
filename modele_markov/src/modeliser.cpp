@@ -56,9 +56,9 @@ int main(int argc, char* argv[]) {
 	Note *note_max = NULL;
 
 	// Un rectangle est calculé pour chaque mélodie, une moyenne est faite à la fin pour calculer le rectangle final
-	vector<double> hauteur_rectangle(argc - 2, 1); // vecteur x 1, x étant le nombre de mélodies 
-	vector<int> largeur_rectangle(argc - 2, 1); // vecteur x 1, x étant le nombre de mélodies 
-	vector<double> difference_moyenne(argc - 2, -1); // vecteur x -1, x étant le nombre de mélodies 
+	vector<double> hauteur_rectangle(argc - 2, 0); // vecteur de x 0, x étant le nombre de mélodies 
+	vector<int> largeur_rectangle(argc - 2, 0); // vecteur de x 0, x étant le nombre de mélodies 
+	vector<double> difference_moyenne(argc - 2, -1); // vecteur de x -1, x étant le nombre de mélodies 
 
 	vector<int> repartition_notes(12, 0); // à un indice correspond la valeur d'une note, la valeur de l'indice correspond au nombre de notes qui ont cette valeur
 
@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
 
 		// Itération sur les parties (noeuds "note" du noeud "notes")
 		for (xml_node<> *noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
-			cout << "+ Note" << endl;
+			// cout << "+ Note" << endl;
 
 			int valeur_note = stoi(noeud_note->first_node("valeur")->value());
 			int octave_note = stoi(noeud_note->first_node("octave")->value());
@@ -141,6 +141,8 @@ int main(int argc, char* argv[]) {
 					difference_moyenne[id_fichier] = nouvelle_difference_moyenne;
 				}
 			} else {
+				hauteur_rectangle[id_fichier] = 1;
+				largeur_rectangle[id_fichier] = 1;
 				monotonie = 1;
 			}
 
@@ -217,9 +219,9 @@ int main(int argc, char* argv[]) {
 
 	// Pour chaque mélodie
 	for (auto melodie : melodies) {
-		nombre_rectangles += melodie.size() - largeur_moyenne_rectangle + 1;
-		// Si la mélodie possède au moins suffisamment de notes pour remplir un rectangle
-		if ((int) melodie.size() >= largeur_moyenne_rectangle) {
+		// Si la mélodie possède au moins suffisamment de notes pour remplir un rectangle, et que le rectangle fait au moins 1
+		if ((int) melodie.size() >= largeur_moyenne_rectangle && largeur_moyenne_rectangle > 0) {
+			nombre_rectangles += melodie.size() - largeur_moyenne_rectangle + 1;
 			// Pour chaque rectangle de la mélodie
 			for (unsigned int note = 0; note < melodie.size() - largeur_moyenne_rectangle + 1; ++note) {
 				int position = melodie[note]->hauteurNote() + hauteur_moyenne_rectangle; // position haute maximale (repère du rectangle : angle haut gauche)
@@ -244,9 +246,11 @@ int main(int argc, char* argv[]) {
 		} // Fin de la conditionnelle qui vérifie que la mélodie est suffisamment grande pour accueillir au moins un rectangle
 	} // Fin du "Pour chaque mélodie"
 	
+	double precision_moyenne = (largeur_moyenne_rectangle * nombre_rectangles == 0) ? 0 : (double) nombre_notes_couvertes / (largeur_moyenne_rectangle * nombre_rectangles);
+
 	res += "  <rectangles>\n";
 	res += "    <rectangle>\n";
-	res += "      <objectif>" + to_string((double) nombre_notes_couvertes / (largeur_moyenne_rectangle * nombre_rectangles)) + "</objectif>\n";
+	res += "      <objectif>" + to_string(precision_moyenne) + "</objectif>\n";
 	res += "      <hauteur>" + to_string(hauteur_moyenne_rectangle) + "</hauteur>\n";
 	res += "      <largeur>" + to_string(largeur_moyenne_rectangle) + "</largeur>\n";
 	res += "    </rectangle>\n";
@@ -421,6 +425,11 @@ int main(int argc, char* argv[]) {
 			if (note > max) max = note;
 		}
 		res += "      <amplitude>" + to_string(max.hauteurNote() - min.hauteurNote()) + "</amplitude>\n";
+		res += "      <positions>\n";
+		for (auto position : pattern.second) {
+			res += "        <indice>" + to_string(position) + "</indice>\n";
+		}
+		res += "      </positions>";
 		res += "    </pattern>\n";
 		// cout << "Pattern " << i << " : "; for (auto note : pattern.first) cout << note << " "; cout << endl;
 		// cout << "Positions : "; for (auto position : pattern.second) cout << position << " "; cout << endl;
@@ -438,11 +447,11 @@ int main(int argc, char* argv[]) {
 	res += "  <repartition-notes>\n";
 
 	for (unsigned int i = 0; i < repartition_notes.size(); ++i) {
-		double repartition = (double) repartition_notes[i] / nombre_notes;
+		double repartition = (nombre_notes == 0) ? 0 : (double) repartition_notes[i] / nombre_notes;
 		res += "    <note-unique valeur=\"" + to_string(i) + "\">" + to_string(repartition) + "</note-unique>\n";
 	}
 
-	res += "  </repartition-notes>\n";	
+	res += "  </repartition-notes>\n";
 	
 
 	res += "</contraintes>";
@@ -460,11 +469,11 @@ int main(int argc, char* argv[]) {
 	}
 
 	if (argc == 3) {
-		cout << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés de la mélodie du fichier " << argv[1] << endl;
+		cerr << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés de la mélodie du fichier " << argv[1] << endl;
 	} else {
-		cout << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés des mélodies des fichiers suivants :" << endl;
+		cerr << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés des mélodies des fichiers suivants :" << endl;
 		for (int i = 1; i < argc - 1; ++i) {
-			cout << "- " << argv[i] << endl;
+			cerr << "- " << argv[i] << endl;
 		}
 	}
 

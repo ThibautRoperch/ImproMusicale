@@ -113,11 +113,11 @@ int main(int argc, char* argv[]) {
 	}
 
 	if (argc == 4) {
-		cout << "\nLe fichier " << nom_fichier_sortie << " contient une mélodie de " << argv[1] << " notes générée à partir de la mélodie du fichier " << argv[2] << endl;
+		cerr << "\nLe fichier " << nom_fichier_sortie << " contient une mélodie de " << argv[1] << " notes générée à partir de la mélodie du fichier " << argv[2] << endl;
 	} else {
-		cout << "\nLe fichier " << nom_fichier_sortie << " contient une mélodie de " << argv[1] << " notes générée à partir des mélodies des fichiers suivants :" << endl;
+		cerr << "\nLe fichier " << nom_fichier_sortie << " contient une mélodie de " << argv[1] << " notes générée à partir des mélodies des fichiers suivants :" << endl;
 		for (int i = 2; i < argc - 1; ++i) {
-			cout << "- " << argv[i] << endl;
+			cerr << "- " << argv[i] << endl;
 		}
 	}
 

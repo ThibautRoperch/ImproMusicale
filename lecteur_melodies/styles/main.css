@@ -9,7 +9,7 @@ html, body {
 
 body {
 	font-family: 'Ubuntu';
-	color: rgba(0, 0, 0, 0.9);
+	color: rgba(0, 0, 0, 0.85);
 	background: #65A6D1;
 }
 
@@ -18,7 +18,6 @@ ul {
 }
 
 a, a:hover, a:visited {
-	color: rgba(0, 0, 0, 0.9);
 	text-decoration: none;
 }
 
