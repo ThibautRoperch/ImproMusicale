@@ -4,3 +4,52 @@ se debrouiller avec le css pour faire des onglets (display none tous sauf celui 
 possibilité d'ouvrir un fichier qui n'est pa sdans le dossier InterGraphieu ?
 
 si non, dans le log, mettre le chemin absolus des fichiers
+
+<script src="scripts/oXHR.js"></script>
+
+<script>
+
+var originales = [];
+var improvisations = [];
+
+genererElementsDynamiques();
+
+function genererElementsDynamiques() {
+	/* Récupération des informations de l'URL et remplir les variables globales en conséquence */
+
+	// Parcours des variables de l'URL (elles commencent par "?" et finissent par "=")
+
+	var url = window.location.href;
+
+	var position_debut_variable = url.indexOf("?");
+
+	while (position_debut_variable != -1 ) {
+		// Extraction du nom de la variable et recherche de la position de la prochaine variable
+
+		var position_fin_variable = url.indexOf("=", position_debut_variable + 1);
+		var nom_variable = url.substring(position_debut_variable + 1, position_fin_variable);
+
+		position_debut_variable = url.indexOf("?", position_debut_variable + 1);
+
+		// Enregistrement des valeurs de cette variable (elles sont séparées par "&")
+
+		var valeurs = (position_debut_variable == -1) ? url.substring(position_fin_variable + 1) : url.substring(position_fin_variable + 1, position_debut_variable);
+
+		if (nom_variable == "originales") {
+			originales = valeurs.split("&");
+		} else if (nom_variable == "improvisations") {
+			improvisations = valeurs.split("&");
+		}
+	}
+
+	/* Génération, par mélodie, d'une iFrame pour le viewer de mélodie et d'une iFrame pour le comparatif pour les improvisations  */
+
+openFile(originales[0], afficher);
+}
+
+function afficher(chaine) {
+	//alert(chaine);
+}
+
+
+</script>

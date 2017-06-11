@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="styles/index.css" type="text/css">
 	</head>
 
-	<body onload="recupererLog(), genererElementsDynamiques()">
+	<body onload="openFile('launch_log/log.txt', recupererLog), genererElementsDynamiques()">
 
 		<header></header>
 		
@@ -62,19 +62,9 @@ var nombre_notes = -1;
 var originales = [];
 var improvisations = [];
 
-function recupererLog() {
-	var xhr = getXMLHttpRequest();
-
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-			fichier_historique = xhr.responseText;
-			historique_recupere = true;
-		}
-	};
-	
-	xhr.open("GET", "launch_log/log.txt", true);
-	xhr.overrideMimeType("text/plain");
-	xhr.send();
+function recupererLog(contenu_fichier) {
+	fichier_historique = contenu_fichier;
+	historique_recupere = true;
 }
 
 function genererElementsDynamiques() {
@@ -159,7 +149,7 @@ function genererElementsDynamiques() {
 }
 
 function verifierImprovisations(old_log) {
-	recupererLog();
+	openFile('launch_log/log.txt', recupererLog);
 
 	if (old_log != fichier_historique) {
 		// Enregistrement de la différence avant d'ecraser old_log par le nouveau contenu du fichier
@@ -212,7 +202,7 @@ function annuler() {
 }
 
 function continuer() {
-	if (champsRemplis) {
+	if (champsRemplis()) {
 		redirection();
 	}
 }

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Extraire, modéliser, improviser et comparer</title>
+		
+		<link rel="stylesheet" href="InterfaceGraphique/styles/main.css" type="text/css">
+		<link rel="stylesheet" href="InterfaceGraphique/styles/index.css" type="text/css">
+	</head>
+
+	<body onload="actualiserElementsDynamiques()">
+
+		<header></header>
+		
+		<section>
+			<div>
+
+				<nav>
+					<ul>
+						<li><a href="">Improviser sur des partitions</a></li>
+						<li><a href="listener.html">Ouvrir une mélodie existante</a></li>
+					</ul>
+				</nav>
+
+				<article>
+					<div id="zone-depot">
+						<div>
+							<div>
+								<p id="message-depot">
+									Choisir des fichiers ou les glisser ici<br>
+									<span>MIDI (.mid), MusicXML (.xml)</span>
+								</p>
+							</div>
+							<div>
+								<input oninput="ajouterFichiers(this), actualiserElementsDynamiques()" type="file" multiple>
+							</div>
+						</div>
+					</div>
+				</article>
+
+				<article>
+					<div id="types-improvisation">
+						<div>
+							<input id="impro-aleatoire" oninput="actualiserElementsDynamiques()" type="checkbox" name="improvisation" value="aleatoire">
+							<label for="impro-aleatoire">Improvisation totalement aléatoire</label>
+						</div>
+						<div>
+							<input id="impro-contraintes" oninput="actualiserElementsDynamiques()" type="checkbox" name="improvisation" value="contraintes">
+							<label for="impro-contraintes">Improvisation aléatoire sous contraintes</label>
+						</div>
+						<div>
+							<input id="impro-markov" oninput="actualiserElementsDynamiques()" type="checkbox" name="improvisation" value="markov">
+							<label for="impro-markov">Improvisation basée sur le modèle de Markov</label>
+						</div>
+					</div>
+					<div id="options-improvisation">
+						<label for="nombre-notes">Nombre de notes à générer :</label>
+						<br>
+						<input id="nombre-notes" oninput="actualiserElementsDynamiques()" type="number" /> notes
+					</div>
+				</article>
+
+				<footer>
+					<button id="annuler" onclick="annuler(this)">Annuler</button>
+					<button id="continuer" onclick="continuer(this)">Continuer</button>
+				</footer>
+
+			</div>
+		</section>
+
+		<footer>
+			<p>Copyright © 2017 - Dylan Bunel, Thibaut Roperch</p>
+		</footer>
+
+	</body>
+
+</html>
+
+
+<script>
+
+var partitions = [];
+var improvisations = [];
+
+function ajouterFichiers(input) {
+	for (var i = 0; i < input.files.length; i++) {
+		partitions.push(input.files[i].name);
+	}
+
+	actualiserListeFichiers();
+}
+
+function actualiserListeFichiers() {
+	var liste_fichiers = document.getElementById("message-depot");
+
+	if (partitions.length > 0) {
+		liste_fichiers.className = "rempli";
+	} else {
+		liste_fichiers.className = "";
+	}
+
+	liste_fichiers.innerHTML = "";
+	for (var i = 0; i < partitions.length; i++) {
+		liste_fichiers.innerHTML += partitions[i] + "<br>";
+	}
+}
+
+function actualiserElementsDynamiques() {
+	actualiserEtatImprovisation();
+	actualiserBoutons();
+}
+
+function actualiserEtatImprovisation() {
+	var types_impro = document.getElementById("types-improvisation");
+	var impro_cochee = false;
+	improvisations = [];
+
+	// Parcourt tous les types d'impro, si un type est coché, l'ajoute au tableau
+	var i = 0;
+	while (types_impro.getElementsByTagName("input")[i]) {
+		if (types_impro.getElementsByTagName("input")[i].checked) {
+			impro_cochee = true;
+			improvisations.push(types_impro.getElementsByTagName("input")[i].id);
+		}
+		++i;	
+	}
+
+	// Affiche les options d'impro si au moins une impro est cochée, le masque sinon
+	if (impro_cochee) {
+		document.getElementById("options-improvisation").style.display = "block";
+	} else {
+		document.getElementById("options-improvisation").style.display = "none";
+	}
+}
+
+function actualiserBoutons() {
+	var options_impro = document.getElementById("options-improvisation");
+	var nombre_notes = document.getElementById("nombre-notes");
+
+	// Il y a au moins un fichier d'envoyé et (le nombre de notes n'est pas demandé ou (le nombre de note est demandé et il est non vide))
+	if (partitions.length > 0 && (options_impro.style.display == "none" || (options_impro.style.display == "block" && nombre_notes.value != ""))) {
+		document.getElementById("continuer").className = "actif";
+	} else {
+		document.getElementById("continuer").className = "";
+	}
+	
+	// Il y a au moins un fichier d'envoyé ou le nombre de note est demandé
+	if (partitions.length > 0 || options_impro.style.display == "block") {
+		document.getElementById("annuler").className = "actif";
+	} else {
+		document.getElementById("annuler").className = "";
+	}
+}
+
+function continuer(bouton) {
+	if (bouton.className == "actif") {
+		var page_suivante = "scripter.html";
+		
+		// Ajout des partitions
+		for (var i = 0; i < partitions.length; i++) {
+			if (i == 0)		page_suivante += "?partitions=";
+			else			page_suivante += "&";
+			page_suivante += partitions[i];
+		}
+
+		// Ajout des types d'improvisation
+		for (var i = 0; i < improvisations.length; i++) {
+			if (i == 0)		page_suivante += "?improvisations=";
+			else			page_suivante += "&";
+			page_suivante += improvisations[i];
+		}
+
+		// Ajout du nombre de notes à générer
+		if (improvisations.length > 0) {
+			page_suivante += "?nombrenotes=";
+			page_suivante += document.getElementById("nombre-notes").value;
+		}
+		
+		document.location.href = page_suivante;
+	}
+}
+
+function annuler(bouton) {
+	if (bouton.className == "actif") {
+		document.location.href = "index.html";
+	}
+}
+
+</script>

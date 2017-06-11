@@ -23,3 +23,20 @@ function getXMLHttpRequest() {
 	
 	return xhr;
 }
+
+function openFile(file, callback) {
+	var xhr = getXMLHttpRequest();
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { // 200 : fichier trouvé, 0 : fichier pas trouvé
+			callback(xhr.responseText);
+			if (xhr.status == 0) {
+				console.log("Fichier " + file + " introuvable");
+			}
+		}
+	};
+	
+	xhr.open("GET", file, true);
+	xhr.overrideMimeType("text/plain");
+	xhr.send();
+}
