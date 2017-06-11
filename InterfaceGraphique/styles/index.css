@@ -47,7 +47,7 @@ nav ul li a[href=""], nav ul li a:hover {
 	background: rgba(255, 255, 255, 0.6);
 }
 
-/* Un article de session peut contenir des div disposées en ligne */
+/* Un article de session peut contenir des div disposées en ligne et peut être masqué */
 
 article {
 	display: flex;
@@ -55,6 +55,11 @@ article {
 	margin-bottom: 30px;
 	padding: 30px;
 	background: rgba(255, 255, 255, 0.6);
+	transition: all .5s ease;
+}
+
+article.masque {
+	display: none;
 }
 
 /* La div d'un article a une marge intérieure */

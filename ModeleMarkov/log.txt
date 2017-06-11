@@ -3,3 +3,66 @@
 ModeleMarkov/test/melodies/Shigatsu_wa_Kimi_no_Uso_ED2_-_Orange-11062017_184717.xml
 ModeleMarkov/test/modelisations/Shigatsu_wa_Kimi_no_Uso_ED2_-_Orange-11062017_184717.xml
 
+11/06/2017 20:10:49
+11/06/2017 20:11:59
+11/06/2017 20:13:15
+11/06/2017 20:14:00
+ModeleMarkov/test/melodies/Chant-11062017_201359.xml
+ModeleMarkov/test/melodies/You_re_welcome-11062017_201359.xml
+ModeleMarkov/test/modelisations/ChantYou_re_welcome-11062017_201359.xml
+ModeleMarkov/test/improvisations/ChantYou_re_welcome-11062017_201359-impro-markov.xml
+ModeleMarkov/test/modelisations/ChantYou_re_welcome-11062017_201359-impro-markov.xml
+ModeleMarkov/test/comparaisons/ChantYou_re_welcome-ChantYou_re_welcome-impro-markov-11062017_201359.html
+
+11/06/2017 20:16:16
+ModeleMarkov/test/melodies/CHAT_MUSICAL-11062017_201616.xml
+ModeleMarkov/test/melodies/You_re_welcome-11062017_201616.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICALYou_re_welcome-11062017_201616.xml
+ModeleMarkov/test/improvisations/CHAT_MUSICALYou_re_welcome-11062017_201616-impro-markov.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICALYou_re_welcome-11062017_201616-impro-markov.xml
+ModeleMarkov/test/comparaisons/CHAT_MUSICALYou_re_welcome-CHAT_MUSICALYou_re_welcome-impro-markov-11062017_201616.html
+
+11/06/2017 20:47:15
+ModeleMarkov/test/melodies/Chant-11062017_204715.xml
+ModeleMarkov/test/melodies/The_Coconut_Song-11062017_204715.xml
+ModeleMarkov/test/modelisations/ChantThe_Coconut_Song-11062017_204715.xml
+ModeleMarkov/test/improvisations/ChantThe_Coconut_Song-11062017_204715-impro-markov.xml
+ModeleMarkov/test/modelisations/ChantThe_Coconut_Song-11062017_204715-impro-markov.xml
+ModeleMarkov/test/comparaisons/ChantThe_Coconut_Song-ChantThe_Coconut_Song-impro-markov-11062017_204715.html
+
+11/06/2017 20:49:47
+ModeleMarkov/test/melodies/Shigatsu_wa_Kimi_no_Uso_ED2_-_Orange-11062017_204947.xml
+ModeleMarkov/test/modelisations/Shigatsu_wa_Kimi_no_Uso_ED2_-_Orange-11062017_204947.xml
+ModeleMarkov/test/improvisations/Shigatsu_wa_Kimi_no_Uso_ED2_-_Orange-11062017_204947-impro-markov.xml
+ModeleMarkov/test/modelisations/Shigatsu_wa_Kimi_no_Uso_ED2_-_Orange-11062017_204947-impro-markov.xml
+ModeleMarkov/test/comparaisons/Shigatsu_wa_Kimi_no_Uso_ED2_-_Orange-Shigatsu_wa_Kimi_no_Uso_ED2_-_Orange-impro-markov-11062017_204947.html
+
+11/06/2017 20:50:18
+ModeleMarkov/test/melodies/Chant-11062017_205018.xml
+ModeleMarkov/test/melodies/The_Coconut_Song-11062017_205018.xml
+ModeleMarkov/test/modelisations/ChantThe_Coconut_Song-11062017_205018.xml
+ModeleMarkov/test/improvisations/ChantThe_Coconut_Song-11062017_205018-impro-markov.xml
+ModeleMarkov/test/modelisations/ChantThe_Coconut_Song-11062017_205018-impro-markov.xml
+ModeleMarkov/test/comparaisons/ChantThe_Coconut_Song-ChantThe_Coconut_Song-impro-markov-11062017_205018.html
+
+11/06/2017 20:55:41
+ModeleMarkov/test/melodies/You_re_welcome-11062017_205541.xml
+ModeleMarkov/test/modelisations/You_re_welcome-11062017_205541.xml
+ModeleMarkov/test/improvisations/You_re_welcome-11062017_205541-impro-markov.xml
+ModeleMarkov/test/modelisations/You_re_welcome-11062017_205541-impro-markov.xml
+ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-11062017_205541.html
+
+11/06/2017 21:12:28
+ModeleMarkov/test/melodies/The_Coconut_Song-11062017_211228.xml
+ModeleMarkov/test/modelisations/The_Coconut_Song-11062017_211228.xml
+ModeleMarkov/test/improvisations/The_Coconut_Song-11062017_211228-impro-markov.xml
+ModeleMarkov/test/modelisations/The_Coconut_Song-11062017_211228-impro-markov.xml
+ModeleMarkov/test/comparaisons/The_Coconut_Song-The_Coconut_Song-impro-markov-11062017_211228.html
+
+11/06/2017 21:14:24
+ModeleMarkov/test/melodies/The_Coconut_Song-11062017_211424.xml
+ModeleMarkov/test/modelisations/The_Coconut_Song-11062017_211424.xml
+ModeleMarkov/test/improvisations/The_Coconut_Song-11062017_211424-impro-markov.xml
+ModeleMarkov/test/modelisations/The_Coconut_Song-11062017_211424-impro-markov.xml
+ModeleMarkov/test/comparaisons/The_Coconut_Song-The_Coconut_Song-impro-markov-11062017_211424.html
+

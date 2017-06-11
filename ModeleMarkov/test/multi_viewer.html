@@ -1,11 +1,39 @@
 iframe de plusieurs viewer, en fonction de ce qu'il y a dans l'url
 se debrouiller avec le css pour faire des onglets (display none tous sauf celui selectionné)
 
-possibilité d'ouvrir un fichier qui n'est pa sdans le dossier InterGraphieu ?
+<!DOCTYPE html>
 
-si non, dans le log, mettre le chemin absolus des fichiers
+<html>
 
-<script src="scripts/oXHR.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<title>Extraire, modéliser, improviser et comparer</title>
+		
+		<link rel="stylesheet" href="InterfaceGraphique/styles/main.css" type="text/css">
+		<link rel="stylesheet" href="InterfaceGraphique/styles/viewer.css" type="text/css">
+	</head>
+
+	<body onload="genererElementsDynamiques()">
+
+		<header></header>
+		
+		<section>
+
+			<nav>
+			</nav>
+
+		</section>
+		
+		<footer>
+			<p>Copyright © 2017 - Dylan Bunel, Thibaut Roperch</p>
+		</footer>
+
+	</body>
+
+</html>
+
+
+<script src="../../InterfaceGraphique/scripts/oXHR.js"></script>
 
 <script>
 
@@ -44,12 +72,13 @@ function genererElementsDynamiques() {
 
 	/* Génération, par mélodie, d'une iFrame pour le viewer de mélodie et d'une iFrame pour le comparatif pour les improvisations  */
 
-openFile(originales[0], afficher);
+	for (var i = 0; i < originales.length; ++i) {
+		var article = document.createElement("article");
+		var iframe = document.createElement("iframe");
+			iframe.src = "viewer.html?" + originales[i];
+		article.appendChild(iframe);
+		document.getElementsByTagName("section")[0].appendChild(article);
+	}
 }
-
-function afficher(chaine) {
-	//alert(chaine);
-}
-
 
 </script>
