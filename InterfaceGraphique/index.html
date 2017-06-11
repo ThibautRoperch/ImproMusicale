@@ -28,7 +28,10 @@
 					<div id="zone-depot">
 						<div>
 							<div>
-								<p id="message-depot">Choisir des fichiers ou les glisser ici</p>
+								<p id="message-depot">
+									Choisir des fichiers ou les glisser ici<br>
+									<span>MIDI (.mid), MusicXML (.xml)</span>
+								</p>
 							</div>
 							<div>
 								<input oninput="ajouterFichiers(this), actualiserElementsDynamiques()" type="file" multiple>
@@ -114,6 +117,7 @@ function actualiserEtatImprovisation() {
 	var impro_cochee = false;
 	improvisations = [];
 
+	// Parcourt tous les types d'impro, si un type est coché, l'ajoute au tableau
 	var i = 0;
 	while (types_impro.getElementsByTagName("input")[i]) {
 		if (types_impro.getElementsByTagName("input")[i].checked) {
@@ -122,6 +126,8 @@ function actualiserEtatImprovisation() {
 		}
 		++i;	
 	}
+
+	// Affiche les options d'impro si au moins une impro est cochée, le masque sinon
 	if (impro_cochee) {
 		document.getElementById("options-improvisation").style.display = "block";
 	} else {
@@ -150,18 +156,26 @@ function actualiserBoutons() {
 
 function continuer(bouton) {
 	if (bouton.className == "actif") {
-		var page_suivante = "scripter.html?partitions=";
-
+		var page_suivante = "scripter.html";
+		
+		// Ajout des partitions
 		for (var i = 0; i < partitions.length; i++) {
-			if (i > 0) page_suivante += "&";
+			if (i == 0)		page_suivante += "?partitions=";
+			else			page_suivante += "&";
 			page_suivante += partitions[i];
 		}
 
-		page_suivante += "?improvisations=";
-
+		// Ajout des types d'improvisation
 		for (var i = 0; i < improvisations.length; i++) {
-			if (i > 0) page_suivante += "&";
+			if (i == 0)		page_suivante += "?improvisations=";
+			else			page_suivante += "&";
 			page_suivante += improvisations[i];
+		}
+
+		// Ajout du nombre de notes à générer
+		if (improvisations.length > 0) {
+			page_suivante += "?nombrenotes=";
+			page_suivante += document.getElementById("nombre-notes").value;
 		}
 		
 		document.location.href = page_suivante;

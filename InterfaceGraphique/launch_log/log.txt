@@ -1,0 +1,118 @@
+11/06/2017 01:50:05
+11/06/2017 01:51:00
+11/06/2017 01:51:04
+11/06/2017 01:51:14
+11/06/2017 01:51:19
+test/modelisations/SaltarelloChantBleed-11062017_015119.xml
+test/improvisations/SaltarelloChantBleed-11062017_015119-impro-aleatoire.xml
+test/modelisations/SaltarelloChantBleed-11062017_015119-impro-aleatoire.xml
+test/comparaisons/SaltarelloChantBleed-SaltarelloChantBleed-impro-aleatoire-11062017_015119.html
+test/improvisations/SaltarelloChantBleed-11062017_015119-impro-markov.xml
+test/modelisations/SaltarelloChantBleed-11062017_015119-impro-markov.xml
+test/comparaisons/SaltarelloChantBleed-SaltarelloChantBleed-impro-markov-11062017_015119.html
+
+11/06/2017 01:54:19
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_015419.xml
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_015419-impro-contraintes.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_015419-impro-contraintes.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-contraintes-11062017_015419.html
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_015419-impro-markov.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_015419-impro-markov.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-markov-11062017_015419.html
+
+11/06/2017 02:54:13
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_025413.xml
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_025413-impro-contraintes.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_025413-impro-contraintes.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-contraintes-11062017_025413.html
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_025413-impro-markov.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_025413-impro-markov.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-markov-11062017_025413.html
+
+11/06/2017 03:07:32
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_030732.xml
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_030732-impro-contraintes.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_030732-impro-contraintes.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-contraintes-11062017_030732.html
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_030732-impro-markov.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_030732-impro-markov.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-markov-11062017_030732.html
+
+11/06/2017 03:14:09
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031409.xml
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031409-impro-contraintes.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031409-impro-contraintes.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-contraintes-11062017_031409.html
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031409-impro-markov.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031409-impro-markov.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-markov-11062017_031409.html
+
+11/06/2017 03:14:43
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031443.xml
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031443-impro-contraintes.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031443-impro-contraintes.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-contraintes-11062017_031443.html
+test/improvisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031443-impro-markov.xml
+test/modelisations/Overworld-Main-ThemeYou_re_welcomeAmerika-11062017_031443-impro-markov.xml
+test/comparaisons/Overworld-Main-ThemeYou_re_welcomeAmerika-Overworld-Main-ThemeYou_re_welcomeAmerika-impro-markov-11062017_031443.html
+
+11/06/2017 03:20:53
+test/modelisations/Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-11062017_032053.xml
+test/improvisations/Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-11062017_032053-impro-contraintes.xml
+test/modelisations/Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-11062017_032053-impro-contraintes.xml
+test/comparaisons/Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-impro-contraintes-11062017_032053.html
+test/improvisations/Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-11062017_032053-impro-markov.xml
+test/modelisations/Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-11062017_032053-impro-markov.xml
+test/comparaisons/Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-Two_Time_-_Alone_in_the_Sea__Zeit_20080408153638Lieder_eines_fahrenden_GesellenOverworld-Main-Theme-impro-markov-11062017_032053.html
+
+11/06/2017 03:31:46
+test/modelisations/Overworld-Main-ThemeOverworld-Main-Theme-11062017_033146.xml
+test/improvisations/Overworld-Main-ThemeOverworld-Main-Theme-11062017_033146-impro-markov.xml
+test/modelisations/Overworld-Main-ThemeOverworld-Main-Theme-11062017_033146-impro-markov.xml
+test/comparaisons/Overworld-Main-ThemeOverworld-Main-Theme-Overworld-Main-ThemeOverworld-Main-Theme-impro-markov-11062017_033146.html
+
+11/06/2017 03:46:31
+test/modelisations/Saltarello-11062017_034631.xml
+test/improvisations/Saltarello-11062017_034631-impro-markov.xml
+test/modelisations/Saltarello-11062017_034631-impro-markov.xml
+test/comparaisons/Saltarello-Saltarello-impro-markov-11062017_034631.html
+
+11/06/2017 03:50:01
+test/modelisations/Saltarello-11062017_035001.xml
+test/improvisations/Saltarello-11062017_035001-impro-markov.xml
+test/modelisations/Saltarello-11062017_035001-impro-markov.xml
+test/comparaisons/Saltarello-Saltarello-impro-markov-11062017_035001.html
+
+11/06/2017 03:50:26
+test/modelisations/Saltarello-11062017_035026.xml
+test/improvisations/Saltarello-11062017_035026-impro-markov.xml
+test/modelisations/Saltarello-11062017_035026-impro-markov.xml
+test/comparaisons/Saltarello-Saltarello-impro-markov-11062017_035026.html
+
+11/06/2017 03:51:21
+test/modelisations/Saltarello-11062017_035121.xml
+test/improvisations/Saltarello-11062017_035121-impro-markov.xml
+test/modelisations/Saltarello-11062017_035121-impro-markov.xml
+test/comparaisons/Saltarello-Saltarello-impro-markov-11062017_035121.html
+
+11/06/2017 03:52:40
+test/melodies/Saltarello-11062017_035240.xml
+test/modelisations/Saltarello-11062017_035240.xml
+test/improvisations/Saltarello-11062017_035240-impro-markov.xml
+test/modelisations/Saltarello-11062017_035240-impro-markov.xml
+test/comparaisons/Saltarello-Saltarello-impro-markov-11062017_035240.html
+
+11/06/2017 03:53:30
+test/melodies/Saltarello-11062017_035330.xml
+test/modelisations/Saltarello-11062017_035330.xml
+test/improvisations/Saltarello-11062017_035330-impro-markov.xml
+test/modelisations/Saltarello-11062017_035330-impro-markov.xml
+test/comparaisons/Saltarello-Saltarello-impro-markov-11062017_035330.html
+
+11/06/2017 03:54:11
+test/melodies/Saltarello-11062017_035411.xml
+test/modelisations/Saltarello-11062017_035411.xml
+test/improvisations/Saltarello-11062017_035411-impro-markov.xml
+test/modelisations/Saltarello-11062017_035411-impro-markov.xml
+test/comparaisons/Saltarello-Saltarello-impro-markov-11062017_035411.html
+

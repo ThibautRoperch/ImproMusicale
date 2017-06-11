@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Extraire, modéliser, improviser et comparer</title>
+		
+		<link rel="stylesheet" href="styles/main.css" type="text/css">
+		<link rel="stylesheet" href="styles/index.css" type="text/css">
+	</head>
+
+	<body onload="recupererLog(), genererElementsDynamiques()">
+
+		<header></header>
+		
+		<section>
+			<div>
+
+				<article>
+					<div>
+						<p>
+							Lancer le script <tt>launch.sh</tt> via la commande suivante :
+						</p>
+						<pre id="commande">chargement de la commande...</pre>
+					</div>
+				</article>
+
+				<article>
+					<div id="fichiers-improvisation">
+					</div>
+				</article>
+
+				<footer>
+					<button id="annuler" class="actif" onclick="annuler()">Annuler</button>
+					<button id="continuer" onclick="continuer()">Continuer</button>
+				</footer>
+
+			</div>
+		</section>
+
+		<footer>
+			<p>Copyright © 2017 - Dylan Bunel, Thibaut Roperch</p>
+		</footer>
+
+	</body>
+	
+</html>
+
+
+<script src="scripts/oXHR.js"></script>
+
+<script>
+
+var fichier_historique = "";
+var historique_recupere = false;
+
+var partitions = [];
+var types_improvisation = [];
+var nombre_notes = -1;
+
+var originales = [];
+var improvisations = [];
+
+function recupererLog() {
+	var xhr = getXMLHttpRequest();
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+			fichier_historique = xhr.responseText;
+			historique_recupere = true;
+		}
+	};
+	
+	xhr.open("GET", "launch_log/log.txt", true);
+	xhr.overrideMimeType("text/plain");
+	xhr.send();
+}
+
+function genererElementsDynamiques() {
+	/* Attendre que le contenu du fichier de log ait été récupéré */
+
+	if (!historique_recupere) {
+		setTimeout(function() {
+			genererElementsDynamiques();
+		}, 13);
+	}
+	else {
+		/* Récupération des informations de l'URL et remplir les variables globales en conséquence */
+
+		// Parcours des variables de l'URL (elles commencent par "?" et finissent par "=")
+
+		var url = window.location.href;
+
+		var position_debut_variable = url.indexOf("?");
+
+		while (position_debut_variable != -1 ) {
+			// Extraction du nom de la variable et recherche de la position de la prochaine variable
+
+			var position_fin_variable = url.indexOf("=", position_debut_variable + 1);
+			var nom_variable = url.substring(position_debut_variable + 1, position_fin_variable);
+
+			position_debut_variable = url.indexOf("?", position_debut_variable + 1);
+
+			// Enregistrement des valeurs de cette variable (elles sont séparées par "&")
+
+			var valeurs = (position_debut_variable == -1) ? url.substring(position_fin_variable + 1) : url.substring(position_fin_variable + 1, position_debut_variable);
+
+			if (nom_variable == "partitions") {
+				partitions = valeurs.split("&");
+			} else if (nom_variable == "improvisations") {
+				types_improvisation = valeurs.split("&");
+			} else if (nom_variable == "nombrenotes") {
+				nombre_notes = valeurs;
+			}
+		}
+
+		/* Génération de la commande */
+		
+		// Parcours des tableaux et écriture de la commande
+
+		var res = "./launch.sh";
+
+		for (var i = 0; i < partitions.length; i++) {
+			res += " " + partitions[i];
+		}
+		for (var i = 0; i < types_improvisation.length; i++) {
+			res += " --" + types_improvisation[i];
+		}
+		if (nombre_notes != -1) {
+			res += " --nombre-notes " + nombre_notes;
+		}
+
+		document.getElementById("commande").innerHTML = res;
+
+		/* Génération les champs accueillant les chemins des mélodies improvisées générés par le script */
+
+		var fichiers_impro = document.getElementById("fichiers-improvisation");
+
+		for (var i = 0; i < types_improvisation.length; i++) {
+			var div = document.createElement("div");
+				var label = document.createElement("label");
+					label.for = types_improvisation[i];
+					if (types_improvisation[i] == "impro-aleatoire") label.innerHTML = "Improvisation aléatoire";
+					if (types_improvisation[i] == "impro-contraintes") label.innerHTML = "Improvisation sous contraintes";
+					if (types_improvisation[i] == "impro-markov") label.innerHTML = "Improvisation avec Markov";
+				var input = document.createElement("input");
+					input.id = types_improvisation[i];
+					input.type = "text";
+					input.placeholder = "génération en cours...";
+					input.disabled = "disabled";
+			div.appendChild(label);
+			div.appendChild(input);
+			fichiers_impro.appendChild(div);
+		}
+
+		verifierImprovisations(fichier_historique);
+	}
+}
+
+function verifierImprovisations(old_log) {
+	recupererLog();
+
+	if (old_log != fichier_historique) {
+		// Enregistrement de la différence avant d'ecraser old_log par le nouveau contenu du fichier
+
+		var difference = fichier_historique.substring(old_log.length);
+		old_log = fichier_historique;
+
+		// Pour chaque ligne de la différence entre les fichiers, si elle contient un type d'improvisation,
+		// remplir l'input correspondant au type d'improvisation avec cette ligne
+
+		var lignes = difference.split("\n")
+
+		for (var i = 0; i < lignes.length; ++i) {
+			for (var j = 0; j < types_improvisation.length; ++j) {
+				if (lignes[i].indexOf(types_improvisation[j]) > -1 && lignes[i].indexOf("improvisations/") > -1) {
+					document.getElementById(types_improvisation[j]).value = lignes[i];
+					improvisations.push(lignes[i]);
+				} else if (lignes[i].indexOf("melodies/") > -1) {
+					originales.push(lignes[i]);
+				}
+			}
+		}
+	}
+
+	if (champsRemplis()) {
+		document.getElementById("continuer").className = "actif";
+		redirection();
+	} else {
+		setTimeout(function() {
+			verifierImprovisations(old_log);
+		}, 250);
+	}
+}
+
+function champsRemplis() {
+	// Parcourt tous les champs d'impro, si un champs est vide, retourne faux
+
+	for (var i = 0; i < types_improvisation.length; ++i) {
+		var champs_impro = document.getElementById(types_improvisation[i]);
+		if (!champs_impro || (champs_impro && champs_impro.value == "")) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+function annuler() {
+	document.location.href = "index.html";
+}
+
+function continuer() {
+	if (champsRemplis) {
+		redirection();
+	}
+}
+
+function redirection() {
+	var page_suivante = "multi_viewer.html";
+	
+	// Ajout des mélodies originales
+	for (var i = 0; i < originales.length; i++) {
+		if (i == 0)		page_suivante += "?originales=";
+		else			page_suivante += "&";
+		page_suivante += originales[i];
+	}
+	
+	// Ajout des improvisations
+	for (var i = 0; i < improvisations.length; i++) {
+		if (i == 0)		page_suivante += "?improvisations=";
+		else			page_suivante += "&";
+		page_suivante += improvisations[i];
+	}
+	
+	document.location.href = page_suivante;
+}
+
+</script>
