@@ -2,7 +2,7 @@
 build
 
 # Dossier bin contenant les executables
-bin/*
+bin
 
 # Dossier test contenant les tests
 test/melodies/*

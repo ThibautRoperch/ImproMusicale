@@ -31,17 +31,26 @@ Prévoir un enregistrement si la démo fait n'imp
 
 Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
 
-virer le "objectif" de la dtd modelisation, pour elements min et max ?
-
-ajouter un body à la sortie html et une feulle de style
-
 Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
 Pouvoir tourner la liste de notes pour faire apparraitre la partition (avec les recntangles et tout)
 
+Resizement des onglets -> JS qui fixe min-width ?
+
+Ajotuer un lien vers l'accueil dans le viewer
+
+Ajotuer la possibilité d'afficher toutes les générations dans l'accueil & le script (le script doit modéliser chaque géné, et comparer)
+
+Grouper les originaux (+ meme couleur ?) et les modélisations
+
 Programme MIDI from scratch, lien dans l'interface pour générer une commande qui créé un midi a partir d'une mélodie épurée
+Midi -> Midi
 
 [ TESTS ]
+
+Comparer la générétion de différents styles de musiques, à l'oreille
+
+Faire un tableau de tests
 
 Générer des trucs a partir d'une partoche semblable (carmen, Chris Maé, ...), juger à l'oreille si ca se ressemble
 Juger avec le programme si ca se ressemble (original : une chanson de chris maé, en généré : une génération sur une autre chanson de chris maé)

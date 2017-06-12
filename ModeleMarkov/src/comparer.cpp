@@ -2,7 +2,9 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <map>
 #include <cstdlib>
+#include <cmath>
 
 #include "../lib/rapidxml-1.13/rapidxml.hpp"
 #include "../include/note.h"
@@ -45,7 +47,7 @@ int ressemblance(int source, int cible) {
 	}
 	
 	if (source == 0) return 0;
-
+	
 	return 100 - ((difference * 100) / source);
 }
 
@@ -182,9 +184,85 @@ int main(int argc, char* argv[]) {
 	res += tmp + "\n\n";
 	res_html += tmp + "</p>\n\n";
 
+	/* C3 : Comparaison des valeurs de la matrice de Markov */
+
+	tmp = "3. Comparaison des matrices des transitions de notes générées par le modèle de Markov";
+	res += tmp + "\n\n";
+	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
+
+	map<Note, map<Note, double>> couples_notes; // vecteur de type : (note) [ (note) : %, (note) : % ] | (note) [ (note) : % ]
+
+	// modélisation originale : ajout des % au vecteur (créer une nouvelle pair si (note)1 existe pas)
+	// modélisation impro : soustraction des % au vecteur si (note)1 et (note)2 existent, sinon ajouter (note)2 à (note)1 (ajouter (note)1 s'il existe pas)
+
+	xml_node<> *noeud_couples_source = noeud_racine_source->first_node("couples-notes");
+
+	for (xml_node<> *noeud_couple = noeud_couples_source->first_node("couple"); noeud_couple; noeud_couple = noeud_couple->next_sibling()) {
+		// Récupération de la note (premier noeud "note")
+		xml_node<> *noeud_note = noeud_couple->first_node("note");
+		Note note(atoi(noeud_note->first_node("valeur")->value()), atoi(noeud_note->first_node("octave")->value()));
+
+		// Récupération de la note suivant la note (second noeud "note")
+		noeud_note = noeud_note->next_sibling();
+		Note note_suivante(atoi(noeud_note->first_node("valeur")->value()), atoi(noeud_note->first_node("octave")->value()));
+		
+		// Récupération de la fréquence à laquelle cette seconde note suit la première
+		double probabilite = atof(noeud_couple->first_node("probabilite")->value());
+
+		// Ajout de la note1 si elle n'existe pas déjà dans le vecteur
+		// Ajout du couple (note2, probabilite) à la note1
+		couples_notes[note][note_suivante] = probabilite;
+	}
+
+	xml_node<> *noeud_couples_cible = noeud_racine_cible->first_node("couples-notes");
+
+	for (xml_node<> *noeud_couple = noeud_couples_cible->first_node("couple"); noeud_couple; noeud_couple = noeud_couple->next_sibling()) {
+		// Récupération de la note (premier noeud "note")
+		xml_node<> *noeud_note = noeud_couple->first_node("note");
+		Note note(atoi(noeud_note->first_node("valeur")->value()), atoi(noeud_note->first_node("octave")->value()));
+
+		// Récupération de la note suivant la note (second noeud "note")
+		noeud_note = noeud_note->next_sibling();
+		Note note_suivante(atoi(noeud_note->first_node("valeur")->value()), atoi(noeud_note->first_node("octave")->value()));
+		
+		// Récupération de la fréquence à laquelle cette seconde note suit la première
+		double probabilite = atof(noeud_couple->first_node("probabilite")->value());
+
+		// Ajout de la note1 si elle n'existe pas déjà dans le vecteur
+			// Sinon, ajout du couple (note2, probabilite) à la note1 s'il n'existe pas déjà dans la note1
+			// Sinon, soustraire la probabilité de la note2 à la note1 (valeur absolue)
+		if (couples_notes.find(note) == couples_notes.end() || couples_notes[note].find(note_suivante) == couples_notes[note].end()) {
+			couples_notes[note][note_suivante] = probabilite;
+		} else {
+			if (couples_notes[note].find(note_suivante) != couples_notes[note].end()) {
+				couples_notes[note][note_suivante] = fabs(couples_notes[note].find(note_suivante)->second - probabilite);
+			}
+		}
+	}
+
+	tmp = "Valuation de la matrice de la mélodie générée par rapport à la matrice originale : ";
+	res += tmp;
+	res_html += tmp;
+	++nombre_valuations;
+
+	double somme_difference = 0;
+
+	for (auto note : couples_notes) {
+		for (auto note_suivante : note.second) {
+			somme_difference += note_suivante.second;
+		}
+	}
+	cout << endl;
+
+	tmp = to_string(100 - (int)(somme_difference * 100 / couples_notes.size())) + " %";
+	somme_valuations += somme_difference;
+
+	res += tmp + "\n\n";
+	res_html += tmp + "</p>\n\n";
+
 	/* C4 : Comparaison des répétitions de groupes de notes (patterns, style musical) */
 
-	tmp = "3. Comparaison des patterns de la mélodie générée avec la (les) mélodie(s) originale(s)";
+	tmp = "4. Comparaison des patterns de la mélodie générée avec la (les) mélodie(s) originale(s)";
 	res += tmp + "\n\n";
 	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
 
@@ -271,7 +349,7 @@ int main(int argc, char* argv[]) {
 	
 	/* C5 : Comparaison de la répartition des notes de la mélodie (tonalité) */
 
-	tmp = "4. Comparaison de la répartition des notes de la mélodie générée avec la (les) mélodie(s) originale(s)";
+	tmp = "5. Comparaison de la répartition des notes de la mélodie générée avec la (les) mélodie(s) originale(s)";
 	res += tmp + "\n\n";
 	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
 
@@ -338,7 +416,7 @@ int main(int argc, char* argv[]) {
 	tmp = "Indice de ressemblance de la mélodie générée par rapport à (aux) mélodie(s) originale(s) : ";
 	tmp += to_string(somme_valuations / nombre_valuations) + " %";
 	res += tmp + "\n\n";
-	res_html += "<pre>" + tmp + "</pre>\n\n";
+	res_html += "<pre>" + tmp + "</pre>";
 
 	/* Affichage de la comparaison */
 
@@ -351,7 +429,10 @@ int main(int argc, char* argv[]) {
 		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
 		
 		if(fichier_sortie) {
-			fichier_sortie << res_html;
+			fichier_sortie << "<!DOCTYPE html>\n\n<html>\n\n\t<head>\n\n\t\t<meta charset=\"utf-8\">\n\t\t<title>Comparaison entre deux mélodies modélisées</title>\n";
+			fichier_sortie << "\n\t\t<link rel=\"stylesheet\" href=\"../../../InterfaceGraphique/styles/main.css\" type=\"text/css\">";
+			fichier_sortie << "\n\t\t<link rel=\"stylesheet\" href=\"../../../InterfaceGraphique/styles/comparator.css\" type=\"text/css\">\n\n\t</head>\n\n\t<body>";
+			fichier_sortie << "\n\n" << res_html << "\n\n\t</body>\n\n</html>";
 			fichier_sortie.close();
 		} else {
 			cerr << "\nImpossible de créer le fichier " << nom_fichier_sortie << endl;

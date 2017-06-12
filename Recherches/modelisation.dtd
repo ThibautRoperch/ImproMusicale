@@ -3,12 +3,13 @@
 
 <!ELEMENT contraintes (elements-min-max,rectangles,couples-notes,patterns,repartition-notes)>
 
-<!ELEMENT elements-min-max (objectif,element-min,element-max)>
+<!ELEMENT elements-min-max (element-min,element-max)>
 <!ELEMENT element-min (note)>
 <!ELEMENT element-max (note)>
 
 <!ELEMENT rectangles (rectangle)>
 <!ELEMENT rectangle (objectif,hauteur,largeur)>
+<!ELEMENT objectif (#PCDATA)>
 <!ELEMENT hauteur (#PCDATA)>
 <!ELEMENT largeur (#PCDATA)>
 
@@ -29,5 +30,3 @@
 <!ELEMENT repartition-notes (note-unique*)>
 <!ELEMENT note-unique (#PCDATA)>
 <!ATTLIST note-unique valeur CDATA #REQUIRED>
-
-<!ELEMENT objectif (#PCDATA)>

@@ -135,17 +135,17 @@ then
 	
 	# Génération d'une mélodie improvisée à partir des contraintes des mélodies ou des mélodies extraites
 	
-	if [ "$type_improvisations" != "" ]
+	IFS=' ' read -r -a array <<< "$type_improvisations"
+	
+	if [ ${#array[@]} > 0 ]
 	then
-		echo -e "\n# Génération d'une mélodie improvisée"
+		echo -e "\n# Génération des ${#array[@]} mélodies à improviser"
 		
 		if [ "$nombre_notes" -lt 0 ]
 		then
 			echo -e "\nNombre de notes à générer : "
 			read nombre_notes
 		fi
-		
-		IFS=' ' read -r -a array <<< "$type_improvisations"
 	
 		for type_impro in "${array[@]}"
 		do
@@ -162,7 +162,7 @@ then
 			then
 				echo -e "\nImprovisation ($type_impro) à partir des contraintes de la (des) mélodie(s) dans $improvisation"
 				
-				./ModeleMarkov/lib/generateur_aleatoire_sous_contraintes/rmg -o $improvisation -c $modelisation -n $nombre_notes -g 50 > $redirection_sortie
+				./ModeleMarkov/lib/rmg -o $improvisation -c $modelisation -n $nombre_notes -g 50 -ls > $redirection_sortie
 			elif [ "$type_impro" == "markov" ]
 			then
 				echo -e "\nImprovisation ($type_impro) à partir de la (des) mélodie(s) dans $improvisation"

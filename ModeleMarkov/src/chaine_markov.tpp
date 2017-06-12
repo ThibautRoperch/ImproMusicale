@@ -32,7 +32,7 @@ void ChaineMarkov<T>::afficherChaine() const {
 
 /**
  * Affiche la matrice de statistiques de la chaine de Markov
- * Matice à lire à l'horizontal puis à la vertical (l'élément e1 est suivit par l'élément e2 à x %)
+ * Matrice à lire à l'horizontal puis à la vertical (l'élément e1 est suivit par l'élément e2 à x %)
  */
 template<class T>
 void ChaineMarkov<T>::afficherMatrice() const {

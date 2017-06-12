@@ -185,7 +185,6 @@ int main(int argc, char* argv[]) {
 	if (note_max == NULL) note_max = new Note(0, 0);
 
 	res += "  <elements-min-max>\n";
-	res += "    <objectif>1</objectif>\n";
 	res += "    <element-min>\n";
 	res += "      <note>\n";
 	res += "        <valeur>" + to_string(note_min->valeurNote()) + "</valeur>\n";

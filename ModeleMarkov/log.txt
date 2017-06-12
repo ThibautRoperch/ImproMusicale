@@ -138,3 +138,451 @@ ModeleMarkov/test/comparaisons/CHAT_MUSICALChant-CHAT_MUSICALChant-impro-markov-
 ModeleMarkov/test/melodies/CHAT_MUSICAL-025849.xml
 ModeleMarkov/test/modelisations/CHAT_MUSICAL-025849.xml
 
+12/06/2017 09:51:02
+ModeleMarkov/test/melodies/You_re_welcome-095102.xml
+ModeleMarkov/test/melodies/You_re_welcome-095102.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095102.xml
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-095102-impro-contraintes.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095102-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-contraintes-095102.html
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-095102-impro-markov.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095102-impro-markov.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-markov-095102.html
+
+12/06/2017 09:54:48
+ModeleMarkov/test/melodies/You_re_welcome-095448.xml
+ModeleMarkov/test/melodies/You_re_welcome-095448.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095448.xml
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-095448-impro-contraintes.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095448-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-contraintes-095448.html
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-095448-impro-markov.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095448-impro-markov.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-markov-095448.html
+
+12/06/2017 09:58:16
+ModeleMarkov/test/melodies/You_re_welcome-095816.xml
+ModeleMarkov/test/melodies/You_re_welcome-095816.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095816.xml
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-095816-impro-contraintes.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095816-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-contraintes-095816.html
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-095816-impro-markov.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095816-impro-markov.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-markov-095816.html
+
+12/06/2017 09:59:38
+ModeleMarkov/test/melodies/You_re_welcome-095938.xml
+ModeleMarkov/test/melodies/You_re_welcome-095938.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-095938.xml
+12/06/2017 10:05:54
+ModeleMarkov/test/melodies/toreador-100554.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-100554.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-100554.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-100554-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-100554-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-100554.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-100554-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-100554-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-100554.html
+
+12/06/2017 11:01:44
+ModeleMarkov/test/melodies/toreador-110144.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-110144.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110144.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-110144-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110144-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-110144.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-110144-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110144-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-110144.html
+
+12/06/2017 11:03:22
+ModeleMarkov/test/melodies/toreador-110322.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-110322.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110322.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-110322-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110322-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-110322.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-110322-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110322-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-110322.html
+
+12/06/2017 11:03:35
+ModeleMarkov/test/melodies/toreador-110335.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-110335.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110335.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-110335-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110335-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-110335.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-110335-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-110335-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-110335.html
+
+12/06/2017 11:30:11
+ModeleMarkov/test/melodies/toreador-113011.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-113011.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113011.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-113011-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113011-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-113011.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-113011-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113011-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-113011.html
+
+12/06/2017 11:30:22
+ModeleMarkov/test/melodies/toreador-113022.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-113022.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113022.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-113022-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113022-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-113022.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-113022-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113022-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-113022.html
+
+12/06/2017 11:32:33
+ModeleMarkov/test/melodies/toreador-113233.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-113233.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113233.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-113233-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113233-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-113233.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-113233-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-113233-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-113233.html
+
+12/06/2017 11:41:19
+ModeleMarkov/test/melodies/toreador-114119.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-114119.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114119.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-114119-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114119-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-114119.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-114119-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114119-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-114119.html
+
+12/06/2017 11:42:12
+ModeleMarkov/test/melodies/toreador-114212.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-114212.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114212.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-114212-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114212-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-114212.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-114212-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114212-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-114212.html
+
+12/06/2017 11:43:02
+ModeleMarkov/test/melodies/toreador-114302.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-114302.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114302.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-114302-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114302-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-114302.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-114302-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114302-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-114302.html
+
+12/06/2017 11:44:03
+ModeleMarkov/test/melodies/toreador-114403.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-114403.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114403.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-114403-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114403-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-114403.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-114403-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-114403-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-114403.html
+
+12/06/2017 11:51:53
+ModeleMarkov/test/melodies/toreador-115153.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-115153.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-115153.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-115153-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-115153-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-115153.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-115153-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-115153-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-115153.html
+
+12/06/2017 14:34:55
+ModeleMarkov/test/melodies/Saltarello-143455.xml
+ModeleMarkov/test/modelisations/Saltarello-143455.xml
+ModeleMarkov/test/improvisations/Saltarello-143455-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-143455-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-143455.html
+
+12/06/2017 14:47:13
+ModeleMarkov/test/melodies/Saltarello-144713.xml
+ModeleMarkov/test/modelisations/Saltarello-144713.xml
+ModeleMarkov/test/improvisations/Saltarello-144713-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-144713-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-144713.html
+ModeleMarkov/test/improvisations/Saltarello-144713-impro-contraintes.xml
+ModeleMarkov/test/modelisations/Saltarello-144713-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-contraintes-144713.html
+
+12/06/2017 14:47:32
+ModeleMarkov/test/melodies/Saltarello-144732.xml
+ModeleMarkov/test/modelisations/Saltarello-144732.xml
+ModeleMarkov/test/improvisations/Saltarello-144732-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-144732-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-144732.html
+ModeleMarkov/test/improvisations/Saltarello-144732-impro-contraintes.xml
+ModeleMarkov/test/modelisations/Saltarello-144732-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-contraintes-144732.html
+
+12/06/2017 14:48:58
+ModeleMarkov/test/melodies/Saltarello-144858.xml
+ModeleMarkov/test/modelisations/Saltarello-144858.xml
+ModeleMarkov/test/improvisations/Saltarello-144858-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-144858-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-144858.html
+ModeleMarkov/test/improvisations/Saltarello-144858-impro-contraintes.xml
+ModeleMarkov/test/modelisations/Saltarello-144858-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-contraintes-144858.html
+
+12/06/2017 15:39:18
+ModeleMarkov/test/melodies/Saltarello-153918.xml
+ModeleMarkov/test/modelisations/Saltarello-153918.xml
+ModeleMarkov/test/improvisations/Saltarello-153918-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-153918-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-153918.html
+ModeleMarkov/test/improvisations/Saltarello-153918-impro-contraintes.xml
+ModeleMarkov/test/modelisations/Saltarello-153918-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-contraintes-153918.html
+
+12/06/2017 15:39:31
+ModeleMarkov/test/melodies/Saltarello-153931.xml
+ModeleMarkov/test/modelisations/Saltarello-153931.xml
+ModeleMarkov/test/improvisations/Saltarello-153931-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-153931-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-153931.html
+
+12/06/2017 15:40:37
+ModeleMarkov/test/melodies/Saltarello-154037.xml
+ModeleMarkov/test/modelisations/Saltarello-154037.xml
+ModeleMarkov/test/improvisations/Saltarello-154037-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-154037-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-154037.html
+
+12/06/2017 15:46:58
+ModeleMarkov/test/melodies/Saltarello-154658.xml
+ModeleMarkov/test/modelisations/Saltarello-154658.xml
+ModeleMarkov/test/improvisations/Saltarello-154658-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-154658-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-154658.html
+
+12/06/2017 15:48:05
+ModeleMarkov/test/melodies/Saltarello-154805.xml
+ModeleMarkov/test/modelisations/Saltarello-154805.xml
+ModeleMarkov/test/improvisations/Saltarello-154805-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-154805-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-154805.html
+
+12/06/2017 15:48:18
+ModeleMarkov/test/melodies/Saltarello-154818.xml
+ModeleMarkov/test/modelisations/Saltarello-154818.xml
+ModeleMarkov/test/improvisations/Saltarello-154818-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-154818-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-154818.html
+
+12/06/2017 15:48:55
+ModeleMarkov/test/melodies/Saltarello-154855.xml
+ModeleMarkov/test/modelisations/Saltarello-154855.xml
+ModeleMarkov/test/improvisations/Saltarello-154855-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-154855-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-154855.html
+
+12/06/2017 16:02:59
+ModeleMarkov/test/melodies/Saltarello-160259.xml
+ModeleMarkov/test/modelisations/Saltarello-160259.xml
+ModeleMarkov/test/improvisations/Saltarello-160259-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160259-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160259.html
+
+12/06/2017 16:03:18
+ModeleMarkov/test/melodies/Saltarello-160318.xml
+ModeleMarkov/test/modelisations/Saltarello-160318.xml
+ModeleMarkov/test/improvisations/Saltarello-160318-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160318-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160318.html
+
+12/06/2017 16:03:47
+ModeleMarkov/test/melodies/Saltarello-160347.xml
+ModeleMarkov/test/modelisations/Saltarello-160347.xml
+ModeleMarkov/test/improvisations/Saltarello-160347-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160347-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160347.html
+
+12/06/2017 16:04:22
+ModeleMarkov/test/melodies/Saltarello-160422.xml
+ModeleMarkov/test/modelisations/Saltarello-160422.xml
+ModeleMarkov/test/improvisations/Saltarello-160422-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160422-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160422.html
+
+12/06/2017 16:04:40
+ModeleMarkov/test/melodies/Saltarello-160440.xml
+ModeleMarkov/test/modelisations/Saltarello-160440.xml
+ModeleMarkov/test/improvisations/Saltarello-160440-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160440-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160440.html
+
+12/06/2017 16:04:45
+ModeleMarkov/test/melodies/Saltarello-160445.xml
+ModeleMarkov/test/modelisations/Saltarello-160445.xml
+ModeleMarkov/test/improvisations/Saltarello-160445-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160445-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160445.html
+
+12/06/2017 16:04:49
+ModeleMarkov/test/melodies/Saltarello-160449.xml
+ModeleMarkov/test/modelisations/Saltarello-160449.xml
+ModeleMarkov/test/improvisations/Saltarello-160449-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160449-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160449.html
+
+12/06/2017 16:04:52
+ModeleMarkov/test/melodies/Saltarello-160452.xml
+ModeleMarkov/test/modelisations/Saltarello-160452.xml
+ModeleMarkov/test/improvisations/Saltarello-160452-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160452-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160452.html
+
+12/06/2017 16:05:35
+ModeleMarkov/test/melodies/Saltarello-160535.xml
+ModeleMarkov/test/modelisations/Saltarello-160535.xml
+12/06/2017 16:05:36
+ModeleMarkov/test/melodies/Saltarello-160536.xml
+ModeleMarkov/test/modelisations/Saltarello-160536.xml
+ModeleMarkov/test/improvisations/Saltarello-160536-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160536-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160536.html
+
+12/06/2017 16:05:49
+ModeleMarkov/test/melodies/Saltarello-160549.xml
+ModeleMarkov/test/modelisations/Saltarello-160549.xml
+12/06/2017 16:06:03
+ModeleMarkov/test/melodies/Saltarello-160603.xml
+ModeleMarkov/test/modelisations/Saltarello-160603.xml
+ModeleMarkov/test/improvisations/Saltarello-160603-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160603-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160603.html
+
+12/06/2017 16:06:06
+ModeleMarkov/test/melodies/Saltarello-160606.xml
+ModeleMarkov/test/modelisations/Saltarello-160606.xml
+ModeleMarkov/test/improvisations/Saltarello-160606-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160606-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160606.html
+
+12/06/2017 16:06:44
+ModeleMarkov/test/melodies/Saltarello-160644.xml
+ModeleMarkov/test/modelisations/Saltarello-160644.xml
+ModeleMarkov/test/improvisations/Saltarello-160644-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160644-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160644.html
+
+12/06/2017 16:06:49
+ModeleMarkov/test/melodies/Saltarello-160649.xml
+ModeleMarkov/test/modelisations/Saltarello-160649.xml
+ModeleMarkov/test/improvisations/Saltarello-160649-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160649-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160649.html
+
+12/06/2017 16:07:00
+ModeleMarkov/test/melodies/Saltarello-160700.xml
+ModeleMarkov/test/modelisations/Saltarello-160700.xml
+ModeleMarkov/test/improvisations/Saltarello-160700-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160700-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160700.html
+
+12/06/2017 16:07:34
+ModeleMarkov/test/melodies/Saltarello-160734.xml
+ModeleMarkov/test/modelisations/Saltarello-160734.xml
+ModeleMarkov/test/improvisations/Saltarello-160734-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160734-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160734.html
+
+12/06/2017 16:08:16
+ModeleMarkov/test/melodies/Saltarello-160816.xml
+ModeleMarkov/test/modelisations/Saltarello-160816.xml
+ModeleMarkov/test/improvisations/Saltarello-160816-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160816-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160816.html
+
+12/06/2017 16:09:05
+ModeleMarkov/test/melodies/Saltarello-160905.xml
+ModeleMarkov/test/modelisations/Saltarello-160905.xml
+ModeleMarkov/test/improvisations/Saltarello-160905-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160905-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160905.html
+
+12/06/2017 16:09:12
+ModeleMarkov/test/melodies/Saltarello-160912.xml
+ModeleMarkov/test/modelisations/Saltarello-160912.xml
+ModeleMarkov/test/improvisations/Saltarello-160912-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160912-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160912.html
+
+12/06/2017 16:09:16
+ModeleMarkov/test/melodies/Saltarello-160916.xml
+ModeleMarkov/test/modelisations/Saltarello-160916.xml
+ModeleMarkov/test/improvisations/Saltarello-160916-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160916-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160916.html
+
+12/06/2017 16:09:19
+ModeleMarkov/test/melodies/Saltarello-160919.xml
+ModeleMarkov/test/modelisations/Saltarello-160919.xml
+ModeleMarkov/test/improvisations/Saltarello-160919-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-160919-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-160919.html
+
+12/06/2017 16:19:30
+ModeleMarkov/test/melodies/Saltarello-161930.xml
+ModeleMarkov/test/modelisations/Saltarello-161930.xml
+ModeleMarkov/test/improvisations/Saltarello-161930-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-161930-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-161930.html
+
+12/06/2017 16:20:27
+ModeleMarkov/test/melodies/Saltarello-162027.xml
+ModeleMarkov/test/modelisations/Saltarello-162027.xml
+ModeleMarkov/test/improvisations/Saltarello-162027-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-162027-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-162027.html
+
+12/06/2017 16:21:41
+ModeleMarkov/test/melodies/Saltarello-162141.xml
+ModeleMarkov/test/modelisations/Saltarello-162141.xml
+ModeleMarkov/test/improvisations/Saltarello-162141-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-162141-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-162141.html
+
+12/06/2017 16:33:29
+12/06/2017 16:33:38
+12/06/2017 16:33:43
+ModeleMarkov/test/melodies/Saltarello-163343.xml
+ModeleMarkov/test/modelisations/Saltarello-163343.xml
+ModeleMarkov/test/improvisations/Saltarello-163343-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-163343-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-163343.html
+
+12/06/2017 16:36:20
+ModeleMarkov/test/melodies/Saltarello-163620.xml
+ModeleMarkov/test/modelisations/Saltarello-163620.xml
+ModeleMarkov/test/improvisations/Saltarello-163620-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-163620-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-163620.html
+
+12/06/2017 16:42:14
+ModeleMarkov/test/melodies/Saltarello-164214.xml
+ModeleMarkov/test/modelisations/Saltarello-164214.xml
+ModeleMarkov/test/improvisations/Saltarello-164214-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-164214-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-164214.html
+
