@@ -197,7 +197,7 @@ function transition() {
 	document.getElementsByTagName("article")[0].className = "masque";
 	document.getElementsByTagName("article")[1].className = "masque";
 	document.getElementsByTagName("article")[2].className = "";
-	document.getElementsByTagName("article")[3].className = "";
+	if (types_improvisation.length > 0) document.getElementsByTagName("article")[3].className = "";
 
 	openFile('ModeleMarkov/log.txt', recupererLog);
 
@@ -210,7 +210,9 @@ var fichier_historique = "";
 var historique_recupere = false;
 
 var originales = [];
+var modelisation_originales = "";
 var improvisations = [];
+var comparaisons = [];
 
 function recupererLog(contenu_fichier) {
 	fichier_historique = contenu_fichier;
@@ -280,22 +282,41 @@ function verifierImprovisations(old_log) {
 
 		// Pour chaque ligne de la différence entre les fichiers, si elle contient un type d'improvisation,
 		// remplir l'input correspondant au type d'improvisation avec cette ligne
+		// Si la ligne du log contient le répertoire des mélodies, ajouter le chemin du fichier aux mélodies originales
+		// Même chose pour le répertoire des comparaisons
+		// Le premier log qui contient le chemin des modélisations est le fichier de modélisation des mélodies originales
 
 		var lignes = difference.split("\n")
 
 		for (var i = 0; i < lignes.length; ++i) {
-			for (var j = 0; j < types_improvisation.length; ++j) {
+			/*for (var j = 0; j < types_improvisation.length; ++j) {
 				if (lignes[i].indexOf(types_improvisation[j]) > -1 && lignes[i].indexOf("improvisations/") > -1) {
 					document.getElementById("fichier-" + types_improvisation[j]).value = lignes[i];
 					improvisations.push(lignes[i]);
 				} else if (lignes[i].indexOf("melodies/") > -1) {
 					originales.push(lignes[i]);
+				} else if (lignes[i].indexOf("comparaisons/") > -1) {
+					comparaisons.push(lignes[i]);
 				}
+			}*/
+			if (lignes[i].indexOf("melodies/") > -1) {
+				originales.push(lignes[i]);
+			} else if (lignes[i].indexOf("modelisations/") > -1 && modelisation_originales == "") {
+				modelisation_originales = lignes[i];
+			} else if (lignes[i].indexOf("improvisations/") > -1) {
+				improvisations.push(lignes[i]);
+				for (var j = 0; j < types_improvisation.length; ++j) {
+					if (lignes[i].indexOf(types_improvisation[j]) > -1) {
+						document.getElementById("fichier-" + types_improvisation[j]).value = lignes[i];
+					}
+				}
+			} else if (lignes[i].indexOf("comparaisons/") > -1) {
+				comparaisons.push(lignes[i]);
 			}
 		}
 	}
 
-	if (champsImproRemplis()) {
+	if (champsImproRemplis() && modelisation_originales != "") {
 		document.getElementById("continuer").className = "actif";
 		redirection();
 	} else {
@@ -332,11 +353,21 @@ function redirection() {
 		page_suivante += originales[i].substring(repertoire_suivant.length + 1);
 	}
 	
+	// Ajout de la modélisation des mélodies originales
+	page_suivante += "?modelisation=" + modelisation_originales.substring(repertoire_suivant.length + 1);
+	
 	// Ajout des improvisations
 	for (var i = 0; i < improvisations.length; i++) {
 		if (i == 0)		page_suivante += "?improvisations=";
 		else			page_suivante += "&";
 		page_suivante += improvisations[i].substring(repertoire_suivant.length + 1);
+	}
+	
+	// Ajout des comparaisons
+	for (var i = 0; i < comparaisons.length; i++) {
+		if (i == 0)		page_suivante += "?comparaisons=";
+		else			page_suivante += "&";
+		page_suivante += comparaisons[i].substring(repertoire_suivant.length + 1);
 	}
 	
 	document.location.href = page_suivante;

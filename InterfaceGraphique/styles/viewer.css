@@ -1,0 +1,180 @@
+
+body {
+	background: #FF8E00;
+}
+
+
+/* Les onglets */
+
+nav {
+	display: flex;
+	flex-direction: row;
+	padding-top: 15px;
+	padding-left: 10px;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+onglet {
+	display: flex;
+	flex-direction: column;
+	height: 40%;
+	margin-right: 10px;
+	padding: 10px 15px;
+	color: rgba(255, 255, 255, 0.8);
+	background: rgba(255, 255, 255, 0.2);
+	overflow: hidden;
+	cursor: pointer;
+}
+
+onglet, onglet * {
+	transition: all .13s linear;
+}
+
+onglet.actif {
+	height: auto;
+	color: rgba(0, 0, 0, 0.85);
+	background: rgba(255, 255, 255, 0.6);
+}
+
+onglet:hover {
+	height: auto;
+}
+
+onglet h1, onglet h2 {
+	text-align: center;
+}
+
+onglet h1 {
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+onglet h2 {
+	font-size: 11px;
+	font-style: italic;
+	font-weight: normal;
+	opacity: 0;
+}
+
+onglet.actif h2, onglet:hover h2 {
+	opacity: 0.8;
+}
+
+
+/* Les articles */
+
+section {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+article {
+	display: none;
+	flex-direction: column;
+	height: 100%;
+	padding: 15px;
+	background: rgba(255, 255, 255, 0.6);
+}
+
+article.actif {
+	display: flex;
+}
+
+article.actif * {
+	flex-grow: 1;
+}
+
+/* Les iframes */
+
+iframe {
+	border: none;
+	background: white;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+iframe:nth-child(n+2) {
+	margin-top: 10px;
+}
+
+/* La liste des notes et la partition */
+
+section notes, section partition {
+	flex-grow: 1;
+}
+
+/* Les contrôles */
+
+controles {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	background: #65A6D1;
+}
+
+controles div {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+	color: white;
+}
+
+controles div > * {
+	margin: 0 5px;
+}
+
+controles div input[type="number"] {
+	width: 50px;
+}
+
+controles div input[type="range"] {
+	width: 100px;
+}
+
+/* Les notes */
+
+note, info {
+	display: inline-block;
+}
+
+/* La liste des notes et ses notes */
+
+notes {
+	padding: 15px;
+	background: white;
+	overflow: auto;
+}
+
+notes note, info {
+	margin: 4px;
+	padding: 2px 6px;
+	color: gray;
+	border: 1px solid silver;
+	border-radius: 3px;
+}
+
+notes note.lue {
+	color: rgba(0, 100, 0, 0.6);
+	border: 1px solid rgba(0, 100, 0, 0.6);
+}
+
+notes note.hover {
+	border: 1px solid black;
+}
+
+notes note octave::before {
+	content: "(";
+}
+
+notes note octave::after {
+	content: ")";
+}
+
+/* La partition et ses notes */
+
+partition { /* temporaire */
+	display: none;
+}

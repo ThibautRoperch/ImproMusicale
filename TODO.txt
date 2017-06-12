@@ -29,21 +29,15 @@ Prévoir un enregistrement si la démo fait n'imp
 
 [ TECHNIQUEMENT ]
 
-
-sortie html dans le fichier
-affichage de res dans la console
-
 Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
 
 virer le "objectif" de la dtd modelisation, pour elements min et max ?
 
+ajouter un body à la sortie html et une feulle de style
+
 Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
-Quand ca donne la ligne de commande à exécuter, checker while true le contenu du dossier improvisation, et à la création d'un nouveau fichier,
-remplir le champ de texte (un champ par type d'impro) avec ce fichier nouvellement crée (ordre des champs important : il doit concorder avec l'ordre de création des impros (cf le script launch.sh))
-Quand tout est full, ouvre une page avec des onglets (même page qu'ajd et que "ouvrir mélodie") : mélodies originales, impro xxx (nom du file en petit en dessous), impro xxx (chemin du file en dessous en petit)
-possibilité de voir ce que la comparaison a donné (popup qui affiche le contenu du fichier généré par comparaison.exe ?)
-faire un derner onglet ou toutes les melodies sont mises a la suites (+ les contraintes, là aussi)
+Pouvoir tourner la liste de notes pour faire apparraitre la partition (avec les recntangles et tout)
 
 Programme MIDI from scratch, lien dans l'interface pour générer une commande qui créé un midi a partir d'une mélodie épurée
 

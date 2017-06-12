@@ -66,3 +66,75 @@ ModeleMarkov/test/improvisations/The_Coconut_Song-11062017_211424-impro-markov.x
 ModeleMarkov/test/modelisations/The_Coconut_Song-11062017_211424-impro-markov.xml
 ModeleMarkov/test/comparaisons/The_Coconut_Song-The_Coconut_Song-impro-markov-11062017_211424.html
 
+12/06/2017 01:10:54
+ModeleMarkov/test/melodies/Saltarello-12062017_011054.xml
+ModeleMarkov/test/melodies/CHAT_MUSICAL-12062017_011054.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011054.xml
+ModeleMarkov/test/improvisations/SaltarelloCHAT_MUSICAL-12062017_011054-impro-contraintes.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011054-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/SaltarelloCHAT_MUSICAL-SaltarelloCHAT_MUSICAL-impro-contraintes-12062017_011054.html
+ModeleMarkov/test/improvisations/SaltarelloCHAT_MUSICAL-12062017_011054-impro-markov.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011054-impro-markov.xml
+ModeleMarkov/test/comparaisons/SaltarelloCHAT_MUSICAL-SaltarelloCHAT_MUSICAL-impro-markov-12062017_011054.html
+
+12/06/2017 01:15:41
+ModeleMarkov/test/melodies/Saltarello-12062017_011541.xml
+ModeleMarkov/test/melodies/CHAT_MUSICAL-12062017_011541.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011541.xml
+ModeleMarkov/test/improvisations/SaltarelloCHAT_MUSICAL-12062017_011541-impro-contraintes.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011541-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/SaltarelloCHAT_MUSICAL-SaltarelloCHAT_MUSICAL-impro-contraintes-12062017_011541.html
+ModeleMarkov/test/improvisations/SaltarelloCHAT_MUSICAL-12062017_011541-impro-markov.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011541-impro-markov.xml
+ModeleMarkov/test/comparaisons/SaltarelloCHAT_MUSICAL-SaltarelloCHAT_MUSICAL-impro-markov-12062017_011541.html
+
+12/06/2017 01:15:49
+ModeleMarkov/test/melodies/Saltarello-12062017_011549.xml
+ModeleMarkov/test/melodies/CHAT_MUSICAL-12062017_011549.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011549.xml
+ModeleMarkov/test/improvisations/SaltarelloCHAT_MUSICAL-12062017_011549-impro-contraintes.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011549-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/SaltarelloCHAT_MUSICAL-SaltarelloCHAT_MUSICAL-impro-contraintes-12062017_011549.html
+ModeleMarkov/test/improvisations/SaltarelloCHAT_MUSICAL-12062017_011549-impro-markov.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011549-impro-markov.xml
+ModeleMarkov/test/comparaisons/SaltarelloCHAT_MUSICAL-SaltarelloCHAT_MUSICAL-impro-markov-12062017_011549.html
+
+12/06/2017 01:15:52
+ModeleMarkov/test/melodies/Saltarello-12062017_011552.xml
+ModeleMarkov/test/melodies/CHAT_MUSICAL-12062017_011552.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011552.xml
+ModeleMarkov/test/improvisations/SaltarelloCHAT_MUSICAL-12062017_011552-impro-contraintes.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011552-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/SaltarelloCHAT_MUSICAL-SaltarelloCHAT_MUSICAL-impro-contraintes-12062017_011552.html
+ModeleMarkov/test/improvisations/SaltarelloCHAT_MUSICAL-12062017_011552-impro-markov.xml
+ModeleMarkov/test/modelisations/SaltarelloCHAT_MUSICAL-12062017_011552-impro-markov.xml
+ModeleMarkov/test/comparaisons/SaltarelloCHAT_MUSICAL-SaltarelloCHAT_MUSICAL-impro-markov-12062017_011552.html
+
+12/06/2017 01:16:40
+ModeleMarkov/test/melodies/Saltarello-12062017_011640.xml
+ModeleMarkov/test/melodies/Chant-12062017_011640.xml
+ModeleMarkov/test/modelisations/SaltarelloChant-12062017_011640.xml
+ModeleMarkov/test/improvisations/SaltarelloChant-12062017_011640-impro-markov.xml
+ModeleMarkov/test/modelisations/SaltarelloChant-12062017_011640-impro-markov.xml
+ModeleMarkov/test/comparaisons/SaltarelloChant-SaltarelloChant-impro-markov-12062017_011640.html
+
+12/06/2017 01:30:26
+ModeleMarkov/test/melodies/CHAT_MUSICAL-013026.xml
+ModeleMarkov/test/melodies/Chant-013026.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICALChant-013026.xml
+ModeleMarkov/test/improvisations/CHAT_MUSICALChant-013026-impro-markov.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICALChant-013026-impro-markov.xml
+ModeleMarkov/test/comparaisons/CHAT_MUSICALChant-CHAT_MUSICALChant-impro-markov-013026.html
+
+12/06/2017 01:33:50
+ModeleMarkov/test/melodies/CHAT_MUSICAL-013350.xml
+ModeleMarkov/test/melodies/Chant-013350.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICALChant-013350.xml
+ModeleMarkov/test/improvisations/CHAT_MUSICALChant-013350-impro-markov.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICALChant-013350-impro-markov.xml
+ModeleMarkov/test/comparaisons/CHAT_MUSICALChant-CHAT_MUSICALChant-impro-markov-013350.html
+
+12/06/2017 02:58:49
+ModeleMarkov/test/melodies/CHAT_MUSICAL-025849.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICAL-025849.xml
+

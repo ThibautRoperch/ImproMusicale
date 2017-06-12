@@ -13,7 +13,7 @@ then
 	fichier_historique="ModeleMarkov/log.txt"
 	
 	fichier_sortie=""
-	date=$(date "+%d%m%Y_%H%M%S")
+	date=$(date "+%H%M%S")
 	
 	# Ajout de l'en-tête de l'historique des fichiers qui vont être générés
 	

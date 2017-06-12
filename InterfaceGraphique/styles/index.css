@@ -1,4 +1,8 @@
 
+body {
+	background: #65A6D1;
+}
+
 /* La section est en pleine page dans le body */
 
 section {
@@ -221,18 +225,4 @@ section footer button.actif {
 section footer button.actif:hover {
 	color: rgba(0, 0, 0, 0.8);
 	background: rgba(255, 255, 255, 0.8);
-}
-
-/* Le footer du body contient un paragraphe */
-
-body > footer {
-	display: flex;
-	width: 100%;
-	color: rgba(0, 0, 0, 0.5);
-}
-
-body > footer p {
-	width: 100%;
-	padding: 15px;
-	text-align: center;
 }

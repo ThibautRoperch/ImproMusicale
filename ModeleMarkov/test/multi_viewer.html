@@ -1,26 +1,20 @@
-iframe de plusieurs viewer, en fonction de ce qu'il y a dans l'url
-se debrouiller avec le css pour faire des onglets (display none tous sauf celui selectionné)
-
 <!DOCTYPE html>
 
 <html>
 
 	<head>
 		<meta charset="utf-8">
-		<title>Extraire, modéliser, improviser et comparer</title>
+		<title>Visualisateur de mélodies</title>
 		
-		<link rel="stylesheet" href="InterfaceGraphique/styles/main.css" type="text/css">
-		<link rel="stylesheet" href="InterfaceGraphique/styles/viewer.css" type="text/css">
+		<link rel="stylesheet" href="../../InterfaceGraphique/styles/main.css" type="text/css">
+		<link rel="stylesheet" href="../../InterfaceGraphique/styles/viewer.css" type="text/css">
 	</head>
 
 	<body onload="genererElementsDynamiques()">
-
-		<header></header>
 		
 		<section>
 
-			<nav>
-			</nav>
+			<nav></nav>
 
 		</section>
 		
@@ -38,9 +32,9 @@ se debrouiller avec le css pour faire des onglets (display none tous sauf celui 
 <script>
 
 var originales = [];
+var modelisation_originales = "";
 var improvisations = [];
-
-genererElementsDynamiques();
+var comparaisons = [];
 
 function genererElementsDynamiques() {
 	/* Récupération des informations de l'URL et remplir les variables globales en conséquence */
@@ -65,20 +59,83 @@ function genererElementsDynamiques() {
 
 		if (nom_variable == "originales") {
 			originales = valeurs.split("&");
+		} else if (nom_variable == "modelisation") {
+			modelisation_originales = valeurs;
 		} else if (nom_variable == "improvisations") {
 			improvisations = valeurs.split("&");
+		} else if (nom_variable == "comparaisons") {
+			comparaisons = valeurs.split("&");
 		}
 	}
 
-	/* Génération, par mélodie, d'une iFrame pour le viewer de mélodie et d'une iFrame pour le comparatif pour les improvisations  */
+	/* Génération, par mélodie, d'une article pour le viewer de mélodie (iframe) et d'une iframe pour le comparatif pour les improvisations ainsi qu'un onglet */
 
 	for (var i = 0; i < originales.length; ++i) {
+		// Onglet de navigation
+		var onglet = document.createElement("onglet");
+			var titre = document.createElement("h1");
+				titre.innerHTML = originales[i].substring(originales[i].lastIndexOf("/") + 1);
+			var chemin = document.createElement("h2");
+				chemin.innerHTML = originales[i];
+		onglet.appendChild(titre);
+		onglet.appendChild(chemin);
+		onglet.id = parseInt(i + 1);
+		onglet.addEventListener("click", function() { afficherArticle(this); });
+		document.getElementsByTagName("nav")[0].appendChild(onglet);
+		
+		// Article de mélodie
 		var article = document.createElement("article");
-		var iframe = document.createElement("iframe");
-			iframe.src = "viewer.html?" + originales[i];
-		article.appendChild(iframe);
+			var viewer = document.createElement("iframe");
+				viewer.src = "viewer.html?" + originales[i] + "?" + modelisation_originales;
+		article.appendChild(viewer);
+		article.id = "article-" + parseInt(i + 1);
 		document.getElementsByTagName("section")[0].appendChild(article);
 	}
+
+	for (var i = 0; i < improvisations.length; ++i) {
+		// Onglet de navigation
+		var onglet = document.createElement("onglet");
+			var titre = document.createElement("h1");
+				titre.innerHTML = improvisations[i].substring(improvisations[i].lastIndexOf("/") + 1);
+			var chemin = document.createElement("h2");
+				chemin.innerHTML = improvisations[i];
+		onglet.appendChild(titre);
+		onglet.appendChild(chemin);
+		onglet.id = parseInt(originales.length + i + 1);
+		onglet.addEventListener("click", function() { afficherArticle(this); });
+		document.getElementsByTagName("nav")[0].appendChild(onglet);
+
+		// Article de mélodie
+		var article = document.createElement("article");
+			var viewer = document.createElement("iframe");
+				viewer.src = "viewer.html?" + improvisations[i];
+		article.appendChild(viewer);
+			var comparatif = document.createElement("iframe");
+				comparatif.src = comparaisons[i];
+		article.appendChild(comparatif);
+		article.id = "article-" + parseInt(originales.length + i + 1);
+		document.getElementsByTagName("section")[0].appendChild(article);
+	}
+
+	document.getElementsByTagName("onglet")[0].className = "actif";
+	document.getElementsByTagName("article")[0].className = "actif";
+}
+
+function afficherArticle(onglet) {
+	var i = 0;
+	while (document.getElementsByTagName("onglet")[i]) {
+		document.getElementsByTagName("onglet")[i].className = "";
+		++i;
+	}
+
+	var i = 0;
+	while (document.getElementsByTagName("article")[i]) {
+		document.getElementsByTagName("article")[i].className = "";
+		++i;
+	}
+
+	onglet.className = "actif";
+	document.getElementById("article-" + onglet.id).className = "actif";
 }
 
 </script>
