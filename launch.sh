@@ -95,7 +95,7 @@ then
 			format="musicxml"
 		else
 			echo -e "# Format musical $fichier non pris en charge"
-			echo -e "# Formats acceptés :"
+			echo -e "# Formats musicaux acceptés :"
 			echo -e "\tMIDI\t\t.mid"
 			echo -e "\tMusicXML\t.xml"
 		
@@ -137,14 +137,21 @@ then
 	
 	IFS=' ' read -r -a array <<< "$type_improvisations"
 	
-	if [ ${#array[@]} > 0 ]
+	if [ ${#array[@]} -gt 0 ]
 	then
-		echo -e "\n# Génération des ${#array[@]} mélodies à improviser"
+		echo -e "\n# Génération des ${#array[@]} mélodies (improvisations)"
 		
-		if [ "$nombre_notes" -lt 0 ]
+		if [ $nombre_notes -lt 0 ]
 		then
-			echo -e "\nNombre de notes à générer : "
+			echo -e "\n# Nombre de notes à générer : "
 			read nombre_notes
+		fi
+		
+		if [ $nombre_notes -lt 0 ]
+		then
+			echo -e "# Le nombre de notes ne peut être inférieur à 0"
+			
+			exit 4
 		fi
 	
 		for type_impro in "${array[@]}"
@@ -201,9 +208,9 @@ then
 	echo "" >> $fichier_historique
 	
 else
-	echo -e "# Utilisation : ./launch.sh partition [OPTION]"
+	echo -e "# Utilisation : ./launch.sh <fichiers-musicaux> [<options>]"
 
-	echo -e "# Formats acceptés :"
+	echo -e "# Formats musicaux acceptés :"
 	echo -e "\tMIDI\t\t.mid"
 	echo -e "\tMusicXML\t.xml"
 	
@@ -211,7 +218,7 @@ else
 	echo -e "\t--impro-aleatoire\tGénérer, à partir de la partition, une mélodie totalement aléatoire"
 	echo -e "\t--impro-contraintes\tGénérer, à partir de la partition, une mélodie aléatoire sous contraintes"
 	echo -e "\t--impro-markov\t\tGénérer, à partir de la partition, une mélodie basée uniquement sur le modèle de Markov"
-	echo -e "\t--nombre-notes NB\tIndiquer le nombre de notes à générer par improvisation, avec NB le nombre de notes à générer"
+	echo -e "\t--nombre-notes <NB>\tIndiquer le nombre de notes à générer par improvisation, avec NB le nombre de notes à générer"
 	echo -e "\t--notraces\t\tMasquer la sortie lors de l'utilisation des programmes"
 	
 	exit 1

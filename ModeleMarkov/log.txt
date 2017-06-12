@@ -586,3 +586,117 @@ ModeleMarkov/test/improvisations/Saltarello-164214-impro-markov.xml
 ModeleMarkov/test/modelisations/Saltarello-164214-impro-markov.xml
 ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-164214.html
 
+12/06/2017 18:34:06
+ModeleMarkov/test/melodies/Saltarello-183406.xml
+ModeleMarkov/test/modelisations/Saltarello-183406.xml
+ModeleMarkov/test/improvisations/Saltarello-183406-impro-markov.xml
+ModeleMarkov/test/modelisations/Saltarello-183406-impro-markov.xml
+ModeleMarkov/test/comparaisons/Saltarello-Saltarello-impro-markov-183406.html
+
+12/06/2017 19:54:45
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-195445.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-195445.xml
+
+12/06/2017 19:55:21
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-195521.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-195521.xml
+
+12/06/2017 20:01:32
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-200132.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200132.xml
+
+12/06/2017 20:07:02
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-200702.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200702.xml
+
+12/06/2017 20:07:09
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-200709.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200709.xml
+
+12/06/2017 20:07:23
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-200723.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200723.xml
+
+12/06/2017 20:07:48
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-200748.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200748.xml
+
+12/06/2017 20:08:38
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-200838.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200838.xml
+
+12/06/2017 20:08:44
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-200844.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200844.xml
+
+12/06/2017 20:09:05
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-200905.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200905.xml
+ModeleMarkov/test/improvisations/CarmenLamourestunoiseaurebelle-200905-impro-markov.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-200905-impro-markov.xml
+ModeleMarkov/test/comparaisons/CarmenLamourestunoiseaurebelle-CarmenLamourestunoiseaurebelle-impro-markov-200905.html
+
+12/06/2017 20:13:23
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-201323.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-201323.xml
+ModeleMarkov/test/improvisations/CarmenLamourestunoiseaurebelle-201323-impro-markov.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-201323-impro-markov.xml
+ModeleMarkov/test/comparaisons/CarmenLamourestunoiseaurebelle-CarmenLamourestunoiseaurebelle-impro-markov-201323.html
+
+12/06/2017 20:13:31
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-201331.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-201331.xml
+ModeleMarkov/test/improvisations/CarmenLamourestunoiseaurebelle-201331-impro-markov.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-201331-impro-markov.xml
+ModeleMarkov/test/comparaisons/CarmenLamourestunoiseaurebelle-CarmenLamourestunoiseaurebelle-impro-markov-201331.html
+
+12/06/2017 20:13:36
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-201336.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-201336.xml
+ModeleMarkov/test/improvisations/CarmenLamourestunoiseaurebelle-201336-impro-markov.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-201336-impro-markov.xml
+ModeleMarkov/test/comparaisons/CarmenLamourestunoiseaurebelle-CarmenLamourestunoiseaurebelle-impro-markov-201336.html
+
+12/06/2017 20:23:14
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-202314.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-202314.xml
+ModeleMarkov/test/improvisations/CarmenLamourestunoiseaurebelle-202314-impro-markov.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-202314-impro-markov.xml
+ModeleMarkov/test/comparaisons/CarmenLamourestunoiseaurebelle-CarmenLamourestunoiseaurebelle-impro-markov-202314.html
+
+12/06/2017 20:58:02
+12/06/2017 20:58:06
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-205806.xml
+ModeleMarkov/test/modelisations/CarmenLamourestunoiseaurebelle-205806.xml
+12/06/2017 21:28:10
+ModeleMarkov/test/melodies/prelude-212810.xml
+ModeleMarkov/test/modelisations/prelude-212810.xml
+ModeleMarkov/test/improvisations/prelude-212810-impro-contraintes.xml
+ModeleMarkov/test/modelisations/prelude-212810-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/prelude-prelude-impro-contraintes-212810.html
+ModeleMarkov/test/improvisations/prelude-212810-impro-markov.xml
+ModeleMarkov/test/modelisations/prelude-212810-impro-markov.xml
+ModeleMarkov/test/comparaisons/prelude-prelude-impro-markov-212810.html
+
+12/06/2017 21:33:17
+ModeleMarkov/test/melodies/You_re_welcome-213317.xml
+ModeleMarkov/test/melodies/You_re_welcome-213317.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-213317.xml
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-213317-impro-contraintes.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-213317-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-contraintes-213317.html
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-213317-impro-markov.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-213317-impro-markov.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-markov-213317.html
+
+12/06/2017 21:34:57
+ModeleMarkov/test/melodies/You_re_welcome-213457.xml
+ModeleMarkov/test/melodies/You_re_welcome-213457.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-213457.xml
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-213457-impro-contraintes.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-213457-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-contraintes-213457.html
+ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-213457-impro-markov.xml
+ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-213457-impro-markov.xml
+ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-markov-213457.html
+

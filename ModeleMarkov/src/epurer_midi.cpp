@@ -1,4 +1,6 @@
 /**
+ * Programme de conversion entre un fichier au format MIDI et un fichier au format épuré
+ * 
  * https://github.com/craigsapp/midifile#midi-file-reading-examples
  * https://usermanuals.finalemusic.com/Finale2012Mac/Content/Finale/MIDI_Note_to_Pitch_Table.htm
  */

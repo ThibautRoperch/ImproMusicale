@@ -93,7 +93,7 @@ int main(int argc, char* argv[]) {
 
 	tmp = "1. Comparaison de l'intervalle de notes de la mélodie générée avec la (les) mélodie(s) originale(s)";
 	res += tmp + "\n\n";
-	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
+	res_html += "<section>\n\n<article>\n\n<h2>" + tmp + "</h2>\n\n<p>";
 
 	xml_node<> *noeud_note_min_source = noeud_racine_source->first_node("elements-min-max")->first_node("element-min")->first_node("note");
 	xml_node<> *noeud_note_max_source = noeud_racine_source->first_node("elements-min-max")->first_node("element-max")->first_node("note");
@@ -345,13 +345,13 @@ int main(int argc, char* argv[]) {
 	tmp = to_string(ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible)) + " %";
 	somme_valuations += ressemblance(valeur_pattern_min_source, valeur_pattern_min_cible);
 	res += tmp + "\n\n";
-	res_html += tmp + "</p>\n\n";
+	res_html += tmp + "</p>\n\n</article>\n\n";
 	
 	/* C5 : Comparaison de la répartition des notes de la mélodie (tonalité) */
 
 	tmp = "5. Comparaison de la répartition des notes de la mélodie générée avec la (les) mélodie(s) originale(s)";
 	res += tmp + "\n\n";
-	res_html += "<h2>" + tmp + "</h2>\n\n<p>";
+	res_html += "<article>\n\n<h2>" + tmp + "</h2>\n\n<p>";
 
 	xml_node<> *noeud_repartition_source = noeud_racine_source->first_node("repartition-notes");
 	vector<int> repartition_notes_source(12, 0);
@@ -392,7 +392,7 @@ int main(int argc, char* argv[]) {
 	res_html += tmp;
 	
 	res += "\n\nNote\tOriginal\tGénéré\t\tValuation";
-	res_html += "\n\n<table>\n<tr><th>Note</th><th>Original</th><th>Généré</th><th>Valuation</th></tr>\n";
+	res_html += "</p>\n\n<table>\n<tr><th>Note</th><th>Original</th><th>Généré</th><th>Valuation</th></tr>\n";
 	for (unsigned int i = 0; i < repartition_notes_cible.size(); ++i) {
 		++nombre_valuations;
 		res += "\n" + to_string(i) + "\t" + to_string(repartition_notes_source[i]) + " %\t\t" + to_string(repartition_notes_cible[i]) + " %\t\t" + to_string(ressemblance(repartition_notes_source[i], repartition_notes_cible[i])) + " %";
@@ -400,7 +400,7 @@ int main(int argc, char* argv[]) {
 		somme_valuations += ressemblance(repartition_notes_source[i], repartition_notes_cible[i]);
 	}
 	res += "\n\n";
-	res_html += "\n</table>\n\n";
+	res_html += "\n</table>\n\n<p>";
 
 	tmp = "Valuation de la tonalité de la mélodie générée par rapport à la tonalité originale : ";
 	res += tmp;
@@ -409,7 +409,7 @@ int main(int argc, char* argv[]) {
 	tmp = to_string((tonalite_source == tonalite_cible) * 100) + " %";
 	somme_valuations += (tonalite_source == tonalite_cible) * 100;
 	res += tmp + "\n\n";
-	res_html += tmp + "</p>\n\n";
+	res_html += tmp + "</p>\n\n</article>\n\n</section>\n\n";
 
 	/* Indice de ressemblance de la mélodie générée par rapport aux mélodies originales */
 

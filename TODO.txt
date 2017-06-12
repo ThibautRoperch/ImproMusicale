@@ -18,6 +18,10 @@ Detailler mes calculs (de ressemblance de patterns, et calcul de la pércision d
 detailler le lien entre l'IG et le programme ? (ca passe ar u nfichier de logs récupéré en AJAX)
 IG en HTML car je suis + à l'aise
 
+piste 0 en midi souvent pour message MIDI
+
+schéma des programmes (midi -> extraction -> ... ->)
+
 [ SOUTENANCE ]
 
 faire une animation de construction des rectangles, enlever les notes, garder les rectangles, generer aléatoirement à l'itnerieur

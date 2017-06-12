@@ -1,0 +1,134 @@
+<contraintes>
+  <elements-min-max>
+    <element-min>
+      <note>
+        <valeur>9</valeur>
+        <octave>3</octave>
+      </note>
+    </element-min>
+    <element-max>
+      <note>
+        <valeur>4</valeur>
+        <octave>4</octave>
+      </note>
+    </element-max>
+  </elements-min-max>
+  <rectangles>
+    <rectangle>
+      <objectif>0.779412</objectif>
+      <hauteur>3</hauteur>
+      <largeur>4</largeur>
+    </rectangle>
+  </rectangles>
+  <couples-notes>
+      <couple>
+        <note>
+          <valeur>9</valeur>
+          <octave>3</octave>
+        </note>
+        <note>
+          <valeur>0</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>0.500000</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>9</valeur>
+          <octave>3</octave>
+        </note>
+        <note>
+          <valeur>4</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>0.500000</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>0</valeur>
+          <octave>4</octave>
+        </note>
+        <note>
+          <valeur>9</valeur>
+          <octave>3</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>0.555556</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>0</valeur>
+          <octave>4</octave>
+        </note>
+        <note>
+          <valeur>0</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>0.444444</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>4</valeur>
+          <octave>4</octave>
+        </note>
+        <note>
+          <valeur>0</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>0.333333</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>4</valeur>
+          <octave>4</octave>
+        </note>
+        <note>
+          <valeur>2</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>0.666667</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>2</valeur>
+          <octave>4</octave>
+        </note>
+        <note>
+          <valeur>0</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>1.000000</probabilite>
+      </couple>
+  </couples-notes>
+  <patterns>
+    <pattern id="0">
+      <taille>3</taille>
+      <nombre>3</nombre>
+      <amplitude>7</amplitude>
+      <positions>
+        <indice>3</indice>
+        <indice>6</indice>
+        <indice>16</indice>
+      </positions>    </pattern>
+  </patterns>
+  <repartition-notes>
+    <note-unique valeur="0">0.450000</note-unique>
+    <note-unique valeur="1">0.000000</note-unique>
+    <note-unique valeur="2">0.100000</note-unique>
+    <note-unique valeur="3">0.000000</note-unique>
+    <note-unique valeur="4">0.150000</note-unique>
+    <note-unique valeur="5">0.000000</note-unique>
+    <note-unique valeur="6">0.000000</note-unique>
+    <note-unique valeur="7">0.000000</note-unique>
+    <note-unique valeur="8">0.000000</note-unique>
+    <note-unique valeur="9">0.300000</note-unique>
+    <note-unique valeur="10">0.000000</note-unique>
+    <note-unique valeur="11">0.000000</note-unique>
+  </repartition-notes>
+</contraintes>

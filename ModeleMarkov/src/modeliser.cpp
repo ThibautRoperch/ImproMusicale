@@ -71,10 +71,12 @@ int main(int argc, char* argv[]) {
 		xml_node<> *noeud_racine;
 
 		// Initialisation du vecteur contenant les noeuds du fichier
+
 		ifstream theFile(argv[i]);
 		vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 		buffer.push_back('\0');
 		doc.parse<0>(&buffer[0]);
+		
 		noeud_racine = doc.first_node("notes");
 
 		Note *note_precedente = NULL;
