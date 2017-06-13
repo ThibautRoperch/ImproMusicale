@@ -700,3 +700,7 @@ ModeleMarkov/test/improvisations/You_re_welcomeYou_re_welcome-213457-impro-marko
 ModeleMarkov/test/modelisations/You_re_welcomeYou_re_welcome-213457-impro-markov.xml
 ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re_welcome-impro-markov-213457.html
 
+13/06/2017 02:11:35
+ModeleMarkov/test/melodies/CHAT_MUSICAL-021135.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICAL-021135.xml
+

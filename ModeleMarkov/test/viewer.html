@@ -111,8 +111,8 @@ function ecrireNotes() {
 		note.innerHTML = xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("valeur")[0].childNodes[0].nodeValue;
 		note.appendChild(octave);
 		note.id = i;
-		note.addEventListener("mouseover", function() { survolerNote(this, 1); });
-		note.addEventListener("mouseout", function() { survolerNote(this, 0); });
+		note.addEventListener("mouseover", function() { afficherIdNote(this, 1); });
+		note.addEventListener("mouseout", function() { afficherIdNote(this, 0); });
 		notes.appendChild(note);
 		++i;
 	}
@@ -188,8 +188,8 @@ function ecrirePartition() {
 		note.style.marginTop = (note_max - note_actuelle) * (echelle + espace_vertical) + "px";
 		note.style.marginLeft = espace_horizontal * i + "px";
 		note.id = i;
-		note.addEventListener("mouseover", function() { survolerNote(this, 1); });
-		note.addEventListener("mouseout", function() { survolerNote(this, 0); });
+		note.addEventListener("mouseover", function() { afficherIdNote(this, 1); });
+		note.addEventListener("mouseout", function() { afficherIdNote(this, 0); });
 		partition.appendChild(note);
 
 		++i;
@@ -313,6 +313,33 @@ function changerTempo(input) {
 
 function changerProfilSon() {
 	profil_son = Synth.createInstrument(document.getElementById("profil_de_son").value);
+}
+
+function afficherIdNote(note, etat, e) {
+	var id = note.id;
+
+	if (etat == 1) {
+		notes.getElementsByTagName("note")[id].className = "hover";
+		partition.getElementsByTagName("note")[id].className = "hover";
+		if (partition.getElementsByTagName("rectangle")[id])
+			partition.getElementsByTagName("rectangle")[id].className = "hover";
+		
+		info_note = document.createElement("info");
+		info_note.innerHTML = id;
+		notes.appendChild(info_note);
+
+		info_note = document.createElement("info");
+		info_note.innerHTML = id;
+		partition.appendChild(info_note);
+	} else if (etat == 0) {
+		notes.getElementsByTagName("note")[id].className = "";
+		partition.getElementsByTagName("note")[id].className = "";
+		if (partition.getElementsByTagName("rectangle")[id])
+			partition.getElementsByTagName("rectangle")[id].className = "";
+
+		notes.removeChild(notes.lastChild);
+		partition.removeChild(partition.lastChild);
+	}
 }
 
 </script>
