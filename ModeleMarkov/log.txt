@@ -704,3 +704,44 @@ ModeleMarkov/test/comparaisons/You_re_welcomeYou_re_welcome-You_re_welcomeYou_re
 ModeleMarkov/test/melodies/CHAT_MUSICAL-021135.xml
 ModeleMarkov/test/modelisations/CHAT_MUSICAL-021135.xml
 
+13/06/2017 14:05:33
+ModeleMarkov/test/melodies/toreador-140533.xml
+ModeleMarkov/test/melodies/CarmenLamourestunoiseaurebelle-140533.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-140533.xml
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-140533-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-140533-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-contraintes-140533.html
+ModeleMarkov/test/improvisations/toreadorCarmenLamourestunoiseaurebelle-140533-impro-markov.xml
+ModeleMarkov/test/modelisations/toreadorCarmenLamourestunoiseaurebelle-140533-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreadorCarmenLamourestunoiseaurebelle-toreadorCarmenLamourestunoiseaurebelle-impro-markov-140533.html
+
+13/06/2017 14:23:11
+ModeleMarkov/test/melodies/toreador-142311.xml
+ModeleMarkov/test/modelisations/toreador-142311.xml
+
+13/06/2017 14:25:07
+ModeleMarkov/test/melodies/toreador-142507.xml
+ModeleMarkov/test/modelisations/toreador-142507.xml
+
+13/06/2017 14:25:25
+ModeleMarkov/test/melodies/toreador-142525.xml
+ModeleMarkov/test/modelisations/toreador-142525.xml
+
+13/06/2017 14:25:44
+ModeleMarkov/test/melodies/toreador-142544.xml
+ModeleMarkov/test/modelisations/toreador-142544.xml
+
+13/06/2017 14:40:07
+13/06/2017 14:40:10
+13/06/2017 14:40:13
+13/06/2017 14:40:17
+ModeleMarkov/test/melodies/toreador-144017.xml
+ModeleMarkov/test/modelisations/toreador-144017.xml
+
+13/06/2017 14:50:54
+ModeleMarkov/test/melodies/prelude-145054.xml
+ModeleMarkov/test/modelisations/prelude-145054.xml
+ModeleMarkov/test/improvisations/prelude-145054-impro-markov.xml
+ModeleMarkov/test/modelisations/prelude-145054-impro-markov.xml
+ModeleMarkov/test/comparaisons/prelude-prelude-impro-markov-145054.html
+

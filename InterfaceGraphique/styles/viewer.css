@@ -73,7 +73,7 @@ article {
 	display: none;
 	flex-direction: column;
 	height: 100%;
-	padding: 15px;
+	padding: 20px 15px;
 	background: rgba(255, 255, 255, 0.6);
 }
 
@@ -131,6 +131,15 @@ controles div input[type="number"] {
 
 controles div input[type="range"] {
 	width: 100px;
+}
+
+controles img {
+	width: 30px;
+	cursor: pointer;
+}
+
+controles img.desactive {
+	opacity: 0.5;
 }
 
 /* Les notes et les infos */

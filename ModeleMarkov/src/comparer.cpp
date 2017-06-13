@@ -213,7 +213,7 @@ int main(int argc, char* argv[]) {
 		// Ajout du couple (note2, probabilite) à la note1
 		couples_notes[note][note_suivante] = probabilite;
 	}
-
+	
 	xml_node<> *noeud_couples_cible = noeud_racine_cible->first_node("couples-notes");
 
 	for (xml_node<> *noeud_couple = noeud_couples_cible->first_node("couple"); noeud_couple; noeud_couple = noeud_couple->next_sibling()) {
@@ -254,8 +254,8 @@ int main(int argc, char* argv[]) {
 	}
 	cout << endl;
 
-	tmp = to_string(100 - (int)(somme_difference * 100 / couples_notes.size())) + " %";
-	somme_valuations += somme_difference;
+	tmp = to_string(abs(100 - (int)(somme_difference * 100 / couples_notes.size()))) + " %";
+	somme_valuations += abs(100 - (int)(somme_difference * 100 / couples_notes.size()));
 
 	res += tmp + "\n\n";
 	res_html += tmp + "</p>\n\n";

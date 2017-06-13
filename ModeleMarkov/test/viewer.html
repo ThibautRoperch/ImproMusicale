@@ -15,9 +15,13 @@
 		<section>
 
 			<controles>
-				<div>
+				<!--<div>
 					<button id="jouer" onclick="jouerMelodie()">Jouer la mélodie</button>
 					<button id="arreter" onclick="arreterMelodie()" disabled>Arrêter</button>
+				</div>-->
+				<div>
+					<img id ="jouer" src="../../InterfaceGraphique/images/jouer.png" onclick="jouerMelodie()" />
+					<img id="arreter" class="desactive" src="../../InterfaceGraphique/images/arreter.png" onclick="arreterMelodie()" />
 				</div>
 				<div>
 					<label for="tempo-text">Tempo </label>
@@ -216,20 +220,24 @@ function ecrirePartition() {
 }
 
 function jouerMelodie() {
-	tempo = parseInt(document.getElementById("tempo-text").value);
-	calculerDureeNote();
-	changerProfilSon();
-	
-	document.getElementById("jouer").disabled = "disabled";
-	document.getElementById("arreter").disabled = "";
-	
-	lire = true;
-	
-	jouerNote(0);
+	if (!jouer) {
+		tempo = parseInt(document.getElementById("tempo-text").value);
+		calculerDureeNote();
+		changerProfilSon();
+		
+		//document.getElementById("jouer").disabled = "disabled";
+		//document.getElementById("arreter").disabled = "";
+		document.getElementById("jouer").className = "desactive";
+		document.getElementById("arreter").className = "";
+		
+		jouer = true;
+		
+		jouerNote(0);
+	}
 }
 
 function jouerNote(i) {
-	if (lire && notes.getElementsByTagName("note")[i]) {
+	if (jouer && notes.getElementsByTagName("note")[i]) {
 		notes.getElementsByTagName("note")[i].className = "lue";
 		partition.getElementsByTagName("note")[i].style.background = "rgba(0, 100, 0, 0.6)";
 
@@ -287,15 +295,17 @@ function jouerNote(i) {
 			jouerNote(i + 1);
 		}, duree_note);
 	} else {
-		document.getElementById("jouer").disabled = "";
-		document.getElementById("arreter").disabled = "disabled";
+		//document.getElementById("jouer").disabled = "";
+		//document.getElementById("arreter").disabled = "disabled";
+		document.getElementById("jouer").className = "";
+		document.getElementById("arreter").className = "desactive";
 		ecrireNotes();
 		ecrirePartition();
 	}
 }
 
 function arreterMelodie() {
-	lire = false;
+	jouer = false;
 }
 
 function calculerDureeNote() {

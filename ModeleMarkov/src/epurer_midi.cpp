@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 
 	int nb_parties_musicales = midifile.getTrackCount();
 	int partie_musicale_selectionnee = 0;
-
+	
 	if (nb_parties_musicales > 1) {
 		cerr << "\nPlusieurs parties musicales sont présentes dans la partition :" << endl;
 		int i;
