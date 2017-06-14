@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 	int tick_action = 0;
 	int piste = 1; // la piste 0 est pour des messages
 
-	int vitesse = 64;
+	int velocite = 64;
 	int canal = 0;
 
 	/* Lecture du fichier contenant la partition au format XML */
@@ -67,8 +67,8 @@ int main(int argc, char* argv[]) {
 
 		hauteur_note += 21 - 9; // la première note commence à 21, -9 pour faire correspondre avec la version MusicXML des partitions
 
-		fichier_midi.addNoteOn(piste, tick_action, canal, hauteur_note, vitesse);
-		fichier_midi.addNoteOff(piste, tick_action += duree_noire, canal, hauteur_note, vitesse);
+		fichier_midi.addNoteOn(piste, tick_action, canal, hauteur_note, velocite);
+		fichier_midi.addNoteOff(piste, tick_action += duree_noire, canal, hauteur_note, velocite);
 	}
 
 	cout << "\nCréation de la mélodie MIDI terminée" << endl;

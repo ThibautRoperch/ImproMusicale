@@ -33,6 +33,8 @@ Prévoir un enregistrement si la démo fait n'imp
 
 [ TECHNIQUEMENT ]
 
+partitiosn dans le dossier parttions... --> testser si on peut faire avec des partoches de'un autre dossier
+
 Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
 
 Retravailler l'interface
@@ -44,6 +46,8 @@ Resizement des onglets -> JS qui fixe min-width ?
 Ajotuer un lien vers l'accueil dans le viewer
 
 Ajotuer la possibilité d'afficher toutes les générations dans l'accueil & le script (le script doit modéliser chaque géné, et comparer)
+
+ajouter la ossibilité d'jaouter l'option notraces
 
 Grouper les originaux (+ meme couleur ?) et les modélisations
 

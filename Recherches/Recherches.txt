@@ -19,7 +19,7 @@ A partir d'un fichier MIDI ou MusicXML, improviser des notes et écouter la mél
 Librairie C++ pour les fichiers MIDI :
 http://midifile.sapp.org/
 
-Informations sur le format de fichier MusicXML our la notation musicale :
+Informations sur le format de fichier MusicXML pour la notation musicale :
 https://fr.wikipedia.org/wiki/MusicXML
 Il existe aussi TuxGuitar
 
