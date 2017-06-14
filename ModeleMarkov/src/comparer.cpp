@@ -192,8 +192,8 @@ int main(int argc, char* argv[]) {
 
 	map<Note, map<Note, double>> couples_notes; // vecteur de type : (note) [ (note) : %, (note) : % ] | (note) [ (note) : % ]
 
-	// modélisation originale : ajout des % au vecteur (créer une nouvelle pair si (note)1 existe pas)
-	// modélisation impro : soustraction des % au vecteur si (note)1 et (note)2 existent, sinon ajouter (note)2 à (note)1 (ajouter (note)1 s'il existe pas)
+	// Fichier de la modélisation originale : ajout des % au vecteur (créer une nouvelle pair si (note)1 existe pas)
+	// Fichier de la modélisation improvisée : soustraction des % au vecteur si (note)1 et (note)2 existent, sinon ajouter (note)2 à (note)1 (ajouter (note)1 s'il existe pas)
 
 	xml_node<> *noeud_couples_source = noeud_racine_source->first_node("couples-notes");
 
@@ -256,6 +256,21 @@ int main(int argc, char* argv[]) {
 
 	tmp = to_string(abs(100 - (int)(somme_difference * 100 / couples_notes.size()))) + " %";
 	somme_valuations += abs(100 - (int)(somme_difference * 100 / couples_notes.size()));
+
+	res += tmp + "\n\n";
+	res_html += tmp + "\n\n<br><br>\n\n";
+
+	tmp = "Valuation de la récompense de la mélodie improvisée dans la matrice originale : ";
+	res += tmp;
+	res_html += tmp;
+	++nombre_valuations;
+
+	// TODO
+	// Créer directement le vecteur de notes à partir de la melodie_improvisee.xml
+	// Créer la chaine de markov de la mélodie d'origine à partir de la map (nouveau constructeur pour la chaine de markov)
+		// Pour chaque vecteur de la map : ajouter (la variable de type double * 100) éléments pour chaque note du vecteur
+	// Calculer les stats
+	// Appeller la méthode de récompense avec le vecteur de notes improvisées
 
 	res += tmp + "\n\n";
 	res_html += tmp + "</p>\n\n";

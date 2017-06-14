@@ -745,3 +745,8 @@ ModeleMarkov/test/improvisations/prelude-145054-impro-markov.xml
 ModeleMarkov/test/modelisations/prelude-145054-impro-markov.xml
 ModeleMarkov/test/comparaisons/prelude-prelude-impro-markov-145054.html
 
+14/06/2017 15:26:04
+ModeleMarkov/test/melodies/Saltarello-152604.xml
+ModeleMarkov/test/modelisations/Saltarello-152604.xml
+
+14/06/2017 15:26:18

@@ -12,7 +12,9 @@ Vérifier un document par rapport à une DTD externe :
 
 xmllint -dtdvalid <dtd.dtd> <document.xml>
 
-Exemple :
 
-xmllint --noout -dtdvalid Recherches/melodie.dtd modele_markov/test/melodies/*
-xmllint --noout -dtdvalid Recherches/contraintes.dtd modele_markov/test/contraintes/*
+Exemples :
+
+xmllint --noout -dtdvalid DTD/melodie.dtd ModeleMarkov/test/melodies/*
+xmllint --noout -dtdvalid DTD/modelisation.dtd ModeleMarkov/test/modelisations/*
+
