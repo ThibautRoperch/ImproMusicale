@@ -20,7 +20,7 @@ h2 {
 }
 
 p {
-	padding: 10px;
+	padding: 8px;
 }
 
 table, table th, table td {
@@ -30,7 +30,7 @@ table, table th, table td {
 table {
 	margin: auto;
 	margin-bottom: 5px;
-	font-size: 14px;
+	font-size: 15px;
 	border-collapse: collapse;
 }
 
@@ -44,7 +44,7 @@ table th {
 }
 
 table td {
-	padding: 1.5px 15px;
+	padding: 2px 15px;
 	text-align: right;
 	border-width: 0 1px;
 }

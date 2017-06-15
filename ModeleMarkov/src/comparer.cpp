@@ -57,8 +57,8 @@ int main(int argc, char* argv[]) {
 
 	/* Vérification du nombre d'arguments */
 
-	if (argc < 3) {
-		cerr << "Donner en argument les deux fichiers modélisant une mélodie à comparer et le fichier de sortie\n" << endl;
+	if (argc < 4) {
+		cerr << "Donner en argument les deux fichiers modélisant une mélodie à comparer, la mélodie générée aléatoirement et le fichier de sortie\n" << endl;
 		return EXIT_FAILURE;
 	}
 
@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
 	int somme_valuations = 0;
 	int nombre_valuations = 0;
 
-	/* Lecture des fichiers contenant la modélisation de la mélodie source et la modélisation de la mélodie cible */
+	/* Lecture des fichiers contenant la modélisation de la mélodie source et la modélisation et la mélodie de la cible */
 
 	xml_document<> doc_source;
 	xml_document<> doc_cible;
@@ -264,14 +264,35 @@ int main(int argc, char* argv[]) {
 	res += tmp;
 	res_html += tmp;
 	++nombre_valuations;
+	
+	xml_document<> doc;
+	xml_node<> *noeud_racine;
 
-	// TODO
-	// Créer directement le vecteur de notes à partir de la melodie_improvisee.xml
-	// Créer la chaine de markov de la mélodie d'origine à partir de la map (nouveau constructeur pour la chaine de markov)
-		// Pour chaque vecteur de la map : ajouter (la variable de type double * 100) éléments pour chaque note du vecteur
-	// Calculer les stats
-	// Appeller la méthode de récompense avec le vecteur de notes improvisées
+	ifstream theFile(argv[3]);
+	vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
+	buffer.push_back('\0');
+	doc.parse<0>(&buffer[0]);
+	noeud_racine = doc.first_node("notes");
 
+	int recompense = 0;
+	Note *note_precedente = NULL;
+
+	for (xml_node<> *noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
+		int valeur_note = stoi(noeud_note->first_node("valeur")->value());
+		int octave_note = stoi(noeud_note->first_node("octave")->value());
+		Note note(valeur_note, octave_note);
+
+		if (note_precedente != NULL) {
+			if (couples_notes.find(*note_precedente) != couples_notes.end() && couples_notes[*note_precedente].find(note) != couples_notes[*note_precedente].end()) {
+				++recompense;
+			}
+		}
+
+		note_precedente = &note;
+	}
+
+	tmp = to_string(ressemblance(couples_notes.size() - 1, recompense)) + " %";
+	somme_valuations += ressemblance(couples_notes.size() - 1, recompense);
 	res += tmp + "\n\n";
 	res_html += tmp + "</p>\n\n";
 
@@ -439,8 +460,8 @@ int main(int argc, char* argv[]) {
 
 	/* Enregistrement de la comparaison dans le fichier de sortie */
 	
-	if (argc >= 4) {
-		string nom_fichier_sortie = argv[3];
+	if (argc >= 5) {
+		string nom_fichier_sortie = argv[4];
 		ofstream fichier_sortie(nom_fichier_sortie, ios::out | ios::trunc);
 		
 		if(fichier_sortie) {

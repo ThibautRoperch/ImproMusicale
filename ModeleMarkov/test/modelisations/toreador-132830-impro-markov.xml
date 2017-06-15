@@ -1,0 +1,89 @@
+<contraintes>
+  <elements-min-max>
+    <element-min>
+      <note>
+        <valeur>7</valeur>
+        <octave>2</octave>
+      </note>
+    </element-min>
+    <element-max>
+      <note>
+        <valeur>9</valeur>
+        <octave>4</octave>
+      </note>
+    </element-max>
+  </elements-min-max>
+  <rectangles>
+    <rectangle>
+      <objectif>0.200000</objectif>
+      <hauteur>8</hauteur>
+      <largeur>5</largeur>
+    </rectangle>
+  </rectangles>
+  <couples-notes>
+      <couple>
+        <note>
+          <valeur>7</valeur>
+          <octave>2</octave>
+        </note>
+        <note>
+          <valeur>7</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>1.000000</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>7</valeur>
+          <octave>4</octave>
+        </note>
+        <note>
+          <valeur>9</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>1.000000</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>9</valeur>
+          <octave>4</octave>
+        </note>
+        <note>
+          <valeur>9</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>0.500000</probabilite>
+      </couple>
+      <couple>
+        <note>
+          <valeur>9</valeur>
+          <octave>4</octave>
+        </note>
+        <note>
+          <valeur>2</valeur>
+          <octave>4</octave>
+        </note>
+        <distance>1</distance>
+        <probabilite>0.500000</probabilite>
+      </couple>
+  </couples-notes>
+  <patterns>
+  </patterns>
+  <repartition-notes>
+    <note-unique valeur="0">0.000000</note-unique>
+    <note-unique valeur="1">0.000000</note-unique>
+    <note-unique valeur="2">0.200000</note-unique>
+    <note-unique valeur="3">0.000000</note-unique>
+    <note-unique valeur="4">0.000000</note-unique>
+    <note-unique valeur="5">0.000000</note-unique>
+    <note-unique valeur="6">0.000000</note-unique>
+    <note-unique valeur="7">0.400000</note-unique>
+    <note-unique valeur="8">0.000000</note-unique>
+    <note-unique valeur="9">0.400000</note-unique>
+    <note-unique valeur="10">0.000000</note-unique>
+    <note-unique valeur="11">0.000000</note-unique>
+  </repartition-notes>
+</contraintes>

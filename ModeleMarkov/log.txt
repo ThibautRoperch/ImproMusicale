@@ -750,3 +750,176 @@ ModeleMarkov/test/melodies/Saltarello-152604.xml
 ModeleMarkov/test/modelisations/Saltarello-152604.xml
 
 14/06/2017 15:26:18
+15/06/2017 13:13:45
+ModeleMarkov/test/melodies/toreador-131345.xml
+ModeleMarkov/test/modelisations/toreador-131345.xml
+ModeleMarkov/test/improvisations/toreador-131345-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-131345-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-131345.html
+
+15/06/2017 13:15:08
+ModeleMarkov/test/melodies/toreador-131508.xml
+ModeleMarkov/test/modelisations/toreador-131508.xml
+ModeleMarkov/test/improvisations/toreador-131508-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-131508-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-131508.html
+
+15/06/2017 13:15:12
+ModeleMarkov/test/melodies/toreador-131512.xml
+ModeleMarkov/test/modelisations/toreador-131512.xml
+ModeleMarkov/test/improvisations/toreador-131512-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-131512-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-131512.html
+
+15/06/2017 13:16:08
+ModeleMarkov/test/melodies/toreador-131608.xml
+ModeleMarkov/test/modelisations/toreador-131608.xml
+ModeleMarkov/test/improvisations/toreador-131608-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-131608-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-131608.html
+
+15/06/2017 13:16:15
+ModeleMarkov/test/melodies/toreador-131615.xml
+ModeleMarkov/test/modelisations/toreador-131615.xml
+ModeleMarkov/test/improvisations/toreador-131615-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-131615-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-131615.html
+
+15/06/2017 13:20:13
+ModeleMarkov/test/melodies/toreador-132013.xml
+ModeleMarkov/test/modelisations/toreador-132013.xml
+ModeleMarkov/test/improvisations/toreador-132013-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132013-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132013.html
+
+15/06/2017 13:22:26
+ModeleMarkov/test/melodies/toreador-132226.xml
+ModeleMarkov/test/modelisations/toreador-132226.xml
+ModeleMarkov/test/improvisations/toreador-132226-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132226-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132226.html
+
+15/06/2017 13:22:55
+ModeleMarkov/test/melodies/toreador-132255.xml
+ModeleMarkov/test/modelisations/toreador-132255.xml
+ModeleMarkov/test/improvisations/toreador-132255-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132255-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132255.html
+
+15/06/2017 13:22:58
+ModeleMarkov/test/melodies/toreador-132258.xml
+ModeleMarkov/test/modelisations/toreador-132258.xml
+ModeleMarkov/test/improvisations/toreador-132258-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132258-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132258.html
+
+15/06/2017 13:23:48
+ModeleMarkov/test/melodies/toreador-132348.xml
+ModeleMarkov/test/modelisations/toreador-132348.xml
+ModeleMarkov/test/improvisations/toreador-132348-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132348-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132348.html
+
+15/06/2017 13:24:31
+ModeleMarkov/test/melodies/toreador-132431.xml
+ModeleMarkov/test/modelisations/toreador-132431.xml
+ModeleMarkov/test/improvisations/toreador-132431-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132431-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132431.html
+
+15/06/2017 13:25:35
+ModeleMarkov/test/melodies/toreador-132535.xml
+ModeleMarkov/test/modelisations/toreador-132535.xml
+ModeleMarkov/test/improvisations/toreador-132535-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132535-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132535.html
+
+15/06/2017 13:25:49
+ModeleMarkov/test/melodies/toreador-132549.xml
+ModeleMarkov/test/modelisations/toreador-132549.xml
+ModeleMarkov/test/improvisations/toreador-132549-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132549-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132549.html
+
+15/06/2017 13:26:03
+ModeleMarkov/test/melodies/toreador-132603.xml
+ModeleMarkov/test/modelisations/toreador-132603.xml
+ModeleMarkov/test/improvisations/toreador-132603-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132603-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132603.html
+
+15/06/2017 13:28:27
+ModeleMarkov/test/melodies/toreador-132827.xml
+ModeleMarkov/test/modelisations/toreador-132827.xml
+ModeleMarkov/test/improvisations/toreador-132827-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132827-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132827.html
+
+15/06/2017 13:28:29
+ModeleMarkov/test/melodies/toreador-132829.xml
+ModeleMarkov/test/modelisations/toreador-132829.xml
+ModeleMarkov/test/improvisations/toreador-132829-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132829-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132829.html
+
+15/06/2017 13:28:30
+ModeleMarkov/test/melodies/toreador-132830.xml
+ModeleMarkov/test/modelisations/toreador-132830.xml
+ModeleMarkov/test/improvisations/toreador-132830-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132830-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132830.html
+
+15/06/2017 13:28:33
+ModeleMarkov/test/melodies/toreador-132833.xml
+ModeleMarkov/test/modelisations/toreador-132833.xml
+ModeleMarkov/test/improvisations/toreador-132833-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132833-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132833.html
+
+15/06/2017 13:28:44
+ModeleMarkov/test/melodies/toreador-132844.xml
+ModeleMarkov/test/modelisations/toreador-132844.xml
+ModeleMarkov/test/improvisations/toreador-132844-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132844-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132844.html
+
+15/06/2017 13:29:09
+ModeleMarkov/test/melodies/toreador-132909.xml
+ModeleMarkov/test/modelisations/toreador-132909.xml
+ModeleMarkov/test/improvisations/toreador-132909-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132909-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132909.html
+
+15/06/2017 13:29:21
+ModeleMarkov/test/melodies/toreador-132921.xml
+ModeleMarkov/test/modelisations/toreador-132921.xml
+ModeleMarkov/test/improvisations/toreador-132921-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132921-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132921.html
+
+15/06/2017 13:29:27
+ModeleMarkov/test/melodies/toreador-132927.xml
+ModeleMarkov/test/modelisations/toreador-132927.xml
+ModeleMarkov/test/improvisations/toreador-132927-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132927-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132927.html
+
+15/06/2017 13:29:42
+ModeleMarkov/test/melodies/toreador-132942.xml
+ModeleMarkov/test/modelisations/toreador-132942.xml
+ModeleMarkov/test/improvisations/toreador-132942-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-132942-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-132942.html
+
+15/06/2017 13:31:11
+ModeleMarkov/test/melodies/toreador-133111.xml
+ModeleMarkov/test/modelisations/toreador-133111.xml
+ModeleMarkov/test/improvisations/toreador-133111-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-133111-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-133111.html
+
+15/06/2017 13:35:17
+15/06/2017 15:43:14
+ModeleMarkov/test/melodies/a-154314.xml
+ModeleMarkov/test/modelisations/a-154314.xml
+

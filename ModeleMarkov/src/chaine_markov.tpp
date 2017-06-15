@@ -11,14 +11,6 @@ ChaineMarkov<T>::ChaineMarkov() {
 }
 
 /**
- * Constructeur à partir d'un ensemble d'éléments et leurs suivants
- */
-template<class T>
-ChaineMarkov<T>::ChaineMarkov() {
-	m_nombre_elements_ajoutes = 0;
-}
-
-/**
  * Destructeur
  */
 template<class T>

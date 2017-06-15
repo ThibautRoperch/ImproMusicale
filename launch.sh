@@ -195,7 +195,7 @@ then
 			
 			echo -e "\n# Comparaison de l'improvisation obtenue avec la (les) mélodie(s) originale(s)"
 			
-			./ModeleMarkov/bin/comparer.exe $modelisation $modelisation_impro $comparaison > $redirection_sortie
+			./ModeleMarkov/bin/comparer.exe $modelisation $modelisation_impro $improvisation $comparaison > $redirection_sortie
 			
 			echo "$comparaison" >> $fichier_historique
 		done

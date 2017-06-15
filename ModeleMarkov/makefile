@@ -54,7 +54,7 @@ improviser:
 	./$(BIN_DIR)/improviser.exe ${notes} ${in} ${out}
 
 comparer:
-	./$(BIN_DIR)/comparer.exe ${source} ${cible} ${out}
+	./$(BIN_DIR)/comparer.exe ${source} ${cible_mod} ${cible_melo} ${out}
 
 convertirMIDI:
 	./$(BIN_DIR)/convertir_midi.exe ${in} ${out}
