@@ -12,6 +12,8 @@ IG en HTML car je suis + à l'aise
 
 Pour les contraintes : d"tailler les calcules, et préciser le compeortement en cas de plusieurs mélodies
 
+Faire l'annexe B et la conclusion
+
 [ SOUTENANCE ]
 
 faire une animation de construction des rectangles, enlever les notes, garder les rectangles, generer aléatoirement à l'itnerieur
