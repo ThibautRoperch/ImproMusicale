@@ -164,12 +164,12 @@ then
 			then
 				echo -e "\nImprovisation ($type_impro) à partir des contraintes de la (des) mélodie(s) dans $improvisation"
 				
-				./ModeleMarkov/lib/generateur_aleatoire_sous_contraintes/aleatoire -o $improvisation -c $modelisation -n 20 -g 50 > $redirection_sortie
+				./ModeleMarkov/lib/rmg -o $improvisation -c $modelisation -n $nombre_notes -g 50 -ls > $redirection_sortie
 			elif [ "$type_impro" == "contraintes" ]
 			then
 				echo -e "\nImprovisation ($type_impro) à partir des contraintes de la (des) mélodie(s) dans $improvisation"
 				
-				./ModeleMarkov/lib/rmg -o $improvisation -c $modelisation -n $nombre_notes -g 50 -ls > $redirection_sortie
+				./ModeleMarkov/lib/rmg -o $improvisation -c $modelisation -n $nombre_notes -g 50 -ls -ts > $redirection_sortie
 			elif [ "$type_impro" == "markov" ]
 			then
 				echo -e "\nImprovisation ($type_impro) à partir de la (des) mélodie(s) dans $improvisation"

@@ -1,26 +1,16 @@
 
-Reprendre un rdv pour ven. 9 ou lundi d'après
-
 [ RAPPORT ]
 
-Commencer le rapport LaTex
-Début du rapport en commun
 Fin du rapport en commun : perspectives, ce qu'on voudrait améliorer etc...
 Parler que ca m'a permi dutiliser mes connaissances
 faire une image de construction des rectangles
 Détailler chaque contrainte (une partie par contrainte)
-Mettre dans le rapport tout ce qu'on a utilisé tehcniquement (librairies, langages, ...)
-1 partie par programme ?
-
-tous mes programmes marchent avec un in et out
 
 Detailler mes calculs (de ressemblance de patterns, et calcul de la pércision du rectangle notamment)
 detailler le lien entre l'IG et le programme ? (ca passe ar u nfichier de logs récupéré en AJAX)
 IG en HTML car je suis + à l'aise
 
-piste 0 en midi souvent pour message MIDI
-
-schéma des programmes (midi -> extraction -> ... ->)
+Pour les contraintes : d"tailler les calcules, et préciser le compeortement en cas de plusieurs mélodies
 
 [ SOUTENANCE ]
 
@@ -35,15 +25,11 @@ Prévoir un enregistrement si la démo fait n'imp
 
 partitiosn dans le dossier parttions... --> testser si on peut faire avec des partoches de'un autre dossier
 
-Vérifier les XML avec la nouvelle DTD modelisation (chgmt au niveau des patterns)
-
 Retravailler l'interface
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
 Pouvoir tourner la liste de notes pour faire apparraitre la partition (avec les recntangles et tout)
 
 Resizement des onglets -> JS qui fixe min-width ?
-
-Ajotuer un lien vers l'accueil dans le viewer
 
 Ajotuer la possibilité d'afficher toutes les générations dans l'accueil & le script (le script doit modéliser chaque géné, et comparer)
 
@@ -53,6 +39,8 @@ Grouper les originaux (+ meme couleur ?) et les modélisations
 
 Programme MIDI from scratch, lien dans l'interface pour générer une commande qui créé un midi a partir d'une mélodie épurée
 Midi -> Midi
+
+avoid les chords en MIDI : http://midifile.sapp.org/
 
 [ TESTS ]
 

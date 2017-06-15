@@ -48,6 +48,9 @@ Pour convertir des fichiers MIDI vers XML pour qu'ils soient lus par mon program
 https://blog.laymusic.org/2009/09/25/midi-to-musicxml/
 => Pas sûr que ca marche en fait => Ca marche pas, c'est pas XML valide et c'est pas du MusicXML
 
+Equivalence des notes MIDI :
+https://usermanuals.finalemusic.com/Finale2012Mac/Content/Finale/MIDI_Note_to_Pitch_Table.htm
+
 Des trucs sur MusicXML :
 http://www.partitionnumerique.com/technos/musicxml/
 http://www.musicxml.com/music-in-musicxml/example-set/

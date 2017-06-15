@@ -30,11 +30,6 @@ Note::~Note() {
  */
 void Note::afficherNote(ostream &flux) const {
 	flux << m_valeur << "(" << m_octave << ")";
-	/*flux << " [ ";
-	for (auto note : m_notes_suivantes) {
-		flux << note->valeurNote() << " ";
-	}
-	flux << "]";*/
 }
 
 /**
