@@ -1,11 +1,11 @@
 # Dossier build contenant les objets
-build
+ModeleMarkov/build
 
 # Dossier bin contenant les executables
-bin
+ModeleMarkov/bin
 
 # Dossier test contenant les tests
-test/melodies/*
-test/modelisations/*
-test/improvisations/*
-test/comparaisons/*
+ModeleMarkov/test/melodies/*
+ModeleMarkov/test/modelisations/*
+ModeleMarkov/test/improvisations/*
+ModeleMarkov/test/comparaisons/*

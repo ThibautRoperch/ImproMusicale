@@ -15,10 +15,6 @@
 		<section>
 
 			<controles>
-				<!--<div>
-					<button id="jouer" onclick="jouerMelodie()">Jouer la mélodie</button>
-					<button id="arreter" onclick="arreterMelodie()" disabled>Arrêter</button>
-				</div>-->
 				<div>
 					<img id ="jouer" src="../../InterfaceGraphique/images/jouer.png" onclick="jouerMelodie()" />
 					<img id="arreter" class="desactive" src="../../InterfaceGraphique/images/arreter.png" onclick="arreterMelodie()" />
@@ -37,9 +33,12 @@
 						<option value="edm">EDM</option>
 					</select>
 				</div>
+				<div>
+					<button onclick="changerVue()">&rlhar;</button>
+				</div>
 			</controles>
 
-			<notes></notes>
+			<notes class="visible"></notes>
 
 			<partition></partition>
 
@@ -66,6 +65,16 @@ var jouer = false;
 
 var notes = document.getElementsByTagName("notes")[0];
 var partition = document.getElementsByTagName("partition")[0];
+
+function changerVue() {
+	if (notes.className == "visible") {
+		notes.className = "";
+		partition.className = "visible";
+	} else {
+		partition.className = "";
+		notes.className = "visible";
+	}
+}
 
 function chargerMelodie() {
 	/* Récupération de l'information de l'URL */
@@ -143,7 +152,7 @@ function ecrirePartition() {
 		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
 		var note_max = valeur + octave * 11;
-		partition.style.height = (note_max - note_min) * (echelle + espace_vertical) + espace_vertical + "px";
+		// partition.style.height = (note_max - note_min) * (echelle + espace_vertical) + espace_vertical + "px";
 	} else {
 		dessiner_rectangles = false;
 		var note_max = 50;
@@ -165,6 +174,7 @@ function ecrirePartition() {
 
 	i = 0;
 	while (xmlDoc.getElementsByTagName("note")[i]) {
+		console.log("note " + i);
 		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
 		var note_actuelle = valeur + octave * 11;
@@ -225,8 +235,6 @@ function jouerMelodie() {
 		calculerDureeNote();
 		changerProfilSon();
 		
-		//document.getElementById("jouer").disabled = "disabled";
-		//document.getElementById("arreter").disabled = "";
 		document.getElementById("jouer").className = "desactive";
 		document.getElementById("arreter").className = "";
 		
@@ -295,8 +303,7 @@ function jouerNote(i) {
 			jouerNote(i + 1);
 		}, duree_note);
 	} else {
-		//document.getElementById("jouer").disabled = "";
-		//document.getElementById("arreter").disabled = "disabled";
+		arreterMelodie();
 		document.getElementById("jouer").className = "";
 		document.getElementById("arreter").className = "desactive";
 		ecrireNotes();

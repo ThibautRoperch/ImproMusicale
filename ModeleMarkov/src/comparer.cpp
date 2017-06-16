@@ -35,20 +35,40 @@ ostream& operator<<(ostream &flux, const Note &note) {
 }
 
 int ressemblance(int source, int cible) {
-	if (source < 0 || cible < 0) return 0;
+	source = abs(source);
+	cible = abs(cible);
+
+	// Si la source est équivalante à la cible, la ressemblance est de 100 (%)
 
 	if (source == cible) return 100;
 
-	int difference = abs(source - cible);
+	// Si la source est supérieure à la cible, la source est l'échelle de référence
+	// L'intervalle de référence est défini de 0 à source
 
-	if (difference > source) {
-		if (cible == 0) return 0;
-		return 100 - ((difference * 100) / cible);
+	// Si la cible est supérieure à la source, la cible est l'échelle de référence
+	// L'intervalle de référence est défini de 0 à cible
+
+	int possibilites = 1, difference = 1;
+
+	if (source > cible) {
+		possibilites = source + 1;
+		difference = possibilites - cible;
 	}
-	
-	if (source == 0) return 0;
-	
-	return 100 - ((difference * 100) / source);
+
+	if (cible > source) {
+		possibilites = cible + 1;
+		difference = possibilites - source;
+	}
+
+	double taux_erreur = (double) difference / possibilites;
+	return 100 * (1 - taux_erreur);
+
+	/*
+	Exemple :		le rectangle source a 4 de largeur		les largeurs possibles sont {0, 1, 2, 3, 4} (5 poss)
+					le rectangle cible a 3 de largeur		il est à 1 unité de la source, taux_erreur = 1 / 5
+					la ressemblance du rectangle cible par rapport au rectangle source est de 1 - taux_erreur
+					le résultat est compris entre 0 et 1, il faut donc le multipler par 100
+	*/
 }
 
 int main(int argc, char* argv[]) {
@@ -252,7 +272,6 @@ int main(int argc, char* argv[]) {
 			somme_difference += note_suivante.second;
 		}
 	}
-	cout << endl;
 
 	tmp = to_string(abs(100 - (int)(somme_difference * 100 / couples_notes.size()))) + " %";
 	somme_valuations += abs(100 - (int)(somme_difference * 100 / couples_notes.size()));
@@ -260,7 +279,7 @@ int main(int argc, char* argv[]) {
 	res += tmp + "\n\n";
 	res_html += tmp + "\n\n<br><br>\n\n";
 
-	tmp = "Valuation de la récompense de la mélodie improvisée dans la matrice originale : ";
+	tmp = "Valuation de la récompense de la mélodie générée dans la matrice originale : ";
 	res += tmp;
 	res_html += tmp;
 	++nombre_valuations;
@@ -274,7 +293,8 @@ int main(int argc, char* argv[]) {
 	doc.parse<0>(&buffer[0]);
 	noeud_racine = doc.first_node("notes");
 
-	int recompense = 0;
+	int recompense_totale = 0;
+	int nombre_notes = 0;
 	Note *note_precedente = NULL;
 
 	for (xml_node<> *noeud_note = noeud_racine->first_node("note"); noeud_note; noeud_note = noeud_note->next_sibling()) {
@@ -284,15 +304,18 @@ int main(int argc, char* argv[]) {
 
 		if (note_precedente != NULL) {
 			if (couples_notes.find(*note_precedente) != couples_notes.end() && couples_notes[*note_precedente].find(note) != couples_notes[*note_precedente].end()) {
-				++recompense;
+				++recompense_totale;
 			}
 		}
-
-		note_precedente = &note;
+		
+		note_precedente = new Note(valeur_note, octave_note);
+		++nombre_notes;
 	}
 
-	tmp = to_string(ressemblance(couples_notes.size() - 1, recompense)) + " %";
-	somme_valuations += ressemblance(couples_notes.size() - 1, recompense);
+	int recompense = (nombre_notes - 1 == 0) ? 100 : recompense_totale * 100 / (nombre_notes - 1);
+
+	tmp = to_string(recompense) + " %";
+	somme_valuations += recompense;
 	res += tmp + "\n\n";
 	res_html += tmp + "</p>\n\n";
 
@@ -431,9 +454,11 @@ int main(int argc, char* argv[]) {
 	res_html += "</p>\n\n<table>\n<tr><th>Note</th><th>Original</th><th>Généré</th><th>Valuation</th></tr>\n";
 	for (unsigned int i = 0; i < repartition_notes_cible.size(); ++i) {
 		++nombre_valuations;
-		res += "\n" + to_string(i) + "\t" + to_string(repartition_notes_source[i]) + " %\t\t" + to_string(repartition_notes_cible[i]) + " %\t\t" + to_string(ressemblance(repartition_notes_source[i], repartition_notes_cible[i])) + " %";
-		res_html += "\n<tr><td>" + to_string(i) + "</td><td>" + to_string(repartition_notes_source[i]) + " %</td><td>" + to_string(repartition_notes_cible[i]) + " %</td><td>" + to_string(ressemblance(repartition_notes_source[i], repartition_notes_cible[i])) + " %</td></tr>";
-		somme_valuations += ressemblance(repartition_notes_source[i], repartition_notes_cible[i]);
+		int difference = abs(repartition_notes_source[i] - repartition_notes_cible[i]);
+		int ressemblance = 100 - difference;
+		res += "\n" + to_string(i) + "\t" + to_string(repartition_notes_source[i]) + " %\t\t" + to_string(repartition_notes_cible[i]) + " %\t\t" + to_string(ressemblance) + " %";
+		res_html += "\n<tr><td>" + to_string(i) + "</td><td>" + to_string(repartition_notes_source[i]) + " %</td><td>" + to_string(repartition_notes_cible[i]) + " %</td><td>" + to_string(ressemblance) + " %</td></tr>";
+		somme_valuations += ressemblance;
 	}
 	res += "\n\n";
 	res_html += "\n</table>\n\n<p>";

@@ -25,6 +25,7 @@ onglet {
 	background: rgba(255, 255, 255, 0.2);
 	overflow: hidden;
 	cursor: pointer;
+	word-break: keep-all;
 }
 
 onglet, onglet * {
@@ -101,6 +102,14 @@ iframe:nth-child(n+2) {
 
 section notes, section partition {
 	flex-grow: 1;
+	display: none;
+	padding: 15px;
+	background: white;
+	overflow: auto;
+}
+
+section notes.visible, section partition.visible {
+	display: block;
 }
 
 /* Les contrôles */
@@ -161,12 +170,6 @@ info {
 
 /* La liste des notes et ses notes */
 
-notes {
-	padding: 15px;
-	background: white;
-	overflow: auto;
-}
-
 notes note {
 	margin: 4px;
 	padding: 2px 6px;
@@ -195,6 +198,23 @@ notes note octave::after {
 
 /* La partition et ses notes */
 
-partition { /* temporaire */
-	display: none;
+partition note {
+	position: absolute;
+	width: 11px;
+	height: 8px;
+	background: black;
+	border-radius: 15px;
+	transform: rotate(-25deg);
+	z-index: 0;
+}
+
+partition rectangle {
+	position: absolute;
+	border: 1px solid gray;
+	background: transparent;
+}
+
+partition rectangle.lu, partition rectangle.hover {
+	border-color: black;
+	z-index: 1000;
 }

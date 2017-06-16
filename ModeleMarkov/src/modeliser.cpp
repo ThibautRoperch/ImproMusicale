@@ -100,6 +100,7 @@ int main(int argc, char* argv[]) {
 			if (note_max == NULL || n > *note_max) note_max = chaine_markov.dernierElement();
 
 			/* C2 : Calcul de la hauteur moyenne entre deux notes sur une plage de notes donnée (rectangle) */
+			
 			// Le rectangle adapte sa taille en fonction des notes consécutives : il faut donc une note précédente et une note actuelle
 			// Les mélodies ne se suivent pas forcément, la note précédente est donc NULL à chaque nouvelle mélodie lue
 			// S'il n'y a pas de note précédemment lue pour cette mélodie, fixer la monotonie à 1 car la première note de cette mélodie est en train d'être lue
