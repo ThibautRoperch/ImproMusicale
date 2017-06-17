@@ -9,3 +9,6 @@ ModeleMarkov/test/melodies/*
 ModeleMarkov/test/modelisations/*
 ModeleMarkov/test/improvisations/*
 ModeleMarkov/test/comparaisons/*
+
+# Fichier contenant les logs
+ModeleMarkov/log.txt
