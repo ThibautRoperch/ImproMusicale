@@ -4,6 +4,10 @@
 
 Les partitions doivent être au format MIDI (.mid) ou MusicXML (.xml).
 
+Le nom de ces fichiers musicaux ne doit pas contenir d'espace, ainsi que les caractères suivants :
+* `&`
+* `?`
+
 Elles doivent être placées dans le dossier Partitions (directement dans le dossier ou dans un sous-dossier).
 
 ## Compilation
