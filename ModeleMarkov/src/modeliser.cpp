@@ -358,7 +358,6 @@ int main(int argc, char* argv[]) {
 		} // Fin du "Pour chaque note de la mélodie"
 
 		// Trier les patterns de la mélodie : certaines suites peuvent être des sous-patterns, ou certains patterns peuvent se chevaucher
-		// Dans tous les cas, ne garder que les patterns de la mélodie les plus grands
 		// Pour chaque pattern de la liste des patterns de la mélodie
 		for (auto pattern : patterns_melodie) {
 			bool garder = true;
@@ -396,7 +395,7 @@ int main(int argc, char* argv[]) {
 										for (unsigned int i = 0; i < pat.second.size() - 1; ++i) {
 											dispersion_pat += pat.second[i + 1] - pat.second[i];
 										}
-										if (dispersion_pattern < dispersion_pat) { // < : les 2 patterns gardés si égalité de leur dispersion		<= : aucun pattern gardé si égalité de sleur dispersion
+										if (dispersion_pattern < dispersion_pat) { // < : les 2 patterns gardés si égalité de leur dispersion		<= : aucun pattern gardé si égalité de leur dispersion
 											garder = false;
 										}
 									}
