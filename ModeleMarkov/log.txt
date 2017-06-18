@@ -5,3 +5,10 @@ ModeleMarkov/test/improvisations/CHAT_MUSICAL-051717-impro-markov.xml
 ModeleMarkov/test/modelisations/CHAT_MUSICAL-051717-impro-markov.xml
 ModeleMarkov/test/comparaisons/CHAT_MUSICAL-CHAT_MUSICAL-impro-markov-051717.html
 
+18/06/2017 05:23:02
+ModeleMarkov/test/melodies/CHAT_MUSICAL-052302.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICAL-052302.xml
+ModeleMarkov/test/improvisations/CHAT_MUSICAL-052302-impro-markov.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICAL-052302-impro-markov.xml
+ModeleMarkov/test/comparaisons/CHAT_MUSICAL-CHAT_MUSICAL-impro-markov-052302.html
+

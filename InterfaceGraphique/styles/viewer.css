@@ -3,7 +3,6 @@ body {
 	background: #FF8E00;
 }
 
-
 /* Les onglets */
 
 nav {
@@ -129,7 +128,6 @@ iframe {
 	border: none;
 	background: white;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	overflow: hidden;
 }
 
 iframe:nth-child(n+2) {

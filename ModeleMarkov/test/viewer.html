@@ -148,11 +148,10 @@ function ecrirePartition() {
 	if (xmlDoc.getElementsByTagName("elements-min-max")[0]) {
 		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[0].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[0].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
-		var note_min = valeur + octave * 11;
+		var note_min = valeur + octave * 12;
 		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
-		var note_max = valeur + octave * 11;
-		// partition.style.height = (note_max - note_min) * (echelle + espace_vertical) + espace_vertical + "px";
+		var note_max = valeur + octave * 12;
 	} else {
 		dessiner_rectangles = false;
 		var note_max = 50;
@@ -172,9 +171,8 @@ function ecrirePartition() {
 	// Affichage des notes et des rectangles
 	var xmlDoc = parser.parseFromString(melodie ,"text/xml");
 
-	i = 0;
+	var i = 0;
 	while (xmlDoc.getElementsByTagName("note")[i]) {
-		console.log("note " + i);
 		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[i].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
 		var note_actuelle = valeur + octave * 11;
@@ -209,19 +207,21 @@ function ecrirePartition() {
 		++i;
 	}
 
+	partition.style.width = i * espace_horizontal + rectangle_largeur * (echelle + espace_horizontal) -espace_horizontal + "px";
+	partition.style.minHeight = (note_max - note_min) * (echelle + espace_vertical) + rectangle_hauteur * echelle + "px";
+
 	// Mise en valeur des patterns dans l'affichage
-	var xmlDoc = parser.parseFromString(modelisation ,"text/xml");
-	i = 0;
+	var xmlDoc = parser.parseFromString(modelisation,"text/xml");
+	var i = 0;
 	var couleurs = ["red", "orange", "green", "cyan", "brown"];
 	while (xmlDoc.getElementsByTagName("pattern")[i]) {
-		taille = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("taille")[0].childNodes[0].nodeValue);
-		j = 0;
+		var taille = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("taille")[0].childNodes[0].nodeValue);
+		var j = 0;
 		while (xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j]) {
-			position = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j].childNodes[0].nodeValue);
-			note_a_colorier = position;
+			var position = parseInt(xmlDoc.getElementsByTagName("pattern")[i].getElementsByTagName("positions")[0].getElementsByTagName("indice")[j].childNodes[0].nodeValue);
+			var note_a_colorier = position;
 			while (note_a_colorier < (position + taille)) {
 				partition.getElementsByTagName("note")[note_a_colorier++].style.background = couleurs[i];
-				console.log("Id de la note à colorier = " + note_a_colorier++);
 			}
 			++j;
 		}

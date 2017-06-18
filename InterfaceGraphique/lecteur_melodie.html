@@ -349,10 +349,10 @@ function dessinerPartition() {
 	if (xmlDoc.getElementsByTagName("elements-min-max")[0]) {
 		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[0].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[0].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
-		var note_min = valeur + octave * 11;
+		var note_min = valeur + octave * 12;
 		var valeur = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("valeur")[0].childNodes[0].nodeValue);
 		var octave = parseInt(xmlDoc.getElementsByTagName("note")[1].getElementsByTagName("octave")[0].childNodes[0].nodeValue);
-		var note_max = valeur + octave * 11;
+		var note_max = valeur + octave * 12;
 		partition.style.height = (note_max - note_min) * (echelle + espace_vertical) + espace_vertical + "px";
 	} else {
 		dessiner_rectangles = false;
