@@ -9,7 +9,7 @@
  * Le type T des éléments de la chaine de Markov doivent implémenter des méthodes dont voici la signature :
  *   ajouterAuxSuivants : T* -> void
  *   piocherParmiSuivants const : void -> T*
- *   occurencesDesSuivants const : void -> map <T*, int>
+ *   occurencesDesSuivants const : void -> map<T*, int>
  *   nombreDeSuivants const : void -> int
  */
 

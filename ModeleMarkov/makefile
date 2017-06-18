@@ -8,6 +8,7 @@ LIB_DIR = ./lib
 TEST_DIR = ./test
 
 LibMidifile = $(LIB_DIR)/craigsapp-midifile-5a7dc97
+LibGeneAleaSousContraintes = $(LIB_DIR)/RMG
 
 PrgmMoc = /usr/lib/x86_64-linux-gnu/qt5/bin/moc
 
@@ -18,8 +19,9 @@ initialiser:
 	mkdir -p $(BIN_DIR)
 
 compiler_librairies:
-	cd $(LibMidifile)
-	make
+	cd $(LibMidifile) ; make
+	cmake $(LibGeneAleaSousContraintes)/CMakeLists.txt
+	cd $(LibGeneAleaSousContraintes) ; make
 
 compiler_sources: $(BIN_DIR)/epurer_musicxml.exe $(BIN_DIR)/epurer_midi.exe $(BIN_DIR)/modeliser.exe $(BIN_DIR)/improviser.exe $(BIN_DIR)/comparer.exe $(BIN_DIR)/convertir_midi.exe
 
@@ -54,7 +56,7 @@ improviser:
 	./$(BIN_DIR)/improviser.exe ${notes} ${in} ${out}
 
 comparer:
-	./$(BIN_DIR)/comparer.exe ${source} ${cible_mod} ${cible_melo} ${out}
+	./$(BIN_DIR)/comparer.exe ${source_mod} ${cible_mod} ${cible_melo} ${out}
 
 convertirMIDI:
 	./$(BIN_DIR)/convertir_midi.exe ${in} ${out}
@@ -63,8 +65,8 @@ launch:
 	./$(BIN_DIR)/main.exe
 
 clean_librairies:
-	cd $(LibMidifile)
-	make clean
+	cd $(LibMidifile) ;	make clean
+	cd $(LibGeneAleaSousContraintes) ; make clean
 
 clean_tests:
 	rm -f $(TEST_DIR)/melodies/*

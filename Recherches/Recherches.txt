@@ -131,3 +131,4 @@ Déterminer cette notion de proximité :
 
 Ou plutot :
 - Il prend de la largeur si les x notes qui se suivent sont proches en hauteur, avec x la largeur du rectangle et la notion de proximité la différence moyenne de hauteur
+

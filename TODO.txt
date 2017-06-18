@@ -1,15 +1,4 @@
-
-[ RAPPORT ]
-
-Fin du rapport en commun : perspectives, ce qu'on voudrait améliorer etc...
-Parler que ca m'a permi dutiliser mes connaissances
-
-faire une image de construction des rectangles
-
-detailler le lien entre l'IG et le programme ? (ca passe ar u nfichier de logs récupéré en AJAX)
-
-schéma pour explique le "?"
-
+    
 [ SOUTENANCE ]
 
 IG en HTML/JS car je triyve ca plus pratique et plus rapide qu'en c++ ou java
@@ -24,6 +13,9 @@ Peut durer 25 min au total pour nous deux
 Prévoir un enregistrement si la démo fait n'imp
 
 montrer nos resultats de tests
+
+=> diapo
+=> faire des tests, les présenter à l'oral en commun (el famoso tablo excel)
 
 [ TECHNIQUEMENT ]
 

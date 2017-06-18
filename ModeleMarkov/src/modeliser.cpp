@@ -430,7 +430,7 @@ int main(int argc, char* argv[]) {
 		for (auto position : pattern.second) {
 			res += "        <indice>" + to_string(position) + "</indice>\n";
 		}
-		res += "      </positions>";
+		res += "      </positions>\n";
 		res += "    </pattern>\n";
 		// cout << "Pattern " << i << " : "; for (auto note : pattern.first) cout << note << " "; cout << endl;
 		// cout << "Positions : "; for (auto position : pattern.second) cout << position << " "; cout << endl;

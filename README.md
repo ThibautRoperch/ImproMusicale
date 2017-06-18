@@ -10,11 +10,11 @@ Le nom de ces fichiers musicaux ne doit pas contenir d'espace, ainsi que les car
 
 Elles doivent être placées dans le dossier Partitions (directement dans le dossier ou dans un sous-dossier).
 
-## Compilation
+## Compilation des sources
 
-Avant d'utiliser le générateur aléatoire de mélodies, compiler les sources :
+Avant d'utiliser le générateur aléatoire de mélodies, compiler les sources avec la commande :
 
-    cd ModeleMarkov ; make
+    cd ModeleMarkov ; make compiler_librairies ; make
 
 ## Exécution
 

@@ -143,10 +143,12 @@ T * ChaineMarkov<T>::genererElement() {
 	if (m_elements.size() > 0) {
 		nouvel_element = m_elements[m_elements.size() - 1]->piocherParmiSuivants();
 	}
-	// Sinon, choisir parmi les éléments uniques qui ont déjà été ajoutés à la chaine
+	// Sinon, choisir parmi les éléments uniques qui ont déjà été ajoutés à la chaine, s'il y en a
 	else {
-		int tirage_aleatoire = rand() % m_elements_uniques.size(); // entre 0 et la taille du vecteur d'éléments uniques - 1
-		nouvel_element = m_elements_uniques[tirage_aleatoire];
+		if (m_elements_uniques.size() > 0) {
+			int tirage_aleatoire = rand() % m_elements_uniques.size(); // entre 0 et la taille du vecteur d'éléments uniques - 1
+			nouvel_element = m_elements_uniques[tirage_aleatoire];
+		}
 	}
 
 	// Ajouter à la chaine l'élément tiré au sort s'il n'est pas NULL

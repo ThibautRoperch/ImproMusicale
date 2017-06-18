@@ -273,8 +273,10 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	tmp = to_string(abs(100 - (int)(somme_difference * 100 / couples_notes.size()))) + " %";
-	somme_valuations += abs(100 - (int)(somme_difference * 100 / couples_notes.size()));
+	int taux_difference = (couples_notes.size() == 0) ? 100 : abs(100 - (int)(somme_difference * 100 / couples_notes.size()));
+
+	tmp = to_string(taux_difference) + " %";
+	somme_valuations += taux_difference;
 
 	res += tmp + "\n\n";
 	res_html += tmp + "\n\n<br><br>\n\n";
@@ -414,34 +416,20 @@ int main(int argc, char* argv[]) {
 
 	xml_node<> *noeud_repartition_source = noeud_racine_source->first_node("repartition-notes");
 	vector<int> repartition_notes_source(12, 0);
-	int tonalite_source = 0;
-	int proportion_tonalite_source = -1;
 
 	for (xml_node<> *noeud_note_unique = noeud_repartition_source->first_node("note-unique"); noeud_note_unique; noeud_note_unique = noeud_note_unique->next_sibling()) {
 		int valeur_note = atoi(noeud_note_unique->first_attribute("valeur")->value());
 		int proportion_note = atof(noeud_note_unique->value()) * 100;
-
-		if (proportion_tonalite_source == 0 || proportion_note > proportion_tonalite_source) {
-			tonalite_source = valeur_note;
-			proportion_tonalite_source = proportion_note;
-		}
 
 		repartition_notes_source[valeur_note] = proportion_note;
 	}
 
 	xml_node<> *noeud_repartition_cible = noeud_racine_cible->first_node("repartition-notes");
 	vector<int> repartition_notes_cible(12, 0);
-	int tonalite_cible = 0;
-	int proportion_tonalite_cible = -1;
 
 	for (xml_node<> *noeud_note_unique = noeud_repartition_cible->first_node("note-unique"); noeud_note_unique; noeud_note_unique = noeud_note_unique->next_sibling()) {
 		int valeur_note = atoi(noeud_note_unique->first_attribute("valeur")->value());
 		int proportion_note = atof(noeud_note_unique->value()) * 100;
-
-		if (proportion_tonalite_cible == 0 || proportion_note > proportion_tonalite_cible) {
-			tonalite_cible = valeur_note;
-			proportion_tonalite_cible = proportion_note;
-		}
 
 		repartition_notes_cible[valeur_note] = proportion_note;
 	}
@@ -467,8 +455,46 @@ int main(int argc, char* argv[]) {
 	res += tmp;
 	res_html += tmp;
 	++nombre_valuations;
-	tmp = to_string((tonalite_source == tonalite_cible) * 100) + " %";
-	somme_valuations += (tonalite_source == tonalite_cible) * 100;
+
+	// Met à -1 la proportion des 4 notes qui ont la plus faible précense dans la mélodie, pour ne garder que les 8 plus présentes
+	for (unsigned int iteration = 0; iteration < 4; ++iteration) {
+		int note_faible;
+
+		// Répartition des notes de la source
+		note_faible = -1;
+		for (unsigned note = 0; note < repartition_notes_source.size(); ++note) {
+			int proportion = repartition_notes_source[note];
+			if ((note_faible == -1 || proportion < note_faible) && proportion > -1) {
+				note_faible = note;
+			}
+		}
+		repartition_notes_source[note_faible] = -1;
+
+		// Répartition des notes de la cible
+		note_faible = -1;
+		for (unsigned note = 0; note < repartition_notes_cible.size(); ++note) {
+			int proportion = repartition_notes_cible[note];
+			if ((note_faible == -1 || proportion < note_faible) && proportion > -1) {
+				note_faible = note;
+			}
+		}
+		repartition_notes_cible[note_faible] = -1;
+	}
+
+	// Compare les 8 notes les plus présentes des les mélodies
+	unsigned int note_unique = 0;
+	bool continuer = true;
+	while (note_unique < repartition_notes_source.size() && continuer) {
+		continuer = false;
+		if ((repartition_notes_source[note_unique] > -1 && repartition_notes_cible[note_unique] > -1)
+		 || (repartition_notes_source[note_unique] == -1 && repartition_notes_cible[note_unique] == -1)) {
+			continuer = true;
+		}
+		++note_unique;
+	}
+
+	tmp = to_string(continuer * 100) + " %";
+	somme_valuations += continuer * 100;
 	res += tmp + "\n\n";
 	res_html += tmp + "</p>\n\n</article>\n\n</section>\n\n";
 
