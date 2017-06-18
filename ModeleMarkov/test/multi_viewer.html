@@ -73,12 +73,14 @@ function genererElementsDynamiques() {
 	for (var i = 0; i < originales.length; ++i) {
 		// Onglet de navigation
 		var onglet = document.createElement("onglet");
-			var titre = document.createElement("h1");
-				titre.innerHTML = originales[i].substring(originales[i].lastIndexOf("/") + 1);
-			var chemin = document.createElement("h2");
-				chemin.innerHTML = originales[i];
-		onglet.appendChild(titre);
-		onglet.appendChild(chemin);
+			var div = document.createElement("div");
+				var titre = document.createElement("h1");
+					titre.innerHTML = originales[i].substring(originales[i].lastIndexOf("/") + 1);
+				var chemin = document.createElement("h2");
+					chemin.innerHTML = originales[i];
+			div.appendChild(titre);
+			div.appendChild(chemin);
+		onglet.appendChild(div);
 		onglet.id = parseInt(i + 1);
 		onglet.addEventListener("click", function() { afficherArticle(this); });
 		document.getElementsByTagName("nav")[0].appendChild(onglet);
@@ -95,12 +97,21 @@ function genererElementsDynamiques() {
 	for (var i = 0; i < improvisations.length; ++i) {
 		// Onglet de navigation
 		var onglet = document.createElement("onglet");
-			var titre = document.createElement("h1");
-				titre.innerHTML = improvisations[i].substring(improvisations[i].lastIndexOf("/") + 1);
-			var chemin = document.createElement("h2");
-				chemin.innerHTML = improvisations[i];
-		onglet.appendChild(titre);
-		onglet.appendChild(chemin);
+			var midi = document.createElement("button");
+				midi.innerHTML = "&#9835;";
+				var entree_midi = "ModeleMarkov/test/" + improvisations[i];
+				var sortie_midi = improvisations[i].substring(0, improvisations[i].lastIndexOf(".")) + ".mid";
+				sortie_midi = "Partitions/" + sortie_midi.substring(sortie_midi.lastIndexOf("/") + 1);
+				midi.addEventListener("click", function() { alert("Exécuter la commande suivante pour enregistrer la mélodie en MIDI :\n\n./ModeleMarkov/bin/convertir_midi.exe " + entree_midi + " " + sortie_midi + "\n\nLe fichier s'enregistre dans le dossier Partitions"); });
+			var div = document.createElement("div");
+				var titre = document.createElement("h1");
+					titre.innerHTML = improvisations[i].substring(improvisations[i].lastIndexOf("/") + 1);
+				var chemin = document.createElement("h2");
+					chemin.innerHTML = improvisations[i];
+			div.appendChild(titre);
+			div.appendChild(chemin);
+		onglet.appendChild(midi);
+		onglet.appendChild(div);
 		onglet.id = parseInt(originales.length + i + 1);
 		onglet.addEventListener("click", function() { afficherArticle(this); });
 		document.getElementsByTagName("nav")[0].appendChild(onglet);

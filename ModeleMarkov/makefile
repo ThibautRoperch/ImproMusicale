@@ -71,7 +71,9 @@ clean_tests:
 	rm -f $(TEST_DIR)/modelisations/*
 	rm -f $(TEST_DIR)/improvisations/*
 	rm -f $(TEST_DIR)/comparaisons/*
+	rm log.txt
 
 clean:
 	rm -f $(BUILD_DIR)/*
 	rm -f $(BIN_DIR)/*
+

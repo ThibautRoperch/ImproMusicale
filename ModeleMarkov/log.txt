@@ -1,7 +1,7 @@
-17/06/2017 13:45:11
-ModeleMarkov/test/melodies/toreador-134511.xml
-ModeleMarkov/test/modelisations/toreador-134511.xml
-ModeleMarkov/test/improvisations/toreador-134511-impro-markov.xml
-ModeleMarkov/test/modelisations/toreador-134511-impro-markov.xml
-ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-134511.html
+18/06/2017 05:17:17
+ModeleMarkov/test/melodies/CHAT_MUSICAL-051717.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICAL-051717.xml
+ModeleMarkov/test/improvisations/CHAT_MUSICAL-051717-impro-markov.xml
+ModeleMarkov/test/modelisations/CHAT_MUSICAL-051717-impro-markov.xml
+ModeleMarkov/test/comparaisons/CHAT_MUSICAL-CHAT_MUSICAL-impro-markov-051717.html
 

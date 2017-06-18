@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
 	fichier_midi.sortTracks(); // s'assurer que les temps de ticks sont dans le bon ordre
 	fichier_midi.write(nom_fichier_sortie);
 
-	cerr << "\nLe fichier " << nom_fichier_sortie << " contient les propriétés de la mélodie du fichier " << argv[1] << endl;
+	cerr << "\nLe fichier " << nom_fichier_sortie << " contient la mélodie du fichier " << argv[1] << " au format MIDI" << endl;
 
 	cout << endl;
 
