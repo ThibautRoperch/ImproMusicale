@@ -1,5 +1,5 @@
 /**
- * Programme de conversion entre un fichier au format MusicXML et un fichier au format épuré
+ * Programme de conversion d'un fichier au format MusicXML vers un fichier au format XML épuré
  * 
  * https://fr.wikipedia.org/wiki/MusicXML
  * http://www.musicxml.com/tutorial/the-midi-compatible-part/pitch/

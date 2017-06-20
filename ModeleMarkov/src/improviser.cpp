@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 	/* Lecture des fichiers contenant une mélodie */
 
 	for (int i = 2; i < argc - 1; ++i) {
-		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
+		cout << "Analyse de la mélodie contenue dans le fichier " << argv[i] << endl;
 
 		xml_document<> doc;
 		xml_node<> *noeud_racine;

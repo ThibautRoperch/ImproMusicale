@@ -1,3 +1,8 @@
+/**
+ * Programme de modélisation d'une ou plusieurs mélodies
+ * En résulte un fichier de propriétés mélodiques, utilisées comme des contraintes par un générateur aléatoire sous contraintes
+ */
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -63,7 +68,7 @@ int main(int argc, char* argv[]) {
 	vector<int> repartition_notes(12, 0); // à un indice correspond la valeur d'une note, la valeur de l'indice correspond au nombre de notes qui ont cette valeur
 
 	for (int i = 1; i < argc - 1; ++i) {
-		cout << "Analyse de la mélodie du fichier " << argv[i] << endl;
+		cout << "Analyse de la mélodie contenue dans le fichier " << argv[i] << endl;
 
 		int id_fichier = i - 1;
 

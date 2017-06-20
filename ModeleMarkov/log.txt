@@ -361,3 +361,24 @@ ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-2
 18/06/2017 23:42:55
 ModeleMarkov/test/melodies/You_re_welcome-234255.xml
 ModeleMarkov/test/modelisations/You_re_welcome-234255.xml
+20/06/2017 02:44:08
+ModeleMarkov/test/melodies/Bleed-024408.xml
+ModeleMarkov/test/melodies/Bleed-024408.xml
+20/06/2017 03:50:41
+ModeleMarkov/test/melodies/Saltarello-035041.xml
+ModeleMarkov/test/melodies/Saltarello-035041.xml
+ModeleMarkov/test/melodies/Saltarello-035041.xml
+ModeleMarkov/test/modelisations/SaltarelloSaltarelloSaltarello-035041.xml
+ModeleMarkov/test/improvisations/SaltarelloSaltarelloSaltarello-035041-impro-markov.xml
+ModeleMarkov/test/modelisations/SaltarelloSaltarelloSaltarello-035041-impro-markov.xml
+ModeleMarkov/test/comparaisons/SaltarelloSaltarelloSaltarello-SaltarelloSaltarelloSaltarello-impro-markov-035041.html
+
+20/06/2017 03:51:08
+ModeleMarkov/test/melodies/Saltarello-035108.xml
+ModeleMarkov/test/melodies/Saltarello-035108.xml
+ModeleMarkov/test/melodies/Saltarello-035108.xml
+ModeleMarkov/test/modelisations/SaltarelloSaltarelloSaltarello-035108.xml
+ModeleMarkov/test/improvisations/SaltarelloSaltarelloSaltarello-035108-impro-markov.xml
+ModeleMarkov/test/modelisations/SaltarelloSaltarelloSaltarello-035108-impro-markov.xml
+ModeleMarkov/test/comparaisons/SaltarelloSaltarelloSaltarello-SaltarelloSaltarelloSaltarello-impro-markov-035108.html
+

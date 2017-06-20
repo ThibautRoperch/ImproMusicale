@@ -1,6 +1,8 @@
     
 [ SOUTENANCE ]
 
+Présenter les objectif de ma partie pdt le sommaire "j'ai bossé sur ..., sur..."
+
 IG en HTML/JS car je triyve ca plus pratique et plus rapide qu'en c++ ou java
 par exmeple, le drag and drop, c'ets un inpit en html, c'et 2 méthodes en swing et qt
 
@@ -14,8 +16,12 @@ Prévoir un enregistrement si la démo fait n'imp
 
 montrer nos resultats de tests
 
+intro : survendre, se mettre a la palce du prof, faut pas q'uil décraoche
+
 => diapo
 => faire des tests, les présenter à l'oral en commun (el famoso tablo excel)
+=> dossiers candidature
+=> remoubrser 21e à bob
 
 [ TECHNIQUEMENT ]
 
@@ -25,20 +31,20 @@ Ajotuer la possibilité d'afficher toutes les générations dans l'accueil & le 
 
 ajouter la possibilité d'jaouter l'option notraces
 
-Grouper les originaux (+ meme couleur ?) et les modélisations
-
 Faire en sort d'avoid les chords en MIDI : http://midifile.sapp.org/
 
 [ TESTS ]
 
+toreador est pas mal à improviser dessus
+
+possibilité d'improviser sur plusieures pistes d'une mélodies dans l'interface et dans le programme
+
 Comparer la générétion de différents styles de musiques, à l'oreille
 
-Faire un tableau de tests
+Faire un tableau de tests => x tpyes de musiques => y paliers de notes => x * y colonnes
 
 Générer des trucs a partir d'une partoche semblable (carmen, Chris Maé, ...), juger à l'oreille si ca se ressemble
 Juger avec le programme si ca se ressemble (original : une chanson de chris maé, en généré : une génération sur une autre chanson de chris maé)
-
-Générer des contraintes à partir de plusieurs mélodies qu'on sait qu'elles sont de même style, générer dessus, vérifier avec l'original
 
 Comparer la génération sur une même mélodie de moi et celles de dylan
 
