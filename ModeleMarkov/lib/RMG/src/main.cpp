@@ -6,8 +6,9 @@
 using namespace std;
 int main(int argc, char **argv) {
   string in ,out = "";
-  bool ar, ls;
+  bool ar, ls, ts;
   ls = false;
+  ts = false;
   int nbnotes, nbgeneration = 0;
     srand (time(NULL));
 	for(int i = 1 ; i < argc; i++)
@@ -66,6 +67,10 @@ int main(int argc, char **argv) {
 							  {
 								ls = true;
 							  }
+							  else if(tmp.compare("-ts")== 0)
+									{
+									  ts = true;
+									}
 	} 
 	
 	if(nbnotes == 0|| nbgeneration == 0 || in == "" || out == "")
@@ -73,8 +78,8 @@ int main(int argc, char **argv) {
 	  cerr << "" << endl;
 	}
 	cout  << nbnotes << " " << nbgeneration << " " << in << " " << out << endl;
-	MGenerator m(nbnotes, in, out, ls);
+	MGenerator m(nbnotes, in, out, ls, ts);
     m.generation(nbgeneration);
-	m.out(nbgeneration);
+	m.out(-1);
 	return 0;
 }

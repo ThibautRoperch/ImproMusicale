@@ -158,7 +158,7 @@ function toutConvertir() {
 	var sortie_midi = "";
 	for (var i = 0; i < improvisations.length; ++i) {
 		entrees_midi += improvisations[i] + " ";
-		sortie_midi += improvisations[i].substring(0, improvisations[i].lastIndexOf(".xml"));
+		sortie_midi += "ModeleMarkov/" + improvisations[i].substring(0, improvisations[i].lastIndexOf(".xml"));
 	}
 	sortie_midi += ".mid";
 

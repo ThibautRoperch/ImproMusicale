@@ -164,14 +164,13 @@ then
 			then
 				echo -e "\nImprovisation ($type_impro) à partir des contraintes de la (des) mélodie(s) dans $improvisation"
 				
-				#./ModeleMarkov/lib/rmg -o $improvisation -c $modelisation -n $nombre_notes -g 50 -ls > $redirection_sortie
+				./ModeleMarkov/lib/RMG/rmg -c $modelisation -o $improvisation -n $nombre_notes -g 30 -ls > $redirection_sortie
 			elif [ "$type_impro" == "contraintes" ]
 			then
 				echo -e "\nImprovisation ($type_impro) à partir des contraintes de la (des) mélodie(s) dans $improvisation"
 				echo -e ""
 				
-				#./ModeleMarkov/lib/RMG/rmg -o $improvisation -c $modelisation -n $nombre_notes -g 50 -ls -ts > $redirection_sortie
-				./ModeleMarkov/lib/RMG/rmg -c $modelisation -o $improvisation -n $nombre_notes -g 50 -ls > $redirection_sortie
+				./ModeleMarkov/lib/RMG/rmg -c $modelisation -o $improvisation -n $nombre_notes -g 30 -ls -ts > $redirection_sortie
 			elif [ "$type_impro" == "markov" ]
 			then
 				echo -e "\nImprovisation ($type_impro) à partir de la (des) mélodie(s) dans $improvisation"

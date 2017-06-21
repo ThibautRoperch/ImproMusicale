@@ -7,8 +7,8 @@ void thread_local_search(pair<Chromosome*, Constraints> p)
 {
   p.first->loSearch(p.second);
 }
-MGenerator::MGenerator(int size, string const & inputFile, string const & outputFile, bool ls):m_nbNotes(size), m_population(), 
-m_objectiv(inputFile), m_sortie(outputFile), m_res(), w_localSearch(ls), m_genCour(0)
+MGenerator::MGenerator(int size, string const & inputFile, string const & outputFile, bool ls, bool ts):m_nbNotes(size), m_population(), 
+m_objectiv(inputFile), m_sortie(outputFile), m_res(), w_localSearch(ls), m_genCour(0), w_ts(ts)
 {
   
   thread losth[POP];
@@ -25,6 +25,7 @@ m_objectiv(inputFile), m_sortie(outputFile), m_res(), w_localSearch(ls), m_genCo
 	//m_objectiv.display();
 	addChromosome(tmp, v);
   }
+  out(0);
   if(ls)
   {
 	for(int i = 0; i < POP; i++)
@@ -72,6 +73,7 @@ vector<int> MGenerator::tournamentSelection()
   return res;
 }
 
+
 double MGenerator::valuation() const
 {
   double val = 0.0;
@@ -91,8 +93,19 @@ void MGenerator::generation(int g)
 	m_genCour++;
 	i = 0;
 	mutate = false;
-	vector<int> selected = tournamentSelection();
-	vector<Chromosome> childs = crossOver(selected);
+	vector<int> selected;
+	vector<Chromosome> childs;
+	if(w_ts)
+	{  
+	  selected = tournamentSelection();
+	}
+	else
+	{
+	  random_shuffle ( m_population.begin(), m_population.end() );
+	  for(int x = 0; x < 50; x++)
+		selected.push_back(x);
+	}
+	childs = crossOver(selected);
 	while(!mutate && i < childs.size())
 	{
 	  mutate = childs[i].mutation(childs.size());
@@ -122,7 +135,6 @@ void MGenerator::generation(int g)
 	}
   }
   sort(m_population.begin(), m_population.end());
-  out(-1);
 }
 vector< Chromosome > MGenerator::crossOver(vector< int > selected)
 {
@@ -179,11 +191,16 @@ void MGenerator::out(int i)
 {
 
   string file;
-  file.append(m_sortie);
-  if (i != -1)
+  if(i!=-1)
   {
-    file.append(to_string(i));
-    file.append(".xml");
+	file.append(m_sortie.substr(0,m_sortie.size()-4));
+	file.append("-");
+	file.append(to_string(i));
+	file.append(".xml");
+  }
+  else
+  {
+	  file = m_sortie;
   }
   cout << file << endl;
   filebuf fb;
@@ -206,8 +223,4 @@ void MGenerator::out(int i)
   os << "</notes>" << endl;
   fb.close();
   
-}
-void MGenerator::getEv() const
-{
-
 }

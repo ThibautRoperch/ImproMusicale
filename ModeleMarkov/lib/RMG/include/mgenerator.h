@@ -22,8 +22,9 @@ class MGenerator
 	//objet permetant de vérifier les contraintes et d'évaluer une solution
 	Constraints m_objectiv;
 	bool w_localSearch;
+	bool w_ts;
   public:
-	MGenerator(int size, string const & inputFile, string const & outputFile, bool ls);
+	MGenerator(int size, string const & inputFile, string const & outputFile, bool ls, bool ts);
 	~MGenerator();
 	 //déroulement de l'algorithme
 	void generation(int g);
@@ -36,6 +37,5 @@ class MGenerator
 	// retourne la selection des participants 
 	vector<int> tournamentSelection();
 	void out(int i);
-	void getEv()const;
 };
 #endif

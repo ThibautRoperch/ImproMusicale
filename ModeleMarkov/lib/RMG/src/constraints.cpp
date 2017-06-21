@@ -25,6 +25,8 @@ Constraints::Constraints(string fichier): m_size(0), m_obj()
   
   // min max
   xml_node<> * min_max_node = root_node->first_node("elements-min-max");
+	xml_node<> * objectif_node = min_max_node->first_node("objectif");
+
 	m_obj.push_back(1);
 	//debut element min
 	xml_node<> * min_node = min_max_node->first_node("element-min");
@@ -51,7 +53,7 @@ Constraints::Constraints(string fichier): m_size(0), m_obj()
   // rect
   xml_node<> * rectangles_node = root_node->first_node("rectangles");
 	xml_node<> * rectangle_node = rectangles_node->first_node("rectangle");
-	  xml_node<> * objectif_node = rectangle_node->first_node("objectif");
+	  objectif_node = rectangle_node->first_node("objectif");
 	  o = stof(objectif_node->value());
 	
 	  m_obj.push_back(o);

@@ -1,384 +1,189 @@
-18/06/2017 05:17:17
-ModeleMarkov/test/melodies/CHAT_MUSICAL-051717.xml
-ModeleMarkov/test/modelisations/CHAT_MUSICAL-051717.xml
-ModeleMarkov/test/improvisations/CHAT_MUSICAL-051717-impro-markov.xml
-ModeleMarkov/test/modelisations/CHAT_MUSICAL-051717-impro-markov.xml
-ModeleMarkov/test/comparaisons/CHAT_MUSICAL-CHAT_MUSICAL-impro-markov-051717.html
+21/06/2017 17:05:07
+ModeleMarkov/test/melodies/On_s_attache-170507.xml
+ModeleMarkov/test/melodies/Tombe_sous_le_charme-170507.xml
+ModeleMarkov/test/melodies/Un_peu_de_blues-170507.xml
+ModeleMarkov/test/modelisations/On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-170507.xml
+ModeleMarkov/test/improvisations/On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-170507-impro-contraintes.xml
+ModeleMarkov/test/modelisations/On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-170507-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-impro-contraintes-170507.html
+ModeleMarkov/test/improvisations/On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-170507-impro-markov.xml
+ModeleMarkov/test/modelisations/On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-170507-impro-markov.xml
+ModeleMarkov/test/comparaisons/On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-On_s_attacheTombe_sous_le_charmeUn_peu_de_blues-impro-markov-170507.html
 
-18/06/2017 05:23:02
-ModeleMarkov/test/melodies/CHAT_MUSICAL-052302.xml
-ModeleMarkov/test/modelisations/CHAT_MUSICAL-052302.xml
-ModeleMarkov/test/improvisations/CHAT_MUSICAL-052302-impro-markov.xml
-ModeleMarkov/test/modelisations/CHAT_MUSICAL-052302-impro-markov.xml
-ModeleMarkov/test/comparaisons/CHAT_MUSICAL-CHAT_MUSICAL-impro-markov-052302.html
+21/06/2017 17:13:57
+ModeleMarkov/test/melodies/TBB-Everybody_Needs_Somebody-171357.xml
+ModeleMarkov/test/melodies/TBB--Sweet_Home_Chicago-171357.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171357.xml
+ModeleMarkov/test/improvisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171357-impro-contraintes.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171357-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-impro-contraintes-171357.html
+ModeleMarkov/test/improvisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171357-impro-markov.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171357-impro-markov.xml
+ModeleMarkov/test/comparaisons/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-impro-markov-171357.html
 
-18/06/2017 15:28:05
-ModeleMarkov/test/melodies/You_re_welcome-152805.xml
-ModeleMarkov/test/modelisations/You_re_welcome-152805.xml
+21/06/2017 17:17:50
+ModeleMarkov/test/melodies/TBB-Everybody_Needs_Somebody-171750.xml
+ModeleMarkov/test/melodies/TBB--Sweet_Home_Chicago-171750.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171750.xml
+ModeleMarkov/test/improvisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171750-impro-contraintes.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171750-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-impro-contraintes-171750.html
+ModeleMarkov/test/improvisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171750-impro-markov.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-171750-impro-markov.xml
+ModeleMarkov/test/comparaisons/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-impro-markov-171750.html
 
-18/06/2017 17:01:18
-ModeleMarkov/test/melodies/You_re_welcome-170118.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170118.xml
+21/06/2017 17:23:43
+ModeleMarkov/test/melodies/TBB-Everybody_Needs_Somebody-172343.xml
+ModeleMarkov/test/melodies/TBB--Sweet_Home_Chicago-172343.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-172343.xml
+ModeleMarkov/test/improvisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-172343-impro-contraintes.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-172343-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-impro-contraintes-172343.html
+ModeleMarkov/test/improvisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-172343-impro-markov.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-172343-impro-markov.xml
+ModeleMarkov/test/comparaisons/TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-TBB-Everybody_Needs_SomebodyTBB--Sweet_Home_Chicago-impro-markov-172343.html
 
-18/06/2017 17:01:24
-18/06/2017 17:04:17
-18/06/2017 17:04:21
-18/06/2017 17:04:36
-ModeleMarkov/test/melodies/You_re_welcome-170436.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170436.xml
-ModeleMarkov/test/improvisations/You_re_welcome-170436-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170436-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-170436.html
+21/06/2017 17:28:39
+ModeleMarkov/test/melodies/TBB-Everybody_Needs_Somebody-172839.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_Somebody-172839.xml
+ModeleMarkov/test/improvisations/TBB-Everybody_Needs_Somebody-172839-impro-contraintes.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_Somebody-172839-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/TBB-Everybody_Needs_Somebody-TBB-Everybody_Needs_Somebody-impro-contraintes-172839.html
+ModeleMarkov/test/improvisations/TBB-Everybody_Needs_Somebody-172839-impro-markov.xml
+ModeleMarkov/test/modelisations/TBB-Everybody_Needs_Somebody-172839-impro-markov.xml
+ModeleMarkov/test/comparaisons/TBB-Everybody_Needs_Somebody-TBB-Everybody_Needs_Somebody-impro-markov-172839.html
 
-18/06/2017 17:04:50
-ModeleMarkov/test/melodies/You_re_welcome-170450.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170450.xml
-ModeleMarkov/test/improvisations/You_re_welcome-170450-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170450-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-170450.html
+21/06/2017 17:36:14
+ModeleMarkov/test/melodies/Bleed-173614.xml
+ModeleMarkov/test/melodies/Demiurge-173614.xml
+ModeleMarkov/test/melodies/New_Millenium_Cyanide_Christ-173614.xml
+ModeleMarkov/test/modelisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-173614.xml
+ModeleMarkov/test/improvisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-173614-impro-contraintes.xml
+ModeleMarkov/test/modelisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-173614-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/BleedDemiurgeNew_Millenium_Cyanide_Christ-BleedDemiurgeNew_Millenium_Cyanide_Christ-impro-contraintes-173614.html
+ModeleMarkov/test/improvisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-173614-impro-markov.xml
+ModeleMarkov/test/modelisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-173614-impro-markov.xml
+ModeleMarkov/test/comparaisons/BleedDemiurgeNew_Millenium_Cyanide_Christ-BleedDemiurgeNew_Millenium_Cyanide_Christ-impro-markov-173614.html
 
-18/06/2017 17:05:20
-ModeleMarkov/test/melodies/You_re_welcome-170520.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170520.xml
-ModeleMarkov/test/improvisations/You_re_welcome-170520-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170520-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-170520.html
+21/06/2017 17:41:05
+ModeleMarkov/test/melodies/Bleed-174105.xml
+ModeleMarkov/test/melodies/Demiurge-174105.xml
+ModeleMarkov/test/melodies/New_Millenium_Cyanide_Christ-174105.xml
+21/06/2017 17:41:43
+ModeleMarkov/test/melodies/Demiurge-174143.xml
+ModeleMarkov/test/melodies/New_Millenium_Cyanide_Christ-174143.xml
+21/06/2017 17:41:54
+ModeleMarkov/test/melodies/New_Millenium_Cyanide_Christ-174154.xml
+ModeleMarkov/test/modelisations/New_Millenium_Cyanide_Christ-174154.xml
+ModeleMarkov/test/improvisations/New_Millenium_Cyanide_Christ-174154-impro-markov.xml
+ModeleMarkov/test/modelisations/New_Millenium_Cyanide_Christ-174154-impro-markov.xml
+ModeleMarkov/test/comparaisons/New_Millenium_Cyanide_Christ-New_Millenium_Cyanide_Christ-impro-markov-174154.html
 
-18/06/2017 17:07:19
-ModeleMarkov/test/melodies/You_re_welcome-170719.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170719.xml
-ModeleMarkov/test/improvisations/You_re_welcome-170719-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170719-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-170719.html
+21/06/2017 17:42:39
+ModeleMarkov/test/melodies/toreador-174239.xml
+ModeleMarkov/test/modelisations/toreador-174239.xml
+ModeleMarkov/test/improvisations/toreador-174239-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-174239-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-174239.html
 
-18/06/2017 17:08:32
-ModeleMarkov/test/melodies/You_re_welcome-170832.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170832.xml
-ModeleMarkov/test/improvisations/You_re_welcome-170832-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170832-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-170832.html
+21/06/2017 17:42:47
+ModeleMarkov/test/melodies/toreador-174247.xml
+ModeleMarkov/test/modelisations/toreador-174247.xml
+ModeleMarkov/test/improvisations/toreador-174247-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-174247-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-174247.html
 
-18/06/2017 17:09:03
-ModeleMarkov/test/melodies/You_re_welcome-170903.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170903.xml
-ModeleMarkov/test/improvisations/You_re_welcome-170903-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-170903-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-170903.html
+21/06/2017 17:43:09
+ModeleMarkov/test/melodies/toreador-174309.xml
+ModeleMarkov/test/modelisations/toreador-174309.xml
+21/06/2017 17:43:16
+ModeleMarkov/test/melodies/toreador-174316.xml
+ModeleMarkov/test/modelisations/toreador-174316.xml
+ModeleMarkov/test/improvisations/toreador-174316-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreador-174316-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-contraintes-174316.html
 
-18/06/2017 17:16:22
-ModeleMarkov/test/melodies/You_re_welcome-171622.xml
-ModeleMarkov/test/modelisations/You_re_welcome-171622.xml
-ModeleMarkov/test/improvisations/You_re_welcome-171622-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-171622-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-171622.html
+21/06/2017 17:43:20
+ModeleMarkov/test/melodies/toreador-174320.xml
+ModeleMarkov/test/modelisations/toreador-174320.xml
+ModeleMarkov/test/improvisations/toreador-174320-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreador-174320-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-contraintes-174320.html
 
-18/06/2017 17:28:33
-ModeleMarkov/test/melodies/You_re_welcome-172833.xml
-ModeleMarkov/test/modelisations/You_re_welcome-172833.xml
-ModeleMarkov/test/improvisations/You_re_welcome-172833-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-172833-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-172833.html
+21/06/2017 17:43:49
+ModeleMarkov/test/melodies/toreador-174349.xml
+ModeleMarkov/test/modelisations/toreador-174349.xml
+ModeleMarkov/test/improvisations/toreador-174349-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreador-174349-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-contraintes-174349.html
 
-18/06/2017 20:28:21
-18/06/2017 20:29:56
-ModeleMarkov/test/melodies/You_re_welcome-202956.xml
-ModeleMarkov/test/modelisations/You_re_welcome-202956.xml
+21/06/2017 17:43:51
+ModeleMarkov/test/melodies/toreador-174351.xml
+ModeleMarkov/test/modelisations/toreador-174351.xml
+ModeleMarkov/test/improvisations/toreador-174351-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreador-174351-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-contraintes-174351.html
 
-18/06/2017 20:30:13
-18/06/2017 20:30:15
-ModeleMarkov/test/melodies/You_re_welcome-203015.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203015.xml
-ModeleMarkov/test/improvisations/You_re_welcome-203015-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203015-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-203015.html
+21/06/2017 17:44:19
+ModeleMarkov/test/melodies/toreador-174419.xml
+ModeleMarkov/test/modelisations/toreador-174419.xml
+ModeleMarkov/test/improvisations/toreador-174419-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreador-174419-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-contraintes-174419.html
 
-18/06/2017 20:31:53
-ModeleMarkov/test/melodies/You_re_welcome-203153.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203153.xml
-ModeleMarkov/test/improvisations/You_re_welcome-203153-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203153-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-203153.html
+21/06/2017 17:48:33
+ModeleMarkov/test/melodies/toreador-174833.xml
+ModeleMarkov/test/modelisations/toreador-174833.xml
+ModeleMarkov/test/improvisations/toreador-174833-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreador-174833-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-contraintes-174833.html
 
-18/06/2017 20:33:03
-ModeleMarkov/test/melodies/You_re_welcome-203303.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203303.xml
-ModeleMarkov/test/improvisations/You_re_welcome-203303-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203303-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-203303.html
+21/06/2017 17:48:39
+ModeleMarkov/test/melodies/toreador-174839.xml
+ModeleMarkov/test/modelisations/toreador-174839.xml
+ModeleMarkov/test/improvisations/toreador-174839-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreador-174839-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-contraintes-174839.html
 
-18/06/2017 20:33:07
-ModeleMarkov/test/melodies/You_re_welcome-203307.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203307.xml
-ModeleMarkov/test/improvisations/You_re_welcome-203307-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203307-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-203307.html
+21/06/2017 17:49:16
+ModeleMarkov/test/melodies/toreador-174916.xml
+ModeleMarkov/test/modelisations/toreador-174916.xml
+ModeleMarkov/test/improvisations/toreador-174916-impro-contraintes.xml
+ModeleMarkov/test/modelisations/toreador-174916-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-contraintes-174916.html
 
-18/06/2017 20:34:19
-ModeleMarkov/test/melodies/You_re_welcome-203419.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203419.xml
-ModeleMarkov/test/improvisations/You_re_welcome-203419-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-203419-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-203419.html
+21/06/2017 17:49:24
+ModeleMarkov/test/melodies/toreador-174924.xml
+ModeleMarkov/test/modelisations/toreador-174924.xml
+ModeleMarkov/test/improvisations/toreador-174924-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-174924-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-174924.html
 
-18/06/2017 20:41:16
-ModeleMarkov/test/melodies/You_re_welcome-204116.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204116.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204116-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204116-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204116.html
+21/06/2017 17:49:26
+ModeleMarkov/test/melodies/toreador-174926.xml
+ModeleMarkov/test/modelisations/toreador-174926.xml
+ModeleMarkov/test/improvisations/toreador-174926-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-174926-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-174926.html
 
-18/06/2017 20:41:50
-ModeleMarkov/test/melodies/You_re_welcome-204150.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204150.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204150-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204150-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204150.html
+21/06/2017 17:49:28
+ModeleMarkov/test/melodies/toreador-174928.xml
+ModeleMarkov/test/modelisations/toreador-174928.xml
+ModeleMarkov/test/improvisations/toreador-174928-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-174928-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-174928.html
 
-18/06/2017 20:42:24
-18/06/2017 20:42:30
-18/06/2017 20:42:35
-ModeleMarkov/test/melodies/You_re_welcome-204235.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204235.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204235-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204235-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204235.html
+21/06/2017 17:49:28
+ModeleMarkov/test/melodies/toreador-174928.xml
+ModeleMarkov/test/modelisations/toreador-174928.xml
+ModeleMarkov/test/improvisations/toreador-174928-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-174928-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-174928.html
 
-18/06/2017 20:43:58
-ModeleMarkov/test/melodies/You_re_welcome-204358.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204358.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204358-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204358-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204358.html
-
-18/06/2017 20:44:03
-ModeleMarkov/test/melodies/You_re_welcome-204403.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204403.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204403-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204403-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204403.html
-
-18/06/2017 20:44:29
-ModeleMarkov/test/melodies/You_re_welcome-204429.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204429.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204429-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204429-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204429.html
-
-18/06/2017 20:46:03
-ModeleMarkov/test/melodies/You_re_welcome-204603.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204603.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204603-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204603-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204603.html
-
-18/06/2017 20:47:53
-ModeleMarkov/test/melodies/You_re_welcome-204753.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204753.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204753-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204753-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204753.html
-
-18/06/2017 20:48:11
-ModeleMarkov/test/melodies/You_re_welcome-204811.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204811.xml
-ModeleMarkov/test/improvisations/You_re_welcome-204811-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-204811-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-204811.html
-
-18/06/2017 20:53:03
-ModeleMarkov/test/melodies/You_re_welcome-205303.xml
-ModeleMarkov/test/modelisations/You_re_welcome-205303.xml
-ModeleMarkov/test/improvisations/You_re_welcome-205303-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-205303-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-205303.html
-
-18/06/2017 23:40:34
-ModeleMarkov/test/melodies/You_re_welcome-234034.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234034.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234034-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234034-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234034.html
-
-18/06/2017 23:40:39
-ModeleMarkov/test/melodies/You_re_welcome-234039.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234039.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234039-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234039-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234039.html
-
-18/06/2017 23:40:49
-ModeleMarkov/test/melodies/You_re_welcome-234049.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234049.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234049-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234049-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234049.html
-
-18/06/2017 23:40:50
-ModeleMarkov/test/melodies/You_re_welcome-234050.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234050.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234050-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234050-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234050.html
-
-18/06/2017 23:40:55
-ModeleMarkov/test/melodies/You_re_welcome-234055.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234055.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234055-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234055-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234055.html
-
-18/06/2017 23:41:00
-ModeleMarkov/test/melodies/You_re_welcome-234100.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234100.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234100-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234100-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234100.html
-
-18/06/2017 23:41:01
-ModeleMarkov/test/melodies/You_re_welcome-234101.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234101.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234101-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234101-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234101.html
-
-18/06/2017 23:41:16
-ModeleMarkov/test/melodies/You_re_welcome-234116.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234116.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234116-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234116-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234116.html
-
-18/06/2017 23:41:18
-ModeleMarkov/test/melodies/You_re_welcome-234118.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234118.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234118-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234118-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234118.html
-
-18/06/2017 23:41:18
-ModeleMarkov/test/melodies/You_re_welcome-234118.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234118.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234118-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234118-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234118.html
-
-18/06/2017 23:41:19
-ModeleMarkov/test/melodies/You_re_welcome-234119.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234119.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234119-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234119-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234119.html
-
-18/06/2017 23:41:19
-ModeleMarkov/test/melodies/You_re_welcome-234119.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234119.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234119-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234119-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234119.html
-
-18/06/2017 23:41:40
-ModeleMarkov/test/melodies/You_re_welcome-234140.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234140.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234140-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234140-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234140.html
-
-18/06/2017 23:41:42
-ModeleMarkov/test/melodies/You_re_welcome-234142.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234142.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234142-impro-markov.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234142-impro-markov.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-markov-234142.html
-
-18/06/2017 23:41:57
-18/06/2017 23:42:01
-18/06/2017 23:42:07
-ModeleMarkov/test/melodies/toreador-234207.xml
-ModeleMarkov/test/modelisations/toreador-234207.xml
-ModeleMarkov/test/improvisations/toreador-234207-impro-markov.xml
-ModeleMarkov/test/modelisations/toreador-234207-impro-markov.xml
-ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-234207.html
-
-18/06/2017 23:42:08
-ModeleMarkov/test/melodies/toreador-234208.xml
-ModeleMarkov/test/modelisations/toreador-234208.xml
-ModeleMarkov/test/improvisations/toreador-234208-impro-markov.xml
-ModeleMarkov/test/modelisations/toreador-234208-impro-markov.xml
-ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-234208.html
-
-18/06/2017 23:42:09
-ModeleMarkov/test/melodies/toreador-234209.xml
-ModeleMarkov/test/modelisations/toreador-234209.xml
-ModeleMarkov/test/improvisations/toreador-234209-impro-markov.xml
-ModeleMarkov/test/modelisations/toreador-234209-impro-markov.xml
-ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-234209.html
-
-18/06/2017 23:42:09
-ModeleMarkov/test/melodies/toreador-234209.xml
-ModeleMarkov/test/modelisations/toreador-234209.xml
-ModeleMarkov/test/improvisations/toreador-234209-impro-markov.xml
-ModeleMarkov/test/modelisations/toreador-234209-impro-markov.xml
-ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-234209.html
-
-18/06/2017 23:42:15
-ModeleMarkov/test/melodies/toreador-234215.xml
-ModeleMarkov/test/modelisations/toreador-234215.xml
-ModeleMarkov/test/improvisations/toreador-234215-impro-markov.xml
-ModeleMarkov/test/modelisations/toreador-234215-impro-markov.xml
-ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-234215.html
-
-18/06/2017 23:42:16
-ModeleMarkov/test/melodies/toreador-234216.xml
-ModeleMarkov/test/modelisations/toreador-234216.xml
-ModeleMarkov/test/improvisations/toreador-234216-impro-markov.xml
-ModeleMarkov/test/modelisations/toreador-234216-impro-markov.xml
-ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-234216.html
-
-18/06/2017 23:42:16
-ModeleMarkov/test/melodies/toreador-234216.xml
-ModeleMarkov/test/modelisations/toreador-234216.xml
-ModeleMarkov/test/improvisations/toreador-234216-impro-markov.xml
-ModeleMarkov/test/modelisations/toreador-234216-impro-markov.xml
-ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-234216.html
-
-18/06/2017 23:42:28
-18/06/2017 23:42:34
-18/06/2017 23:42:38
-18/06/2017 23:42:47
-ModeleMarkov/test/melodies/You_re_welcome-234247.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234247.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234247-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234247-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-234247.html
-
-18/06/2017 23:42:50
-ModeleMarkov/test/melodies/You_re_welcome-234250.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234250.xml
-ModeleMarkov/test/improvisations/You_re_welcome-234250-impro-contraintes.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234250-impro-contraintes.xml
-ModeleMarkov/test/comparaisons/You_re_welcome-You_re_welcome-impro-contraintes-234250.html
-
-18/06/2017 23:42:55
-ModeleMarkov/test/melodies/You_re_welcome-234255.xml
-ModeleMarkov/test/modelisations/You_re_welcome-234255.xml
-20/06/2017 02:44:08
-ModeleMarkov/test/melodies/Bleed-024408.xml
-ModeleMarkov/test/melodies/Bleed-024408.xml
-20/06/2017 03:50:41
-ModeleMarkov/test/melodies/Saltarello-035041.xml
-ModeleMarkov/test/melodies/Saltarello-035041.xml
-ModeleMarkov/test/melodies/Saltarello-035041.xml
-ModeleMarkov/test/modelisations/SaltarelloSaltarelloSaltarello-035041.xml
-ModeleMarkov/test/improvisations/SaltarelloSaltarelloSaltarello-035041-impro-markov.xml
-ModeleMarkov/test/modelisations/SaltarelloSaltarelloSaltarello-035041-impro-markov.xml
-ModeleMarkov/test/comparaisons/SaltarelloSaltarelloSaltarello-SaltarelloSaltarelloSaltarello-impro-markov-035041.html
-
-20/06/2017 03:51:08
-ModeleMarkov/test/melodies/Saltarello-035108.xml
-ModeleMarkov/test/melodies/Saltarello-035108.xml
-ModeleMarkov/test/melodies/Saltarello-035108.xml
-ModeleMarkov/test/modelisations/SaltarelloSaltarelloSaltarello-035108.xml
-ModeleMarkov/test/improvisations/SaltarelloSaltarelloSaltarello-035108-impro-markov.xml
-ModeleMarkov/test/modelisations/SaltarelloSaltarelloSaltarello-035108-impro-markov.xml
-ModeleMarkov/test/comparaisons/SaltarelloSaltarelloSaltarello-SaltarelloSaltarelloSaltarello-impro-markov-035108.html
+21/06/2017 17:49:31
+ModeleMarkov/test/melodies/toreador-174931.xml
+ModeleMarkov/test/modelisations/toreador-174931.xml
+ModeleMarkov/test/improvisations/toreador-174931-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-174931-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-174931.html
 
