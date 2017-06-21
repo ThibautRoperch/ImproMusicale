@@ -12,9 +12,9 @@
 
 	<body onload="genererElementsDynamiques()">
 		
-		<!--<header>
-			<button onclick="toutConvertir()">Convertir les mélodies générées en pistes en MIDI</button>
-		</header>-->
+		<header>
+			<button onclick="toutConvertir()">Assembler les mélodies générées en un fichier MIDI</button>
+		</header>
 
 		<section>
 
@@ -155,10 +155,12 @@ function afficherArticle(onglet) {
 
 function toutConvertir() {
 	var entrees_midi = "";
+	var sortie_midi = "";
 	for (var i = 0; i < improvisations.length; ++i) {
 		entrees_midi += improvisations[i] + " ";
+		sortie_midi += improvisations[i].substring(0, improvisations[i].lastIndexOf(".xml"));
 	}
-	var sortie_midi = "aaa.mid";
+	sortie_midi += ".mid";
 
 	alert("Exécuter la commande suivante pour enregistrer les mélodies en MIDI :\n\n./ModeleMarkov/bin/convertir_midi.exe " + entrees_midi + " " + sortie_midi + "\n\nLe fichier s'enregistre dans le dossier Partitions");
 }

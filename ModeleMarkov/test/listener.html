@@ -6,8 +6,8 @@
 		<meta charset="utf-8">
 		<title>Écouter une mélodie</title>
 		
-		<link rel="stylesheet" href="styles/main.css" type="text/css">
-		<link rel="stylesheet" href="styles/index.css" type="text/css">
+		<link rel="stylesheet" href="../../InterfaceGraphique/styles/main.css" type="text/css">
+		<link rel="stylesheet" href="../../InterfaceGraphique/styles/index.css" type="text/css">
 	</head>
 
 	<body>
@@ -19,7 +19,7 @@
 
 				<nav>
 					<ul>
-						<li><a href="index.html">Improviser sur des partitions</a></li>
+						<li><a href="../../index.html">Improviser sur des partitions</a></li>
 						<li><a href="">Ouvrir une mélodie existante</a></li>
 					</ul>
 				</nav>
@@ -50,5 +50,13 @@
 
 
 <script>
+
+function ouvrirFichier(input) {
+	var liste_fichiers = document.getElementById("message-depot");
+
+	liste_fichiers.className = "rempli";
+
+	liste_fichiers.innerHTML = input.value;
+}
 
 </script>

@@ -1,37 +1,27 @@
     
 [ SOUTENANCE ]
 
-Présenter les objectif de ma partie pdt le sommaire "j'ai bossé sur ..., sur..."
-
-IG en HTML/JS car je triyve ca plus pratique et plus rapide qu'en c++ ou java
-par exmeple, le drag and drop, c'ets un inpit en html, c'et 2 méthodes en swing et qt
-
 faire une anim pour markov chaine
 faire une animation de construction des rectangles, enlever les notes, garder les rectangles, generer aléatoirement à l'itnerieur
-
-Début de la soutenance en commun
-Fin de la soutenance : démo à deux
-Peut durer 25 min au total pour nous deux
-Prévoir un enregistrement si la démo fait n'imp
 
 montrer nos resultats de tests
 
 intro : survendre, se mettre a la palce du prof, faut pas q'uil décraoche
 
-=> diapo
 => faire des tests, les présenter à l'oral en commun (el famoso tablo excel)
-=> dossiers candidature
-=> remoubrser 21e à bob
+=> rembourser 21e à bob
 
 [ TECHNIQUEMENT ]
 
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
 
-Ajotuer la possibilité d'afficher toutes les générations dans l'accueil & le script (le script doit modéliser chaque géné, et comparer)
+Ajouter la possibilité d'afficher toutes les générations dans l'accueil & le script (le script doit modéliser chaque géné, et comparer)
 
-ajouter la possibilité d'jaouter l'option notraces
+Ajouter la possibilité d'jaouter l'option notraces
 
 Faire en sort d'avoid les chords en MIDI : http://midifile.sapp.org/
+
+Ajouter l'option 1 impro par fichier
 
 [ TESTS ]
 
@@ -47,12 +37,6 @@ Générer des trucs a partir d'une partoche semblable (carmen, Chris Maé, ...),
 Juger avec le programme si ca se ressemble (original : une chanson de chris maé, en généré : une génération sur une autre chanson de chris maé)
 
 Comparer la génération sur une même mélodie de moi et celles de dylan
-
-A 50% de ressemblance, c'est fidèle ? Avec plus de notes en entrées, et en sortie, le % augmente ?
-Faut pas que ca soit trop fidele, c'est presque identique quand on est à 75% ?
-Associer, après des tests et des écoutes, une valeur min de ressemblance à une bonne impro et une valeur max à une impro trop calquée sur l'original
-C'est pas facile, utilisation de l'oreille humaine, limite de l'IA ?
-L'IA génère des trucs, mais besoin d'un humain pour juger
 
 Entree      Sortie      Ressemblance
 < 10 notes  < 10 notes
