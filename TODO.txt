@@ -25,18 +25,7 @@ Ajouter l'option 1 impro par fichier
 
 [ TESTS ]
 
-toreador est pas mal à improviser dessus
-
-possibilité d'improviser sur plusieures pistes d'une mélodies dans l'interface et dans le programme
-
-Comparer la générétion de différents styles de musiques, à l'oreille
-
 Faire un tableau de tests => x tpyes de musiques => y paliers de notes => x * y colonnes
-
-Générer des trucs a partir d'une partoche semblable (carmen, Chris Maé, ...), juger à l'oreille si ca se ressemble
-Juger avec le programme si ca se ressemble (original : une chanson de chris maé, en généré : une génération sur une autre chanson de chris maé)
-
-Comparer la génération sur une même mélodie de moi et celles de dylan
 
 Entree      Sortie      Ressemblance
 < 10 notes  < 10 notes
