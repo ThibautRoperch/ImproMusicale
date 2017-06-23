@@ -1,42 +1,11 @@
-    
-[ SOUTENANCE ]
-
-faire une anim pour markov chaine
-faire une animation de construction des rectangles, enlever les notes, garder les rectangles, generer aléatoirement à l'itnerieur
-
-montrer nos resultats de tests
-
-intro : survendre, se mettre a la palce du prof, faut pas q'uil décraoche
-
-=> faire des tests, les présenter à l'oral en commun (el famoso tablo excel)
-=> rembourser 21e à bob
-
-[ TECHNIQUEMENT ]
 
 Disposer de meilleur facon les rectangles (suivre l'algo fait en c++ dans modeliser.cpp, juste avant l'affichage xml des rectangles)
 
-Ajouter la possibilité d'afficher toutes les générations dans l'accueil & le script (le script doit modéliser chaque géné, et comparer)
+Ajouter la possibilité d'afficher toutes les générations dans l'accueil & le script (le script doit modéliser chaque génération, et comparer)
 
-Ajouter la possibilité d'jaouter l'option notraces
+Ajouter la possibilité d'ajouter l'option notraces
 
-Faire en sort d'avoid les chords en MIDI : http://midifile.sapp.org/
+Corriger l'avoid des chords en MIDI : http://midifile.sapp.org/
 
-Ajouter l'option 1 impro par fichier
+Ajouter l'option "1 impro par fichier"
 
-[ TESTS ]
-
-Faire un tableau de tests => x tpyes de musiques => y paliers de notes => x * y colonnes
-
-Entree      Sortie      Ressemblance
-< 10 notes  < 10 notes
-< 10 notes  > 10 notes
-> 10 notes  < 10 notes
-> 10 notes  > 10 notes
-
-Faire un tableau comme ca, avec d'autres chiffres ?
-
-
-
-
-Christpje : parties 1, 50 notes
-Mehug : parties 1, 50 notes

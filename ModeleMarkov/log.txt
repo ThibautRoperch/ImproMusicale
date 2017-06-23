@@ -203,3 +203,99 @@ ModeleMarkov/test/modelisations/The_Coconut_Song-202604.xml
 ModeleMarkov/test/melodies/The_Coconut_Song-202701.xml
 ModeleMarkov/test/modelisations/The_Coconut_Song-202701.xml
 
+23/06/2017 13:49:43
+23/06/2017 13:50:33
+23/06/2017 13:51:03
+23/06/2017 13:51:22
+ModeleMarkov/test/melodies/Dizzy_Gillespie_-_A_Night_In_Tunisia-135122.xml
+ModeleMarkov/test/melodies/Joe_Pass_Have_You_Met_Miss_Jones-135122.xml
+ModeleMarkov/test/melodies/Ted_Greene_A_Foggy_Day-135122.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-135122.xml
+ModeleMarkov/test/improvisations/Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-135122-impro-contraintes.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-135122-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-impro-contraintes-135122.html
+ModeleMarkov/test/improvisations/Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-135122-impro-markov.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-135122-impro-markov.xml
+ModeleMarkov/test/comparaisons/Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-Dizzy_Gillespie_-_A_Night_In_TunisiaJoe_Pass_Have_You_Met_Miss_JonesTed_Greene_A_Foggy_Day-impro-markov-135122.html
+
+23/06/2017 13:54:37
+ModeleMarkov/test/melodies/Dizzy_Gillespie_-_A_Night_In_Tunisia-135437.xml
+ModeleMarkov/test/melodies/Ted_Greene_A_Foggy_Day-135437.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135437.xml
+ModeleMarkov/test/improvisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135437-impro-contraintes.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135437-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-impro-contraintes-135437.html
+ModeleMarkov/test/improvisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135437-impro-markov.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135437-impro-markov.xml
+ModeleMarkov/test/comparaisons/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-impro-markov-135437.html
+
+23/06/2017 13:57:00
+ModeleMarkov/test/melodies/Dizzy_Gillespie_-_A_Night_In_Tunisia-135700.xml
+ModeleMarkov/test/melodies/Ted_Greene_A_Foggy_Day-135700.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135700.xml
+ModeleMarkov/test/improvisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135700-impro-contraintes.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135700-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-impro-contraintes-135700.html
+ModeleMarkov/test/improvisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135700-impro-markov.xml
+ModeleMarkov/test/modelisations/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-135700-impro-markov.xml
+ModeleMarkov/test/comparaisons/Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-Dizzy_Gillespie_-_A_Night_In_TunisiaTed_Greene_A_Foggy_Day-impro-markov-135700.html
+
+23/06/2017 14:51:22
+ModeleMarkov/test/melodies/On_s_attache-145122.xml
+ModeleMarkov/test/modelisations/On_s_attache-145122.xml
+23/06/2017 14:51:47
+ModeleMarkov/test/melodies/Tombe_sous_le_charme-145147.xml
+ModeleMarkov/test/improvisations/On_s_attache-145122-impro-contraintes.xml
+ModeleMarkov/test/modelisations/On_s_attache-145122-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/On_s_attache-On_s_attache-impro-contraintes-145122.html
+ModeleMarkov/test/improvisations/On_s_attache-145122-impro-markov.xml
+ModeleMarkov/test/modelisations/On_s_attache-145122-impro-markov.xml
+ModeleMarkov/test/comparaisons/On_s_attache-On_s_attache-impro-markov-145122.html
+
+ModeleMarkov/test/modelisations/Tombe_sous_le_charme-145147.xml
+23/06/2017 14:53:56
+ModeleMarkov/test/melodies/On_s_attache-145356.xml
+ModeleMarkov/test/modelisations/On_s_attache-145356.xml
+ModeleMarkov/test/improvisations/On_s_attache-145356-impro-contraintes.xml
+ModeleMarkov/test/modelisations/On_s_attache-145356-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/On_s_attache-On_s_attache-impro-contraintes-145356.html
+ModeleMarkov/test/improvisations/On_s_attache-145356-impro-markov.xml
+ModeleMarkov/test/modelisations/On_s_attache-145356-impro-markov.xml
+ModeleMarkov/test/comparaisons/On_s_attache-On_s_attache-impro-markov-145356.html
+
+23/06/2017 14:54:21
+ModeleMarkov/test/melodies/Tombe_sous_le_charme-145421.xml
+ModeleMarkov/test/modelisations/Tombe_sous_le_charme-145421.xml
+ModeleMarkov/test/improvisations/Tombe_sous_le_charme-145421-impro-contraintes.xml
+ModeleMarkov/test/modelisations/Tombe_sous_le_charme-145421-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/Tombe_sous_le_charme-Tombe_sous_le_charme-impro-contraintes-145421.html
+ModeleMarkov/test/improvisations/Tombe_sous_le_charme-145421-impro-markov.xml
+ModeleMarkov/test/modelisations/Tombe_sous_le_charme-145421-impro-markov.xml
+ModeleMarkov/test/comparaisons/Tombe_sous_le_charme-Tombe_sous_le_charme-impro-markov-145421.html
+
+23/06/2017 15:00:03
+ModeleMarkov/test/melodies/toreador-150003.xml
+ModeleMarkov/test/modelisations/toreador-150003.xml
+ModeleMarkov/test/improvisations/toreador-150003-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-150003-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-150003.html
+
+23/06/2017 15:00:39
+ModeleMarkov/test/melodies/toreador-150039.xml
+ModeleMarkov/test/modelisations/toreador-150039.xml
+ModeleMarkov/test/improvisations/toreador-150039-impro-markov.xml
+ModeleMarkov/test/modelisations/toreador-150039-impro-markov.xml
+ModeleMarkov/test/comparaisons/toreador-toreador-impro-markov-150039.html
+
+23/06/2017 15:03:01
+ModeleMarkov/test/melodies/Bleed-150301.xml
+ModeleMarkov/test/melodies/Demiurge-150301.xml
+ModeleMarkov/test/melodies/New_Millenium_Cyanide_Christ-150301.xml
+ModeleMarkov/test/modelisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-150301.xml
+ModeleMarkov/test/improvisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-150301-impro-contraintes.xml
+ModeleMarkov/test/modelisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-150301-impro-contraintes.xml
+ModeleMarkov/test/comparaisons/BleedDemiurgeNew_Millenium_Cyanide_Christ-BleedDemiurgeNew_Millenium_Cyanide_Christ-impro-contraintes-150301.html
+ModeleMarkov/test/improvisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-150301-impro-markov.xml
+ModeleMarkov/test/modelisations/BleedDemiurgeNew_Millenium_Cyanide_Christ-150301-impro-markov.xml
+ModeleMarkov/test/comparaisons/BleedDemiurgeNew_Millenium_Cyanide_Christ-BleedDemiurgeNew_Millenium_Cyanide_Christ-impro-markov-150301.html
+
