@@ -466,8 +466,8 @@ int main(int argc, char* argv[]) {
 	res_html += tmp;
 	++nombre_valuations;
 
-	// Met à -1 la proportion des 4 notes qui ont la plus faible précense dans la mélodie, pour ne garder que les 8 plus présentes
-	for (unsigned int iteration = 0; iteration < 4; ++iteration) {
+	// Met à -1 la proportion des 5 notes qui ont la plus faible précense dans la mélodie, pour ne garder que les 7 plus présentes
+	for (unsigned int iteration = 0; iteration < 5; ++iteration) {
 		int note_faible;
 
 		// Répartition des notes de la source
@@ -491,7 +491,7 @@ int main(int argc, char* argv[]) {
 		repartition_notes_cible[note_faible] = -1;
 	}
 
-	// Compare les 8 notes les plus présentes des les mélodies
+	// Compare les 7 notes les plus présentes des les mélodies
 	unsigned int note_unique = 0;
 	bool continuer = true;
 	while (note_unique < repartition_notes_source.size() && continuer) {
